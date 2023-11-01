@@ -1,19 +1,33 @@
 { config, ... }: {
-  nixpkgs.config.allowUnfree = true;
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
   };
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = true;
-    nvidiaSettings = true;
-    forceFullCompositionPipeline = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  services = {
+    xserver = {
+      videoDrivers = [ "nvidia" ];
+    };
+  };
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    nvidia = {
+      modesetting = {
+        enable = true;
+      };
+      powerManagement = {
+        enable = false;
+	finegrained = false;
+      };
+      open = true;
+      nvidiaSettings = true;
+      forceFullCompositionPipeline = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
 }
 

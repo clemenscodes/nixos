@@ -20,6 +20,9 @@
     };
     zsh = {
       enable = true;
+      shellAliases = {
+        switch = "sudo nixos-rebuild switch --flake $HOME/.config/nixos/#laptop";
+      };
     };
   };
 
