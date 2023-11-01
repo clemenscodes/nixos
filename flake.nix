@@ -28,6 +28,12 @@
 	  ./machines/desktop
 	];
       };
+      laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system; };
+        modules = [
+          ./machines/laptop
+        ];
+      };
     };
   };
 }

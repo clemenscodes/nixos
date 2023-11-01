@@ -2,10 +2,16 @@
   imports = [ 
     ./hardware-configuration.nix 
     ../../modules
-    ../../modules/nvidia.nix
-    ../../modules/networking.nix
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  networking = {
+    hostName = "nixos";
+    wireless = {
+      enable = true;
+      interfaces = [ "wlp0s20f3" ];   
+    };
+  };  
 
   programs = {
     hyprland = {
