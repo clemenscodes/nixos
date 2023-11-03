@@ -5,6 +5,7 @@
     ../../modules/nvidia.nix
     ../../modules/networking.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.xremap-flake.nixosModules.default
   ];
 
   programs = {

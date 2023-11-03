@@ -3,6 +3,7 @@
     ./hardware-configuration.nix 
     ../../modules
     inputs.home-manager.nixosModules.home-manager
+    inputs.xremap-flake.nixosModules.default
   ];
 
   networking = {

@@ -2,12 +2,23 @@
   description = "Clays NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs = {
+	  follows = "nixpkgs";
+	};
+      };
     };
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+    };
+    xremap-flake = {
+      url = "github:xremap/nix-flake";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
