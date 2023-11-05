@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ inputs, config, pkgs, lib, ... }: {
   gtk = {
     enable = true;
   };
@@ -46,6 +46,7 @@
       gnupg
       imagemagick_light
       atool
+      xdg-desktop-portal-hyprland
       glow
     ];
     file = {
