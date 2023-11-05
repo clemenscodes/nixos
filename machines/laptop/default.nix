@@ -25,7 +25,8 @@
     zsh = {
       enable = true;
       shellAliases = {
-        switch = "sudo nixos-rebuild switch --flake $HOME/.config/nixos/#laptop";
+        update = "cd $HOME/.config/nixos && git pull";
+        switch = "update && sudo nixos-rebuild switch --flake ./#laptop";
       };
     };
   };
