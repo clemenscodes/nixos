@@ -10,17 +10,17 @@
       };
     };
     configFile = {
-      "ctpv/config" = {
-        text = ''
-          set forcekitty
-          set forcekittyanim
-        '';
+      ctpv = {
+	source = ./ctpv;
+	recursive = true;
       };
-      "hypr/hyprland.conf" = {
-        source = ./hypr/hyprland.conf;
+      hypr = {
+        source = ./hypr;
+	recursive = true;
       };
-      "lf/icons" = {
-        source = ./lf/icons;
+      lf = {
+        source = ./lf;
+	recursive = true;
       };
     };
   };
@@ -35,7 +35,6 @@
       oh-my-zsh
       brave
       kitty
-      dmenu
       lf
       zathura
       ctpv
@@ -52,6 +51,9 @@
     file = {
       ".background-image" = {
         source = ../../assets/wallpaper/luffycolor.png;
+      };
+      ".hyprrc" = {
+        source = ./hypr/.hyprrc;
       };
     };
     sessionVariables = {
@@ -85,6 +87,9 @@
           "colored-man-pages"
         ];
       };
+      profileExtra = ''
+        $HOME/.hyprrc
+      '';
     };
     kitty = {
       enable = true;
