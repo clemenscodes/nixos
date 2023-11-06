@@ -11,7 +11,7 @@
     };
     dataFile = {
       wallpaper = {
-        source = ../../assets/wallpaper;
+        source = ../../../assets/wallpaper;
 	recursive = true;
       };
     };
@@ -146,16 +146,14 @@
         plugins = [ 
           "git"
           "colored-man-pages"
+	  "colorize"
         ];
       };
       dotDir = ".config/zsh";
-      shellAliases = with pkgs; {
-        ls = "${eza}/bin/eza";
-        l = "${eza}/bin/eza -lah";
-        ll = "${eza}/bin/eza -l";
-        la = "${eza}/bin/eza -a";
-        lt = "${eza}/bin/eza --tree";
-        lla = "${eza}/bin/eza -la";
+      shellAliases = {
+        ls = "${pkgs.eza}/bin/eza";
+	ne = "cd $NIX_CONFIG && lfcd";
+	src = "omz reload";
       };
       initExtraBeforeCompInit = ''
         autoload -U colors && colors
@@ -170,8 +168,8 @@
         bindkey -v '^?' backward-delete-char
         function zle-keymap-select () {
             case $KEYMAP in
-                vicmd) echo -ne '\e[1 q';;      # block
-                viins|main) echo -ne '\e[5 q';; # beam
+                vicmd) echo -ne '\e[1 q';;
+                viins|main) echo -ne '\e[5 q';;
             esac
         }
         zle -N zle-keymap-select
@@ -199,6 +197,7 @@
         bindkey -M visual '^[[P' vi-delete
       '';
       profileExtra = ''
+        export NIX_CONFIG=$XDG_CONFIG_HOME/nixos
         Hyprland &
       '';
     };

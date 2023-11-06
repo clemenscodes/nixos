@@ -6,6 +6,15 @@
     inputs.xremap-flake.nixosModules.default
   ];
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      clay = import ../../modules/home;
+    };
+  };
+
   networking = {
     hostName = "nixos";
     wireless = {
@@ -29,33 +38,5 @@
         switch = "update && sudo nixos-rebuild switch --flake ./#laptop";
       };
     };
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      clay = import ../../modules/home;
-    };
-  };
-
-  users = {
-    groups = {
-      clay = {};
-    };
-    users = {
-      clay = {
-        isNormalUser = true; 
-        description = "clay"; 
-	group = "clay";
-        extraGroups = [ "networkmanager" "wheel" ]; 
-        shell = pkgs.zsh;
-      };
-    };
-  };
-
-  system = {
-    stateVersion = "23.11";
   };
 }

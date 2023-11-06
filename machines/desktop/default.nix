@@ -8,6 +8,15 @@
     inputs.xremap-flake.nixosModules.default
   ];
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      clay = import ../../modules/common/home;
+    };
+  };
+
   programs = {
     hyprland = {
       enable = true;
@@ -34,33 +43,5 @@
 	export __GL_VRR_ALLOWED=1
       '';
     };
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      clay = import ../../modules/home;
-    };
-  };
-
-  users = {
-    groups = {
-      clay = {};
-    };
-    users = {
-      clay = {
-        isNormalUser = true; 
-        description = "clay"; 
-	group = "clay";
-        extraGroups = [ "networkmanager" "wheel" ]; 
-        shell = pkgs.zsh;
-      };
-    };
-  };
-
-  system = {
-    stateVersion = "23.11";
   };
 }
