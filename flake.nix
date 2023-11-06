@@ -19,11 +19,20 @@
     xremap-flake = {
       url = "github:xremap/nix-flake";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs = {
+        nixpkgs = {
+	  follows = "nixpkgs";
+	};
+      };
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
   let
     system = "x86_64-linux";
+    user = "clay";
     pkgs = import nixpkgs {
       inherit system;
       config = {
@@ -34,13 +43,13 @@
   {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
+        specialArgs = { inherit inputs system user; };
 	modules = [ 
 	  ./machines/desktop
 	];
       };
       laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
+        specialArgs = { inherit inputs system user; };
         modules = [
           ./machines/laptop
         ];

@@ -2,8 +2,6 @@
   environment = {
     systemPackages = with pkgs; [ 
       vim
-      file
-      home-manager
     ];
     variables = {
       EDITOR = "nvim";

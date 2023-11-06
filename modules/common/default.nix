@@ -2,7 +2,7 @@
   imports = [
     ./services
     ./environment.nix
-    ./settings.nix
+    ./nix.nix
     ./boot.nix
     ./time.nix
     ./i18n.nix
@@ -14,5 +14,6 @@
     ./qt.nix
     ./system.nix
     ./users.nix
+    ./sops.nix
   ];
 }

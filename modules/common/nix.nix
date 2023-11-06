@@ -1,6 +1,12 @@
-{ ... }: {
+{ user, ... }: {
   nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
     settings = {
+      trusted-users = [ "root" "${user}" ];
       experimental-features = [
         "nix-command"
 	"flakes"

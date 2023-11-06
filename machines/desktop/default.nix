@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }: { 
+{ inputs, config, pkgs, user, ... }: { 
   imports = [ 
     ./hardware-configuration.nix 
     ../../modules
@@ -6,14 +6,15 @@
     ../../modules/networking.nix
     inputs.home-manager.nixosModules.home-manager
     inputs.xremap-flake.nixosModules.default
+    inputs.sops-nix.nixosModules.sops
   ];
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs user; };
     users = {
-      clay = import ../../modules/common/home;
+      ${user} = import ../../modules/common/home;
     };
   };
 

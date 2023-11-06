@@ -1,8 +1,8 @@
-{ ... }: {
+{ user, ... }: {
   services = {
     xremap = {
       withHypr = true;
-      userName = "clay";
+      userName = "${user}";
       yamlConfig = ''
         modmap:
           - name: "Better CapsLock"

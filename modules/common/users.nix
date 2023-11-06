@@ -1,14 +1,14 @@
-{ pkgs, ... }: {
+{ pkgs, user, ... }: {
   users = {
     defaultUserShell = pkgs.zsh;
     groups = {
-      clay = {};
+      ${user} = {};
     };
     users = {
-      clay = {
+      ${user} = {
         isNormalUser = true; 
-        description = "clay"; 
-	group = "clay";
+        description = "${user}"; 
+	group = "${user}";
         extraGroups = [ "networkmanager" "wheel" ]; 
         shell = pkgs.zsh;
       };

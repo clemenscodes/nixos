@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }: {
+{ inputs, config, pkgs, lib, user, ... }: {
   gtk = {
     enable = true;
   };
@@ -28,17 +28,28 @@
         source = ./lf;
 	recursive = true;
       };
+      nvim = {
+        source = ./nvim;
+	recursive = true;
+      };
+      waybar = {
+        source = ./waybar;
+	recursive = true;
+      };
+      rofi = {
+        source = ./rofi;
+	recursive = true;
+      };
     };
   };
   home = {
-    stateVersion = "22.11";
-    username = "clay";
-    homeDirectory = "/home/clay";
+    stateVersion = "23.11";
+    username = "${user}";
+    homeDirectory = "/home/${user}";
     packages = with pkgs; [
-      kitty
+      file
       brave
       eza
-      lf
       ctpv
       ffmpeg
       ffmpegthumbnailer
@@ -48,9 +59,6 @@
       imagemagick_light
       atool
       glow
-      (waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      }))
       swww
       xdg-desktop-portal-hyprland
     ];
@@ -61,6 +69,22 @@
   programs = {
     home-manager = {
       enable = true;
+    };
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
+    waybar = {
+      enable = true;
+      package = (pkgs.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      }));
+    };
+    rofi = {
+      enable = true;
+      extraConfig = {};
     };
     gh = {
       enable = true;
@@ -136,6 +160,21 @@
       enable = true;
       userName = "Clemens Horn";
       userEmail = "clemens.horn@mni.thm.de";
+      extraConfig = {
+        init = {
+	  defaultBranch = "main";
+	};
+        pull = {
+	  rebase = false;
+	};
+        push = {
+	  autoSetupRemote = true;
+	};
+        core = {
+          whitespace = "trailing-space,space-before-tab";
+          editor = "nvim";
+        };
+      };
     };
     zsh = {
       enable = true;
