@@ -56,7 +56,18 @@
       fd
       wl-clipboard
       gcc
-      nodejs
+      gnumake
+      cmake
+      cmake-format
+      clang-tools
+      nasm
+      nodejs_20
+      gdb
+      pwndbg
+      nodePackages.pnpm
+      nodePackages.yarn
+      bun
+      jetbrains.idea-ultimate
       tree-sitter
       wget
       zip
@@ -216,6 +227,7 @@
         ls = "${pkgs.eza}/bin/eza";
 	ne = "cd $NIX_CONFIG_HOME && lfcd";
 	src = "omz reload";
+	rr = "cd $HOME/.local/src";
       };
       history = {
         path =  "${config.xdg.dataHome}/zsh/zsh_history";
@@ -273,7 +285,7 @@
       enable = true;
       settings = {
         dynamic_background_opacity = "yes";
-        font_family = "Iosevka";
+        font_family = "Iosevka Nerd Font";
         shell_integration = "enabled";
         enable_audio_bell = false;
         shell = "zsh";

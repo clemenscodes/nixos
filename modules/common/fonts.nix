@@ -1,11 +1,13 @@
 { pkgs, ...}: {
   fonts = {
-    packages = with pkgs; [ iosevka ];
+    packages = with pkgs; [ 
+      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+    ];
     fontconfig = {
       defaultFonts = {
-        monospace = [ "Iosevka" ];
-        sansSerif = [ "Iosevka" ];
-        serif = [ "Iosevka" ];
+        monospace = [ "Iosevka Nerd Font Mono" ];
+        sansSerif = [ "Iosevka Nerd Font" ];
+        serif = [ "Iosevka Nerd Font" ];
       };
     };
     fontDir = {

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-swww init &
-
-swww img $XDG_DATA_HOME/wallpaper/luffycolor.png &
-
-waybar &

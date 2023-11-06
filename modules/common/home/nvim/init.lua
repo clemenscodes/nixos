@@ -27,23 +27,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
-    -- NOTE: First, some plugins that don't require any configuration
-
-    -- Git related plugins
-    'tpope/vim-fugitive',
-    'tpope/vim-rhubarb',
-
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
 
-    -- NOTE: This is where your plugins related to LSP can be installed.
-    --  The configuration is done below. Search for lspconfig to find it below.
     {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
@@ -77,7 +64,6 @@ require('lazy').setup({
         },
     },
 
-    -- Useful plugin to show you pending keybinds.
     { 'folke/which-key.nvim', opts = {} },
     {
         -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -92,9 +78,6 @@ require('lazy').setup({
                 changedelete = { text = '~' },
             },
             on_attach = function(bufnr)
-                vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
-                    { buffer = bufnr, desc = 'Preview git hunk' })
-
                 -- don't override the built-in and fugitive keymaps
                 local gs = package.loaded.gitsigns
                 vim.keymap.set({ 'n', 'v' }, ']c', function()
@@ -120,7 +103,6 @@ require('lazy').setup({
     },
 
     {
-        -- Theme inspired by Atom
         'navarasu/onedark.nvim',
         priority = 1000,
         config = function()
@@ -129,7 +111,6 @@ require('lazy').setup({
     },
 
     {
-        -- Set lualine as statusline
         'nvim-lualine/lualine.nvim',
         -- See `:help lualine.txt`
         opts = {
@@ -143,28 +124,20 @@ require('lazy').setup({
     },
 
     {
-        -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
         main = 'ibl',
         opts = {},
     },
 
-    -- "gc" to comment visual regions/lines
     {
         'numToStr/Comment.nvim',
         opts = {
             toggler = {
-                ---Line-comment toggle keymap
                 line = 'gcl',
-                ---Block-comment toggle keymap
                 block = 'gcb',
             },
             opleader = {
-                ---Line-comment keymap
                 line = 'gcp',
-                ---Block-comment keymap
                 block = 'gbp',
             },
         }
@@ -298,7 +271,6 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -418,7 +390,6 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
     nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -444,22 +415,8 @@ require('mason').setup {
 }
 require('mason-lspconfig').setup()
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
 local servers = {
-    -- clangd = {},
-    -- gopls = {},
-    -- pyright = {},
-    -- rust_analyzer = {},
-    -- tsserver = {},
-    -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+    html = { filetypes = { 'html', 'twig', 'hbs'} },
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },
