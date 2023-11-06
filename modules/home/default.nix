@@ -9,6 +9,12 @@
         "application/pdf" = [ "zathura.desktop" ];
       };
     };
+    dataFile = {
+      wallpaper = {
+        source = ../../assets/wallpaper;
+	recursive = true;
+      };
+    };
     configFile = {
       ctpv = {
 	source = ./ctpv;
@@ -29,12 +35,13 @@
     username = "clay";
     homeDirectory = "/home/clay";
     packages = with pkgs; [
+      kitty
       git
       gh
       zsh
       oh-my-zsh
       brave
-      kitty
+      eza
       lf
       zathura
       ctpv
@@ -45,17 +52,13 @@
       gnupg
       imagemagick_light
       atool
-      xdg-desktop-portal-hyprland
       glow
+      (waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      }))
+      swww
+      xdg-desktop-portal-hyprland
     ];
-    file = {
-      ".background-image" = {
-        source = ../../assets/wallpaper/luffycolor.png;
-      };
-      ".hyprrc" = {
-        source = ./hypr/.hyprrc;
-      };
-    };
     sessionVariables = {
       EDITOR = "nvim";
     };
@@ -63,6 +66,60 @@
   programs = {
     home-manager = {
       enable = true;
+    };
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        add_newline = false;
+	cmd_duration = {
+	  style = "bold #f1fa8c";
+	};
+	battery = {
+	  full_symbol = "🔋";
+          charging_symbol = "🔌";
+          discharging_symbol = "⚡";
+	};
+	directory = {
+	  style = "bold #50fa7b";
+	  truncation_length = 4;
+	  truncate_to_repo = true;
+	};
+	hostname = {
+	  style = "bold #ff5555";
+	};
+	git_branch = {
+	  style = "bold #ff79c6";
+	};
+	git_status = {
+          style = "bold #ff5555";
+	  conflicted = "⚔️ ";
+          ahead = "🏎️💨=>\${count}";
+          behind = "🐢=>\${count}";
+          diverged = "🔱🏎️💨<=\${ahead_count}🐢=>\${behind_count}";
+          untracked = "🛤️=>\${count}";
+          stashed = "📦";
+          modified = "📝=>\${count}";
+          staged = "🗃️->\${count}";
+          renamed = "📛<-\${count}";
+          deleted = "🗑️<=\${count}";
+          format = "$all_status$ahead_behind ";
+	};
+        username = {
+          format = "[$user]($style) on ";
+          style_user = "bold #bd93f9";
+	  style_root = "bright-red bold";
+        };
+        character = {
+          success_symbol = "[✅](bold #f8f8f2)";
+	  error_symbol = "[❌](bold #ff5555)";
+	  vicmd_symbol = "[[](bg:#545B68 fg:#A6A6A6)[](bg:#A6A6A6 fg:#545B68)](bold bg:#545B68 fg:#FF6E79)";
+          format = "$symbol ";
+        };
+	line_break = {
+	  disabled = true;
+	};
+      };
     };
     neovim = {
       enable = true;
@@ -79,6 +136,12 @@
     zsh = {
       enable = true;
       enableCompletion = true;
+      syntaxHighlighting = {
+        enable = true;
+      };
+      enableAutosuggestions = true;
+      autocd = true;
+      completionInit = true;
       oh-my-zsh = {
         theme = "lambda";
         enable = true;
@@ -87,8 +150,58 @@
           "colored-man-pages"
         ];
       };
+      dotDir = ".config/zsh";
+      shellAliases = with pkgs; {
+        ls = "${eza}/bin/eza";
+        l = "${eza}/bin/eza -lah";
+        ll = "${eza}/bin/eza -l";
+        la = "${eza}/bin/eza -a";
+        lt = "${eza}/bin/eza --tree";
+        lla = "${eza}/bin/eza -la";
+      };
+      initExtraBeforeCompInit = ''
+        autoload -U colors && colors
+      '';
+      initExtra = ''
+        zstyle ':completion*' menu select
+        bindkey -v
+	bindkey -M menuselect 'h' vi-backward-char
+        bindkey -M menuselect 'k' vi-up-line-or-history
+        bindkey -M menuselect 'l' vi-forward-char
+        bindkey -M menuselect 'j' vi-down-line-or-history
+        bindkey -v '^?' backward-delete-char
+        function zle-keymap-select () {
+            case $KEYMAP in
+                vicmd) echo -ne '\e[1 q';;      # block
+                viins|main) echo -ne '\e[5 q';; # beam
+            esac
+        }
+        zle -N zle-keymap-select
+        zle-line-init() {
+            zle -K viins
+            echo -ne "\e[5 q"
+        }
+        zle -N zle-line-init
+        echo -ne '\e[5 q' 
+        preexec() { echo -ne '\e[5 q' ;} 
+        lfcd () {
+            tmp="$(mktemp -uq)"
+            trap 'rm -f $tmp >/dev/null 2>&1' HUP INT QUIT TERM PWR EXIT
+            lf -last-dir-path="$tmp" "$@"
+            if [ -f "$tmp" ]; then
+                dir="$(cat "$tmp")"
+                [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+            fi
+        }
+        bindkey -s '^o' 'lfcd\n'
+        autoload edit-command-line; zle -N edit-command-line
+        bindkey '^e' edit-command-line
+        bindkey -M vicmd '^[[P' vi-delete-char
+        bindkey -M vicmd '^e' edit-command-line
+        bindkey -M visual '^[[P' vi-delete
+      '';
       profileExtra = ''
-        $HOME/.hyprrc
+        Hyprland &
       '';
     };
     kitty = {

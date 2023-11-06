@@ -1,3 +1,5 @@
 { ... }: {
-  console.keyMap = "de";
+  console = {
+    keyMap = "de";
+  };
 }
