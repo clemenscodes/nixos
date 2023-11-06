@@ -114,7 +114,7 @@
           success_symbol = "[✅](bold #f8f8f2)";
 	  error_symbol = "[❌](bold #ff5555)";
 	  vicmd_symbol = "[[](bg:#545B68 fg:#A6A6A6)[](bg:#A6A6A6 fg:#545B68)](bold bg:#545B68 fg:#FF6E79)";
-          format = "$symbol ";
+          format = "$symbol -> ";
         };
 	line_break = {
 	  disabled = true;
