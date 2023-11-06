@@ -11,7 +11,7 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     users = {
-      clay = import ../../modules/home;
+      clay = import ../../modules/common/home;
     };
   };
 
