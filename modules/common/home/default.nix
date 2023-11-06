@@ -147,7 +147,6 @@
       autocd = true;
       completionInit = true;
       oh-my-zsh = {
-        theme = "lambda";
         enable = true;
         plugins = [ 
           "git"
@@ -160,6 +159,12 @@
         ls = "${pkgs.eza}/bin/eza";
 	ne = "cd $NIX_CONFIG_HOME && lfcd";
 	src = "omz reload";
+      };
+      history = {
+        path =  "${config.xdg.dataHome}/zsh/zsh_history";
+      };
+      historySubstringSearch = {
+        enable = true;
       };
       initExtraBeforeCompInit = ''
         autoload -U colors && colors

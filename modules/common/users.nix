@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   users = {
+    defaultUserShell = pkgs.zsh;
     groups = {
       clay = {};
     };
