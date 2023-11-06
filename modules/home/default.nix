@@ -72,26 +72,43 @@
       enableZshIntegration = true;
       settings = {
         add_newline = false;
-	cmd_duration = {
-	  style = "bold #f1fa8c";
-	};
-	battery = {
-	  full_symbol = "🔋";
-          charging_symbol = "🔌";
-          discharging_symbol = "⚡";
-	};
-	directory = {
-	  style = "bold #50fa7b";
-	  truncation_length = 4;
-	  truncate_to_repo = true;
+	os = {
+          format = "[$symbol](bold white)";
+	  disabled = false;
 	};
 	hostname = {
 	  style = "bold #ff5555";
 	};
+        username = {
+          format = "[$user]($style) on ";
+	  show_always = true;
+          style_user = "bold #bd93f9";
+	  style_root = "bright-red bold";
+        };
+	directory = {
+	  style = "bold #50fa7b";
+	  truncation_length = 3;
+	  truncate_to_repo = true;
+	  truncation_symbol = ".../";
+	};
+        character = {
+          success_symbol = "[✅](bold #f8f8f2)";
+	  error_symbol = "[❌](bold #ff5555)";
+	  vicmd_symbol = "[[](bg:#545B68 fg:#A6A6A6)[](bg:#A6A6A6 fg:#545B68)](bold bg:#545B68 fg:#FF6E79)";
+          format = "$symbol -> ";
+        };
+	line_break = {
+	  disabled = true;
+	};
+	cmd_duration = {
+	  style = "bold #f1fa8c";
+	};
 	git_branch = {
+	  format = "[$symbol](green)[$branch]($style)";
 	  style = "bold #ff79c6";
 	};
 	git_status = {
+	  format = "[$all_status -> $ahead_behind]($style)";
           style = "bold #ff5555";
 	  conflicted = "⚔️ ";
           ahead = "🏎️💨===!>\${count}";
@@ -103,21 +120,11 @@
           staged = "🗃️->\${count}";
           renamed = "📛<!=\${count}";
           deleted = "🗑️<!=\${count}";
-          format = "$all_status -> $ahead_behind";
 	};
-        username = {
-          format = "[$user]($style) on ";
-          style_user = "bold #bd93f9";
-	  style_root = "bright-red bold";
-        };
-        character = {
-          success_symbol = "[✅](bold #f8f8f2)";
-	  error_symbol = "[❌](bold #ff5555)";
-	  vicmd_symbol = "[[](bg:#545B68 fg:#A6A6A6)[](bg:#A6A6A6 fg:#545B68)](bold bg:#545B68 fg:#FF6E79)";
-          format = "$symbol -> ";
-        };
-	line_break = {
-	  disabled = true;
+	battery = {
+	  full_symbol = "🔋";
+          charging_symbol = "🔌";
+          discharging_symbol = "⚡";
 	};
       };
     };
