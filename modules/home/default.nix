@@ -95,22 +95,22 @@
 	  style = "bold #f1fa8c";
 	};
 	git_branch = {
-	  format = "[$symbol](green)[$branch]($style) ";
+	  format = "[$symbol](green)[$branch]($style)";
 	  style = "bold #ff79c6";
 	};
 	git_status = {
-	  format = "[$all_status$ahead_behind ]($style)";
+	  format = "[$all_status$ahead_behind]($style) ";
           style = "bold #ff5555";
-	  conflicted = "⚔️ ";
-          ahead = "🏎️💨 <== \${count}";
-          behind = "🐢 => \${count}";
-          diverged = "🔱🏎️💨 <== \${ahead_count}🐢 => \${behind_count}";
-          untracked = "🛤️ -> \${count}";
-          stashed = "📦";
-          modified = "📝 => \${count}";
-          staged = "🗃️ -> \${count}";
-          renamed = "📛 <!= \${count}";
-          deleted = "🗑️ <!= \${count}";
+	  conflicted = " ⚔️  ";
+          ahead = " 🏎️ 💨 <== \${count}";
+          behind = " 🐢 => \${count}";
+          diverged = " 🔱 <== \${ahead_count} 🐢 => \${behind_count}";
+          untracked = " 🛤️ -> \${count}";
+          stashed = " 📦 ";
+          modified = " 📝 => \${count}";
+          staged = " 🗃️ -> \${count}";
+          renamed = " 📛 <!= \${count}";
+          deleted = " 🗑️ <!= \${count}";
 	};
 	battery = {
 	  full_symbol = "🔋";
