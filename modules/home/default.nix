@@ -94,16 +94,16 @@
 	git_status = {
           style = "bold #ff5555";
 	  conflicted = "⚔️ ";
-          ahead = "🏎️💨=>\${count}";
+          ahead = "🏎️💨===!>\${count}";
           behind = "🐢=>\${count}";
           diverged = "🔱🏎️💨<=\${ahead_count}🐢=>\${behind_count}";
           untracked = "🛤️=>\${count}";
           stashed = "📦";
           modified = "📝=>\${count}";
           staged = "🗃️->\${count}";
-          renamed = "📛<-\${count}";
-          deleted = "🗑️<=\${count}";
-          format = "$all_status$ahead_behind ";
+          renamed = "📛<!=\${count}";
+          deleted = "🗑️<!=\${count}";
+          format = "$all_status -> $ahead_behind";
 	};
         username = {
           format = "[$user]($style) on ";
