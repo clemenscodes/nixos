@@ -36,14 +36,9 @@
     homeDirectory = "/home/clay";
     packages = with pkgs; [
       kitty
-      git
-      gh
-      zsh
-      oh-my-zsh
       brave
       eza
       lf
-      zathura
       ctpv
       ffmpeg
       ffmpegthumbnailer
@@ -66,6 +61,17 @@
   programs = {
     home-manager = {
       enable = true;
+    };
+    gh = {
+      enable = true;
+      settings = {
+        editor = "nvim";
+	git_protocol = "ssh";
+	browser = "brave";
+      };
+      gitCredentialHelper = {
+        enable = true;
+      };
     };
     starship = {
       enable = true;
@@ -152,7 +158,7 @@
       dotDir = ".config/zsh";
       shellAliases = {
         ls = "${pkgs.eza}/bin/eza";
-	ne = "cd $NIX_CONFIG && lfcd";
+	ne = "cd $NIX_CONFIG_HOME && lfcd";
 	src = "omz reload";
       };
       initExtraBeforeCompInit = ''
@@ -197,7 +203,7 @@
         bindkey -M visual '^[[P' vi-delete
       '';
       profileExtra = ''
-        export NIX_CONFIG=$XDG_CONFIG_HOME/nixos
+        export NIX_CONFIG_HOME=$XDG_CONFIG_HOME/nixos
         Hyprland &
       '';
     };
