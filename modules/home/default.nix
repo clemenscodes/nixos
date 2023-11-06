@@ -72,10 +72,7 @@
       enableZshIntegration = true;
       settings = {
         add_newline = false;
-	os = {
-          format = "[$symbol](bold white)";
-	  disabled = false;
-	};
+	command_timeout = 500;
 	hostname = {
 	  style = "bold #ff5555";
 	};
@@ -87,16 +84,10 @@
         };
 	directory = {
 	  style = "bold #50fa7b";
-	  truncation_length = 3;
+	  truncation_length = 6;
 	  truncate_to_repo = true;
 	  truncation_symbol = ".../";
 	};
-        character = {
-          success_symbol = "[✅](bold #f8f8f2)";
-	  error_symbol = "[❌](bold #ff5555)";
-	  vicmd_symbol = "[[](bg:#545B68 fg:#A6A6A6)[](bg:#A6A6A6 fg:#545B68)](bold bg:#545B68 fg:#FF6E79)";
-          format = "$symbol -> ";
-        };
 	line_break = {
 	  disabled = true;
 	};
@@ -104,22 +95,22 @@
 	  style = "bold #f1fa8c";
 	};
 	git_branch = {
-	  format = "[$symbol](green)[$branch]($style)";
+	  format = "[$symbol](green)[$branch]($style) ";
 	  style = "bold #ff79c6";
 	};
 	git_status = {
-	  format = "[$all_status -> $ahead_behind]($style)";
+	  format = "[$all_status$ahead_behind ]($style)";
           style = "bold #ff5555";
 	  conflicted = "⚔️ ";
-          ahead = "🏎️💨===!>\${count}";
-          behind = "🐢=>\${count}";
-          diverged = "🔱🏎️💨<=\${ahead_count}🐢=>\${behind_count}";
-          untracked = "🛤️=>\${count}";
+          ahead = "🏎️💨 <== \${count}";
+          behind = "🐢 => \${count}";
+          diverged = "🔱🏎️💨 <== \${ahead_count}🐢 => \${behind_count}";
+          untracked = "🛤️ -> \${count}";
           stashed = "📦";
-          modified = "📝=>\${count}";
-          staged = "🗃️->\${count}";
-          renamed = "📛<!=\${count}";
-          deleted = "🗑️<!=\${count}";
+          modified = "📝 => \${count}";
+          staged = "🗃️ -> \${count}";
+          renamed = "📛 <!= \${count}";
+          deleted = "🗑️ <!= \${count}";
 	};
 	battery = {
 	  full_symbol = "🔋";
