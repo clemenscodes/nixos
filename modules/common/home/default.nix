@@ -51,6 +51,24 @@
       brave
       eza
       ctpv
+      fzf
+      ripgrep
+      fd
+      wl-clipboard
+      gcc
+      nodejs
+      tree-sitter
+      wget
+      zip
+      unzip
+      go
+      php82Packages.composer
+      php
+      cargo
+      luajitPackages.luarocks
+      zulu
+      julia
+      (python311.withPackages(ps: with ps; [pip]))
       ffmpeg
       ffmpegthumbnailer
       poppler_utils
