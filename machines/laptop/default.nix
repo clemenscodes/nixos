@@ -7,8 +7,6 @@
     inputs.sops-nix.nixosModules.sops
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.onedark;
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
