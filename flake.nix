@@ -43,13 +43,13 @@
   {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system user; };
+        specialArgs = { inherit pkgs inputs system user; };
 	modules = [ 
 	  ./machines/desktop
 	];
       };
       laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system user; };
+        specialArgs = { inherit pkgs inputs system user; };
         modules = [
           ./machines/laptop
         ];
