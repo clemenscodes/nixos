@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, user, ... }: {
+{ inputs, config, pkgs, lib, user, themes, ... }: {
   gtk = {
     enable = true;
   };
@@ -12,33 +12,33 @@
     dataFile = {
       wallpaper = {
         source = ../../../assets/wallpaper;
-	recursive = true;
+        recursive = true;
       };
     };
     configFile = {
       ctpv = {
-	source = ./ctpv;
-	recursive = true;
+        source = ./ctpv;
+        recursive = true;
       };
       hypr = {
         source = ./hypr;
-	recursive = true;
+        recursive = true;
       };
       lf = {
         source = ./lf;
-	recursive = true;
+        recursive = true;
       };
       nvim = {
         source = ./nvim;
-	recursive = true;
+        recursive = true;
       };
       waybar = {
         source = ./waybar;
-	recursive = true;
+        recursive = true;
       };
       rofi = {
         source = ./rofi;
-	recursive = true;
+        recursive = true;
       };
     };
   };
@@ -90,6 +90,7 @@
       glow
       swww
       xdg-desktop-portal-hyprland
+      brightnessctl
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -119,8 +120,8 @@
       enable = true;
       settings = {
         editor = "nvim";
-	git_protocol = "ssh";
-	browser = "brave";
+        git_protocol = "ssh";
+        browser = "brave";
       };
       gitCredentialHelper = {
         enable = true;
@@ -131,36 +132,36 @@
       enableZshIntegration = true;
       settings = {
         add_newline = false;
-	command_timeout = 500;
-	hostname = {
-	  style = "bold #ff5555";
-	};
+        command_timeout = 500;
+        hostname = {
+          style = "bold #ff5555";
+        };
         username = {
           format = "[$user]($style) on ";
-	  show_always = true;
+          show_always = true;
           style_user = "bold #bd93f9";
-	  style_root = "bright-red bold";
+          style_root = "bright-red bold";
         };
-	directory = {
-	  style = "bold #50fa7b";
-	  truncation_length = 6;
-	  truncate_to_repo = true;
-	  truncation_symbol = ".../";
-	};
-	line_break = {
-	  disabled = true;
-	};
-	cmd_duration = {
-	  style = "bold #f1fa8c";
-	};
-	git_branch = {
-	  format = "[$symbol](green)[$branch]($style)";
-	  style = "bold #ff79c6";
-	};
-	git_status = {
-	  format = "[$all_status$ahead_behind]($style) ";
+        directory = {
+          style = "bold #50fa7b";
+          truncation_length = 6;
+          truncate_to_repo = true;
+          truncation_symbol = ".../";
+        };
+        line_break = {
+          disabled = true;
+        };
+        cmd_duration = {
+          style = "bold #f1fa8c";
+        };
+        git_branch = {
+          format = "[$symbol](green)[$branch]($style)";
+          style = "bold #ff79c6";
+        };
+        git_status = {
+          format = "[$all_status$ahead_behind]($style) ";
           style = "bold #ff5555";
-	  conflicted = " ⚔️  ";
+          conflicted = " ⚔️  ";
           ahead = " 🏎️ 💨 <== \${count}";
           behind = " 🐢 => \${count}";
           diverged = " 🔱 <== \${ahead_count} 🐢 => \${behind_count}";
@@ -170,12 +171,12 @@
           staged = " 🗃️ -> \${count}";
           renamed = " 📛 <!= \${count}";
           deleted = " 🗑️ <!= \${count}";
-	};
-	battery = {
-	  full_symbol = "🔋";
+        };
+      	battery = {
+      	  full_symbol = "🔋";
           charging_symbol = "🔌";
           discharging_symbol = "⚡";
-	};
+        };
       };
     };
     neovim = {
@@ -191,14 +192,14 @@
       userEmail = "clemens.horn@mni.thm.de";
       extraConfig = {
         init = {
-	  defaultBranch = "main";
-	};
+          defaultBranch = "main";
+        };
         pull = {
-	  rebase = false;
-	};
+          rebase = false;
+        };
         push = {
-	  autoSetupRemote = true;
-	};
+          autoSetupRemote = true;
+        };
         core = {
           whitespace = "trailing-space,space-before-tab";
           editor = "nvim";
@@ -219,15 +220,15 @@
         plugins = [ 
           "git"
           "colored-man-pages"
-	  "colorize"
+          "colorize"
         ];
       };
       dotDir = ".config/zsh";
       shellAliases = {
         ls = "${pkgs.eza}/bin/eza";
-	ne = "cd $NIX_CONFIG_HOME && lfcd";
-	src = "omz reload";
-	rr = "cd $HOME/.local/src";
+        ne = "cd $NIX_CONFIG_HOME && lfcd";
+        src = "omz reload";
+        rr = "cd $HOME/.local/src";
       };
       history = {
         path =  "${config.xdg.dataHome}/zsh/zsh_history";
@@ -241,7 +242,7 @@
       initExtra = ''
         zstyle ':completion*' menu select
         bindkey -v
-	bindkey -M menuselect 'h' vi-backward-char
+        bindkey -M menuselect 'h' vi-backward-char
         bindkey -M menuselect 'k' vi-up-line-or-history
         bindkey -M menuselect 'l' vi-forward-char
         bindkey -M menuselect 'j' vi-down-line-or-history
@@ -283,7 +284,7 @@
     };
     kitty = {
       enable = true;
-      settings = {
+      settings = with themes.custom; {
         dynamic_background_opacity = "yes";
         font_family = "Iosevka Nerd Font";
         shell_integration = "enabled";
@@ -291,26 +292,26 @@
         shell = "zsh";
         confirm_os_window_close = 0;
         font_size = "14.0";
-        background = "#282828";
-        foreground = "#d6dae4";
-        cursor = "#b9b9b9";
-        selection_background = "#1f1f1f";
-        color0 = "#1f1f1f";
-        color8 = "#d6dae4";
-        color1 = "#f71118";
-        color9 = "#de342e";
-        color2 = "#2cc55d";
-        color10 = "#1dd260";
-        color3 = "#ecb90f";
-        color11 = "#f2bd09";
-        color4 = "#61afef";
-        color12 = "#61afef";
-        color5 = "#4e59b7";
-        color13 = "#524fb9";
-        color6 = "#0f80d5";
-        color14 = "#0f7cda";
-        color7 = "#d6dae4";
-        color15 = "#ffffff";
+        selection_background = "#${base00}";
+        background = "#${background}";
+        foreground = "#${foreground}";
+        cursor = "#${cursor}";
+        color0 = "#${base00}";
+        color1 = "#${base01}";
+        color2 = "#${base02}";
+        color3 = "#${base03}";
+        color4 = "#${base04}";
+        color5 = "#${base05}";
+        color6 = "#${base06}";
+        color8 = "#${base08}";
+        color7 = "#${base07}";
+        color9 = "#${base09}";
+        color10 = "#${base0A}";
+        color11 = "#${base0B}";
+        color12 = "#${base0C}";
+        color13 = "#${base0D}";
+        color14 = "#${base0E}";
+        color15 = "#${base0F}";
       };
     };
     zathura = {

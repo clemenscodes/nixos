@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, user, ... }: { 
+{ inputs, config, pkgs, user, themes, ... }: { 
   imports = [ 
     ./hardware-configuration.nix 
     ../../modules
@@ -7,10 +7,12 @@
     inputs.sops-nix.nixosModules.sops
   ];
 
+  colorScheme = inputs.nix-colors.colorSchemes.onedark;
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs user; };
+    extraSpecialArgs = { inherit themes inputs user; };
     users = {
       ${user} = import ../../modules/common/home;
     };

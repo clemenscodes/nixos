@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, user, ... }: { 
+{ inputs, config, pkgs, user, themes, ... }: { 
   imports = [ 
     ./hardware-configuration.nix 
     ../../modules
@@ -12,7 +12,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs user; };
+    extraSpecialArgs = { inherit themes inputs user; };
     users = {
       ${user} = import ../../modules/common/home;
     };
@@ -39,9 +39,9 @@
         export SDL_VIDEODRIVER=wayland
         export CLUTTER_BACKEND=wayland
         export __GLX_VENDOR_LIBRARY_NAME=nvidia
-	export LIBVA_DRIVER_NAME=nvidia
-	export __GL_GSYNC_ALLOWED=1
-	export __GL_VRR_ALLOWED=1
+        export LIBVA_DRIVER_NAME=nvidia
+        export __GL_GSYNC_ALLOWED=1
+        export __GL_VRR_ALLOWED=1
       '';
     };
   };
