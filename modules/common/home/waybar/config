@@ -11,9 +11,9 @@
 	"disable-scroll": true,
 	"format": "{name}: {icon}",
 	"format-icons": {
-		"1": " ",
-		"2": " ",
-		"3": " "
+		"1": " ",
+		"2": " ",
+		"3": " "
 	},
        "persistent-workspaces": {
              "*": 3
@@ -120,10 +120,6 @@
         "format": "{}",
 	"interval": 3600,
         "exec": "~/.config/waybar/scripts/clock.sh"
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
     }
 }
 
