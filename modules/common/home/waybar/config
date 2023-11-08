@@ -4,7 +4,7 @@
     "margin": "10 10 0 10",
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["mpd"],
-    "modules-right": ["disk", "backlight", "pulseaudio", "network", "memory", "cpu", "temperature", "battery", "custom/clock"],
+    "modules-right": ["disk", "backlight", "pulseaudio", "network", "memory", "cpu", "temperature", "battery", "custom/clock", "custom/notification"],
     "hyprland/workspaces": {
 	"sort-by-number": true,
 	"on-click": "activate",
@@ -115,12 +115,31 @@
         "format-charging": "{capacity}% ⚡",
         "format-plugged": "{capacity}% 🔌",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " "]
     },
     "custom/clock": {
         "format": "{}",
 	"interval": 3600,
         "exec": "~/.config/waybar/scripts/clock.sh"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": " <span foreground='red'><sup> </sup></span>",
+            "none": " ",
+            "dnd-notification": " <span foreground='red'><sup> </sup></span>",
+            "dnd-none": " ",
+            "inhibited-notification": " <span foreground='red'><sup> </sup></span>",
+            "inhibited-none": " ",
+            "dnd-inhibited-notification": " <span foreground='red'><sup> </sup></span>",
+            "dnd-inhibited-none": " "
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "escape": true
     }
 }
 

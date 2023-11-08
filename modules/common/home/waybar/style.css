@@ -68,11 +68,13 @@ window#waybar {
 #mode,
 #scratchpad,
 #custom-clock,
+#custom-notification,
 #mpd {
     padding: 12px;
     margin: 4px;
     border-radius: 4px;
     color: #adbac7;
+    background-color: #22272e;
 }
 
 #clock {
