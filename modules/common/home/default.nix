@@ -40,6 +40,10 @@
         source = ./waybar/scripts;
         recursive = true;
       };
+      swaync = {
+        source = ./swaync;
+        recursive = true;
+      };
       rofi = {
         source = ./rofi;
         recursive = true;
@@ -94,7 +98,9 @@
       glow
       swww
       xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
       brightnessctl
+      swaynotificationcenter
     ];
     sessionVariables = {
       EDITOR = "nvim";
