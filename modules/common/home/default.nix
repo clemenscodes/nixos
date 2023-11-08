@@ -36,6 +36,10 @@
         source = ./waybar;
         recursive = true;
       };
+      "waybar/scripts" = {
+        source = ./waybar/scripts;
+        recursive = true;
+      };
       rofi = {
         source = ./rofi;
         recursive = true;

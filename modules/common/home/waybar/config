@@ -2,82 +2,104 @@
     "layer": "top", 
     "height": 30, 
     "margin": "10 10 0 10",
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["mpd", "pulseaudio", "temperature", "backlight", "battery", "clock"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["mpd"],
+    "modules-right": ["disk", "backlight", "pulseaudio", "network", "memory", "cpu", "temperature", "battery", "custom/clock"],
     "hyprland/workspaces": {
-	"format": "{id}",
 	"sort-by-number": true,
 	"on-click": "activate",
 	"disable-scroll": true,
-	"persistent_workspaces": {
-	    "*": 5
-        }
+	"format": "{name}: {icon}",
+	"format-icons": {
+		"1": " ",
+		"2": " ",
+		"3": " "
+	},
+       "persistent-workspaces": {
+             "*": 3
+       }
     },
     "hyprland/window": {
+        "format": "👉 {title}",
         "max-length": 200,
-        "separate-outputs": false
+        "separate-outputs": true 
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-muted": "🔇 {format_source}",
+        "format-source": "{volume}% 🎤",
+        "format-source-muted": "🔇",
         "format-icons": {
-            "headphone": "",
-            "phone": "",
-            "portable": "",
+            "headphone": "🎧",
+            "phone": "📞",
+            "portable": "📞",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["🔈", "🔉", "🔊"]
         },
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
+    "disk": {
+    	"interval": 30,
+    	"format": "{used}/{total} 💾",
+    	"path": "/"
+    },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr}",
+        "format-wifi": "{essid} ({signalStrength}%) 🛜",
+        "format-ethernet": "{ifname}: 📶",
+        "format-disconnected": "Disconnected ⚠️a",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"max-length": 50
     },
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% 🎵",
+        "format-disconnected": "Disconnected 🎵",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped 🎵",
         "unknown-tag": "N/A",
         "interval": 2,
         "consume-icons": {
-            "on": " "
+            "on": "✂️"
         },
         "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
+            "off": "<span color=\"#f53c3c\">🔀</span> ",
+            "on": "🔀"
         },
         "repeat-icons": {
-            "on": " "
+            "on": "🔁"
         },
         "single-icons": {
-            "on": "1 "
+            "on": "🔂"
         },
         "state-icons": {
-            "paused": "",
-            "playing": ""
+            "paused": "⏸",
+            "playing": "▶️"
         },
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "cpu": {
-        "format": "{usage}% "
+        "interval": 1,
+        "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage}%   ",
+        "format-icons": [
+             "<span color='#69ff94'>▁</span>", // green
+             "<span color='#2aa9ff'>▂</span>", // blue
+             "<span color='#f8f8f2'>▃</span>", // white
+             "<span color='#f8f8f2'>▄</span>", // white
+             "<span color='#ffffa5'>▅</span>", // yellow
+             "<span color='#ffffa5'>▆</span>", // yellow
+             "<span color='#ff9977'>▇</span>", // orange
+             "<span color='#dd532e'>█</span>"  // red
+        ]
     },
     "memory": {
-        "format": "{}% "
+        "interval": 30,
+        "format": "{used:0.1f}G/{total:0.1f}G  "
     },
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["🌡️"]
     },
     "backlight": {
         "format": "{percent}% {icon}",
@@ -90,10 +112,15 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format-charging": "{capacity}% ⚡",
+        "format-plugged": "{capacity}% 🔌",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "custom/clock": {
+        "format": "{}",
+	"interval": 3600,
+        "exec": "~/.config/waybar/scripts/clock.sh"
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
