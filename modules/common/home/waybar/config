@@ -49,8 +49,7 @@
         "format-disconnected": "Disconnected ⚠️a",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-	"max-length": 50
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% 🎵",
