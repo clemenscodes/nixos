@@ -101,6 +101,7 @@
       xdg-desktop-portal-wlr
       brightnessctl
       swaynotificationcenter
+      libnotify
     ];
     sessionVariables = {
       EDITOR = "nvim";
