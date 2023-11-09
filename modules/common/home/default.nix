@@ -56,7 +56,7 @@
       musicDirectory = "/home/${user}/.config/mpd/music";
       playlistDirectory = "/home/${user}/.config/mpd/playlists";
       dataDir = "/home/${user}/.config/mpd";
-      dbFile = "/home/${user}/.config/tag_cache";
+      dbFile = "/home/${user}/.config/mpd/tag_cache";
       extraConfig = ''
         user "${user}"
 

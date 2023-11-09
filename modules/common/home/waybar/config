@@ -53,7 +53,7 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "mpd": {
-        "format": "{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ 🎵",
+        "format": "{artist} - {title} ⸨{songPosition}|{queueLength}⸩ 🎵",
         "format-disconnected": "Disconnected 🎵",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped 🎵",
         "unknown-tag": "N/A",
