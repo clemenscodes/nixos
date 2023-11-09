@@ -32,25 +32,17 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    color: #adbac7;
+    color: #909dab;
     background-color: white;
 }
 
 #workspaces button.active {
-    transition: none;
     color: #282828;
     background-color: white;
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
-}
-
-#mode {
-    background-color: #22272e;
 }
 
 #clock,
@@ -62,35 +54,14 @@ window#waybar {
 #backlight,
 #network,
 #pulseaudio,
-#wireplumber,
 #custom-media,
-#tray,
-#mode,
-#scratchpad,
 #custom-clock,
 #custom-notification,
+#wireplumber,
 #mpd {
-    padding: 12px;
+    padding: 14px;
     margin: 4px;
     border-radius: 4px;
-    color: #adbac7;
-    background-color: #22272e;
-}
-
-#clock {
-    background-color: #22272e;
-}
-
-#custom-clock {
-    background-color: #22272e;
-}
-
-#battery {
-    background-color: #22272e;
-    color: #adbac7;
-}
-
-#battery.charging, #battery.plugged {
     color: #adbac7;
     background-color: #22272e;
 }

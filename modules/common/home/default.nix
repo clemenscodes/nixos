@@ -16,6 +16,10 @@
       };
     };
     configFile = {
+      ncmpcpp = {
+        source = ./ncmpcpp;
+        recursive = true;
+      };
       ctpv = {
         source = ./ctpv;
         recursive = true;
@@ -64,6 +68,8 @@
       fd
       wl-clipboard
       gcc
+      mpd
+      ncmpcpp
       gnumake
       cmake
       cmake-format
