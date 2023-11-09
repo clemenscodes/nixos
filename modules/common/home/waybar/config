@@ -53,11 +53,12 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% 🎵",
+        "format": "{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ 🎵",
         "format-disconnected": "Disconnected 🎵",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped 🎵",
         "unknown-tag": "N/A",
         "interval": 2,
+	"server": "/run/user/1000/mpd/socket",
         "consume-icons": {
             "on": "✂️"
         },
@@ -119,7 +120,7 @@
     },
     "custom/clock": {
         "format": "{}",
-	"interval": 3600,
+	"interval": 1,
         "exec": "~/.config/waybar/scripts/clock.sh"
     },
     "custom/notification": {
