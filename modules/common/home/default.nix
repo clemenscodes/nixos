@@ -63,13 +63,13 @@
       brave
       eza
       ctpv
-      fzf
       ripgrep
       fd
       wl-clipboard
       gcc
       mpd
-      ncmpcpp
+      mpc-cli
+      (ncmpcpp.override { visualizerSupport = true; clockSupport = true; })
       gnumake
       cmake
       cmake-format
@@ -117,6 +117,9 @@
     home-manager = {
       enable = true;
     };
+    fzf = {
+      enable = true;
+    };
     direnv = {
       enable = true;
       nix-direnv = {
@@ -132,6 +135,10 @@
     rofi = {
       enable = true;
       extraConfig = {};
+    };
+    mpv = with pkgs; {
+      enable = true;
+      package = (mpv.override { scripts = [ mpvScripts.mpris ]; });
     };
     gh = {
       enable = true;
@@ -342,11 +349,16 @@
         preview = true;
         ignorecase = true;
         drawbox = true;
+        ifs = ''\n'';
+        scrolloff = 10;
+        period = 1;
       };
       commands = {
         open = ''''${{
           case $(file --mime-type "$(readlink -f $f)" -b) in
               application/pdf | application/vnd* | application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+              audio/*) mpv --audio-display=no $f ;;
+              video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
               text/* | application/* | inode/x-empty) $EDITOR $fx ;;
               *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
           esac
@@ -383,6 +395,7 @@
         &${pkgs.ctpv}/bin/ctpv -s $id
         cmd on-quit %${pkgs.ctpv}/bin/ctpv -e $id
         set cleaner ${pkgs.ctpv}/bin/ctpvclear
+        set shellopts '-eu'
       '';
     };
   };
