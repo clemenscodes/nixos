@@ -499,5 +499,9 @@
         set shellopts '-eu'
       '';
     };
+    vscode = {
+      enable = true;
+      package = pkgs.vscode.fhs;
+    };
   };
 }
