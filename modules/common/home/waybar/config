@@ -47,7 +47,7 @@
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) 🛜",
         "format-ethernet": "{ifname}: 📶",
-        "format-disconnected": "Disconnected ⚠️a",
+        "format-disconnected": "Disconnected 🚫",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
