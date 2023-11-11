@@ -87,6 +87,7 @@
     homeDirectory = "/home/${user}";
     packages = with pkgs; [
       file
+      thunderbird
       brave
       eza
       ctpv
