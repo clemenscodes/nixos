@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
     ./ncmpcpp
+    ./lf
     ./waybar
     ./zsh
     ./kitty

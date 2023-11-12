@@ -1,22 +1,9 @@
-{ inputs, config, pkgs, user, themes, ... }: { 
+{ inputs, pkgs, ... }: { 
   imports = [ 
     ./hardware-configuration.nix 
-    ../../modules
     ../../modules/nvidia.nix
     ../../modules/networking.nix
   ];
-
-  sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age = {
-      keyFile = "/home/${user}/.config/sops/age/keys.txt";
-      sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
-    };
-    secrets = {
-      password = {};
-    };
-  };
 
   programs = {
     hyprland = {
