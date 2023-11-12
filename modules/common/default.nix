@@ -14,5 +14,6 @@
     ./qt.nix
     ./system.nix
     ./users.nix
+    ./networking.nix
   ];
 }

@@ -63,9 +63,9 @@ let
         };
         secrets = {
           password = {
-            path = "/home/${user}/.config/secrets/password";
             neededForUsers = true;
           };
+          wifi = {};
         };
       };
     }

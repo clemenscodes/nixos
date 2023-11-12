@@ -4,9 +4,7 @@
   ];
 
   networking = {
-    hostName = "nixos";
     wireless = {
-      enable = true;
       interfaces = [ "wlp0s20f3" ];   
     };
   };  

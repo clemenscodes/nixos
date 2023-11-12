@@ -1,4 +1,4 @@
-{ config, inputs, user, ... }: {
+{ config, inputs, user, lib, ... }: {
   imports = [
     ./desktop
     ./development
