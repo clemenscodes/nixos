@@ -1,4 +1,4 @@
-{ pkgs, user, ... }: {
+{ config, pkgs, user, ... }: {
   users = {
     defaultUserShell = pkgs.zsh;
     groups = {
@@ -11,6 +11,7 @@
 	group = "${user}";
         extraGroups = [ "networkmanager" "wheel" ]; 
         shell = pkgs.zsh;
+        hashedPasswordFile = config.sops.secrets.password.path;
       };
     };
   };

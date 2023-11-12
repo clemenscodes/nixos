@@ -62,7 +62,10 @@ let
           sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
         };
         secrets = {
-          password = {};
+          password = {
+            path = "/home/${user}/.config/secrets/password";
+            neededForUsers = true;
+          };
         };
       };
     }
@@ -74,7 +77,9 @@ let
         useUserPackages = true;
         extraSpecialArgs = { inherit themes inputs user; };
         users = {
-          ${user} = import ../modules/common/home;
+          ${user} = {
+            imports = [ ../modules/common/home ];
+          };
         };
       };
     }
@@ -85,6 +90,7 @@ let
     inputs.xremap-flake.nixosModules.default
     inputs.sops-nix.nixosModules.sops
     home
+    sops
   ];
   args = (
     { inherit pkgs inputs system user themes; }
@@ -100,7 +106,6 @@ in {
     specialArgs = args;
     modules = [
       ./laptop
-      sops
     ] ++ shared;
   };
 }
