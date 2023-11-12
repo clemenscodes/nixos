@@ -1,20 +1,7 @@
 { inputs, config, pkgs, user, themes, ... }: { 
   imports = [ 
     ./hardware-configuration.nix 
-    ../../modules
-    inputs.home-manager.nixosModules.home-manager
-    inputs.xremap-flake.nixosModules.default
-    inputs.sops-nix.nixosModules.sops
   ];
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit themes inputs user; };
-    users = {
-      ${user} = import ../../modules/common/home;
-    };
-  };
 
   networking = {
     hostName = "nixos";

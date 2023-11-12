@@ -4,17 +4,17 @@
     ../../modules
     ../../modules/nvidia.nix
     ../../modules/networking.nix
-    inputs.home-manager.nixosModules.home-manager
-    inputs.xremap-flake.nixosModules.default
-    inputs.sops-nix.nixosModules.sops
   ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit themes inputs user; };
-    users = {
-      ${user} = import ../../modules/common/home;
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age = {
+      keyFile = "/home/${user}/.config/sops/age/keys.txt";
+      sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
+    };
+    secrets = {
+      password = {};
     };
   };
 

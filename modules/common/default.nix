@@ -14,6 +14,5 @@
     ./qt.nix
     ./system.nix
     ./users.nix
-    ./sops.nix
   ];
 }
