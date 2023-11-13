@@ -5,7 +5,7 @@
     ];
     variables = {
       EDITOR = "nvim";
-      BROWSER = "brave";
+      BROWSER = "firefox";
       TERMINAL = "kitty";
     };
     sessionVariables = {

@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, user, ... }: 
+{ inputs, nixpkgs, home-manager, user, nur, ... }: 
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -6,6 +6,7 @@ let
     config = {
       allowUnfree = true;
     };
+    overlays = [ nur.overlay ];
   };
   lib = nixpkgs.lib;
   themes = {
@@ -65,7 +66,9 @@ let
           password = {
             neededForUsers = true;
           };
-          wifi = {};
+          wifi = {
+            neededForUsers = true;
+          };
         };
       };
     }
@@ -96,13 +99,13 @@ let
     { inherit pkgs inputs system user themes; }
   );
 in {
-  desktop = nixpkgs.lib.nixosSystem {
+  desktop = lib.nixosSystem {
     specialArgs = args;
     modules = [ 
       ./desktop
     ] ++ shared;
   };
-  laptop = nixpkgs.lib.nixosSystem {
+  laptop = lib.nixosSystem {
     specialArgs = args;
     modules = [
       ./laptop

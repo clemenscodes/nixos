@@ -18,5 +18,6 @@
     ./mpv
     ./btop
     ./browser
+    ./brave.nix
   ];
 }

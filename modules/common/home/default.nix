@@ -19,6 +19,14 @@
       };
     };
   };
+  xdg = {
+    configFile = {
+      nixpkgs = {
+        source = ./nixpkgs;
+        recursive = true;
+      };
+    };
+  };
   programs = {
     home-manager = {
       enable = true;
