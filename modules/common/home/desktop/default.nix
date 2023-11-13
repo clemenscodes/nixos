@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ./bitwarden
     ./ncmpcpp
     ./lf
     ./waybar
@@ -19,6 +20,7 @@
     ./btop
     ./gtk
     ./xdg
+    ./neomutt
     ./firefox
   ];
 }

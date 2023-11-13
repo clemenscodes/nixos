@@ -1,0 +1,7 @@
+{ ... }: {
+  programs = {
+    neomutt = {
+      enable = true;
+    };
+  };
+}

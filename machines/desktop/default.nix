@@ -2,7 +2,6 @@
   imports = [ 
     ./hardware-configuration.nix 
     ../../modules/nvidia.nix
-    ../../modules/common/hyprland.nix
   ];
 
   programs = {
@@ -10,7 +9,6 @@
       enableNvidiaPatches = true;
     };
     zsh = {
-      enable = true;
       shellAliases = {
         update = "cd $HOME/.config/nixos && git pull";
         switch = "update && sudo nixos-rebuild switch --flake ./#desktop";

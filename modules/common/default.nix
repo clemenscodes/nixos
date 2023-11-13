@@ -3,6 +3,7 @@
     ./services
     ./environment.nix
     ./nix.nix
+    ./hyprland.nix
     ./boot.nix
     ./time.nix
     ./i18n.nix
@@ -15,5 +16,6 @@
     ./system.nix
     ./users.nix
     ./networking.nix
+    ./zsh.nix
   ];
 }
