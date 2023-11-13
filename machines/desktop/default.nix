@@ -2,16 +2,12 @@
   imports = [ 
     ./hardware-configuration.nix 
     ../../modules/nvidia.nix
+    ../../modules/common/hyprland.nix
   ];
 
   programs = {
     hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       enableNvidiaPatches = true;
-      xwayland = {
-        enable = true;
-      };
     };
     zsh = {
       enable = true;

@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }: { 
   imports = [ 
     ./hardware-configuration.nix 
+    ../../modules/common/hyprland.nix
   ];
 
   networking = {
@@ -10,13 +11,6 @@
   };  
 
   programs = {
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      xwayland = {
-        enable = true;
-      };
-    };
     zsh = {
       enable = true;
       shellAliases = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   home = {
     packages = with pkgs; [
       xdg-desktop-portal-hyprland
@@ -7,22 +7,7 @@
       swww
     ];
   };
-  gtk = {
-    enable = true;
-  };
   xdg = {
-    enable = true;
-    mimeApps = {
-      defaultApplications = {
-        "application/pdf" = [ "zathura.desktop" ];
-      };
-    };
-    dataFile = {
-      wallpaper = {
-        source = ../../../../../assets/wallpaper;
-        recursive = true;
-      };
-    };
     configFile = {
       hypr = {
         source = ./config;

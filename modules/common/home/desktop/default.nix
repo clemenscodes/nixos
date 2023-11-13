@@ -17,7 +17,8 @@
     ./zathura
     ./mpv
     ./btop
-    ./browser
-    ./brave.nix
+    ./gtk
+    ./xdg
+    ./firefox
   ];
 }
