@@ -15,6 +15,7 @@
           "git"
           "colored-man-pages"
           "colorize"
+          "systemd"
         ];
       };
       dotDir = ".config/zsh";
@@ -22,7 +23,6 @@
         update = "cd $HOME/.config/nixos && git pull";
         switch = "update && sudo nixos-rebuild switch --flake ./#${machine}";
         ls = "${eza}/bin/eza";
-        cat = "${bat}/bin/bat";
         grep = "${ripgrep}/bin/rg";
         nd = "nix develop";
         ne = "cd $NIX_CONFIG_HOME && lfcd";

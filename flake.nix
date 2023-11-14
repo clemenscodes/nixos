@@ -27,12 +27,23 @@
         };
       };
     };
+    homeage = {
+      url = "github:jordanisaacs/homeage";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
     };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, hyprland, nur, ... }:
+  outputs = inputs @ 
+    { nixpkgs
+    , home-manager
+    , hyprland
+    , nur
+    , homeage
+    , ... 
+  }:
   let
     user = "clay";
   in 
@@ -40,7 +51,7 @@
     nixosConfigurations = (
       import ./machines {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager hyprland user nur;
+        inherit inputs nixpkgs home-manager hyprland user nur homeage;
       }
     );
   };

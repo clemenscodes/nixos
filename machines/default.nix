@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, user, nur, ... }: 
+{ inputs, nixpkgs, home-manager, user, nur, homeage, ... }: 
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -114,7 +114,7 @@ in {
           extraSpecialArgs = let 
             machine = "desktop";
           in { 
-            inherit themes inputs user machine; 
+            inherit inputs homeage themes user machine ; 
           };
         };
       }
@@ -130,7 +130,7 @@ in {
           extraSpecialArgs = let 
             machine = "laptop";
           in { 
-            inherit themes inputs user machine; 
+            inherit inputs homeage themes user machine; 
           };
         };
       }

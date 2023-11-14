@@ -21,7 +21,7 @@
     ./btop
     ./gtk
     ./xdg
-    ./neomutt
+    ./email
     ./firefox
   ];
 }
