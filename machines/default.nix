@@ -4,7 +4,13 @@ let
   pkgs = import nixpkgs {
     inherit system;
     config = {
-      allowUnfree = true;
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "nvidia-x11"
+        "nvidia-settings"
+        "code"
+        "vscode"
+        "idea-ultimate"
+      ];
     };
     overlays = [ nur.overlay ];
   };
@@ -78,7 +84,6 @@ let
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = { inherit themes inputs user; };
         users = {
           ${user} = {
             imports = [ ../modules/common/home ];
@@ -103,12 +108,32 @@ in {
     specialArgs = args;
     modules = [ 
       ./desktop
-    ] ++ shared;
+    ] ++ shared ++ [
+      {
+        home-manager = {
+          extraSpecialArgs = let 
+            machine = "desktop";
+          in { 
+            inherit themes inputs user machine; 
+          };
+        };
+      }
+    ];
   };
   laptop = lib.nixosSystem {
     specialArgs = args;
     modules = [
       ./laptop
-    ] ++ shared;
+    ] ++ shared ++ [
+      {
+        home-manager = {
+          extraSpecialArgs = let 
+            machine = "laptop";
+          in { 
+            inherit themes inputs user machine; 
+          };
+        };
+      }
+    ];
   };
 }

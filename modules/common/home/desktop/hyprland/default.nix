@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, machine, ... }: {
   home = {
     packages = with pkgs; [
       xdg-desktop-portal-hyprland
@@ -12,6 +12,9 @@
       hypr = {
         source = ./config;
         recursive = true;
+      };
+      "hypr/machine.conf" = {
+        source = ./config/machine/${machine}.conf;
       };
     };
   };

@@ -5,14 +5,7 @@
   ];
 
   programs = {
-    hyprland = {
-      enableNvidiaPatches = true;
-    };
     zsh = {
-      shellAliases = {
-        update = "cd $HOME/.config/nixos && git pull";
-        switch = "update && sudo nixos-rebuild switch --flake ./#desktop";
-      };
       loginShellInit = ''
         export GDK_BACKEND=wayland,x11
         export GBM_BACKEND=nvidia-drm

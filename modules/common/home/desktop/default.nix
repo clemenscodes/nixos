@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ./bat
     ./bitwarden
     ./ncmpcpp
     ./lf

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, machine, ... }: {
   programs = {
     zsh = {
       enable = true;
@@ -18,11 +18,17 @@
         ];
       };
       dotDir = ".config/zsh";
-      shellAliases = {
-        ls = "${pkgs.eza}/bin/eza";
+      shellAliases = with pkgs; {
+        update = "cd $HOME/.config/nixos && git pull";
+        switch = "update && sudo nixos-rebuild switch --flake ./#${machine}";
+        ls = "${eza}/bin/eza";
+        cat = "${bat}/bin/bat";
+        grep = "${ripgrep}/bin/rg";
+        nd = "nix develop";
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         src = "omz reload";
         rr = "cd $HOME/.local/src";
+        D = "cd $HOME/Downloads";
       };
       history = {
         path =  "${config.xdg.dataHome}/zsh/zsh_history";
