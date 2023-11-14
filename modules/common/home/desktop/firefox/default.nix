@@ -176,7 +176,7 @@
             "browser.bookmarks.showMobileBookmarks" = true;
             "browser.places.importBookmarksHTML" = true;
             "browser.tabs.loadBookmarksInBackground" = true;
-            "browser.tabs.loadBookmarksInTabs" = true;
+            "browser.tabs.loadBookmarksInTabs" = false;
             "browser.toolbars.bookmarks.visibility" = "always";
             "browser.newtabpage.pinned" = [ { title = "NixOS"; url = "https://nixos.org"; } ];
             "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;

@@ -4,6 +4,11 @@
     groups = {
       ${user} = {};
     };
+    extraGroups = {
+      docker = {
+        members = [ "${user}" ];
+      };
+    };
     users = {
       ${user} = {
         isNormalUser = true; 

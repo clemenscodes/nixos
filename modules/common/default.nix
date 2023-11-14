@@ -16,6 +16,7 @@
     ./system.nix
     ./users.nix
     ./networking.nix
+    ./virtualisation.nix
     ./zsh.nix
   ];
 }
