@@ -110,7 +110,7 @@
       };
     };
   };
-  accounts = with config.sops; {
+  accounts = {
     email = {
       maildirBasePath = "/home/${user}/.local/share/mail";
       accounts = {
