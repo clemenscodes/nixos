@@ -1,4 +1,12 @@
 { config, ... }: {
+  nixpkgs = {
+    config = {
+      allowUnfreePackages = [
+        "nvidia-x11"
+        "nvidia-settings"
+      ];
+    };
+  };
   services = {
     xserver = {
       videoDrivers = [ "nvidia" ];

@@ -5,8 +5,6 @@ let
     inherit system;
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "nvidia-x11"
-        "nvidia-settings"
         "code"
         "vscode"
         "idea-ultimate"
