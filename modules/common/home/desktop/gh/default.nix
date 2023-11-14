@@ -5,7 +5,7 @@
       settings = {
         editor = "nvim";
         git_protocol = "ssh";
-        browser = "brave";
+        browser = "firefox";
       };
       gitCredentialHelper = {
         enable = true;
