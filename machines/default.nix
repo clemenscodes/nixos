@@ -89,67 +89,46 @@ let
     home
     sops
   ];
-  args = ({ inherit 
-    pkgs 
-    inputs 
-    system 
-    user 
-    locale 
-    editor 
-    browser 
-    terminal 
-    themes
-    ; 
-  });
-in {
-  desktop = lib.nixosSystem {
-    specialArgs = args;
-    modules = [ 
-      ./desktop
-    ] ++ shared ++ [
-      {
-        home-manager = {
-          extraSpecialArgs = let 
-            machine = "desktop";
-          in { 
-            inherit 
-              inputs 
-              themes 
-              user 
-              locale 
-              editor 
-              browser 
-              terminal 
-              machine
-            ; 
-          };
-        };
-      }
-    ];
+  systemArgs = { inherit 
+    pkgs
+    system
+    ;
   };
-  laptop = lib.nixosSystem {
-    specialArgs = args;
-    modules = [
-      ./laptop
-    ] ++ shared ++ [
-      {
-        home-manager = {
-          extraSpecialArgs = let 
-            machine = "laptop";
-          in { 
-            inherit 
-              inputs 
-              themes 
-              user 
-              locale 
-              editor
-              browser
-              terminal
-              machine
-            ; 
+  homeArgs = { inherit
+    inputs
+    themes
+    user
+    locale
+    editor
+    browser
+    terminal
+    ;
+  };
+  machineArgs = homeArgs // systemArgs;
+  mkExtraSpecialArgs = machine: homeArgs // { 
+    machine = machine;
+  };
+  mkMachine = { modulePath, machine }: 
+    lib.nixosSystem {
+      specialArgs = machineArgs;
+      modules = [ 
+        modulePath
+      ] ++ shared ++ [
+        {
+          home-manager = {
+            extraSpecialArgs = mkExtraSpecialArgs machine;
           };
-        };
-      }
-    ];
+        }
+      ];
+    };
+in {
+  desktop = mkMachine {
+    modulePath = ./desktop;
+    machine = "desktop";
+  };
+  laptop = mkMachine {
+    modulePath = ./laptop;
+    machine = "laptop";
   };
 }
+
