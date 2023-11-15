@@ -13,6 +13,7 @@
         enable = true;
         plugins = [ 
           "git"
+          "git-flow"
           "colored-man-pages"
           "colorize"
         ];
