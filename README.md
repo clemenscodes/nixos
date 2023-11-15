@@ -50,6 +50,16 @@ The currently used secrets are:
   - wifi secrets: `wifi`
   - email passwords: `email/{email-account-name}/password`
 
+`password` and `wifi` are system secrets and configured in 
+`./machines/default.nix`
+
+`email/{email-account-name}/password` are user secrets and configured in 
+`./modules/common/home/desktop/sops/default.nix`
+
+
+Everytime a secret is added or removed using `setupsops`, 
+it needs to be added or removed accordingly in the mentioned files as well.
+
 An example secrets.yaml:
 
 ```yaml
