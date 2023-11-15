@@ -81,14 +81,6 @@ let
       };
     }
   );
-  shared = [
-    ../modules
-    inputs.home-manager.nixosModules.home-manager
-    inputs.xremap-flake.nixosModules.default
-    inputs.sops-nix.nixosModules.sops
-    home
-    sops
-  ];
   systemArgs = { inherit 
     pkgs
     system
@@ -108,19 +100,27 @@ let
   mkExtraSpecialArgs = machine: homeArgs // { 
     machine = machine;
   };
-  mkMachine = { modulePath, machine }: 
-    lib.nixosSystem {
-      specialArgs = machineArgs;
-      modules = [ 
-        modulePath
-      ] ++ shared ++ [
-        {
-          home-manager = {
-            extraSpecialArgs = mkExtraSpecialArgs machine;
-          };
-        }
-      ];
+  mkModules = { modulePath, machine }: [
+    modulePath
+    inputs.home-manager.nixosModules.home-manager
+    inputs.xremap-flake.nixosModules.default
+    inputs.sops-nix.nixosModules.sops
+    home
+    sops
+    {
+      home-manager = {
+        extraSpecialArgs = mkExtraSpecialArgs machine;
+      };
+    }
+    ../modules
+  ];
+  mkMachine = { modulePath, machine }: lib.nixosSystem {
+    specialArgs = machineArgs;
+    modules = mkModules { 
+      modulePath = modulePath;
+      machine = machine;
     };
+  };
 in {
   desktop = mkMachine {
     modulePath = ./desktop;
