@@ -1,15 +1,27 @@
 # NixOS Rice
 
-- Kernel: latest
-- Terminal: Kitty
-- Shell: zsh / starship prompt
-- Text Editor: Neovim
-- Window Manager/Compositor: Hyprland 
-- App Launcher: Rofi
-- Status Bar: Waybar
-- File Browser: lf
-- Browser: Firefox
-- PDF Viewer: zathura
+- Kernel: `latest`
+- Terminal: `kitty`
+- Shell: `zsh`
+- Prompt: `starship`
+- Email Client: `neomutt`
+- Text Editor: `nvim`
+- Display Server: `wayland`
+- Display Manager: `sddm`
+- Compositor: `hyprland`
+- App Launcher: `rofi`
+- Status Bar: `waybar`
+- File Browser: `lf`
+- Browser: `firefox`
+- PDF Viewer: `zathura`
+- Notification Center: `swaynotificationcenter`
+- Music Player: `mpd`
+- Music Player Frontend: `ncmpcpp`
+- Video Player: `mpv`
+- Bootloader: `grub`
+- Process Manager: `btop`
+- Password Manager: `bitwarden`
+- Font: `iosevka`
 
 ## Installation
 
