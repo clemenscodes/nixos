@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
     ./services
+    ./scripts
     ./environment.nix
     ./nix.nix
     ./boot.nix

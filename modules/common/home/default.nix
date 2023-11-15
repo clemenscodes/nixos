@@ -15,10 +15,10 @@
           #!/usr/bin/env bash
           
           mkdir -p ~/.config/sops/age
-          nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
-          nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
+          nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
+          nix-shell -p age --run "age-keygen -y ~/.config/sops/age/keys.txt"
           cd ~/.config/nixos/secrets || exit
-          nix shell nixpkgs#sops -c sops secrets.yaml
+          nix-shell -p sops --run "c sops secrets.yaml"
         '';
       };
       ".local/src/README.md" = {

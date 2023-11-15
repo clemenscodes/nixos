@@ -1,6 +1,8 @@
 { pkgs, editor, browser, terminal, ... }: {
   environment = {
-    systemPackages = with pkgs; [ vim ];
+    systemPackages = with pkgs; [ 
+      vim
+    ];
     variables = {
       EDITOR = editor;
       BROWSER = browser;
