@@ -45,6 +45,7 @@
     terminal = "kitty";
     browser = "firefox";
     editor = "nvim";
+    timezone = "Europe/Berlin";
   in 
   {
     nixosConfigurations = (
@@ -61,6 +62,7 @@
           terminal 
           browser 
           editor
+          timezone
         ;
       }
     );

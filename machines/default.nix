@@ -8,6 +8,7 @@
   browser,
   terminal,
   editor,
+  timezone,
   ... 
 }: 
 let
@@ -94,6 +95,7 @@ let
     editor
     browser
     terminal
+    timezone
     ;
   };
   machineArgs = homeArgs // systemArgs;

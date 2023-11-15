@@ -1,5 +1,5 @@
-{ ... }: {
+{ timezone, ... }: {
   time = {
-    timeZone = "Europe/Berlin";
+    timeZone = timezone;
   };
 }
