@@ -13,11 +13,49 @@
 
 ## Installation
 
+First clone the repository in the expected location `~/.config/nixos`
+
 ```sh
-git clone git@github.com:clemenscodes/nixos.git $XDG_CONFIG_HOME
-sudo cp /etc/nixos/hardware-configuration.nix $XDG_CONFIG_HOME/nixos/machines/<MACHINE>/
-sudo nixos-rebuild switch --flake $XDG_CONFIG_HOME/nixos/#<MACHINE>
-sudo reboot now
+git clone git@github.com:clemenscodes/nixos.git ~/.config/nixos
+```
+
+Now create a new folder in `machines` for your individual machine
+
+```sh
+mkdir ~/.config/nixos/machines/<your-machine>
+```
+
+Copy your hardware configuration in that folder
+
+```sh
+sudo cp /etc/nixos/hardware-configuration.nix ~/.config/nixos/machines/<your-machine>
+```
+
+Next, write a `default.nix` file that imports your hardware configuration.
+This file is where you can specify machine specific system configurations.
+
+NOTE: If you use an nvidia card, you will want to import `../modules/nvidia.nix` in that file as well.
+
+```sh
+cat > ~/.config/nixos/machines/<your-machine>/default.nix <<EOF
+{ ... }: {
+  imports = [ ./hardware-configuration.nix ]; 
+}
+EOF
+```
+
+With that setup, all what is left is to add your machine configuration in the `machines/default.nix`.
+
+```nix
+...
+//
+in {
+  ...
+  <your-machine> = mkMachine {
+    modulePath = ./<your-machine>;
+    machine = "<your-machine>";
+  };
+}
 ```
 
 After installing you will have a `switch` alias available that will build your machine configuration.
