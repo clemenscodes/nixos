@@ -20,6 +20,7 @@ To get sops working, you will first need to put your SSH keys at `~/.ssh/id_ed25
 Now clone the repository in the expected location `~/.config/nixos`
 
 ```sh
+mkdir -p ~/.config
 git clone git@github.com:clemenscodes/nixos.git ~/.config/nixos
 cd ~/.config/nixos
 ```
