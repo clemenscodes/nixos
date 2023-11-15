@@ -140,11 +140,10 @@ sudo reboot now
 
 After installing you will have a `switch` alias available that will build your machine configuration.
 
-To make the best out of this, you will want to adjust the definitions like user, locale etc. in `flake.nix`.
 
 ### Further Steps
 
-Adjust these defaults to suit your purposes.
+To make the best out of this, you will want to adjust the defaults like user, locale etc. in `flake.nix`.
 
 - user: `clay`
 - locale: `de`
