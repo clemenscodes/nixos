@@ -13,19 +13,94 @@
 
 ## Installation
 
-First clone the repository in the expected location `~/.config/nixos`
+SOPS is used for various services and is recommended to be setup before installing.
+
+To get sops working, you will first need to put your SSH keys at `~/.ssh/id_ed25519`.
+
+Now clone the repository in the expected location `~/.config/nixos`
 
 ```sh
 git clone git@github.com:clemenscodes/nixos.git ~/.config/nixos
+cd ~/.config/nixos
 ```
 
-Now create a new folder in `machines` for your individual machine
+Then you can run the helper script to generate the keys used by sops.
+
+```sh
+./home/scripts/setupsops
+```
+
+You will land in the sops editor where you can define your secrets.
+
+The currently used secrets are:
+  - user password: `password`
+  - wifi secrets: `wifi`
+  - email passwords: `email/{context}/password`
+
+An example secrets.yaml:
+
+```yaml
+password: <your-secure-password>
+wifi: |
+  home_uuid=<your-ssid>
+  home_psk=<your-wifi-psk>
+email:
+  <your-context>:
+    password: <your-email-password>
+```
+
+You will want to edit `./modules/common/networking.nix`
+to only include networks that are relevant to you.
+
+```nix
+...
+{
+  ...
+  networks = {
+    "@home_uuid@" = {
+      priority = 1;
+      pskRaw = "@home_psk@";
+    };
+    ...
+  };
+}
+...
+```
+
+Similarly, you will want to edit `./modules/common/home/desktop/email/default.nix`
+to only include email accounts relevant to you.
+
+```nix
+...
+{
+  accounts = {
+    email = {
+      maildirBasePath = "/home/${user}/.local/share/mail";
+      <your-context> = mkEmailAccount {
+        primary = true;
+        address = "<your-email-address";
+        realName = "<your-name>";
+        userName = "<your-email-username>";
+        smtpHost = "<your-smtp-host>";
+        smtpPort = <your-smtp-port>; 
+        imapHost = "<your-imap-host"; 
+        imapPort = <your-imap-port>; 
+        secretName = "email/<your-context>/password";
+      };
+      ...
+    };
+  };
+}
+...
+```
+
+Now create a new folder in `machines` for your individual machine.
 
 ```sh
 mkdir ~/.config/nixos/machines/<your-machine>
 ```
 
-Copy your hardware configuration in that folder
+Copy your hardware configuration in that folder.
 
 ```sh
 sudo cp /etc/nixos/hardware-configuration.nix ~/.config/nixos/machines/<your-machine>
@@ -34,7 +109,7 @@ sudo cp /etc/nixos/hardware-configuration.nix ~/.config/nixos/machines/<your-mac
 Next, write a `default.nix` file that imports your hardware configuration.
 This file is where you can specify machine specific system configurations.
 
-NOTE: If you use an nvidia card, you will want to import `../modules/nvidia.nix` in that file as well.
+NOTE: If you use an NVIDIA card, you will want to import `../modules/nvidia.nix` in that file as well.
 
 ```sh
 cat > ~/.config/nixos/machines/<your-machine>/default.nix <<EOF
@@ -48,7 +123,6 @@ With that setup, all what is left is to add your machine configuration in the `m
 
 ```nix
 ...
-//
 in {
   ...
   <your-machine> = mkMachine {
@@ -58,7 +132,7 @@ in {
 }
 ```
 
-Thats it, you can now reboot into the system
+Thats it, you can now reboot into the system.
 
 ```sh
 sudo reboot now
@@ -79,22 +153,6 @@ Adjust these defaults to suit your purposes.
 - terminal: `kitty`
 - editor: `nvim`
 - timezone: `Europe/Berlin`
-
-#### SOPS
-
-To get sops working, you will first need to create your SSH keys at `~/.ssh/id_ed25519`.
-Then you can run the helper script to generate the keys used by sops.
-
-```sh
-./home/scripts/setupsops
-```
-
-You will land in the sops editor where you can define your secrets.
-
-The currently used secrets are:
-  - user password: `password`
-  - wifi secrets: `wifi`
-  - email passwords: `email/{context}/password`
 
 ### Additional Considerations
 
