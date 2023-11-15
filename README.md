@@ -44,7 +44,7 @@ mkdir -p ~/.config/sops/age
 nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"
 nix-shell -p age --run "age-keygen -y ~/.config/sops/age/keys.txt"
 cd ~/.config/nixos/secrets || exit
-nix-shell -p sops --run "c sops secrets.yaml"
+nix-shell -p sops --run "sops secrets.yaml"
 ```
 
 You will land in the sops editor where you can define your secrets.
@@ -54,15 +54,11 @@ The currently used secrets are:
   - wifi secrets: `wifi`
   - email passwords: `email/{email-account-name}/password`
 
-`password` and `wifi` are system secrets and configured in 
-`./machines/default.nix`
+System secrets are managed in `./machines/default.nix`.
 
-`email/{email-account-name}/password` are user secrets and configured in 
-`./modules/common/home/desktop/sops/default.nix`
+User secrets are managed in `./modules/common/home/desktop/sops/default.nix`.
 
-
-Everytime a secret is added or removed using `setupsops`, 
-it needs to be added or removed accordingly in the mentioned files as well.
+Everytime a secret is added or removed it needs to be added or removed accordingly in the mentioned files as well.
 
 An example secrets.yaml:
 
@@ -76,7 +72,7 @@ email:
     password: <your-email-password>
 ```
 
-### Wifi Configuration
+### Network Configuration
 
 You will want to edit `./modules/common/networking.nix`
 to only include networks that are relevant to you.
@@ -85,6 +81,7 @@ to only include networks that are relevant to you.
 ...
 {
   ...
+  environmentFile = config.sops.secrets.wifi.path;
   networks = {
     "@home_uuid@" = {
       priority = 1;
