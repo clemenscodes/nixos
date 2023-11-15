@@ -51,7 +51,7 @@
       };
       neomutt = {
         enable = true;
-        sendMailCommand = "msmtp -a ${address}";
+        sendMailCommand = "${pkgs.msmtp}/bin/msmtp -a ${address}";
         extraConfig = ''
           set sort = reverse-date
         '';

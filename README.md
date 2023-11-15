@@ -23,7 +23,7 @@
 - Password Manager: `bitwarden`
 - Font: `iosevka`
 
-## Installation
+## Prerequisites
 
 SOPS is used for various services and is recommended to be setup before installing.
 
@@ -48,7 +48,7 @@ You will land in the sops editor where you can define your secrets.
 The currently used secrets are:
   - user password: `password`
   - wifi secrets: `wifi`
-  - email passwords: `email/{context}/password`
+  - email passwords: `email/{email-account-name}/password`
 
 An example secrets.yaml:
 
@@ -58,9 +58,11 @@ wifi: |
   home_uuid=<your-ssid>
   home_psk=<your-wifi-psk>
 email:
-  <your-context>:
+  <your-email-account-name>:
     password: <your-email-password>
 ```
+
+### Wifi Configuration
 
 You will want to edit `./modules/common/networking.nix`
 to only include networks that are relevant to you.
@@ -80,6 +82,8 @@ to only include networks that are relevant to you.
 ...
 ```
 
+### Email Configuration
+
 Similarly, you will want to edit `./modules/common/home/desktop/email/default.nix`
 to only include email accounts relevant to you.
 
@@ -89,7 +93,7 @@ to only include email accounts relevant to you.
   accounts = {
     email = {
       maildirBasePath = "/home/${user}/.local/share/mail";
-      <your-context> = mkEmailAccount {
+      <your-email-account-name> = mkEmailAccount {
         primary = true;
         address = "<your-email-address";
         realName = "<your-name>";
@@ -98,7 +102,7 @@ to only include email accounts relevant to you.
         smtpPort = <your-smtp-port>; 
         imapHost = "<your-imap-host"; 
         imapPort = <your-imap-port>; 
-        secretName = "email/<your-context>/password";
+        secretName = "email/<your-email-account-name>/password";
       };
       ...
     };
@@ -107,7 +111,27 @@ to only include email accounts relevant to you.
 ...
 ```
 
-Now create a new folder in `machines` for your individual machine.
+For convenience, you can add a macro to quickly switch between accounts:
+
+```nix
+...
+{
+  ...
+  macros = [
+    {
+      map = [ "index" "pager" ];
+      key = "i1";
+      action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/<YOUR_EMAIL_ACCOUNT_NAME_HERE><enter><change-folder>!<enter>;<check-stats>";
+    }
+    ...
+  ];
+}
+...
+```
+
+## Installation
+
+Create a new folder in `machines` for your individual machine.
 
 ```sh
 mkdir ~/.config/nixos/machines/<your-machine>
