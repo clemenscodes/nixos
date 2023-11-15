@@ -1,4 +1,12 @@
-{ inputs, nixpkgs, home-manager, user, nur, homeage, ... }: 
+{ 
+  inputs,
+  nixpkgs,
+  home-manager,
+  user,
+  nur,
+  locale,
+  ... 
+}: 
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -37,33 +45,11 @@ let
       base0E = "0f7cda";
       base0F = "ffffff";
     };
-    pop = {
-      background = "282828";
-      foreground = "d6dae4";
-      cursor = "b9b9b9";
-      base00 = "d0d0d0";
-      base01 = "000000";
-      base02 = "2cc55d";
-      base03 = "f8ca12";
-      base04 = "00aabb";
-      base05 = "37b349";
-      base06 = "b31e8d";
-      base07 = "eb008a";
-      base08 = "eb008a";
-      base09 = "505050";
-      base0A = "f8ca12";
-      base0B = "37b349";
-      base0C = "00aabb";
-      base0D = "b31e8d";
-      base0E = "0e5a94";
-      base0F = "ffffff";
-    };
   };
   sops = (
     {
       sops = {
         defaultSopsFile = ../secrets/secrets.yaml;
-        defaultSopsFormat = "yaml";
         age = {
           keyFile = "/home/${user}/.config/sops/age/keys.txt";
           sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
@@ -101,7 +87,7 @@ let
     sops
   ];
   args = (
-    { inherit pkgs inputs system user themes; }
+    { inherit pkgs inputs system user locale themes; }
   );
 in {
   desktop = lib.nixosSystem {
@@ -114,7 +100,7 @@ in {
           extraSpecialArgs = let 
             machine = "desktop";
           in { 
-            inherit inputs homeage themes user machine ; 
+            inherit inputs themes user locale machine ; 
           };
         };
       }
@@ -130,7 +116,7 @@ in {
           extraSpecialArgs = let 
             machine = "laptop";
           in { 
-            inherit inputs homeage themes user machine; 
+            inherit inputs themes user locale machine; 
           };
         };
       }

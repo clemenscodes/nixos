@@ -12,7 +12,6 @@
     ./hyprland.nix
     ./hardware.nix
     ./security.nix
-    ./qt.nix
     ./system.nix
     ./users.nix
     ./networking.nix

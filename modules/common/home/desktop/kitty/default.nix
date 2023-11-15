@@ -2,14 +2,18 @@
   programs = {
     kitty = {
       enable = true;
+      shellIntegration = {
+        enableZshIntegration = true;
+      };
+      font = {
+        name = "Iosevka Nerd Font";
+        size = 14;
+      };
       settings = with themes.custom; {
         dynamic_background_opacity = "yes";
-        font_family = "Iosevka Nerd Font";
-        shell_integration = "enabled";
         enable_audio_bell = false;
         shell = "zsh";
         confirm_os_window_close = 0;
-        font_size = "14.0";
         selection_background = "#${base00}";
         background = "#${background}";
         foreground = "#${foreground}";

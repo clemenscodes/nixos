@@ -1,8 +1,8 @@
-{ ... }: {
+{ locale, ... }: {
   services = {
     xserver = {
       enable = true;
-      layout = "de";
+      layout = locale;
       displayManager = {
         defaultSession = "hyprland";
         sddm = {

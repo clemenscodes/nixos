@@ -19,9 +19,11 @@
     ./zathura
     ./mpv
     ./btop
-    ./gtk
+    ./sops
     ./xdg
     ./email
     ./firefox
+    ./qt
+    ./gtk
   ];
 }

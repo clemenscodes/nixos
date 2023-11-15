@@ -12,5 +12,11 @@
         recursive = true;
       };
     };
+    configFile = {
+      nixpkgs = {
+        source = ../nixpkgs;
+        recursive = true;
+      };
+    };
   };
 }

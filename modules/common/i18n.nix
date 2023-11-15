@@ -1,16 +1,20 @@
-{ ... }: {
+{ locale, lib, ... }:
+let
+  utfLocale = "${locale}_${lib.toUpper locale}.UTF-8";
+in
+{
   i18n = { 
-    defaultLocale = "de_DE.UTF-8";
+    defaultLocale = utfLocale;
     extraLocaleSettings = { 
-      LC_ADDRESS = "de_DE.UTF-8"; 
-      LC_IDENTIFICATION = "de_DE.UTF-8"; 
-      LC_MEASUREMENT = "de_DE.UTF-8"; 
-      LC_MONETARY = "de_DE.UTF-8"; 
-      LC_NAME = "de_DE.UTF-8"; 
-      LC_NUMERIC = "de_DE.UTF-8"; 
-      LC_PAPER = "de_DE.UTF-8"; 
-      LC_TELEPHONE = "de_DE.UTF-8"; 
-      LC_TIME = "de_DE.UTF-8";
+      LC_ADDRESS = utfLocale;
+      LC_IDENTIFICATION = utfLocale;
+      LC_MEASUREMENT = utfLocale;
+      LC_MONETARY = utfLocale;
+      LC_NAME = utfLocale;
+      LC_NUMERIC = utfLocale;
+      LC_PAPER = utfLocale;
+      LC_TELEPHONE = utfLocale;
+      LC_TIME = utfLocale;
     };
   };
 } 
