@@ -5,6 +5,9 @@
   user,
   nur,
   locale,
+  browser,
+  terminal,
+  editor,
   ... 
 }: 
 let
@@ -86,9 +89,18 @@ let
     home
     sops
   ];
-  args = (
-    { inherit pkgs inputs system user locale themes; }
-  );
+  args = ({ inherit 
+    pkgs 
+    inputs 
+    system 
+    user 
+    locale 
+    editor 
+    browser 
+    terminal 
+    themes
+    ; 
+  });
 in {
   desktop = lib.nixosSystem {
     specialArgs = args;
@@ -100,7 +112,16 @@ in {
           extraSpecialArgs = let 
             machine = "desktop";
           in { 
-            inherit inputs themes user locale machine ; 
+            inherit 
+              inputs 
+              themes 
+              user 
+              locale 
+              editor 
+              browser 
+              terminal 
+              machine
+            ; 
           };
         };
       }
@@ -116,7 +137,16 @@ in {
           extraSpecialArgs = let 
             machine = "laptop";
           in { 
-            inherit inputs themes user locale machine; 
+            inherit 
+              inputs 
+              themes 
+              user 
+              locale 
+              editor
+              browser
+              terminal
+              machine
+            ; 
           };
         };
       }

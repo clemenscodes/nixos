@@ -42,12 +42,26 @@
   let
     user = "clay";
     locale = "de";
+    terminal = "kitty";
+    browser = "firefox";
+    editor = "nvim";
   in 
   {
     nixosConfigurations = (
       import ./machines {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager hyprland nur user locale ;
+        inherit 
+          inputs 
+          nixpkgs 
+          home-manager 
+          hyprland 
+          nur 
+          user 
+          locale 
+          terminal 
+          browser 
+          editor
+        ;
       }
     );
   };

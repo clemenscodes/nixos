@@ -1,11 +1,11 @@
-{ ... }: {
+{ editor, browser, ... }: {
   programs = {
     gh = {
       enable = true;
       settings = {
-        editor = "nvim";
+        editor = editor;
         git_protocol = "ssh";
-        browser = "firefox";
+        browser = browser;
       };
       gitCredentialHelper = {
         enable = true;

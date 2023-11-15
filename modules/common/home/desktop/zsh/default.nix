@@ -15,7 +15,6 @@
           "git"
           "colored-man-pages"
           "colorize"
-          "systemd"
         ];
       };
       dotDir = ".config/zsh";
@@ -79,7 +78,6 @@
       '';
       profileExtra = ''
         export NIX_CONFIG_HOME=$XDG_CONFIG_HOME/nixos
-        Hyprland &
       '';
     };
   };

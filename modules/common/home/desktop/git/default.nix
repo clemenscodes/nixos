@@ -1,4 +1,4 @@
-{ ... }: {
+{ editor, ... }: {
   programs = {
     git = {
       enable = true;
@@ -16,7 +16,7 @@
         };
         core = {
           whitespace = "trailing-space,space-before-tab";
-          editor = "nvim";
+          editor = editor;
         };
       };
     };

@@ -1,12 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, editor, browser, terminal, ... }: {
   environment = {
     systemPackages = with pkgs; [ 
       vim
     ];
     variables = {
-      EDITOR = "nvim";
-      BROWSER = "firefox";
-      TERMINAL = "kitty";
+      EDITOR = editor;
+      BROWSER = browser;
+      TERMINAL = terminal;
     };
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";

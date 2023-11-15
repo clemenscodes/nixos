@@ -21,9 +21,6 @@
       julia
       (python311.withPackages(ps: with ps; [pip]))
     ];
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
   };
   xdg = {
     configFile = {
