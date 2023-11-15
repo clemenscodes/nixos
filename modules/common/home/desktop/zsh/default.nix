@@ -14,6 +14,7 @@
         plugins = [ 
           "git"
           "git-flow"
+          "systemd"
           "colored-man-pages"
           "colorize"
         ];
