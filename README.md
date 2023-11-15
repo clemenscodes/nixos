@@ -33,7 +33,7 @@ Now clone the repository in the expected location `~/.config/nixos`
 
 ```sh
 mkdir -p ~/.config
-nix shell nixpkgs#git git clone git@github.com:clemenscodes/nixos.git ~/.config/nixos
+nix-shell -p git --run "git clone git@github.com:clemenscodes/nixos.git ~/.config/nixos"
 cd ~/.config/nixos
 ```
 
