@@ -58,6 +58,12 @@ in {
 }
 ```
 
+Thats it, you can now reboot into the system
+
+```sh
+sudo reboot now
+```
+
 After installing you will have a `switch` alias available that will build your machine configuration.
 
 To make the best out of this, you will want to adjust the definitions like user, locale etc. in `flake.nix`.
@@ -92,6 +98,5 @@ The currently used secrets are:
 
 ### Additional Considerations
 
-- Nvidia GPUs are supported by importing the `./modules/nvidia.nix` module into your machine configuration
-- Hyprland can be configured to support your individual machines by adding a machine specific configuration at `./modules/common/home/desktop/hyprland/config/machine/<MACHINE>.conf`
+- Hyprland can be configured to support your individual machines by adding a machine specific configuration at `./modules/common/home/desktop/hyprland/config/machine/<your-machine>.conf`
 
