@@ -190,7 +190,7 @@ sudo reboot now
 ```
 
 After installing you will have a `switch` alias available that will build your machine configuration.
-
+You will also have a `setupsops` script available to easily edit secrets.
 
 ### Further Steps
 
