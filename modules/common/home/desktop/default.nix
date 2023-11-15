@@ -2,6 +2,7 @@
   imports = [
     ./bat
     ./bitwarden
+    ./cursor
     ./ncmpcpp
     ./lf
     ./waybar

@@ -1,4 +1,10 @@
-{ locale, ... }: {
+{ pkgs, locale, ... }: {
+  environment = {
+    systemPackages = with pkgs; [
+     libsForQt5.qt5.qtquickcontrols2   
+     libsForQt5.qt5.qtgraphicaleffects
+    ];
+  };
   services = {
     xserver = {
       enable = true;
@@ -11,7 +17,7 @@
           wayland = {
             enable = true;
           };
-          settings = {};
+          theme = "${import ./themes/catppuccin-macchiato.nix { inherit pkgs; }}";
         };
       };
     };
