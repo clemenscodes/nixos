@@ -37,10 +37,14 @@ nix-shell -p git --run "git clone git@github.com:clemenscodes/nixos.git ~/.confi
 cd ~/.config/nixos
 ```
 
-Then you can run the helper script to generate the keys used by sops.
+Then you can run these commands to generate the keys used by sops.
 
 ```sh
-./home/scripts/setupsops
+mkdir -p ~/.config/sops/age
+nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
+nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
+cd ~/.config/nixos/secrets || exit
+nix shell nixpkgs#sops -c sops secrets.yaml
 ```
 
 You will land in the sops editor where you can define your secrets.
