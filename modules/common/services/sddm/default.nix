@@ -17,12 +17,7 @@
           wayland = {
             enable = true;
           };
-          theme = "${import ./theme { inherit pkgs; }}";
-/*           settings = {
-            Theme = {
-              Current = "catppuccin-macchiato";
-            };
-          }; */
+          theme = "${import ./themes/catppuccin-macchiato.nix { inherit pkgs; }}";
         };
       };
     };
