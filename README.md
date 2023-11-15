@@ -157,7 +157,7 @@ sudo cp /etc/nixos/hardware-configuration.nix ~/.config/nixos/machines/<your-mac
 Next, write a `default.nix` file that imports your hardware configuration.
 This file is where you can specify machine specific system configurations.
 
-NOTE: If you use an NVIDIA card, you will want to import `../modules/nvidia.nix` in that file as well.
+NOTE: If you use an NVIDIA card, you will want to import `../../modules/nvidia.nix` in that file as well.
 
 ```sh
 cat > ~/.config/nixos/machines/<your-machine>/default.nix <<EOF
