@@ -19,6 +19,7 @@
     ./nvim
     ./qt
     ./rofi
+    ./screenshot
     ./sops
     ./spotify
     ./starship
