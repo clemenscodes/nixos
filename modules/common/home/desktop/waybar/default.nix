@@ -19,6 +19,7 @@
           modules-left = [ "hyprland/workspaces" "hyprland/window" ];
           modules-center = [ "mpd" ];
           modules-right = [
+            "custom/mail"
             "idle_inhibitor"
             "custom/notification"
             "pulseaudio"
@@ -173,6 +174,12 @@
             interval = 1;
             exec = "waybar-clock";
           };
+          "custom/mail" = {
+            format = "{}";
+            interval = 3;
+            exec = "waybar-mail";
+            on-click = "${pkgs.kitty}/bin/kitty neomutt";
+          };
           "custom/notification" = {
             format = "{icon}";
             format-icons = {
@@ -262,6 +269,7 @@
         #custom-clock,
         #custom-notification,
         #custom-powermenu,
+        #custom-mail,
         #mpd {
             padding: 14px;
             margin: 4px;

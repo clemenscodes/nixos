@@ -9,14 +9,14 @@
       sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
     };
     secrets = {
-      "email/uni/password" = {
-        path = "/run/user/1000/secrets/email/uni/password";
+      "email/clemens.horn@mni.thm.de/password" = {
+        path = "/run/user/1000/secrets/email/clemens.horn@mni.thm.de/password";
       };
-      "email/private/password" = {
-        path = "/run/user/1000/secrets/email/private/password";
+      "email/horn_clemens@t-online.de/password" = {
+        path = "/run/user/1000/secrets/email/horn_clemens@t-online.de/password";
       };
-      "email/business/password" = {
-        path = "/run/user/1000/secrets/email/business/password";
+      "email/me@clemenshorn.com/password" = {
+        path = "/run/user/1000/secrets/email/me@clemenshorn.com/password";
       };
     };
   };
