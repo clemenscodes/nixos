@@ -43,6 +43,7 @@
       style = ''
         * {
           background-image: none;
+          font-family: "Iosevka Nerd Font", sans-serif;
         }
 
         window {
@@ -60,10 +61,21 @@
         }
         
         button:focus, button:active, button:hover {
-          background-color: #3700B3;
+          background-color: rgba(202, 1, 35, 0.2);
           outline-style: none;
         }
         
+        #lock,
+        #logout,
+        #suspend,
+        #hibernate,
+        #shutdown, 
+        #reboot {
+          margin: 12px;
+          border-radius: 20px;
+          color: white;
+        }
+
         #lock {
           background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
         }
