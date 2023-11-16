@@ -1,0 +1,7 @@
+{ ... }: {
+  services = {
+    swayidle = {
+      enable = false;
+    };
+  };
+}

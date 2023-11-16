@@ -1,5 +1,6 @@
 { themes, locale, ... }: {
   console = {
+    earlySetup = true;
     keyMap = locale;
     colors = with themes.custom; [
       base00

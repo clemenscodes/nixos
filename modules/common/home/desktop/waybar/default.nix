@@ -14,8 +14,8 @@
           modules-center = [ "mpd" ];
           modules-right = [
             "custom/notification"
-            "wireplumber" 
             "pulseaudio"
+            "pulseaudio#mic"
             "backlight"
             "network"
             "disk"
@@ -47,14 +47,18 @@
             max-length = 200;
             separate-outputs = true;
           };
-          wireplumber = {
+          pulseaudio = {
             format = "{volume}% {icon}";
-            format-icons = ["🔈" "🔉" "🔊"];
+            format-icons = {
+              default = [ "🔈" "🔉" "🔊" ];
+              headphones = [ "🎧" ];
+              headset = [ "🎧" ];
+            };
             format-muted = "🔇";
             max-volume = 150;
             on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           };
-          pulseaudio = {
+          "pulseaudio#mic" = {
             format = "{format_source}";
             format-source = "{volume}% 🎤";
             format-source-muted = "🔇";
@@ -76,6 +80,7 @@
             tooltip-format = "{ifname} via {gwaddr}";
             format-linked = "{ifname} (No IP)";
             format-alt = "{ifname}: {ipaddr}/{cidr}";
+            on-click-right = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
           };
           mpd = {
             format = "{artist} - {title} ⸨{songPosition}|{queueLength}⸩ 🎵";
@@ -232,11 +237,11 @@
         #backlight,
         #network,
         #pulseaudio,
+        #pulseaudio.mic,
         #custom-media,
         #custom-clock,
         #custom-notification,
         #custom-powermenu,
-        #wireplumber,
         #mpd {
             padding: 14px;
             margin: 4px;

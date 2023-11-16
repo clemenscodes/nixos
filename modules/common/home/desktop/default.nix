@@ -21,6 +21,7 @@
     ./rofi
     ./sops
     ./starship
+    ./swayidle
     ./swaylock
     ./swaync
     ./waybar
