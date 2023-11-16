@@ -5,7 +5,7 @@
       layout = [
         {
           label = "lock";
-          action = "${pkgs.swaylock-effects}/bin/swaylock";
+          action = "pkill wlogout && sleep 1 && ${pkgs.swaylock-effects}/bin/swaylock -f";
           text = "Lock";
           keybind = "l";
         }

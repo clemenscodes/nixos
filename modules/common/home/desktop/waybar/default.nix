@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+  home = {
+    packages = with pkgs; [
+      libappindicator-gtk3
+      libdbusmenu-gtk3
+    ];
+  };
   programs = {
     waybar = {
       enable = true;
@@ -13,6 +19,7 @@
           modules-left = [ "hyprland/workspaces" "hyprland/window" ];
           modules-center = [ "mpd" ];
           modules-right = [
+            "idle_inhibitor"
             "custom/notification"
             "pulseaudio"
             "pulseaudio#mic"
@@ -23,6 +30,7 @@
             "cpu"
             "battery"
             "custom/clock"
+            "tray"
             "custom/powermenu"
           ];
           "hyprland/workspaces" = {
@@ -46,6 +54,18 @@
             format = "👉 {title}";
             max-length = 200;
             separate-outputs = true;
+          };
+          tray = {
+            icon-size = "24";
+            spacing = 10;
+            show-passive-items = true;
+          };
+          idle_inhibitor = {
+            format = "{icon} ";
+            format-icons = {
+              activated = ""; 
+              deactivated = "";
+            };
           };
           pulseaudio = {
             format = "{volume}% {icon}";
@@ -154,7 +174,6 @@
             exec = "waybar-clock";
           };
           "custom/notification" = {
-            tooltip = false;
             format = "{icon}";
             format-icons = {
               notification = "<span foreground='red'> </span>";
@@ -167,9 +186,8 @@
               inhibited-none = "<span> </span>";
             };
             return-type = "json"; 
-            exec-if = "${pkgs.which}/bin/which ${pkgs.swaynotificationcenter}/bin/swaync-client";
             exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
-            on-click-right = "waybar-swaync";
+            on-click = "waybar-swaync";
             escape = true;
           };
           "custom/powermenu" = {
@@ -182,7 +200,7 @@
       };
       style = ''
         * {
-            font-family: Iosevka Nerd Font, sans-serif;
+            font-family: "Iosevka Nerd Font", sans-serif;
             font-size: 16px;
         }
         
@@ -236,6 +254,8 @@
         #temperature,
         #backlight,
         #network,
+        #idle_inhibitor,
+        #tray,
         #pulseaudio,
         #pulseaudio.mic,
         #custom-media,
@@ -270,6 +290,15 @@
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             animation-direction: alternate;
+        }
+
+        #tray > .passive {
+            -gtk-icon-effect: dim;
+        }
+        
+        #tray > .needs-attention {
+            -gtk-icon-effect: highlight;
+            background-color: #eb4d4b;
         }
       '';
     };

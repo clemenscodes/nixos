@@ -9,9 +9,15 @@
       sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
     };
     secrets = {
-      "email/uni/password" = {};
-      "email/private/password" = {};
-      "email/business/password" = {};
+      "email/uni/password" = {
+        path = "/run/user/1000/secrets/email/uni/password";
+      };
+      "email/private/password" = {
+        path = "/run/user/1000/secrets/email/private/password";
+      };
+      "email/business/password" = {
+        path = "/run/user/1000/secrets/email/business/password";
+      };
     };
   };
 }

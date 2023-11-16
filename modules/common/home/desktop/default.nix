@@ -20,6 +20,7 @@
     ./qt
     ./rofi
     ./sops
+    ./spotify
     ./starship
     ./swayidle
     ./swaylock
