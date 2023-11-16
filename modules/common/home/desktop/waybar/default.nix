@@ -23,6 +23,7 @@
             "cpu"
             "battery"
             "custom/clock"
+            "custom/powermenu"
           ];
           "hyprland/workspaces" = {
             sort-by-number = true;
@@ -57,6 +58,11 @@
             format = "{format_source}";
             format-source = "{volume}% 🎤";
             format-source-muted = "🔇";
+            scroll-step = 1;
+            max-volume = 150;
+            on-scroll-down = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-";
+            on-scroll-up = "${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 1%+";
+            on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
           };
           disk = {
             interval = 30;
@@ -161,6 +167,12 @@
             on-click-right = "waybar-swaync";
             escape = true;
           };
+          "custom/powermenu" = {
+            format = " ";
+            on-click = "wlogout";
+            exec = "waybar-powermenu";
+            tooltip = false;
+          };
         };
       };
       style = ''
@@ -223,6 +235,7 @@
         #custom-media,
         #custom-clock,
         #custom-notification,
+        #custom-powermenu,
         #wireplumber,
         #mpd {
             padding: 14px;
@@ -230,6 +243,11 @@
             border-radius: 4px;
             color: #adbac7;
             background-color: #22272e;
+        }
+
+        #custom-powermenu {
+            background-color: #ca0123;
+            color: white;
         }
         
         @keyframes blink {

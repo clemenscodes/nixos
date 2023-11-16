@@ -2,29 +2,31 @@
   imports = [
     ./bat
     ./bitwarden
-    ./cursor
-    ./ncmpcpp
-    ./lf
-    ./waybar
-    ./zsh
-    ./kitty
-    ./starship
-    ./gh
-    ./git
-    ./nvim
-    ./hyprland
-    ./swaync
-    ./rofi
-    ./fzf
-    ./direnv
-    ./zathura
-    ./mpv
     ./btop
-    ./sops
-    ./xdg
+    ./cursor
+    ./direnv
     ./email
     ./firefox
-    ./qt
+    ./fzf
+    ./gh
+    ./git
     ./gtk
+    ./hyprland
+    ./kitty
+    ./lf
+    ./mpv
+    ./ncmpcpp
+    ./nvim
+    ./qt
+    ./rofi
+    ./sops
+    ./starship
+    ./swaylock
+    ./swaync
+    ./waybar
+    ./wlogout
+    ./xdg
+    ./zathura
+    ./zsh
   ];
 }
