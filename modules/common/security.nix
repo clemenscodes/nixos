@@ -5,6 +5,7 @@
     };
     pam = {
       services = {
+        swaylock = {};
         "${user}" = {
           gnupg = {
             enable = true;

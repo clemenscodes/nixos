@@ -21,6 +21,8 @@
       imapnotify = {
         boxes = [ "INBOX" ];
         enable = true;
+        onNotify = "${pkgs.isync}/bin/mbsync -a";
+      onNotifyPost = ''${pkgs.notmuch}/bin/notmuch new && ${pkgs.libnotify}/bin/notify-send "===> 📬 <===" "Mail received"'';
       };
       folders = {
         inbox = "INBOX";
@@ -84,12 +86,17 @@
     packages = with pkgs; [
       abook
       lynx
+      openssl
     ];
   };
   services = {
     mbsync = {
       enable = true;
       configFile = "/home/${user}/.mbsyncrc";
+      frequency = "*:*:0/10";
+    };
+    imapnotify = {
+      enable = true;
     };
   };
   xdg = {
@@ -113,39 +120,43 @@
   accounts = {
     email = {
       maildirBasePath = "/home/${user}/.local/share/mail";
-      accounts = {
-        private = mkEmailAccount {
+      accounts = let 
+        privateAccount = "horn_clemens@t-online.de";
+        businessAccount = "me@clemenshorn.com";
+        uniAccount = "clemens.horn@mni.thm.de";
+      in {
+        "${privateAccount}" = mkEmailAccount {
           primary = true;
-          address = "horn_clemens@t-online.de";
+          address = privateAccount;
           realName = "Clemens Horn";
-          userName = "horn_clemens@t-online.de";
+          userName = privateAccount;
           smtpHost = "securesmtp.t-online.de";
-          smtpPort = 587; 
+          smtpPort = 465; 
           imapHost = "secureimap.t-online.de"; 
           imapPort = 993; 
-          secretName = "email/private/password";
+          secretName = "email/${privateAccount}/password";
         };
-        business = mkEmailAccount {
+        "${businessAccount}" = mkEmailAccount {
           primary = false;
-          address = "me@clemenshorn.com";
+          address = businessAccount;
           realName = "Clemens Horn";
-          userName = "me@clemenshorn.com";
+          userName = businessAccount;
           smtpHost = "box.clemenshorn.com";
           smtpPort = 465; 
           imapHost = "box.clemenshorn.com"; 
           imapPort = 993; 
-          secretName = "email/business/password";
+          secretName = "email/${businessAccount}/password";
         };
-        uni = mkEmailAccount {
+        "${uniAccount}" = mkEmailAccount {
           primary = false;
-          address = "clemens.horn@mni.thm.de";
+          address = uniAccount;
           realName = "Clemens Horn";
           userName = "chrn48";
           smtpHost = "mailgate.thm.de";
-          smtpPort = 587; 
+          smtpPort = 465; 
           imapHost = "mailgate.thm.de"; 
           imapPort = 993; 
-          secretName = "email/uni/password";
+          secretName = "email/${uniAccount}/password";
         };
       };
     };
@@ -159,6 +170,7 @@
         shortPath = true;
         format = ''"%D%?F? [%F]?%* %?N?%N/? %?S?%S?"'';
       };
+      sort = "reverse-date";
       binds = [
         {
           map = [ "index" "pager" ];
@@ -380,17 +392,17 @@
         {
           map = [ "index" "pager" ];
           key = "i1";
-          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/private<enter><change-folder>!<enter>;<check-stats>";
+          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/horn_clemens@t-online.de<enter><change-folder>!<enter>;<check-stats>";
         }
         {
           map = [ "index" "pager" ];
           key = "i2";
-          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/uni<enter><change-folder>!<enter>;<check-stats>";
+          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/clemens.horn@mni.thm.de<enter><change-folder>!<enter>;<check-stats>";
         }
         {
           map = [ "index" "pager" ];
           key = "i3";
-          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/business<enter><change-folder>!<enter>;<check-stats>";
+          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/me@clemenshorn.com<enter><change-folder>!<enter>;<check-stats>";
         }
         {
           map = [ "browser" ];
@@ -491,6 +503,11 @@
           map = [ "index" ];
           key = "A";
           action = ''<limit>all\n'';
+        }
+        {
+          map = [ "index" ];
+          key = ''\Cr'';
+          action = ''<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>'';
         }
       ];
       settings = {

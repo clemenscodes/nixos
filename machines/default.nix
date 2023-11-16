@@ -22,6 +22,7 @@ let
         "code"
         "vscode"
         "idea-ultimate"
+        "spotify"
       ];
     };
     overlays = [ nur.overlay ];

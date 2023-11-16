@@ -5,7 +5,11 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+    optimise = {
+      automatic = true;
+    };
     settings = {
+      auto-optimise-store = true;
       trusted-users = [ "root" "${user}" ];
       experimental-features = [
         "nix-command"

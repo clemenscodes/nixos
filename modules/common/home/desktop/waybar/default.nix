@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+  home = {
+    packages = with pkgs; [
+      libappindicator-gtk3
+      libdbusmenu-gtk3
+    ];
+  };
   programs = {
     waybar = {
       enable = true;
@@ -13,9 +19,11 @@
           modules-left = [ "hyprland/workspaces" "hyprland/window" ];
           modules-center = [ "mpd" ];
           modules-right = [
+            "custom/mail"
+            "idle_inhibitor"
             "custom/notification"
-            "wireplumber" 
             "pulseaudio"
+            "pulseaudio#mic"
             "backlight"
             "network"
             "disk"
@@ -23,6 +31,8 @@
             "cpu"
             "battery"
             "custom/clock"
+            "tray"
+            "custom/powermenu"
           ];
           "hyprland/workspaces" = {
             sort-by-number = true;
@@ -46,17 +56,38 @@
             max-length = 200;
             separate-outputs = true;
           };
-          wireplumber = {
+          tray = {
+            icon-size = "24";
+            spacing = 10;
+            show-passive-items = true;
+          };
+          idle_inhibitor = {
+            format = "{icon} ";
+            format-icons = {
+              activated = ""; 
+              deactivated = "";
+            };
+          };
+          pulseaudio = {
             format = "{volume}% {icon}";
-            format-icons = ["🔈" "🔉" "🔊"];
+            format-icons = {
+              default = [ "🔈" "🔉" "🔊" ];
+              headphones = [ "🎧" ];
+              headset = [ "🎧" ];
+            };
             format-muted = "🔇";
             max-volume = 150;
             on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           };
-          pulseaudio = {
+          "pulseaudio#mic" = {
             format = "{format_source}";
             format-source = "{volume}% 🎤";
             format-source-muted = "🔇";
+            scroll-step = 1;
+            max-volume = 150;
+            on-scroll-down = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-";
+            on-scroll-up = "${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 1%+";
+            on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
           };
           disk = {
             interval = 30;
@@ -70,6 +101,7 @@
             tooltip-format = "{ifname} via {gwaddr}";
             format-linked = "{ifname} (No IP)";
             format-alt = "{ifname}: {ipaddr}/{cidr}";
+            on-click-right = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
           };
           mpd = {
             format = "{artist} - {title} ⸨{songPosition}|{queueLength}⸩ 🎵";
@@ -142,8 +174,13 @@
             interval = 1;
             exec = "waybar-clock";
           };
+          "custom/mail" = {
+            format = "{}";
+            interval = 3;
+            exec = "waybar-mail";
+            on-click = "${pkgs.kitty}/bin/kitty neomutt";
+          };
           "custom/notification" = {
-            tooltip = false;
             format = "{icon}";
             format-icons = {
               notification = "<span foreground='red'> </span>";
@@ -156,16 +193,21 @@
               inhibited-none = "<span> </span>";
             };
             return-type = "json"; 
-            exec-if = "${pkgs.which}/bin/which ${pkgs.swaynotificationcenter}/bin/swaync-client";
             exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
-            on-click-right = "waybar-swaync";
+            on-click = "waybar-swaync";
             escape = true;
+          };
+          "custom/powermenu" = {
+            format = " ";
+            on-click = "wlogout";
+            exec = "waybar-powermenu";
+            tooltip = false;
           };
         };
       };
       style = ''
         * {
-            font-family: Iosevka Nerd Font, sans-serif;
+            font-family: "Iosevka Nerd Font", sans-serif;
             font-size: 16px;
         }
         
@@ -219,17 +261,26 @@
         #temperature,
         #backlight,
         #network,
+        #idle_inhibitor,
+        #tray,
         #pulseaudio,
+        #pulseaudio.mic,
         #custom-media,
         #custom-clock,
         #custom-notification,
-        #wireplumber,
+        #custom-powermenu,
+        #custom-mail,
         #mpd {
             padding: 14px;
             margin: 4px;
             border-radius: 4px;
             color: #adbac7;
             background-color: #22272e;
+        }
+
+        #custom-powermenu {
+            background-color: #ca0123;
+            color: white;
         }
         
         @keyframes blink {
@@ -247,6 +298,15 @@
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             animation-direction: alternate;
+        }
+
+        #tray > .passive {
+            -gtk-icon-effect: dim;
+        }
+        
+        #tray > .needs-attention {
+            -gtk-icon-effect: highlight;
+            background-color: #eb4d4b;
         }
       '';
     };

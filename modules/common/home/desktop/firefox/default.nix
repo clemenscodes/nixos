@@ -175,6 +175,9 @@
             "dom.battery.enabled" = false;
             "dom.event.clipboardevents.enabled" = false;
             "dom.event.contextmenu.enabled" = false;
+            "dom.webnotifications.requireinteraction.enabled" = false;
+            "dom.webnotifications.requireuserinteraction" = false;
+            "dom.webnotifications.enabled" = false;
             "dom.gamepad.enabled" = false;
             "dom.maxHardwareConcurrency" = 2;
             "dom.netinfo.enabled" = false;

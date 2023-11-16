@@ -22,6 +22,8 @@
 - Process Manager: `btop`
 - Password Manager: `bitwarden`
 - Font: `iosevka`
+- Wallpaper Engine: `swww`
+- Powermenu: `wlogout`
 
 ## Prerequisites
 
@@ -68,7 +70,7 @@ wifi: |
   home_uuid=<your-ssid>
   home_psk=<your-wifi-psk>
 email:
-  <your-email-account-name>:
+  <your-email-address>:
     password: <your-email-password>
 ```
 
@@ -104,7 +106,7 @@ to only include email accounts relevant to you.
   accounts = {
     email = {
       maildirBasePath = "/home/${user}/.local/share/mail";
-      <your-email-account-name> = mkEmailAccount {
+      <your-email-address> = mkEmailAccount {
         primary = true;
         address = "<your-email-address";
         realName = "<your-name>";
@@ -113,7 +115,7 @@ to only include email accounts relevant to you.
         smtpPort = <your-smtp-port>; 
         imapHost = "<your-imap-host"; 
         imapPort = <your-imap-port>; 
-        secretName = "email/<your-email-account-name>/password";
+        secretName = "email/<your-email-address>/password";
       };
       ...
     };
@@ -132,7 +134,7 @@ For convenience, you can add a macro to quickly switch between accounts:
     {
       map = [ "index" "pager" ];
       key = "i1";
-      action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/<YOUR_EMAIL_ACCOUNT_NAME_HERE><enter><change-folder>!<enter>;<check-stats>";
+      action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/<YOUR_EMAIL_ADDRESS><enter><change-folder>!<enter>;<check-stats>";
     }
     ...
   ];
