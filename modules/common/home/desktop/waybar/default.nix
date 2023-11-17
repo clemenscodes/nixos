@@ -20,8 +20,9 @@
           modules-center = [ "mpd" ];
           modules-right = [
             "custom/mail"
-            "idle_inhibitor"
             "custom/notification"
+            "custom/idle"
+            "idle_inhibitor"
             "pulseaudio"
             "pulseaudio#mic"
             "backlight"
@@ -203,6 +204,18 @@
             exec = "waybar-powermenu";
             tooltip = false;
           };
+           "custom/idle" = {
+             format = "{icon}";
+             exec = "${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
+             exec-if = "which ${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit";
+             return-type = "json";
+             format-icons = {
+               output = " ";
+               input = " ";
+               output-input = "   ";
+               none = "";
+             };
+          };
         };
       };
       style = ''
@@ -270,6 +283,7 @@
         #custom-notification,
         #custom-powermenu,
         #custom-mail,
+        #custom-idle,
         #mpd {
             padding: 14px;
             margin: 4px;
