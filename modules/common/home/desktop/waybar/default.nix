@@ -82,7 +82,7 @@
           "pulseaudio#mic" = {
             format = "{format_source}";
             format-source = "{volume}% 🎤";
-            format-source-muted = "🔇";
+            format-source-muted = "🚫 🎤";
             scroll-step = 1;
             max-volume = 150;
             on-scroll-down = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-";
