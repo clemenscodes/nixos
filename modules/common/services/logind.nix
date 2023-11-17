@@ -2,7 +2,7 @@
   services = {
     logind = {
       powerKey = "ignore";
-      lidSwitch = "lock";
+      lidSwitch = "suspend-then-hibernate";
     };
   };
 }
