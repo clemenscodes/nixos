@@ -1,5 +1,6 @@
 { ... }: { 
   imports = [ 
+    ./power.nix
     ./sddm
     ./sound.nix
     ./printing.nix

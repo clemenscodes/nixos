@@ -14,7 +14,6 @@
     ./hardware.nix
     ./security.nix
     ./system.nix
-    ./power.nix
     ./users.nix
     ./networking.nix
     ./virtualisation.nix
