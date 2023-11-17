@@ -340,5 +340,5 @@ fi           📄
 *.idx      " "   
 *.mbsyncrc " " 
 *.nix      " " 
-flake.lock " "
-lfrc      " "
+*.lock 🔒 
+*lfrc      " "
