@@ -1,8 +1,5 @@
 { lib, pkgs, ... }: {
   boot = {
-    kernelParams = [
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    ];
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot = {

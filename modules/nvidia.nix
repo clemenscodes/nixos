@@ -11,6 +11,11 @@ in {
   environment = {
     systemPackages = [ nvidia-offload ];
   };
+  boot = {
+    kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    ];
+  };
   services = {
     xserver = {
       videoDrivers = [ "nvidia" ];
@@ -25,8 +30,17 @@ in {
         # On wayland, suspend does not turn the screen back on when using the open source driver
         # Use proprietary driver if you want to use the suspend feature
         # as long as this issue is not fixed
-        # https://github.com/NVIDIA/open-gpu-kernel-modules/issues/360
+        # @see https://github.com/NVIDIA/open-gpu-kernel-modules/issues/360
         enable = true;
+        finegrained = true;
+      };
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0:4:0";
       };
       open = false;
       nvidiaSettings = true;
