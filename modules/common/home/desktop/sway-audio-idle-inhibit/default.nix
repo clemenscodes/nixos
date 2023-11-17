@@ -1,5 +1,5 @@
 { buildInputs ? [], pkgs }: pkgs.stdenv.mkDerivation {
-  name = "sway-audio-inhibit-idle";
+  name = "sway-audio-idle-inhibit";
 
   buildInputs = with pkgs; [ 
     cmake 
@@ -34,11 +34,8 @@
   '';
 
   installPhase = ''
-    ${pkgs.meson}/bin/meson install -C build
-  '';
-
-  postPatch = ''
-    patchShebangs build-aux/meson/postinstall.py
+    mkdir -p $out/bin
+    cp ./build/sway-audio-idle-inhibit $out/bin
   '';
 }
 

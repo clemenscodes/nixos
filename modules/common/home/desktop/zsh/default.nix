@@ -25,7 +25,7 @@
         switch = "update && sudo nixos-rebuild switch --flake ./#${machine}";
         ls = "${eza}/bin/eza";
         grep = "${ripgrep}/bin/rg";
-        nd = "nix develop";
+        nd = "nix develop -c $SHELL";
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         src = "omz reload";
         rr = "cd $HOME/.local/src";

@@ -1,92 +1,10 @@
-{ pkgs, config, user, ... }:
-  let mkEmailAccount = {
-    primary,
-    address, 
-    realName, 
-    userName, 
-    smtpHost, 
-    smtpPort, 
-    imapHost, 
-    imapPort, 
-    secretName, 
-  }:
-    let 
-      pw = "${pkgs.bat}/bin/bat ${config.sops.secrets.${secretName}.path} --style=plain";
-    in {
-      primary = primary;
-      address = address;
-      userName = userName;
-      realName = realName;
-      passwordCommand = pw;
-      imapnotify = {
-        boxes = [ "INBOX" ];
-        enable = true;
-        onNotify = "${pkgs.isync}/bin/mbsync -a";
-      onNotifyPost = ''${pkgs.notmuch}/bin/notmuch new && ${pkgs.libnotify}/bin/notify-send "===> 📬 <===" "Mail received"'';
-      };
-      folders = {
-        inbox = "INBOX";
-        sent = "SENT";
-        drafts = "DRAFTS";
-        trash = "TRASH";
-      };
-      mbsync = {
-        enable = true;
-        create = "both";
-        expunge = "both";
-        patterns = [ "*" ];
-        extraConfig = {
-          channel = {
-            MaxMessages = 10000;
-            ExpireUnread = "no";
-          };
-          account = {
-            AuthMechs = "LOGIN";
-          };
-        };
-      };
-      notmuch = {
-        enable = true;
-        neomutt = {
-          enable = true;
-        };
-      };
-      neomutt = {
-        enable = true;
-        sendMailCommand = "${pkgs.msmtp}/bin/msmtp -a ${address}";
-        extraConfig = ''
-          set sort = reverse-date
-        '';
-      };
-      msmtp = {
-        enable = true;
-        extraConfig = {
-          auth = "on";
-          passwordeval = ''"${pw}"'';
-        };
-      };
-      smtp = {
-        host = smtpHost;
-        port = smtpPort;
-        tls = {
-          enable = true;
-        };
-      };
-      imap = {
-        host = imapHost;
-        port = imapPort;
-        tls = {
-          enable = true;
-        };
-      };
-    };
-  in
-{
+{ pkgs, config, user, ... }: {
   home = {
     packages = with pkgs; [
       abook
       lynx
       openssl
+      mailcap
     ];
   };
   services = {
@@ -118,7 +36,83 @@
     };
   };
   accounts = {
-    email = {
+    email = let mkEmailAccount = {
+      primary,
+      address, 
+      realName, 
+      userName, 
+      smtpHost, 
+      smtpPort, 
+      imapHost, 
+      imapPort, 
+      secretName, 
+    }:
+      let 
+        pw = "${pkgs.bat}/bin/bat ${config.sops.secrets.${secretName}.path} --style=plain";
+      in {
+        primary = primary;
+        address = address;
+        userName = userName;
+        realName = realName;
+        passwordCommand = pw;
+        imapnotify = {
+          boxes = [ "Inbox" ];
+          enable = true;
+          onNotify = "${pkgs.isync}/bin/mbsync -a";
+        onNotifyPost = ''${pkgs.notmuch}/bin/notmuch new && ${pkgs.libnotify}/bin/notify-send "===> 📬 <===" "Mail received"'';
+        };
+        mbsync = {
+          enable = true;
+          create = "both";
+          expunge = "both";
+          patterns = [ "*" ];
+          extraConfig = {
+            channel = {
+              MaxMessages = 10000;
+              ExpireUnread = "no";
+            };
+            account = {
+              AuthMechs = "LOGIN";
+            };
+          };
+        };
+        notmuch = {
+          enable = true;
+          neomutt = {
+            enable = true;
+          };
+        };
+        neomutt = {
+          enable = true;
+          sendMailCommand = "${pkgs.msmtp}/bin/msmtp -a ${address}";
+          extraConfig = ''
+            set sort = reverse-date
+          '';
+        };
+        msmtp = {
+          enable = true;
+          extraConfig = {
+            auth = "on";
+            passwordeval = ''"${pw}"'';
+          };
+        };
+        smtp = {
+          host = smtpHost;
+          port = smtpPort;
+          tls = {
+            enable = true;
+          };
+        };
+        imap = {
+          host = imapHost;
+          port = imapPort;
+          tls = {
+            enable = true;
+          };
+        };
+      };
+    in
+    {
       maildirBasePath = "/home/${user}/.local/share/mail";
       accounts = let 
         privateAccount = "horn_clemens@t-online.de";
@@ -162,6 +156,33 @@
     };
   };
   programs = {
+    msmtp = {
+      enable = true;
+    };
+    mbsync = {
+      enable = true;
+    };
+    notmuch = {
+      enable = true;
+      maildir = {
+        synchronizeFlags = true;
+      };
+      new = {
+        tags = [
+          "unread"
+          "inbox"
+        ];
+        ignore = [
+          ".mbsyncstate"
+          ".uivalidity"
+        ];
+      };
+      extraConfig = {
+        crypto = {
+          gpg_path = "gpg";
+        };
+      };
+    };
     neomutt = {
       enable = true;
       sidebar = {
@@ -412,17 +433,17 @@
         {
           map = [ "index" "pager" ];
           key = "gi";
-          action = "<change-folder>=INBOX<enter>";
+          action = "<change-folder>=Inbox<enter>";
         }
         {
           map = [ "index" "pager" ];
           key = "Mi";
-          action = ";<save-message>=INBOX<enter>";
+          action = ";<save-message>=Inbox<enter>";
         }
         {
           map = [ "index" "pager" ];
           key = "Ci";
-          action = ";<copy-message>=INBOX<enter>";
+          action = ";<copy-message>=Inbox<enter>";
         }
         {
           map = [ "index" "pager" ];
@@ -613,32 +634,6 @@
         color body red default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
       '';
     };
-    msmtp = {
-      enable = true;
-    };
-    mbsync = {
-      enable = true;
-    };
-    notmuch = {
-      enable = true;
-      maildir = {
-        synchronizeFlags = true;
-      };
-      new = {
-        tags = [
-          "unread"
-          "inbox"
-        ];
-        ignore = [
-          ".mbsyncstate"
-          ".uivalidity"
-        ];
-      };
-      extraConfig = {
-        crypto = {
-          gpg_path = "gpg";
-        };
-      };
-    };
+    
   };
 }

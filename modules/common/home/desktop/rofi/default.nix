@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   xdg = {
     configFile = {
       rofi = {
@@ -10,6 +10,10 @@
   programs = {
     rofi = {
       enable = true;
+      package = pkgs.rofi-wayland;
+      terminal = "${pkgs.kitty}/bin/kitty";
+      plugins = [];
+      font = "Iosevka Nerd Font 14";
       extraConfig = {};
     };
   };

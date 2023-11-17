@@ -19,10 +19,12 @@
     ./nvim
     ./qt
     ./rofi
+    ./screenshots
     ./sops
     ./spotify
     ./starship
     ./swayidle
+    ./swayimg
     ./swaylock
     ./swaync
     ./waybar

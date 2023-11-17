@@ -10,16 +10,16 @@
           keybind = "l";
         }
         {
-          label = "logout";
-          action = "${pkgs.hyprland}/bin/hyprctl dispatch exit";
-          text = "Logout";
-          keybind = "e";
+          label = "signout";
+          action = "signout";
+          text = "Sign out";
+          keybind = "o";
         }
         {
-          label = "shutdown";
-          action = "${pkgs.systemd}/bin/shutdown now";
-          text = "Shutdown";
-          keybind = "s";
+          label = "poweroff";
+          action = "${pkgs.systemd}/bin/poweroff";
+          text = "Power off";
+          keybind = "p";
         }
         {
           label = "reboot";
@@ -31,7 +31,7 @@
             label = "suspend";
             action = "${pkgs.systemd}/bin/systemctl suspend";
             text = "Suspend";
-            keybind = "u";
+            keybind = "s";
         }
         {
             label = "hibernate";
@@ -66,10 +66,10 @@
         }
         
         #lock,
-        #logout,
+        #signout,
         #suspend,
         #hibernate,
-        #shutdown, 
+        #poweroff, 
         #reboot {
           margin: 12px;
           border-radius: 20px;
@@ -80,24 +80,24 @@
           background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
         }
         
-        #logout {
+        #signout {
           background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
         }
         
+        #poweroff {
+          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+        }
+        
+        #reboot {
+          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+        }
+
         #suspend {
           background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
         }
         
         #hibernate {
           background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
-        }
-        
-        #shutdown {
-          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
-        }
-        
-        #reboot {
-          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
         }
       '';
     };

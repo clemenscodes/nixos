@@ -20,8 +20,9 @@
           modules-center = [ "mpd" ];
           modules-right = [
             "custom/mail"
-            "idle_inhibitor"
             "custom/notification"
+            "custom/idle"
+            "idle_inhibitor"
             "pulseaudio"
             "pulseaudio#mic"
             "backlight"
@@ -82,7 +83,7 @@
           "pulseaudio#mic" = {
             format = "{format_source}";
             format-source = "{volume}% 🎤";
-            format-source-muted = "🔇";
+            format-source-muted = "🚫 🎤";
             scroll-step = 1;
             max-volume = 150;
             on-scroll-down = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-";
@@ -203,6 +204,18 @@
             exec = "waybar-powermenu";
             tooltip = false;
           };
+           "custom/idle" = {
+             format = "{icon}";
+             exec = "${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
+             exec-if = "which ${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit";
+             return-type = "json";
+             format-icons = {
+               output = " ";
+               input = " ";
+               output-input = "   ";
+               none = "";
+             };
+          };
         };
       };
       style = ''
@@ -270,6 +283,7 @@
         #custom-notification,
         #custom-powermenu,
         #custom-mail,
+        #custom-idle,
         #mpd {
             padding: 14px;
             margin: 4px;
