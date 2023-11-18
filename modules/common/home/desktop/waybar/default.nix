@@ -1,9 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, user, ... }: {
   home = {
     packages = with pkgs; [
       libappindicator-gtk3
       libdbusmenu-gtk3
     ];
+  };
+  xdg = {
+    dataFile = {
+      "images/nix-snowflake.svg" = {
+        source = ./assets/nix-snowflake.svg;
+      };
+    };
   };
   programs = {
     waybar = {
@@ -12,13 +19,18 @@
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       }));
       settings = {
-        mainBar = {
+        mainBar = 
+          let
+            height = 48;
+            max-volume = 150;
+          in
+        {
+          inherit height;
           layer = "top";
-          height = 60;
-          margin = "10 10 0 10";
-          modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+          modules-left = [ "image#logo" "hyprland/workspaces" "hyprland/window" ];
           modules-center = [ "mpd" ];
           modules-right = [
+            "tray"
             "custom/mail"
             "custom/notification"
             "custom/idle"
@@ -32,7 +44,6 @@
             "cpu"
             "battery"
             "custom/clock"
-            "tray"
             "custom/powermenu"
           ];
           "hyprland/workspaces" = {
@@ -41,15 +52,9 @@
             disable-scroll = true;
             format = "{name}: {icon}";
             format-icons = {
-              "1" = " ";
-              "2" = " ";
-              "3" = " ";
-              "6" = " ";
-            };
-            persistent-workspaces = {
-              "eDP-1" = 3;
-              "DP-1" = 3;
-              "HDMI-A-1" = 3;
+              "1" = " ";
+              "2" = " ";
+              "3" = " ";
             };
           };
           "hyprland/window" = {
@@ -70,6 +75,7 @@
             };
           };
           pulseaudio = {
+            inherit max-volume;
             format = "{volume}% {icon}";
             format-icons = {
               default = [ "🔈" "🔉" "🔊" ];
@@ -77,15 +83,14 @@
               headset = [ "🎧" ];
             };
             format-muted = "🔇";
-            max-volume = 150;
             on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           };
           "pulseaudio#mic" = {
+            inherit max-volume;
             format = "{format_source}";
             format-source = "{volume}% 🎤";
             format-source-muted = "🚫 🎤";
             scroll-step = 1;
-            max-volume = 150;
             on-scroll-down = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-";
             on-scroll-up = "${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 1%+";
             on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
@@ -102,7 +107,6 @@
             tooltip-format = "{ifname} via {gwaddr}";
             format-linked = "{ifname} (No IP)";
             format-alt = "{ifname}: {ipaddr}/{cidr}";
-            on-click-right = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
           };
           mpd = {
             format = "{artist} - {title} ⸨{songPosition}|{queueLength}⸩ 🎵";
@@ -170,6 +174,11 @@
             format-alt = "{time} {icon}";
             format-icons = [" " " " " " " " " "];
           };
+          "image#logo" = {
+            path = "/home/${user}/.local/share/images/nix-snowflake.svg";
+            size = height;
+            on-click = "sleep 0.3; ${pkgs.rofi-wayland}/bin/rofi -show drun";
+          };
           "custom/clock" = {
             format = "{}";
             interval = 1;
@@ -218,54 +227,74 @@
           };
         };
       };
-      style = ''
+      style =
+        let 
+          padding = "padding: 12px;";
+          borderRadius = "12px";
+          defaultBackground = "background-color: #22272e;";
+        in
+      ''
         * {
-            font-family: "Iosevka Nerd Font", sans-serif;
-            font-size: 16px;
+          padding: 0px;
+          margin: 0px;
+          min-height: 0px;
+          min-width: 0px;
+          font-family: "Iosevka Nerd Font", sans-serif;
+          font-size: 16px;
         }
         
         window#waybar {
-            background: transparent;
-            color: white;
+          background: transparent;
+          color: white;
+        }
+
+        #image {
+          margin: 12px 6px 0px 12px;
         }
         
         #workspaces {
-            margin-right: 8px;
-            border-radius: 12px;
-            transition: none;
-            background-color: #22272e;
+          margin: 12px 12px 0px 6px;
+          border-radius: 12px;
+          ${defaultBackground}
         }
         
         #workspaces button {
-            transition: none;
-            color: #adbac7;
-            border-radius: 0;
+          ${padding}
+          transition: none;
+          color: #adbac7;
+          border-radius: 0;
         }
         
         #workspaces button:first-child {
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
+          border-top-left-radius: ${borderRadius};
+          border-bottom-left-radius: ${borderRadius};
         }
         
         #workspaces button:last-child {
-            border-top-right-radius: 12px;
-            border-bottom-right-radius: 12px;
+          border-top-right-radius: ${borderRadius};
+          border-bottom-right-radius: ${borderRadius};
         }
         
         #workspaces button:hover {
-            color: #909dab;
-            background-color: white;
+          color: #909dab;
+          background-color: white;
         }
         
         #workspaces button.active {
-            color: #282828;
-            background-color: white;
+          color: #282828;
+          background-color: white;
         }
         
         #workspaces button.urgent {
-            background-color: #eb4d4b;
+          background-color: #eb4d4b;
         }
-        
+
+        #window {
+          ${padding}
+          margin: 12px 6px 0px 0px;
+          color: #adbac7;
+        }
+
         #clock,
         #battery,
         #cpu,
@@ -285,42 +314,46 @@
         #custom-mail,
         #custom-idle,
         #mpd {
-            padding: 14px;
-            margin: 4px;
-            border-radius: 4px;
-            color: #adbac7;
-            background-color: #22272e;
+          ${padding}
+          margin: 12px 4px 0px 4px;
+          border-radius: 4px;
+          color: #adbac7;
+          ${defaultBackground}
+        }
+
+        #mpd {
+          margin-left: 6px;
         }
 
         #custom-powermenu {
-            background-color: #ca0123;
-            color: white;
+          background-color: #ca0123;
+          color: white;
+          margin-right: 12px;
         }
         
         @keyframes blink {
-            to {
-                background-color: #22272e;
-                color: #adbac7;
-            }
+          to {
+            background-color: #f53c3c;
+          }
         }
         
         #battery.critical:not(.charging) {
-            background-color: #f53c3c;
-            color: #adbac7;
-            animation-name: blink;
-            animation-duration: 0.5s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
+          ${defaultBackground}
+          color: #adbac7;
+          animation-name: blink;
+          animation-duration: 0.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
         }
 
         #tray > .passive {
-            -gtk-icon-effect: dim;
+          -gtk-icon-effect: dim;
         }
         
         #tray > .needs-attention {
-            -gtk-icon-effect: highlight;
-            background-color: #eb4d4b;
+          -gtk-icon-effect: highlight;
+          background-color: #eb4d4b;
         }
       '';
     };

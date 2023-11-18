@@ -1,5 +1,5 @@
-{ pkgs, user }:
+{ pkgs }:
 
 pkgs.writeShellScriptBin "signout" ''
-  ${pkgs.systemd}/bin/loginctl kill-user $(user)
+  ${pkgs.systemd}/bin/loginctl kill-user $USER
 ''
