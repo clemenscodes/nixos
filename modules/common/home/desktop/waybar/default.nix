@@ -23,15 +23,15 @@
           modules-left = [ "image#logo" "hyprland/workspaces" "hyprland/window" ];
           modules-center = [ "mpd" ];
           modules-right = [
-            "tray"
             "custom/mail"
+            "tray"
             "custom/notification"
             "custom/idle"
             "idle_inhibitor"
+            "network"
             "pulseaudio"
             "pulseaudio#mic"
             "backlight"
-            "network"
             "disk"
             "memory"
             "cpu"
@@ -94,12 +94,12 @@
             path = "/";
           };
           network = {
-            format-wifi = "{essid} ({signalStrength}%) 🛜";
-            format-ethernet = "{ifname}: 📶";
-            format-disconnected = "Disconnected 🚫";
+            format-wifi = "🛜";
+            format-ethernet = "📶";
+            format-disconnected = "{ifname} 🚫";
             tooltip-format = "{ifname} via {gwaddr}";
             format-linked = "{ifname} (No IP)";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
+            format-alt = "{essid} ({signalStrength}%)";
           };
           mpd = {
             format = "{artist} - {title} ⸨{songPosition}|{queueLength}⸩ 🎵";
@@ -154,6 +154,8 @@
           backlight = {
             format = "{percent}% {icon}";
             format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
+            on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl set 1%+";
+            on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 1%-";
           };
           battery = {
             states = {
@@ -246,7 +248,7 @@
         }
         
         #workspaces {
-          margin: 12px 6px 0px 6px;
+          margin: 12px 0px 0px 6px;
           border-radius: 12px;
           ${defaultBackground}
         }
