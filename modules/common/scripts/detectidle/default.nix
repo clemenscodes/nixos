@@ -7,6 +7,5 @@ pkgs.writeShellScriptBin "detectidle" ''
     timeout 360 '${pkgs.hyprland}/bin/hyprctl dispatch dpms off' \
     timeout 420 '${pkgs.systemd}/bin/systemctl suspend' \
     resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' \
-    before-sleep 'swaylock --fade-in 0 --grace 0 -f; sleep 1' \
-    lock 'swaylock --fade-in 0 --grace 0 -f' 
+    before-sleep 'swaylock --fade-in 0 --grace 0 -f; sleep 1'
 ''

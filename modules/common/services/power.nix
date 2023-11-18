@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   services = {
     logind = {
-      lidSwitch = "suspend-then-hibernate";
+      lidSwitch = "suspend";
       powerKey = "ignore";
     };
   };
