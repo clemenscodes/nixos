@@ -176,8 +176,8 @@
           };
           "image#logo" = {
             path = "/home/${user}/.local/share/images/nix-snowflake.svg";
-            size = height - 12;
-            on-click = "${pkgs.rofi-wayland}/bin/rofi -show drun";
+            size = height;
+            on-click = "sleep 0.3; ${pkgs.rofi-wayland}/bin/rofi -show drun";
           };
           "custom/clock" = {
             format = "{}";
