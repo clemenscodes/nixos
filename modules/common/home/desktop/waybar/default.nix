@@ -1,9 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, user, ... }: {
   home = {
     packages = with pkgs; [
       libappindicator-gtk3
       libdbusmenu-gtk3
     ];
+  };
+  xdg = {
+    dataFile = {
+      "images/nix-snowflake.svg" = {
+        source = ./assets/nix-snowflake.svg;
+      };
+    };
   };
   programs = {
     waybar = {
@@ -16,9 +23,10 @@
           layer = "top";
           height = 60;
           margin = "10 10 0 10";
-          modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+          modules-left = [ "image#logo" "hyprland/workspaces" "hyprland/window" ];
           modules-center = [ "mpd" ];
           modules-right = [
+            "tray"
             "custom/mail"
             "custom/notification"
             "custom/idle"
@@ -32,7 +40,6 @@
             "cpu"
             "battery"
             "custom/clock"
-            "tray"
             "custom/powermenu"
           ];
           "hyprland/workspaces" = {
@@ -102,7 +109,6 @@
             tooltip-format = "{ifname} via {gwaddr}";
             format-linked = "{ifname} (No IP)";
             format-alt = "{ifname}: {ipaddr}/{cidr}";
-            on-click-right = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
           };
           mpd = {
             format = "{artist} - {title} ⸨{songPosition}|{queueLength}⸩ 🎵";
@@ -170,6 +176,11 @@
             format-alt = "{time} {icon}";
             format-icons = [" " " " " " " " " "];
           };
+          "image#logo" = {
+            path = "/home/${user}/.local/share/images/nix-snowflake.svg";
+            size = 48;
+            on-click = "${pkgs.rofi-wayland}/bin/rofi -show drun";
+          };
           "custom/clock" = {
             format = "{}";
             interval = 1;
@@ -227,6 +238,10 @@
         window#waybar {
             background: transparent;
             color: white;
+        }
+
+        #image {
+          margin-right: 12px;
         }
         
         #workspaces {
