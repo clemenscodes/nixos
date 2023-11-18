@@ -129,6 +129,7 @@
             "ui.context_menus.after_mouseup" = true;
             "browser.urlbar.suggest.quickactions" = false;
             "browser.urlbar.suggest.topsites" = false;
+            "browser.download.useDownloadDir" = true;
             "browser.tabs.tabmanager.enabled" = false;
             "browser.contentblocking.category" = "strict";
             "browser.startup.homepage" = "https://nixos.org";

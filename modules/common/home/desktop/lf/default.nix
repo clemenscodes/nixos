@@ -45,7 +45,6 @@
               audio/*) ${mpv}/bin/mpv --audio-display=no $f ;;
               image/*) swayimg $f ;;
               video/*) ${util-linux}/bin/setsid -f ${mpv}/bin/mpv $f -quiet >/dev/null 2>&1 ;;
-              text/html) ${lynx}/bin/lynx -display_charset=utf-8 -dump "$f" ;;
               text/* | application/* | inode/x-empty) $EDITOR $fx ;;
               *) for f in $fx; do ${util-linux}/bin/setsid -f $OPENER $f >/dev/null 2>&1; done;;
           esac

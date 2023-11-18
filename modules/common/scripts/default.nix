@@ -1,7 +1,7 @@
 { pkgs, user, ... }: {
   environment = {
     systemPackages = [
-      (import ./idle { inherit pkgs; })
+      (import ./detectidle { inherit pkgs; })
       (import ./signout { inherit pkgs user; })
       (import ./setupsops { inherit pkgs; })
       (import ./screenshot { inherit pkgs; })
