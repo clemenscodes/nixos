@@ -11,6 +11,10 @@
         source = ../../../../../assets/wallpaper;
         recursive = true;
       };
+      images = {
+        source = ../../../../../assets/svg;
+        recursive = true;
+      };
     };
     configFile = {
       nixpkgs = {

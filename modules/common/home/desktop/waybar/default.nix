@@ -5,13 +5,6 @@
       libdbusmenu-gtk3
     ];
   };
-  xdg = {
-    dataFile = {
-      "images/nix-snowflake.svg" = {
-        source = ./assets/nix-snowflake.svg;
-      };
-    };
-  };
   programs = {
     waybar = {
       enable = true;
