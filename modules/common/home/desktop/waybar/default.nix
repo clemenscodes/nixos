@@ -52,9 +52,9 @@
             disable-scroll = true;
             format = "{name}: {icon}";
             format-icons = {
-              "1" = " ";
+              "1" = " ";
               "2" = " ";
-              "3" = " ";
+              "3" = " ";
             };
           };
           "hyprland/window" = {
@@ -253,7 +253,7 @@
         }
         
         #workspaces {
-          margin: 12px 12px 0px 6px;
+          margin: 12px 6px 0px 6px;
           border-radius: 12px;
           ${defaultBackground}
         }

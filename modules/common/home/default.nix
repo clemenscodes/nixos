@@ -10,6 +10,14 @@
     homeDirectory = "/home/${user}";
     sessionPath = [ "/home/${user}/.local/bin" ];
     file = {
+      "Downloads/README.md" = {
+        text = ''
+          # Downloads
+
+          - This is the default folder for all downloads
+          - run `D` to cd into this directory
+        '';
+      };
       ".local/src/README.md" = {
         text = ''
           # Source Code / Packages
