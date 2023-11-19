@@ -1,13 +1,13 @@
 { pkgs }: pkgs.stdenv.mkDerivation {
   name = "catppuccin-macchiato";
-  
+
   src = pkgs.fetchFromGitHub {
     owner = "clemenscodes";
     repo = "sddm-catppuccin-macchiato";
-    rev = "1e4f3bc4487d83c9d9eff76e6185ff656c22e083";
-    sha256 = "0pvvdyjvi3ma0sfw8cc4k8ylq379d7pn0qkxf4n66bc9zlmjk4ww";
+    rev = "be95bcfae18faff232c5b3ce06ab3014bb45bc51";
+    sha256 = "06h3b0lp9c3xmgs1hdv17yssxplknpzhygm90n6dcg51j7vf49n7";
   };
-  
+ 
   installPhase = ''
     mkdir -p $out
     cp -R ./* $out

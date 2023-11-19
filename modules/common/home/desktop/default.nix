@@ -2,8 +2,10 @@
   imports = [
     ./bat
     ./bitwarden
+    ./blueman
     ./btop
     ./cursor
+    ./cliphist
     ./direnv
     ./email
     ./firefox
@@ -12,16 +14,17 @@
     ./git
     ./gtk
     ./hyprland
+    ./hyprshade
     ./kitty
     ./lf
     ./mpv
     ./ncmpcpp
+    ./nm
     ./nvim
     ./qt
     ./rofi
     ./screenshots
     ./sops
-    ./spotify
     ./starship
     ./swayidle
     ./swayimg

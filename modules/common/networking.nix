@@ -7,7 +7,10 @@
     networkmanager = {
       enable = true;
       unmanaged = [
-         "*" "except:type:wwan" "except:type:gsm"
+        "*" 
+        "except:type:wwan" 
+        "except:type:wifi"
+        "except:type:ethernet"
       ];
     };
     wireless = {

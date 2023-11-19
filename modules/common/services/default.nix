@@ -1,11 +1,12 @@
 { ... }: { 
   imports = [ 
-    ./power.nix
     ./sddm
+    ./bluetooth.nix
     ./sound.nix
     ./printing.nix
     ./xremap.nix
     ./auto-cpufreq.nix
+    ./udisks.nix
     ./dbus.nix
   ];
 }

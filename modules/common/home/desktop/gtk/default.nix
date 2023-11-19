@@ -1,4 +1,25 @@
-{ pkgs, user, ... }: {
+{ pkgs, user, ... }: 
+  let
+    iconTheme = pkgs.catppuccin-papirus-folders.override {
+      flavor = "macchiato";
+      accent = "blue";
+    };
+  in 
+{
+  home = {
+    packages = with pkgs; [
+      libsForQt5.breeze-icons
+      hicolor-icon-theme
+    ];
+    file = {
+      ".icons/Papirus-Dark" = {
+        source = "${iconTheme}/share/icons/Papirus-Dark";
+       }; 
+      ".local/share/.icons/Papirus-Dark" = {
+        source = "${iconTheme}/share/icons/Papirus-Dark";
+      };
+    };
+  };
   gtk = {
     enable = true;
     cursorTheme = {
@@ -6,11 +27,8 @@
       name = "Catppuccin-Macchiato-Blue-Cursors";
     };
     iconTheme = {
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "macchiato";
-        accent = "blue";
-      };
-      name = "catppuccin-papirus-folders";
+      package = iconTheme;
+      name = "Papirus-Dark";
     };
     theme = {
       package = pkgs.catppuccin-gtk.override {
@@ -30,16 +48,46 @@
       configLocation = "/home/${user}/.config/gtk-2.0/settings.ini";
       extraConfig = ''
         gtk-application-prefer-dark-theme=1
+        gtk-toolbar-style=GTK_TOOLBAR_ICONS
+        gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+        gtk-button-images=0
+        gtk-menu-images=0
+        gtk-enable-event-sounds=1
+        gtk-enable-input-feedback-sounds=0
+        gtk-xft-antialias=1
+        gtk-xft-hinting=1
+        gtk-xft-hintstyle=hintfull
+        gtk-xft-rgba=rgb
       '';
     };
     gtk3 = {
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
+        gtk-toolbar-style = "GTK_TOOLBAR_ICONS";
+        gtk-toolbar-icon-size = "GTK_ICON_SIZE_LARGE_TOOLBAR";
+        gtk-button-images = 0;
+        gtk-menu-images = 0;
+        gtk-enable-event-sounds = 1;
+        gtk-enable-input-feedback-sounds = 0;
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstyle = "hintfull";
+        gtk-xft-rgba = "rgb";
       };
     };
     gtk4 = {
       extraConfig = {
         gtk-application-prefer-dark-theme = 1;
+        gtk-toolbar-style = "GTK_TOOLBAR_ICONS";
+        gtk-toolbar-icon-size = "GTK_ICON_SIZE_LARGE_TOOLBAR";
+        gtk-button-images = 0;
+        gtk-menu-images = 0;
+        gtk-enable-event-sounds = 1;
+        gtk-enable-input-feedback-sounds = 0;
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstyle = "hintfull";
+        gtk-xft-rgba = "rgb";
       };
     };
   };
