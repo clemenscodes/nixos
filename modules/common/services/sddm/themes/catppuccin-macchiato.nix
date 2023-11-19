@@ -4,8 +4,8 @@
   src = pkgs.fetchFromGitHub {
     owner = "clemenscodes";
     repo = "sddm-catppuccin-macchiato";
-    rev = "523818d3073982ec8cd646f2be9038ad6e84583d";
-    sha256 = "1df8r95zjbldf45jyn3wlyi0rbf0nvsgfi26zd3dl12zvakjdx73";
+    rev = "be95bcfae18faff232c5b3ce06ab3014bb45bc51";
+    sha256 = "06h3b0lp9c3xmgs1hdv17yssxplknpzhygm90n6dcg51j7vf49n7";
   };
  
   installPhase = ''

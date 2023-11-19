@@ -9,16 +9,21 @@
         clear-color = "b5bd68";
       in {
         clock = true;
+        daemonize = true;
         ignore-empty-password = true;
         indicator-caps-lock = true;
+        show-failed-attemts = true;
         indicator-radius = 169;
         indicator-thickness = 20;
         line-uses-ring = true;
         fade-in = 5;
         grace = 5;
-        image = "$XDG_PICTURES_DIR/wallpaper/ring.jpeg";
+        grace-no-mouse = true;
+        grace-no-touch = true;
+        screenshot = true;
         font = "Iosevka Nerd Font";
         effect-blur = "20x6";
+        effect-vignette = "1:1";
         key-hl-color = "7aa6daaa";
         bs-hl-color = "d54e53aa";
         separator-color = "55555555";

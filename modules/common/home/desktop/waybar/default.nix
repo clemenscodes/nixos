@@ -1,4 +1,4 @@
-{ pkgs, user, ... }: {
+{ pkgs, user, terminal, ... }: {
   home = {
     packages = with pkgs; [
       libappindicator-gtk3
@@ -11,6 +11,9 @@
       package = (pkgs.waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       }));
+      systemd = {
+        enable = false;
+      };
       settings =
         let
           height = 48;
@@ -138,7 +141,6 @@
           modules-left = [ 
             "image#logo" 
             "wlr/taskbar"
-            "tray"
             "custom/mail"
           ];
           modules-center = [ 
@@ -147,7 +149,7 @@
           modules-right = [ 
             "custom/notification"
             "idle_inhibitor"
-            "network"
+            "tray"
             "backlight"
             "pulseaudio"
             "pulseaudio#mic"
@@ -158,11 +160,6 @@
             size = height;
             on-click = "sleep 0.3; ${pkgs.rofi-wayland}/bin/rofi -show drun";
           };
-          tray = {
-            icon-size = "24";
-            spacing = 10;
-            show-passive-items = true;
-          };
           "custom/mail" = {
             format = "{}";
             interval = 3;
@@ -171,13 +168,13 @@
           };
           "wlr/taskbar" = {
             format = "{icon}";
-            tooltip-format = "{title} {app_id}";
             on-click = "activate";
             on-click-middle = "fullscreen";
             on-click-right = "close";
             icon-theme = "Papirus-Dark";
             icon-size = 22;
-            all-outputs = true;
+            markup = true;
+            tooltip = false;
             spacing = 0;
           };
           "custom/notification" = {
@@ -217,13 +214,10 @@
               deactivated = "";
             };
           };
-          network = {
-            format-wifi = "🛜";
-            format-ethernet = "📶";
-            format-disconnected = "📡🚫";
-            tooltip-format = "{gwaddr}";
-            format-linked = "(No IP)";
-            format-alt = "({signalStrength}%)";
+          tray = {
+            icon-size = "24";
+            spacing = 10;
+            show-passive-items = true;
           };
           backlight = {
             format = "{percent}% {icon}";
@@ -297,6 +291,7 @@
         tooltip {
           border-radius: ${borderRadius};
           border-width: 0px;
+          padding: 12px;
           ${defaultBackground}
           ${defaultColor}
         }
@@ -305,9 +300,7 @@
           margin: 0px 6px 12px ${defaultMargin};
         }
         
-        #workspaces,
-        #taskbar
-        {
+        #workspaces {
           margin: ${defaultMargin} 0px 0px ${defaultMargin};
           border-radius: 12px;
           ${defaultBackground}
@@ -348,28 +341,33 @@
 
         #taskbar {
           padding: 6px;
-          margin: ${defaultMargin};
-          margin-top: 0px;
+          ${defaultBackground}
+          margin: 0px 0px 12px 12px;
+          border-radius: 12px;
         }
 
         #taskbar button {
+          ${defaultBackground}
+          ${fadeIn}
           padding: 6px;
-          ${fadeOut}
-          border-radius: 20px;;
+          border-radius: 20px;
         }
 
         #taskbar button.active {
           color: #909dab;
-          ${fadeIn}
+          ${fadeOut}
+          background-color: #2d333b;
         }
 
         #taskbar button.hover {
           color: #909dab;
-          ${fadeIn}
+          ${fadeOut}
+          background-color: #2d333b;
         }
 
         #taskbar.empty {
           ${hide}
+          padding: 0px;
         }
 
         #battery,
@@ -378,7 +376,6 @@
         #disk,
         #temperature,
         #backlight,
-        #network,
         #pulseaudio,
         #pulseaudio.mic,
         #idle_inhibitor,
@@ -412,7 +409,6 @@
         #custom-idle,
         #custom-notification,
         #idle_inhibitor,
-        #network,
         #backlight,
         #pulseaudio,
         #pulseaudio.mic,
@@ -444,6 +440,10 @@
           animation-timing-function: linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
+        }
+
+        #tray menu {
+          ${padding}
         }
 
         #tray > .passive {

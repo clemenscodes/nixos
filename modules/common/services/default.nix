@@ -6,6 +6,7 @@
     ./printing.nix
     ./xremap.nix
     ./auto-cpufreq.nix
+    ./udisks.nix
     ./dbus.nix
   ];
 }

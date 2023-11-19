@@ -5,4 +5,9 @@
       powerOnBoot = true;
     };
   };
+  services = {
+    blueman = {
+      enable = true;
+    };
+  };
 }
