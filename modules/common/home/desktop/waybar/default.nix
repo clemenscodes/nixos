@@ -8,9 +8,6 @@
   programs = {
     waybar = {
       enable = true;
-      package = (pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      }));
       systemd = {
         enable = false;
       };
@@ -45,11 +42,7 @@
             on-click = "activate";
             on-click-right = "close";
             disable-scroll = true;
-            all-outputs = true;
             format = "  -> {id}";
-            persistent-workspaces = {
-              "*" = 5;
-            };
           };
           mpd = {
             format = "⸨{songPosition}|{queueLength}⸩ {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) 🎵";
@@ -144,7 +137,7 @@
             "custom/mail"
           ];
           modules-center = [ 
-            "custom/idle"
+            "privacy"
           ];
           modules-right = [ 
             "custom/notification"
@@ -183,7 +176,7 @@
               notification = "<span foreground='red'> </span>";
               none = "<span> </span>";
               dnd-notification = "<span foreground='red'> </span>";
-              dnd-none = "<span> </span>";
+              dnd-none = "<spa🎧n> </span>";
               dnd-inhibited-notification = "<span foreground='red'> </span>";
               dnd-inhibited-none = "<span> </span>";
               inhibited-notification = "<span foreground='red'> </span>";
@@ -194,17 +187,40 @@
             on-click = "waybar-swaync";
             escape = true;
           };
+          privacy = {
+            icon-spacing = 4;
+	    icon-size = 18;
+	    transition-duration = 250;
+	    modules = [
+	      {
+	      	type = "screenshare";
+	      	tooltip = true;
+	      	tooltip-icon-size = 24;
+	      }
+	      {
+	      	type = "audio-out";
+	      	tooltip = true;
+	      	tooltip-icon-size = 24;
+	      }
+	      {
+	      	type = "audio-in";
+	      	tooltip = true;
+	      	tooltip-icon-size = 24;
+	      }
+	    ];
+          };
           "custom/idle" = {
             format = "{icon}";
             exec = "${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
             exec-if = "which ${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit";
             format-alt = "";
             return-type = "json";
+            on-click = "${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
             format-icons = {
-              output = " ";
-              input = " ";
-              output-input = "   ";
-              none = "";
+              output = "🎧";
+              input = "🎙️";
+              output-input = "🎧🎙️";
+              none = "🎯";
             };
           };
           idle_inhibitor = {
@@ -340,16 +356,15 @@
         }
 
         #taskbar {
-          padding: 6px;
           ${defaultBackground}
           margin: 0px 0px 12px 12px;
-          border-radius: 12px;
+          border-radius: 20px;
         }
 
         #taskbar button {
           ${defaultBackground}
           ${fadeIn}
-          padding: 6px;
+          padding: 12px;
           border-radius: 20px;
         }
 
@@ -380,6 +395,11 @@
         #pulseaudio.mic,
         #idle_inhibitor,
         #tray,
+        #privacy,
+        #privacy-item,
+        #privacy-item.screenshare,
+        #privacy-item.audio-in,
+        #privacy-item.audio-out,
         #custom-clock,
         #custom-notification,
         #custom-powermenu,
@@ -407,6 +427,11 @@
         #tray,
         #custom-mail,
         #custom-idle,
+        #privacy,
+        #privacy-item,
+        #privacy-item.screenshare,
+        #privacy-item.audio-in,
+        #privacy-item.audio-out,
         #custom-notification,
         #idle_inhibitor,
         #backlight,
