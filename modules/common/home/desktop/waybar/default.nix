@@ -42,11 +42,7 @@
             on-click = "activate";
             on-click-right = "close";
             disable-scroll = true;
-            all-outputs = true;
             format = "  -> {id}";
-            persistent-workspaces = {
-              "*" = 5;
-            };
           };
           mpd = {
             format = "⸨{songPosition}|{queueLength}⸩ {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) 🎵";
