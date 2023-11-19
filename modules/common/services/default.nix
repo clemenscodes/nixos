@@ -1,7 +1,7 @@
 { ... }: { 
   imports = [ 
-    ./power.nix
     ./sddm
+    ./bluetooth.nix
     ./sound.nix
     ./printing.nix
     ./xremap.nix

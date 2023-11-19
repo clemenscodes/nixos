@@ -1,4 +1,25 @@
-{ pkgs, user, ... }: {
+{ pkgs, user, ... }: 
+  let
+    iconTheme = pkgs.catppuccin-papirus-folders.override {
+      flavor = "macchiato";
+      accent = "blue";
+    };
+  in 
+{
+  home = {
+    packages = with pkgs; [
+      libsForQt5.breeze-icons
+      hicolor-icon-theme
+    ];
+    file = {
+      ".icons/Papirus-Dark" = {
+        source = "${iconTheme}/share/icons/Papirus-Dark";
+       }; 
+      ".local/share/.icons/Papirus-Dark" = {
+        source = "${iconTheme}/share/icons/Papirus-Dark";
+      };
+    };
+  };
   gtk = {
     enable = true;
     cursorTheme = {
@@ -6,11 +27,8 @@
       name = "Catppuccin-Macchiato-Blue-Cursors";
     };
     iconTheme = {
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "macchiato";
-        accent = "blue";
-      };
-      name = "catppuccin-papirus-folders";
+      package = iconTheme;
+      name = "Papirus-Dark";
     };
     theme = {
       package = pkgs.catppuccin-gtk.override {

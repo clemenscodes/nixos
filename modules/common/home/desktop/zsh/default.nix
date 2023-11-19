@@ -29,7 +29,7 @@
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         src = "omz reload";
         rr = "cd $HOME/.local/src";
-        D = "cd $HOME/Downloads";
+        D = "cd $XDG_DOWNLOAD_DIR";
       };
       history = {
         path =  "${config.xdg.dataHome}/zsh/zsh_history";

@@ -10,6 +10,7 @@
     ./console.nix
     ./fonts.nix
     ./xdg.nix
+    ./gtk.nix
     ./hyprland.nix
     ./hardware.nix
     ./security.nix

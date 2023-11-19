@@ -16,7 +16,7 @@
         line-uses-ring = true;
         fade-in = 5;
         grace = 5;
-        image = "$XDG_DATA_HOME/wallpaper/ring.jpeg";
+        image = "$XDG_PICTURES_DIR/wallpaper/ring.jpeg";
         font = "Iosevka Nerd Font";
         effect-blur = "20x6";
         key-hl-color = "7aa6daaa";

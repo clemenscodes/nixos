@@ -1,21 +1,23 @@
-{ user, ... }: {
+{ user, locale, ... }: {
   imports = [
     ./desktop
     ./development
   ];
 
   home = {
+    keyboard = {
+      layout = locale;
+    };
     stateVersion = "23.11";
     username = "${user}";
     homeDirectory = "/home/${user}";
     sessionPath = [ "/home/${user}/.local/bin" ];
     file = {
-      "Downloads/README.md" = {
+      ".local/share/images/screenshots/README.md" = {
         text = ''
-          # Downloads
-
-          - This is the default folder for all downloads
-          - run `D` to cd into this directory
+          # Screenshots
+          
+          - This is the directory where screenshots will be saved by swappy
         '';
       };
       ".local/src/README.md" = {
