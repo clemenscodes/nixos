@@ -3,7 +3,13 @@
     systemPackages = with pkgs; [
      libsForQt5.qt5.qtquickcontrols2   
      libsForQt5.qt5.qtgraphicaleffects
+     catppuccin-cursors.macchiatoBlue
     ];
+  };
+  programs = {
+    dconf = {
+      enable = true;
+    };
   };
   services = {
     xserver = {
@@ -18,6 +24,11 @@
             enable = true;
           };
           theme = "${import ./themes/catppuccin-macchiato.nix { inherit pkgs; }}";
+          settings = {
+            Theme = {
+              CursorTheme = "Catppuccin-Macchiato-Blue-Cursors";
+            };
+          };
         };
       };
     };

@@ -21,7 +21,6 @@
     ./rofi
     ./screenshots
     ./sops
-    ./spotify
     ./starship
     ./swayidle
     ./swayimg

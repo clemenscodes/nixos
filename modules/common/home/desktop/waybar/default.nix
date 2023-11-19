@@ -96,7 +96,7 @@
           network = {
             format-wifi = "🛜";
             format-ethernet = "📶";
-            format-disconnected = "{ifname} 🚫";
+            format-disconnected = "📡🚫";
             tooltip-format = "{ifname} via {gwaddr}";
             format-linked = "{ifname} (No IP)";
             format-alt = "{essid} ({signalStrength}%)";

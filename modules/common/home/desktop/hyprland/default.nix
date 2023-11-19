@@ -19,4 +19,21 @@
       };
     };
   };
+  wayland = {
+    windowManager = {
+      hyprland = {
+        enable = true;
+        enableNvidiaPatches = machine == "desktop";
+        systemd = {
+          enable = true;
+        };
+        xwayland = {
+          enable = true;
+        };
+        settings = {};
+        extraConfig = ''
+        '';
+      };
+    };
+  };
 }
