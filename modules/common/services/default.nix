@@ -8,5 +8,6 @@
     ./auto-cpufreq.nix
     ./udisks.nix
     ./dbus.nix
+    ./gnome-keyring.nix
   ];
 }
