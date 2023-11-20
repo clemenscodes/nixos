@@ -196,7 +196,7 @@ in {
 Now switch to the new configuration.
 
 ```sh
-sudo nixos-rebuild switch --flake ~/.config/nixos/#<your-machine>
+nix-shell -p git --run "sudo nixos-rebuild switch --flake ~/.config/nixos/#<your-machine>"
 ```
 
 Thats it, you can now reboot into the system.
