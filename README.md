@@ -53,9 +53,9 @@ You will land in the sops editor where you can define your secrets.
 
 The currently used secrets are:
   - user password: `password`
+  - github_token: `github_token`
   - wifi secrets: `wifi`
   - email passwords: `email/{email-account-name}/password`
-  - github_token: `github_token`
 
 System secrets are managed in `./machines/default.nix`.
 
@@ -67,13 +67,13 @@ An example secrets.yaml:
 
 ```yaml
 password: <your-secure-password>
+github_token: <your-github-pat>
 wifi: |
   home_uuid=<your-ssid>
   home_psk=<your-wifi-psk>
 email:
   <your-email-address>:
     password: <your-email-password>
-github_token: <your-github-pat>
 ```
 
 ### Network Configuration
