@@ -32,15 +32,7 @@ in {
         # as long as this issue is not fixed
         # @see https://github.com/NVIDIA/open-gpu-kernel-modules/issues/360
         enable = true;
-        finegrained = true;
-      };
-      prime = {
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-        nvidiaBusId = "PCI:1:0:0";
-        intelBusId = "PCI:0:4:0";
+        finegrained = false;
       };
       open = false;
       nvidiaSettings = true;
