@@ -30,6 +30,7 @@
     ./screenshots
     ./obs-studio
     ./sops
+    ./ssh
     ./starship
     ./swayidle
     ./swayimg

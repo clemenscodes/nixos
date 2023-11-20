@@ -1,4 +1,4 @@
-{ pkgs, editor, ... }: {
+{ pkgs, config, editor, ... }: {
   home = {
     packages = with pkgs; [
       gitflow
@@ -11,11 +11,18 @@
       userEmail = "clemens.horn@mni.thm.de";
       package = pkgs.gitFull;
       extraConfig = {
+        user = {
+          signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+        };
         init = {
           defaultBranch = "main";
         };
         gpg = {
           program = "gpg2";
+          format = "ssh";
+        };
+        commit = {
+          gpgsign = true;
         };
         pull = {
           rebase = false;
