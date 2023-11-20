@@ -9,6 +9,7 @@
     ./calcurse
     ./direnv
     ./email
+    ./etcher
     ./firefox
     ./fzf
     ./gh

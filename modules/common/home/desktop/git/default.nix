@@ -9,6 +9,7 @@
       enable = true;
       userName = "Clemens Horn";
       userEmail = "clemens.horn@mni.thm.de";
+      package = pkgs.gitFull;
       extraConfig = {
         init = {
           defaultBranch = "main";
@@ -22,6 +23,9 @@
         push = {
           autoSetupRemote = true;
           default = "current";
+        };
+        credential = {
+          helper = "libsecret";
         };
         core = {
           whitespace = "trailing-space,space-before-tab";

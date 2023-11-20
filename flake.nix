@@ -46,6 +46,7 @@
     browser = "firefox";
     editor = "nvim";
     timezone = "Europe/Berlin";
+    hostname = "nixos";
   in 
   {
     nixosConfigurations = (
@@ -63,6 +64,7 @@
           browser 
           editor
           timezone
+          hostname
         ;
       }
     );

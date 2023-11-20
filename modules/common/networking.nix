@@ -1,6 +1,6 @@
-{ config, ... }: {
+{ config, hostname, ... }: {
   networking = {
-    hostName = "nixos";
+    hostName = hostname;
     firewall = {
       enable = true;
     };

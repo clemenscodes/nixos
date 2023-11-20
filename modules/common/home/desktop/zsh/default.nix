@@ -79,6 +79,9 @@
         bindkey -M vicmd '^[[P' vi-delete-char
         bindkey -M vicmd '^e' edit-command-line
         bindkey -M visual '^[[P' vi-delete
+        if [[ -o interactive ]]; then
+          export GH_TOKEN=$(${pkgs.bat}/bin/bat ${config.sops.secrets.github_token.path} --style=plain)
+        fi
       '';
       profileExtra = ''
         export NIX_CONFIG_HOME=$XDG_CONFIG_HOME/nixos
