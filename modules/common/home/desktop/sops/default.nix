@@ -18,6 +18,9 @@
       "email/me@clemenshorn.com/password" = {
         path = "/run/user/1000/secrets/email/me@clemenshorn.com/password";
       };
+      github_token = {
+        path = "/run/user/1000/secrets/github_token";
+      };
     };
   };
 }

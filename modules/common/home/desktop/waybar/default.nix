@@ -29,6 +29,7 @@
             "mpd"
           ];
           modules-right = [
+            "custom/mail"
             "disk"
             "memory"
             "temperature"
@@ -66,6 +67,12 @@
             };
             tooltip-format = "MPD (connected)";
             tooltip-format-disconnected = "MPD (disconnected)";
+          };
+          "custom/mail" = {
+            format = "{}";
+            interval = 5;
+            exec = "waybar-mail";
+            on-click = "${pkgs.kitty}/bin/kitty neomutt";
           };
           disk = {
             interval = 30;
@@ -139,7 +146,6 @@
           modules-left = [ 
             "image#logo" 
             "wlr/taskbar"
-            "custom/mail"
           ];
           modules-center = [ 
             "privacy"
@@ -157,12 +163,6 @@
             path = "/home/${user}/.local/share/images/svg/nix-snowflake.svg";
             size = height;
             on-click = "sleep 0.3; ${pkgs.rofi-wayland}/bin/rofi -show drun";
-          };
-          "custom/mail" = {
-            format = "{}";
-            interval = 3;
-            exec = "waybar-mail";
-            on-click = "${pkgs.kitty}/bin/kitty neomutt";
           };
           "wlr/taskbar" = {
             format = "{icon}";
@@ -423,6 +423,7 @@
         }
 
         #mpd,
+        #custom-mail,
         #disk,
         #memory,
         #cpu,
@@ -434,7 +435,6 @@
         }
 
         #tray,
-        #custom-mail,
         #custom-idle,
         #privacy,
         #privacy-item,

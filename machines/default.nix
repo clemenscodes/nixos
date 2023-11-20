@@ -9,6 +9,7 @@
   terminal,
   editor,
   timezone,
+  hostname,
   ... 
 }: 
 let
@@ -22,6 +23,9 @@ let
         "code"
         "vscode"
         "idea-ultimate"
+      ];
+      permittedInsecurePackages = [
+        "electron-19.1.9"
       ];
     };
     overlays = [ nur.overlay ];
@@ -56,6 +60,7 @@ let
         defaultSopsFile = ../secrets/secrets.yaml;
         age = {
           keyFile = "/home/${user}/.config/sops/age/keys.txt";
+          generateKey = false;
           sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
         };
         secrets = {
@@ -96,6 +101,7 @@ let
     browser
     terminal
     timezone
+    hostname
     ;
   };
   machineArgs = homeArgs // systemArgs;

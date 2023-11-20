@@ -29,13 +29,13 @@
 
 SOPS is used for various services and is recommended to be setup before installing.
 
-To get sops working, you will first need to put your SSH keys at `~/.ssh/id_ed25519`.
+To get sops working, you will first need to create a new SSH key pair or put your existing SSH key at `~/.ssh/id_ed25519`.
 
 Now clone the repository in the expected location `~/.config/nixos`
 
 ```sh
 mkdir -p ~/.config
-nix-shell -p git --run "git clone git@github.com:clemenscodes/nixos.git ~/.config/nixos"
+nix-shell -p git --run "git clone https://github.com/clemenscodes/nixos.git ~/.config/nixos"
 cd ~/.config/nixos
 ```
 
@@ -55,6 +55,7 @@ The currently used secrets are:
   - user password: `password`
   - wifi secrets: `wifi`
   - email passwords: `email/{email-account-name}/password`
+  - github_token: `github_token`
 
 System secrets are managed in `./machines/default.nix`.
 
@@ -72,6 +73,7 @@ wifi: |
 email:
   <your-email-address>:
     password: <your-email-password>
+github_token: <your-github-pat>
 ```
 
 ### Network Configuration
@@ -142,6 +144,15 @@ For convenience, you can add a macro to quickly switch between accounts:
 ...
 ```
 
+### GitHub Configuration
+
+Add your GitHub PAT with sops as `github_token`. 
+NixOS will then populate `GH_TOKEN=<your-github-pat>` into your shell environment.
+
+### Hyprland Configuration
+
+Hyprland has be configured to support your individual machines by adding a machine specific configuration at `./modules/common/home/desktop/hyprland/config/machine/<your-machine>.conf`.
+
 ## Installation
 
 Create a new folder in `machines` for your individual machine.
@@ -208,8 +219,5 @@ To make the best out of this, you will want to adjust the defaults like user, lo
 - terminal: `kitty`
 - editor: `nvim`
 - timezone: `Europe/Berlin`
-
-### Additional Considerations
-
-- Hyprland can be configured to support your individual machines by adding a machine specific configuration at `./modules/common/home/desktop/hyprland/config/machine/<your-machine>.conf`
+- hostname: `nixos`
 
