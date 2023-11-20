@@ -73,6 +73,14 @@
         source = ../../../../../assets/svg;
         recursive = true;
       };
+      "isos/README.md" = {
+        text = ''
+          # Iso images
+
+          - store iso images here
+          - run `isos` to cd into this directory
+        '';
+      };
     };
     configFile = {
       nixpkgs = {

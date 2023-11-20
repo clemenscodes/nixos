@@ -8,6 +8,7 @@
     ./cliphist
     ./calcurse
     ./direnv
+    ./dconf
     ./email
     ./etcher
     ./firefox
