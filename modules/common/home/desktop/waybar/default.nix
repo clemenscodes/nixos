@@ -183,6 +183,8 @@
               inhibited-none = "<span> </span>";
             };
             return-type = "json"; 
+            tooltip = false;
+            exec-if = "which ${pkgs.swaynotificationcenter}/bin/swaync-client";
             exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
             on-click = "waybar-swaync";
             escape = true;
@@ -233,6 +235,7 @@
           tray = {
             icon-size = "24";
             spacing = 10;
+            interval = 1;
             show-passive-items = true;
           };
           backlight = {

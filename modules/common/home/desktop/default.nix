@@ -30,6 +30,7 @@
     ./swayimg
     ./swaylock
     ./swaync
+    ./udiskie
     ./waybar
     ./wlogout
     ./xdg
