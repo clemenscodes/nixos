@@ -71,12 +71,14 @@
             interval = 30;
             format = "{percentage_used}% 💾";
             tooltip-format = "{used}/{total} 💾";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.ncdu}/bin/ncdu";
             path = "/";
           };
           memory = {
             format = "{percentage}% 🧠";
             format-alt = "󰾅  {used}GB";
             tooltip-format = "{used:0.1f}G/{total:0.1f}GB  ";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
             interval = 30;
             tooltip = true;
           };
@@ -93,17 +95,20 @@
               "<span color='#ff9977'>▇</span>" # orange
               "<span color='#dd532e'>█</span>" # red
             ];
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
           };
           temperature = {
             critical-threshold = 80;
             format = "{temperatureC}°C {icon}  ";
             format-critical = "{temperatureC}°C 🔥  ";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
             format-icons = ["🌡️"];
           };
           "custom/nvidiagpuinfo" = {
             format = "{} 🌡️";
             exec = "nvidiagpuinfo";
             return-type = "json";
+            on-click = "nvidia-settings";
             interval = 5;
             tooltip = true;
           };
@@ -183,6 +188,8 @@
               inhibited-none = "<span> </span>";
             };
             return-type = "json"; 
+            tooltip = false;
+            exec-if = "which ${pkgs.swaynotificationcenter}/bin/swaync-client";
             exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
             on-click = "waybar-swaync";
             escape = true;
@@ -233,6 +240,7 @@
           tray = {
             icon-size = "24";
             spacing = 10;
+            interval = 1;
             show-passive-items = true;
           };
           backlight = {
@@ -266,6 +274,7 @@
             format = "{}";
             interval = 1;
             exec = "waybar-clock";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.calcurse}/bin/calcurse";
           };
         }
       ];
@@ -357,7 +366,7 @@
 
         #taskbar {
           ${defaultBackground}
-          margin: 0px 0px 12px 12px;
+          margin: 0px 6px 12px 6px;
           border-radius: 20px;
         }
 
