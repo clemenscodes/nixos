@@ -12,6 +12,7 @@
       (import ./waybar/waybar-reload { inherit pkgs; })
       (import ./waybar/waybar-clock { inherit pkgs; })
       (import ./waybar/waybar-powermenu { inherit pkgs; })
+      (import ./waybar/waybar-watch { inherit pkgs; })
       (import ./waybar/waybar-mail { inherit pkgs; })
     ];
   };
