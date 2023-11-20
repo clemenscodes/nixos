@@ -21,7 +21,7 @@
       };
       dotDir = ".config/zsh";
       shellAliases = with pkgs; {
-        update = "cd $HOME/.config/nixos && git pull";
+        update = "cd $XDG_CONFIG_HOME/nixos && git pull";
         switch = "update && sudo nixos-rebuild switch --flake ./#${machine}";
         ls = "${eza}/bin/eza";
         grep = "${ripgrep}/bin/rg";

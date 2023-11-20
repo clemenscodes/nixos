@@ -11,6 +11,7 @@
     ./fonts.nix
     ./xdg.nix
     ./gtk.nix
+    ./gnupg.nix
     ./hyprland.nix
     ./hardware.nix
     ./security.nix

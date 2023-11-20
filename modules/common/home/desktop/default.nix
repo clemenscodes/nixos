@@ -6,11 +6,13 @@
     ./btop
     ./cursor
     ./cliphist
+    ./calcurse
     ./direnv
     ./email
     ./firefox
     ./fzf
     ./gh
+    ./gpg
     ./git
     ./gtk
     ./hyprland
@@ -19,11 +21,13 @@
     ./lf
     ./mpv
     ./ncmpcpp
+    ./ncdu
     ./nm
     ./nvim
     ./qt
     ./rofi
     ./screenshots
+    ./obs-studio
     ./sops
     ./starship
     ./swayidle

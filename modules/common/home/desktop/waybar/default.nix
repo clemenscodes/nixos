@@ -269,6 +269,7 @@
             format = "{}";
             interval = 1;
             exec = "waybar-clock";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.calcurse}/bin/calcurse";
           };
         }
       ];
@@ -360,7 +361,7 @@
 
         #taskbar {
           ${defaultBackground}
-          margin: 0px 0px 12px 12px;
+          margin: 0px 6px 12px 6px;
           border-radius: 20px;
         }
 
