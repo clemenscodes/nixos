@@ -9,9 +9,13 @@
         isNormalUser = true; 
         description = "${user}"; 
 	group = "${user}";
-        extraGroups = [ "networkmanager" "wheel" ]; 
         shell = pkgs.zsh;
         hashedPasswordFile = config.sops.secrets.password.path;
+        extraGroups = [ 
+          "networkmanager" 
+          "wheel"
+          "libvirtd"
+        ]; 
       };
     };
   };

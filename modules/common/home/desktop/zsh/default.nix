@@ -30,6 +30,7 @@
         src = "omz reload";
         img = "cd $XDG_PICTURES_DIR";
         sss = "$XDG_PICTURES_DIR/screenshots";
+        isos = "$XDG_DATA_HOME/isos";
         rr = "cd $HOME/.local/src";
         D = "cd $XDG_DOWNLOAD_DIR";
       };
