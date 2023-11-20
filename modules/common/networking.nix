@@ -4,6 +4,7 @@
     firewall = {
       enable = true;
     };
+    useNetworkd = true;
     networkmanager = {
       enable = true;
       unmanaged = [

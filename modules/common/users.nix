@@ -15,6 +15,7 @@
           "networkmanager" 
           "wheel"
           "libvirtd"
+          "kvm"
         ]; 
       };
     };
