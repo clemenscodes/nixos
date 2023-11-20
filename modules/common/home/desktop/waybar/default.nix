@@ -71,12 +71,14 @@
             interval = 30;
             format = "{percentage_used}% 💾";
             tooltip-format = "{used}/{total} 💾";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.ncdu}/bin/ncdu";
             path = "/";
           };
           memory = {
             format = "{percentage}% 🧠";
             format-alt = "󰾅  {used}GB";
             tooltip-format = "{used:0.1f}G/{total:0.1f}GB  ";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
             interval = 30;
             tooltip = true;
           };
@@ -93,17 +95,20 @@
               "<span color='#ff9977'>▇</span>" # orange
               "<span color='#dd532e'>█</span>" # red
             ];
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
           };
           temperature = {
             critical-threshold = 80;
             format = "{temperatureC}°C {icon}  ";
             format-critical = "{temperatureC}°C 🔥  ";
+            on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
             format-icons = ["🌡️"];
           };
           "custom/nvidiagpuinfo" = {
             format = "{} 🌡️";
             exec = "nvidiagpuinfo";
             return-type = "json";
+            on-click = "nvidia-settings";
             interval = 5;
             tooltip = true;
           };

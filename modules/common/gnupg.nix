@@ -34,7 +34,6 @@ in
         gpg-agent = {
           listenStreams = 
           let
-            user = user;
             socketDir = pkgs.runCommand "gnupg-socketdir" {
               nativeBuildInputs = [ pkgs.python3 ];
             } ''
