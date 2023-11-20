@@ -99,21 +99,6 @@
                   hidden = true;
                 }; 
               };
-              "Amazon.com" = {
-                metadata = {
-                  hidden = true;
-                }; 
-              };
-              "Bing" = {
-                metadata = {
-                  hidden = true;
-                }; 
-              };
-              "eBay" = {
-                metadata = {
-                  hidden = true;
-                }; 
-              };
             };
           };
           settings = {
@@ -136,9 +121,7 @@
             "browser.aboutConfig.showWarning" = false;
             "browser.tabs.warnOnClose" = false;
             "browser.aboutHomeSnippets.updateUrl" = "";
-            "browser.bookmarks.showMobileBookmarks" = true;
-            "browser.places.importBookmarksHTML" = true;
-            "browser.tabs.loadBookmarksInBackground" = true;
+            "browser.bookmarks.showMobileBookmarks" = false;
             "browser.tabs.loadBookmarksInTabs" = false;
             "browser.toolbars.bookmarks.visibility" = "always";
             "browser.newtabpage.pinned" = [ { title = "NixOS"; url = "https://nixos.org"; } ];

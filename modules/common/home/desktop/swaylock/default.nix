@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   programs = {
     swaylock = {
       enable = true;
@@ -9,7 +9,6 @@
         clear-color = "b5bd68";
       in {
         clock = true;
-        daemonize = true;
         ignore-empty-password = true;
         indicator-caps-lock = true;
         show-failed-attemts = true;
@@ -20,7 +19,7 @@
         grace = 5;
         grace-no-mouse = true;
         grace-no-touch = true;
-        screenshot = true;
+        image = "${config.xdg.dataHome}/images/wallpaper/ring.jpeg";
         font = "Iosevka Nerd Font";
         effect-blur = "20x6";
         effect-vignette = "1:1";

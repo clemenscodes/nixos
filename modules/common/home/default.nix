@@ -18,6 +18,7 @@
           # Screenshots
           
           - This is the directory where screenshots will be saved by swappy
+          - run `sss to cd into this directory
         '';
       };
       ".local/src/README.md" = {

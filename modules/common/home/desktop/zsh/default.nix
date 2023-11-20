@@ -22,12 +22,14 @@
       dotDir = ".config/zsh";
       shellAliases = with pkgs; {
         update = "cd $XDG_CONFIG_HOME/nixos && git pull";
-        switch = "update && sudo nixos-rebuild switch --flake ./#${machine}";
+        sw = "update && sudo nixos-rebuild switch --flake ./#${machine}";
         ls = "${eza}/bin/eza";
         grep = "${ripgrep}/bin/rg";
         nd = "nix develop -c $SHELL";
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         src = "omz reload";
+        img = "cd $XDG_PICTURES_DIR";
+        sss = "$XDG_PICTURES_DIR/screenshots";
         rr = "cd $HOME/.local/src";
         D = "cd $XDG_DOWNLOAD_DIR";
       };
