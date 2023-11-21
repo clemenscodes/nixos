@@ -28,6 +28,8 @@
     ./nvim
     ./qt
     ./rofi
+    ./vhs
+    ./pup
     ./screenshots
     ./obs-studio
     ./sops

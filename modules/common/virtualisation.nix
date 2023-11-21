@@ -15,6 +15,9 @@
         ovmf = {
           enable = true;
         };
+        swtpm = {
+          enable = true;
+        };
         verbatimConfig = ''
           bridge_helper = "${pkgs.qemu}/libexec/qemu-bridge-helper"
         '';
