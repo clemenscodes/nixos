@@ -16,6 +16,7 @@
           "wheel"
           "libvirtd"
           "kvm"
+          "docker"
         ]; 
       };
     };
