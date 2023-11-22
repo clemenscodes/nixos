@@ -6,7 +6,6 @@
       wlr = {
         enable = true;
       };
-      xdgOpenUsePortal = true;
     };
   };
 }

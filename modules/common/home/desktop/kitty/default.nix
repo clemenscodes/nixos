@@ -14,6 +14,7 @@
         enable_audio_bell = false;
         shell = "zsh";
         confirm_os_window_close = 0;
+        open_url_with = "default";
         selection_background = "#${base00}";
         background = "#${background}";
         foreground = "#${foreground}";
