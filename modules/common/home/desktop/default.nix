@@ -17,6 +17,7 @@
     ./gpg
     ./git
     ./gtk
+    ./fonts
     ./hyprland
     ./hyprshade
     ./kitty

@@ -302,7 +302,7 @@
           margin: 0px;
           min-height: 0px;
           min-width: 0px;
-          font-family: "Hasklug Nerd Font Mono", sans-serif;
+          font-family: "Iosevka Nerd Font Mono";
           font-size: 16px;
         }
         
@@ -454,7 +454,7 @@
         #custom-notification,
         #custom-powermenu,
         #idle_inhibitor {
-          font-size: 28px;
+          font-size: 20px;
         }
 
         #custom-clock {

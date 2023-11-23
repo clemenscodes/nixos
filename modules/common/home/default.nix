@@ -29,6 +29,10 @@
           - run `rr` to cd into this directory
         '';
       };
+      ".local/share/fonts" = {
+        source = ../../../assets/fonts;
+        recursive = true;
+      };
     };
   };
 

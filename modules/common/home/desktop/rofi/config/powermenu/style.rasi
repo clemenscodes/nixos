@@ -1,10 +1,15 @@
 configuration {
-    show-icons:                 false;
+  show-icons:                 false;
+  /*---------- Vim Keybindings ----------*/
+  kb-row-up: "Up,k";
+  kb-row-down: "Down,j";
+  kb-row-right: "l";
+  kb-row-left: "h";
 }
 
 /*****----- Global Properties -----*****/
 * {
-  font: "JetBrains Nerd Font";
+  font: "FantasqueSansMono";
 }
 
 @import                          "../themes/catppuccin.rasi"
@@ -80,6 +85,7 @@ message {
     background-color:            @active;
     text-color:                  @background;
 }
+
 textbox {
     background-color:            inherit;
     text-color:                  inherit;
@@ -106,7 +112,6 @@ listview {
     cursor:                      "default";
 }
 
-/*****----- Elements -----*****/
 element {
     enabled:                     true;
     padding:                     40px 10px;
@@ -114,15 +119,17 @@ element {
     background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
+    font: 			 "FantasqueSansMono 20";
 }
+
 element-text {
-    font:                        "feather bold 32";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
+
 element selected.normal {
     background-color:            var(selected);
     text-color:                  var(background);

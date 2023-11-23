@@ -3,18 +3,18 @@
 pkgs.writeShellScriptBin "logoutlaunch" ''
   dir="$HOME/.config/rofi/powermenu"
   theme='style'
-
+ 
   lastlogin="`${pkgs.util-linux}/bin/last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
   uptime="`${pkgs.procps}/bin/uptime -p | sed -e 's/up //g'`"
   host=`${pkgs.hostname}/bin/hostname`
-  hibernate=''
-  shutdown=''
-  reboot=''
-  lock=''
-  suspend=''
-  logout=''
-  yes=''
-  no=''  
+  shutdown=""; 
+  reboot="";
+  hibernate="";
+  logout="";
+  lock="";
+  suspend='⏸︎'
+  yes='✓'
+  no='✗'  
   rofi_cmd() {
     ${pkgs.rofi-wayland}/bin/rofi -dmenu \
       -p "  $USER@$host" \
@@ -30,7 +30,7 @@ pkgs.writeShellScriptBin "logoutlaunch" ''
       -theme-str 'textbox {horizontal-align: 0.5;}' \
       -dmenu \
       -p 'Confirmation' \
-      -mesg 'Are you Sure?' \
+      -mesg 'Are you sure?' \
       -theme ''${dir}/''${theme}.rasi
   }
   

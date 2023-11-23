@@ -29,7 +29,7 @@ configuration {
   /*---------- Run settings ----------*/
   run-command: "{cmd}";
   run-list-command: "";
-  run-shell-command: "{terminal} -e {cmd}";
+  run-shell-command: "{terminal} {cmd}";
   
   /*---------- Fallback Icon ----------*/
   run,drun {
@@ -54,8 +54,6 @@ configuration {
   display-window: "";
 
   /*---------- Misc setting ----------*/
-  font: "JetBrains Nerd Font";
-  terminal: "kitty";
   icon-theme: "Papirus-Dark";
   show-icons: true;
   sort: false;
@@ -75,7 +73,13 @@ configuration {
   }
 
   /*---------- Keybindings ----------*/
-/*
+  kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+  kb-row-down: "Down,Control+j";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-remove-to-eol: "Control+Shift+e";
+  kb-mode-next: "Shift+Right,Control+Tab,Control+l";
+  kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
+  kb-remove-char-back: "BackSpace";
   kb-primary-paste: "Control+V,Shift+Insert";
   kb-secondary-paste: "Control+v,Insert";
   kb-clear-line: "Control+w";
@@ -88,20 +92,12 @@ configuration {
   kb-remove-word-back: "Control+Alt+h,Control+BackSpace";
   kb-remove-word-forward: "Control+Alt+d";
   kb-remove-char-forward: "Delete,Control+d";
-  kb-remove-char-back: "BackSpace,Shift+BackSpace,Control+h";
-  kb-remove-to-eol: "Control+k";
   kb-remove-to-sol: "Control+u";
-  kb-accept-entry: "Control+j,Control+m,Return,KP_Enter";
   kb-accept-custom: "Control+Return";
   kb-accept-custom-alt: "Control+Shift+Return";
   kb-accept-alt: "Shift+Return";
   kb-delete-entry: "Shift+Delete";
-  kb-mode-next: "Shift+Right,Control+Tab";
-  kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";
-  kb-mode-complete: "Control+l";
-  kb-row-left: "Control+Page_Up";
-  kb-row-right: "Control+Page_Down";
-  kb-row-down: "Down,Control+n";
+  kb-mode-complete: "Control+0";
   kb-page-prev: "Page_Up";
   kb-page-next: "Page_Down";
   kb-row-first: "Home,KP_Home";
@@ -148,7 +144,6 @@ configuration {
   me-select-entry: "MousePrimary";
   me-accept-entry: "MouseDPrimary";
   me-accept-custom: "Control+MouseDPrimary";
-*/
 }
 
 @theme "themes/catppuccin-macchiato"
