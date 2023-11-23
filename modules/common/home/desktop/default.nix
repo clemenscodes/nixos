@@ -17,18 +17,24 @@
     ./gpg
     ./git
     ./gtk
+    ./fonts
     ./hyprland
     ./hyprshade
     ./kitty
     ./lf
     ./mpv
+    ./mpris
     ./ncmpcpp
     ./ncdu
     ./nm
     ./nvim
     ./qt
     ./rofi
+    ./vhs
+    ./pup
     ./screenshots
+    ./spotdl
+    ./transgui
     ./obs-studio
     ./sops
     ./ssh
@@ -39,7 +45,6 @@
     ./swaync
     ./udiskie
     ./waybar
-    ./wlogout
     ./xdg
     ./zathura
     ./zsh

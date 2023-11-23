@@ -5,6 +5,14 @@
         source = ./config;
         recursive = true;
       };
+      "rofi/themes" = {
+        source = ./config/themes;
+        recursive = true;
+      };
+      "rofi/powermenu" = {
+        source = ./config/powermenu;
+        recursive = true;
+      };
     };
   };
   programs = {
@@ -12,8 +20,8 @@
       enable = true;
       package = pkgs.rofi-wayland;
       terminal = "${pkgs.kitty}/bin/kitty";
-      plugins = [];
       font = "Iosevka Nerd Font 14";
+      plugins = [];
       extraConfig = {};
     };
   };
