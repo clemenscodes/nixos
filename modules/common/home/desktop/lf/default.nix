@@ -14,10 +14,16 @@
   home = {
     packages = with pkgs; [
       file
+      exiftool
+      colordiff
+      fontforge
       ffmpeg
       ffmpegthumbnailer
+      transmission
       poppler_utils
       jq
+      libreoffice
+      chafa
       gnupg
       imagemagick_light
       atool
@@ -32,6 +38,7 @@
         hidden = true;
         icons = true;
         preview = true;
+        sixel = true;
         ignorecase = true;
         drawbox = true;
         ifs = ''\n'';

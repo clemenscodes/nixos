@@ -1,7 +1,8 @@
 { pkgs, ...}: {
   fonts = {
     packages = with pkgs; [ 
-      (nerdfonts.override { fonts = [ "Iosevka" ]; })
+      nerdfonts
+      # (nerdfonts.override { fonts = [ "Iosevka" ]; })
     ];
     fontconfig = {
       defaultFonts = {

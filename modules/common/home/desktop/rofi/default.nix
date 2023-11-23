@@ -9,6 +9,10 @@
         source = ./config/themes;
         recursive = true;
       };
+      "rofi/powermenu" = {
+        source = ./config/powermenu;
+        recursive = true;
+      };
     };
   };
   programs = {

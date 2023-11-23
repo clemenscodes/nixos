@@ -22,6 +22,7 @@
     ./kitty
     ./lf
     ./mpv
+    ./mpris
     ./ncmpcpp
     ./ncdu
     ./nm
@@ -31,6 +32,8 @@
     ./vhs
     ./pup
     ./screenshots
+    ./spotdl
+    ./transgui
     ./obs-studio
     ./sops
     ./ssh
@@ -41,7 +44,6 @@
     ./swaync
     ./udiskie
     ./waybar
-    ./wlogout
     ./xdg
     ./zathura
     ./zsh

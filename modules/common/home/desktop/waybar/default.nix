@@ -19,7 +19,7 @@
       [
         {
           inherit height;
-          layer = "top";
+          layer = "bottom";
           position = "top";
           name = "topBar";
           modules-left = [ 
@@ -43,7 +43,7 @@
             on-click = "activate";
             on-click-right = "close";
             disable-scroll = true;
-            format = "  -> {id}";
+            format = " -> {id}";
           };
           mpd = {
             format = "⸨{songPosition}|{queueLength}⸩ {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) 🎵";
@@ -132,8 +132,8 @@
             format-icons = [" " " " " " " " " "];
           };
           "custom/powermenu" = {
-            format = " ";
-            on-click = "wlogout";
+            format = "";
+            on-click = "logoutlaunch";
             exec = "waybar-powermenu";
             tooltip = false;
           };
@@ -141,7 +141,7 @@
         {
           inherit height;
           name = "bottomBar";
-          layer = "top";
+          layer = "bottom";
           position = "bottom";
           modules-left = [ 
             "image#logo" 
@@ -178,14 +178,14 @@
           "custom/notification" = {
             format = "{icon}";
             format-icons = {
-              notification = "<span foreground='red'> </span>";
-              none = "<span> </span>";
-              dnd-notification = "<span foreground='red'> </span>";
-              dnd-none = "<spa🎧n> </span>";
-              dnd-inhibited-notification = "<span foreground='red'> </span>";
-              dnd-inhibited-none = "<span> </span>";
-              inhibited-notification = "<span foreground='red'> </span>";
-              inhibited-none = "<span> </span>";
+              notification = "<span foreground='red'></span>";
+              none = "<span></span>";
+              dnd-notification = "<span foreground='red'></span>";
+              dnd-none = "<span></span>";
+              dnd-inhibited-notification = "<span foreground='red'></span>";
+              dnd-inhibited-none = "<span></span>";
+              inhibited-notification = "<span foreground='red'></span>";
+              inhibited-none = "<span></span>";
             };
             return-type = "json"; 
             tooltip = false;
@@ -231,7 +231,7 @@
             };
           };
           idle_inhibitor = {
-            format = "{icon} ";
+            format = "{icon}";
             format-icons = {
               activated = ""; 
               deactivated = "";
@@ -302,7 +302,7 @@
           margin: 0px;
           min-height: 0px;
           min-width: 0px;
-          font-family: "Iosevka Nerd Font", sans-serif;
+          font-family: "Hasklug Nerd Font Mono", sans-serif;
           font-size: 16px;
         }
         
@@ -448,6 +448,13 @@
         #pulseaudio.mic,
         #custom-clock {
           margin: 0px 4px ${defaultMargin} 4px;
+        }
+
+        
+        #custom-notification,
+        #custom-powermenu,
+        #idle_inhibitor {
+          font-size: 28px;
         }
 
         #custom-clock {
