@@ -454,7 +454,8 @@
         #custom-notification,
         #custom-powermenu,
         #idle_inhibitor {
-          font-size: 20px;
+          padding: 0px 12px;
+          font-size: 28px;
         }
 
         #custom-clock {

@@ -9,7 +9,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-  font: "FantasqueSansMono";
+  font: "Iosevka Nerd Font";
 }
 
 @import                          "../themes/catppuccin.rasi"
