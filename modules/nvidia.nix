@@ -32,6 +32,7 @@
       loginShellInit = ''
         export GDK_BACKEND=wayland,x11
         export GBM_BACKEND=nvidia-drm
+	export XDG_SESSION_TYPE=wayland
         export SDL_VIDEODRIVER=wayland
         export CLUTTER_BACKEND=wayland
         export __GLX_VENDOR_LIBRARY_NAME=nvidia
