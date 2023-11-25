@@ -1,8 +1,10 @@
 { pkgs, ... }: {
+
   environment = {
     systemPackages = [
       (import ./detectidle { inherit pkgs; })
       (import ./nvidiagpuinfo { inherit pkgs; })
+      (import ./lockout { inherit pkgs; })
       (import ./signout { inherit pkgs; })
       (import ./setupsops { inherit pkgs; })
       (import ./screenshot { inherit pkgs; })
