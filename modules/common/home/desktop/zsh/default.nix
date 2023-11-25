@@ -27,6 +27,8 @@
         grep = "${ripgrep}/bin/rg";
         nd = "nix develop -c $SHELL";
         ne = "cd $NIX_CONFIG_HOME && lfcd";
+        nedesk = "cd $NIX_CONFIG_HOME/modules/common/home/desktop && lfcd";
+        nenvim = "cd $NIX_CONFIG_HOME/modules/common/home/desktop/nvim && lfcd";
         src = "omz reload";
         img = "cd $XDG_PICTURES_DIR";
         sss = "$XDG_PICTURES_DIR/screenshots";
