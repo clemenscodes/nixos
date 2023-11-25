@@ -13,7 +13,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  "folke/which-key.nvim",
-  "folke/neodev.nvim",
-})
+local opts = {
+    defaults = {
+        lazy = true
+    },
+}
+
+require("lazy").setup('plugins', opts)
