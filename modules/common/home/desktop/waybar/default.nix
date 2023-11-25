@@ -19,7 +19,7 @@
       [
         {
           inherit height;
-          layer = "bottom";
+          layer = "top";
           position = "top";
           name = "topBar";
           modules-left = [ 
@@ -141,7 +141,7 @@
         {
           inherit height;
           name = "bottomBar";
-          layer = "bottom";
+          layer = "top";
           position = "bottom";
           modules-left = [ 
             "image#logo" 
