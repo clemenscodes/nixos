@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+  home = {
+    packages = with pkgs; [
+      python3
+      jdt-language-server
+    ];
+  };
   xdg = {
     configFile = {
       nvim = {
@@ -53,6 +59,7 @@
         luajitPackages.luarocks
         zulu
         julia
+        java-language-server
       ];
     };
   };
