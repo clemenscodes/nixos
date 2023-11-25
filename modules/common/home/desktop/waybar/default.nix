@@ -133,7 +133,7 @@
           };
           "custom/powermenu" = {
             format = "";
-            on-click = "logoutlaunch";
+            on-click = "sleep 0.1 && logoutlaunch";
             exec = "waybar-powermenu";
             tooltip = false;
           };
@@ -454,7 +454,8 @@
         #custom-notification,
         #custom-powermenu,
         #idle_inhibitor {
-          font-size: 20px;
+          padding: 0px 12px;
+          font-size: 28px;
         }
 
         #custom-clock {

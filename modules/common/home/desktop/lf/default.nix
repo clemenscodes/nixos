@@ -14,7 +14,6 @@
   home = {
     packages = with pkgs; [
       file
-      exiftool
       colordiff
       fontforge
       ffmpeg
@@ -22,7 +21,6 @@
       transmission
       poppler_utils
       jq
-      libreoffice
       chafa
       gnupg
       imagemagick_light
