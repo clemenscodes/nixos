@@ -33,6 +33,7 @@
       withNodeJs = true;
       withRuby = true;
       withPython3 = true;
+      extraPython3Packages = ps: with ps; [ pip ];
       extraPackages = with pkgs; [
         nodejs
         eza
@@ -53,7 +54,6 @@
         zulu
         julia
       ];
-      extraPython3Packages = ps: with ps; [ pip ];
     };
   };
 }
