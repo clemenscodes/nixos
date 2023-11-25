@@ -133,7 +133,7 @@
           };
           "custom/powermenu" = {
             format = "";
-            on-click = "logoutlaunch";
+            on-click = "sleep 0.1 && logoutlaunch";
             exec = "waybar-powermenu";
             tooltip = false;
           };
