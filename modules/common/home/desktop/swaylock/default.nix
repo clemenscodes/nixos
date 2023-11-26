@@ -1,9 +1,13 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs = {
     swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;
-      settings = let 
+      settings = let
         inside-color = "1d1f21";
         text-color = "81a2be";
         clear-color = "b5bd68";

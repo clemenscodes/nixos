@@ -1,27 +1,26 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellScriptBin "logoutlaunch" ''
   dir="$HOME/.config/rofi/powermenu"
   theme='style'
- 
+
   lastlogin="`${pkgs.util-linux}/bin/last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
   uptime="`${pkgs.procps}/bin/uptime -p | sed -e 's/up //g'`"
   host=`${pkgs.hostname}/bin/hostname`
-  shutdown=""; 
+  shutdown="";
   reboot="";
   hibernate="";
   logout="";
   lock="";
   suspend='⏸︎'
   yes='✓'
-  no='✗'  
+  no='✗'
   rofi_cmd() {
     ${pkgs.rofi-wayland}/bin/rofi -dmenu \
       -p "  $USER@$host" \
       -mesg "  Uptime: $uptime" \
       -theme ''${dir}/''${theme}.rasi
   }
-  
+
   confirm_cmd() {
     ${pkgs.rofi-wayland}/bin/rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
       -theme-str 'mainbox {orientation: vertical; children: [ "message", "listview" ];}' \
@@ -33,15 +32,15 @@ pkgs.writeShellScriptBin "logoutlaunch" ''
       -mesg 'Are you sure?' \
       -theme ''${dir}/''${theme}.rasi
   }
-  
+
   confirm_exit() {
     echo -e "$yes\n$no" | confirm_cmd
   }
-  
+
   run_rofi() {
     echo -e "$lock\n$suspend\n$logout\n$hibernate\n$reboot\n$shutdown" | rofi_cmd
   }
-  
+
   run_cmd() {
     selected="$(confirm_exit)"
     if [[ "$selected" == "$yes" ]]; then
@@ -62,9 +61,9 @@ pkgs.writeShellScriptBin "logoutlaunch" ''
       exit 0
     fi
   }
-  
+
   chosen="$(run_rofi)"
-  
+
   case ''${chosen} in
     $shutdown) run_cmd --shutdown ;;
     $reboot) run_cmd --reboot ;;

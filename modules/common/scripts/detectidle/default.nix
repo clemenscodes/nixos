@@ -1,5 +1,4 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellScriptBin "detectidle" ''
   ${pkgs.swayidle}/bin/swayidle -w \
     timeout 240 '${pkgs.libnotify}/bin/notify-send "Idle! locking soon..."' \

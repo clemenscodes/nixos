@@ -1,4 +1,9 @@
-{ pkgs, config, editor, ... }: {
+{
+  pkgs,
+  config,
+  editor,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       gitflow

@@ -1,8 +1,8 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs = {
     mpv = with pkgs; {
       enable = true;
-      package = (mpv.override { scripts = [ mpvScripts.mpris ]; });
+      package = mpv.override {scripts = [mpvScripts.mpris];};
       bindings = {
         l = "seek 5";
         h = "seek -5";

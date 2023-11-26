@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   hardware = {
     pulseaudio = {
       enable = false;

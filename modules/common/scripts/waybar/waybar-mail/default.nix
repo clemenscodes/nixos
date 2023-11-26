@@ -1,5 +1,4 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellScriptBin "waybar-mail" ''
 
   mail=$(echo)
@@ -13,4 +12,3 @@ pkgs.writeShellScriptBin "waybar-mail" ''
   echo $tooltip
   echo $class
 ''
-

@@ -1,4 +1,8 @@
-{ themes, locale, ... }: {
+{
+  themes,
+  locale,
+  ...
+}: {
   console = {
     earlySetup = true;
     keyMap = locale;

@@ -1,18 +1,22 @@
-{ config, hostname, ... }: {
+{
+  config,
+  hostname,
+  ...
+}: {
   networking = {
     hostName = hostname;
     firewall = {
       enable = true;
     };
     nameservers = [
-    	"1.1.1.1"
-    	"8.8.4.4"
+      "1.1.1.1"
+      "8.8.4.4"
     ];
     networkmanager = {
       enable = true;
       unmanaged = [
-        "*" 
-        "except:type:wwan" 
+        "*"
+        "except:type:wwan"
         "except:type:wifi"
         "except:type:ethernet"
       ];

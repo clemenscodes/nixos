@@ -1,11 +1,13 @@
-{ locale, lib, ... }:
-let
-  utfLocale = "${locale}_${lib.toUpper locale}.UTF-8";
-in
 {
-  i18n = { 
+  locale,
+  lib,
+  ...
+}: let
+  utfLocale = "${locale}_${lib.toUpper locale}.UTF-8";
+in {
+  i18n = {
     defaultLocale = utfLocale;
-    extraLocaleSettings = { 
+    extraLocaleSettings = {
       LC_ADDRESS = utfLocale;
       LC_IDENTIFICATION = utfLocale;
       LC_MEASUREMENT = utfLocale;
@@ -17,4 +19,4 @@ in
       LC_TIME = utfLocale;
     };
   };
-} 
+}

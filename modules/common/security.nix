@@ -1,4 +1,4 @@
-{ user, ... }: {
+{user, ...}: {
   security = {
     rtkit = {
       enable = true;
@@ -17,13 +17,13 @@
       };
     };
     sudo = {
-      extraRules= [
-        { 
-          users = [ "${user}" ];
+      extraRules = [
+        {
+          users = ["${user}"];
           commands = [
-            { 
-              command = "ALL" ;
-              options= [ "NOPASSWD" "SETENV" ];
+            {
+              command = "ALL";
+              options = ["NOPASSWD" "SETENV"];
             }
           ];
         }

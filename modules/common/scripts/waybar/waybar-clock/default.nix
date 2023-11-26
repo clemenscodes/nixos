@@ -1,10 +1,9 @@
-{ pkgs }: 
-
+{pkgs}:
 pkgs.writeShellScriptBin "waybar-clock" ''
   clock=$(${pkgs.toybox}/bin/date '+%I')
   tooltip=$(echo)
   class=$(echo "clock")
-  
+
   case "$clock" in
   	"00") icon="🕛" ;;
   	"01") icon="🕐" ;;
@@ -20,9 +19,8 @@ pkgs.writeShellScriptBin "waybar-clock" ''
   	"11") icon="🕚" ;;
   	"12") icon="🕛" ;;
   esac
-  
+
   ${pkgs.toybox}/bin/date "+%R $icon"
   echo $tooltip
   echo $class
 ''
-

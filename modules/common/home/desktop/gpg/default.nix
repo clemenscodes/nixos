@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   services = {
     gpg-agent = {
       enable = true;

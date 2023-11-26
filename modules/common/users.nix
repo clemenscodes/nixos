@@ -1,4 +1,9 @@
-{ config, pkgs, user, ... }: {
+{
+  config,
+  pkgs,
+  user,
+  ...
+}: {
   users = {
     defaultUserShell = pkgs.zsh;
     groups = {
@@ -6,18 +11,18 @@
     };
     users = {
       ${user} = {
-        isNormalUser = true; 
-        description = "${user}"; 
-	group = "${user}";
+        isNormalUser = true;
+        description = "${user}";
+        group = "${user}";
         shell = pkgs.zsh;
         hashedPasswordFile = config.sops.secrets.password.path;
-        extraGroups = [ 
-          "networkmanager" 
+        extraGroups = [
+          "networkmanager"
           "wheel"
           "libvirtd"
           "kvm"
           "docker"
-        ]; 
+        ];
       };
     };
   };

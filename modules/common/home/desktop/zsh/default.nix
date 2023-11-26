@@ -1,4 +1,9 @@
-{ pkgs, config, machine, ... }: {
+{
+  pkgs,
+  config,
+  machine,
+  ...
+}: {
   programs = {
     zsh = {
       enable = true;
@@ -11,7 +16,7 @@
       completionInit = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [ 
+        plugins = [
           "git"
           "git-flow"
           "systemd"
@@ -37,7 +42,7 @@
         D = "cd $XDG_DOWNLOAD_DIR";
       };
       history = {
-        path =  "${config.xdg.dataHome}/zsh/zsh_history";
+        path = "${config.xdg.dataHome}/zsh/zsh_history";
       };
       historySubstringSearch = {
         enable = true;
@@ -65,8 +70,8 @@
             echo -ne "\e[5 q"
         }
         zle -N zle-line-init
-        echo -ne '\e[5 q' 
-        preexec() { echo -ne '\e[5 q' ;} 
+        echo -ne '\e[5 q'
+        preexec() { echo -ne '\e[5 q' ;}
         lfcd () {
             tmp="$(mktemp -uq)"
             trap 'rm -f $tmp >/dev/null 2>&1' HUP INT QUIT TERM PWR EXIT

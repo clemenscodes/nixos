@@ -1,35 +1,35 @@
-{ user, ... }: {
+{user, ...}: {
   xdg = {
     enable = true;
     mimeApps = {
       enable = true;
       associations = {
         added = {
-          "x-scheme-handler/http" = [ "firefox.desktop" ];
-          "x-scheme-handler/https" = [ "firefox.desktop" ];
-          "x-scheme-handler/chrome" = [ "firefox.desktop" ];
-          "text/html" = [ "firefox.desktop" ];
-          "application/x-extension-htm" = [ "firefox.desktop" ];
-          "application/x-extension-html" = [ "firefox.desktop" ];
-          "application/x-extension-shtml" = [ "firefox.desktop" ];
-          "application/xhtml+xml" = [ "firefox.desktop" ];
-          "application/x-extension-xhtml" = [ "firefox.desktop" ];
-          "application/x-extension-xht" = [ "firefox.desktop" ];
+          "x-scheme-handler/http" = ["firefox.desktop"];
+          "x-scheme-handler/https" = ["firefox.desktop"];
+          "x-scheme-handler/chrome" = ["firefox.desktop"];
+          "text/html" = ["firefox.desktop"];
+          "application/x-extension-htm" = ["firefox.desktop"];
+          "application/x-extension-html" = ["firefox.desktop"];
+          "application/x-extension-shtml" = ["firefox.desktop"];
+          "application/xhtml+xml" = ["firefox.desktop"];
+          "application/x-extension-xhtml" = ["firefox.desktop"];
+          "application/x-extension-xht" = ["firefox.desktop"];
         };
         removed = {};
       };
       defaultApplications = {
-        "application/pdf" = [ "zathura.desktop" ];
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
-        "x-scheme-handler/chrome" = [ "firefox.desktop" ];
-        "text/html" = [ "firefox.desktop" ];
-        "application/x-extension-htm" = [ "firefox.desktop" ];
-        "application/x-extension-html" = [ "firefox.desktop" ];
-        "application/x-extension-shtml" = [ "firefox.desktop" ];
-        "application/xhtml+xml" = [ "firefox.desktop" ];
-        "application/x-extension-xhtml" = [ "firefox.desktop" ];
-        "application/x-extension-xht" = [ "firefox.desktop" ];
+        "application/pdf" = ["zathura.desktop"];
+        "x-scheme-handler/http" = ["firefox.desktop"];
+        "x-scheme-handler/https" = ["firefox.desktop"];
+        "x-scheme-handler/chrome" = ["firefox.desktop"];
+        "text/html" = ["firefox.desktop"];
+        "application/x-extension-htm" = ["firefox.desktop"];
+        "application/x-extension-html" = ["firefox.desktop"];
+        "application/x-extension-shtml" = ["firefox.desktop"];
+        "application/xhtml+xml" = ["firefox.desktop"];
+        "application/x-extension-xhtml" = ["firefox.desktop"];
+        "application/x-extension-xht" = ["firefox.desktop"];
       };
     };
     desktopEntries = {
@@ -39,17 +39,15 @@
         exec = "firefox %U";
         icon = "firefox";
         terminal = false;
-        categories = [ "Application" "Network" "WebBrowser" ];
-        mimeType = [ "text/html" "text/xml" ];
+        categories = ["Application" "Network" "WebBrowser"];
+        mimeType = ["text/html" "text/xml"];
       };
     };
-    userDirs = 
-      let 
-        home = "/home/${user}";
-        local = "${home}/.local";
-        config = "${home}/.config";
-      in
-    {
+    userDirs = let
+      home = "/home/${user}";
+      local = "${home}/.local";
+      config = "${home}/.config";
+    in {
       enable = true;
       createDirectories = true;
       music = "${config}/mpd/music";

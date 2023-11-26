@@ -38,16 +38,24 @@
         };
       };
     };
+    alejandra = {
+      url = "github:kamadorueda/alejandra/3.0.0";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
   };
 
-  outputs = inputs @ 
-    { nixpkgs
-    , home-manager
-    , hyprland
-    , nur
-    , ... 
-  }:
-  let
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    hyprland,
+    nur,
+    alejandra,
+    ...
+  }: let
     user = "clay";
     locale = "de";
     terminal = "kitty";
@@ -55,26 +63,29 @@
     editor = "nvim";
     timezone = "Europe/Berlin";
     hostname = "nixos";
-  in 
-  {
+  in {
     nixosConfigurations = (
       import ./machines {
         inherit (nixpkgs) lib;
-        inherit 
-          inputs 
-          nixpkgs 
-          home-manager 
-          hyprland 
-          nur 
-          user 
-          locale 
-          terminal 
-          browser 
+        inherit
+          inputs
+          nixpkgs
+          home-manager
+          hyprland
+          nur
+          alejandra
+          user
+          locale
+          terminal
+          browser
           editor
           timezone
           hostname
-        ;
+          ;
       }
     );
+    formatter = {
+      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    };
   };
 }

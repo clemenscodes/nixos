@@ -1,4 +1,8 @@
-{ editor, browser, ... }: {
+{
+  editor,
+  browser,
+  ...
+}: {
   programs = {
     gh = {
       enable = true;

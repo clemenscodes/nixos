@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs = {
     starship = {
       enable = true;
@@ -45,8 +45,8 @@
           renamed = " 📛 <!= \${count}";
           deleted = " 🗑️ <!= \${count}";
         };
-      	battery = {
-      	  full_symbol = "🔋";
+        battery = {
+          full_symbol = "🔋";
           charging_symbol = "🔌";
           discharging_symbol = "⚡";
         };
@@ -54,4 +54,3 @@
     };
   };
 }
-

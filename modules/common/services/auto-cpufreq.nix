@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   systemd = {
     packages = with pkgs; [
       auto-cpufreq

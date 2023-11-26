@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
       hyprshade
@@ -11,7 +11,7 @@
           [[shades]]
           name = "vibrance"
           default = true
-          
+
           [[shades]]
           name = "blue-light-filter"
           start_time = 19:00:00

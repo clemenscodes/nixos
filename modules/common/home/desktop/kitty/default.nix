@@ -1,4 +1,4 @@
-{ themes, ... }: {
+{themes, ...}: {
   programs = {
     kitty = {
       enable = true;

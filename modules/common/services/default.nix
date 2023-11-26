@@ -1,5 +1,5 @@
-{ ... }: { 
-  imports = [ 
+{...}: {
+  imports = [
     ./sddm
     ./bluetooth.nix
     ./sound.nix
