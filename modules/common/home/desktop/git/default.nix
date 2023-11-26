@@ -5,6 +5,9 @@
     ];
   };
   programs = {
+    lazygit = {
+      enable = true;
+    };
     git = {
       enable = true;
       userName = "Clemens Horn";
