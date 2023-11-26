@@ -46,7 +46,7 @@
             on-click = "activate";
             on-click-right = "close";
             disable-scroll = true;
-            format = " -> {id}";
+            format = "-> {id}";
           };
           mpd = {
             format = "⸨{songPosition}|{queueLength}⸩ {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) 🎵";
@@ -124,7 +124,7 @@
           };
           battery = {
             states = {
-              good = 95;
+              good = 60;
               warning = 30;
               critical = 15;
             };
@@ -132,7 +132,7 @@
             format-charging = "{capacity}% ⚡";
             format-plugged = "{capacity}% 🔌";
             format-alt = "{time} {icon}";
-            format-icons = [" " " " " " " " " "];
+            format-icons = ["💀" "🪫" "🔋" ];
           };
           "custom/powermenu" = {
             format = "";

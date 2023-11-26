@@ -3,6 +3,7 @@
     systemPackages = [
       (import ./detectidle {inherit pkgs;})
       (import ./nvidiagpuinfo {inherit pkgs;})
+      (import ./lidhandle {inherit pkgs;})
       (import ./lockout {inherit pkgs;})
       (import ./signout {inherit pkgs;})
       (import ./setupsops {inherit pkgs;})

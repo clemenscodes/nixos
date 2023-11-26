@@ -24,6 +24,9 @@
           "code"
           "vscode"
           "idea-ultimate"
+          "steam"
+          "steam-original"
+          "steam-run"
         ];
       permittedInsecurePackages = [
         "electron-19.1.9"
