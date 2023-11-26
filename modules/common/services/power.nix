@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   services = {
     logind = {
-      lidSwitch = "suspend";
+      lidSwitch = "ignore";
+      lidSwitchDocked = "ignore";
       powerKey = "ignore";
     };
   };
