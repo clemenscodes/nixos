@@ -1,0 +1,10 @@
+{...}: {
+  programs = {
+    nixvim = {
+      globals = {
+        mapleader = " ";
+      };
+    };
+  };
+}
+
