@@ -27,7 +27,7 @@
     ./ncmpcpp
     ./ncdu
     ./nm
-    ./nvim
+    ./nixvim
     ./qt
     ./rofi
     ./vhs
