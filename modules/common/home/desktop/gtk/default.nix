@@ -1,11 +1,13 @@
-{ pkgs, user, ... }: 
-  let
-    iconTheme = pkgs.catppuccin-papirus-folders.override {
-      flavor = "macchiato";
-      accent = "blue";
-    };
-  in 
 {
+  pkgs,
+  user,
+  ...
+}: let
+  iconTheme = pkgs.catppuccin-papirus-folders.override {
+    flavor = "macchiato";
+    accent = "blue";
+  };
+in {
   home = {
     packages = with pkgs; [
       libsForQt5.breeze-icons
@@ -14,7 +16,7 @@
     file = {
       ".icons/Papirus-Dark" = {
         source = "${iconTheme}/share/icons/Papirus-Dark";
-       }; 
+      };
       ".local/share/.icons/Papirus-Dark" = {
         source = "${iconTheme}/share/icons/Papirus-Dark";
       };
@@ -32,15 +34,15 @@
     };
     theme = {
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ]; 
+        accents = ["blue"];
         size = "standard";
-        tweaks = [ "normal" ]; 
+        tweaks = ["normal"];
         variant = "macchiato";
       };
       name = "Catppuccin-Macchiato-Standard-Blue-Dark";
     };
     font = {
-      package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
+      package = pkgs.nerdfonts.override {fonts = ["Iosevka"];};
       name = "Iosevka Nerd Font";
       size = 12;
     };

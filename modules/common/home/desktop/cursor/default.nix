@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home = {
     pointerCursor = {
       name = "Catppuccin-Macchiato-Blue-Cursors";

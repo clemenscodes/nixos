@@ -1,4 +1,9 @@
-{ pkgs, user, terminal, ... }: {
+{
+  pkgs,
+  user,
+  terminal,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       libappindicator-gtk3
@@ -11,18 +16,16 @@
       systemd = {
         enable = false;
       };
-      settings =
-        let
-          height = 48;
-          max-volume = 150;
-        in
-      [
+      settings = let
+        height = 48;
+        max-volume = 150;
+      in [
         {
           inherit height;
           layer = "top";
           position = "top";
           name = "topBar";
-          modules-left = [ 
+          modules-left = [
             "hyprland/workspaces"
           ];
           modules-center = [
@@ -143,14 +146,14 @@
           name = "bottomBar";
           layer = "top";
           position = "bottom";
-          modules-left = [ 
-            "image#logo" 
+          modules-left = [
+            "image#logo"
             "wlr/taskbar"
           ];
-          modules-center = [ 
+          modules-center = [
             "privacy"
           ];
-          modules-right = [ 
+          modules-right = [
             "custom/notification"
             "idle_inhibitor"
             "tray"
@@ -187,7 +190,7 @@
               inhibited-notification = "<span foreground='red'></span>";
               inhibited-none = "<span></span>";
             };
-            return-type = "json"; 
+            return-type = "json";
             tooltip = false;
             exec-if = "which ${pkgs.swaynotificationcenter}/bin/swaync-client";
             exec = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
@@ -196,33 +199,33 @@
           };
           privacy = {
             icon-spacing = 4;
-	    icon-size = 18;
-	    transition-duration = 250;
-	    modules = [
-	      {
-	      	type = "screenshare";
-	      	tooltip = true;
-	      	tooltip-icon-size = 24;
-	      }
-	      {
-	      	type = "audio-out";
-	      	tooltip = true;
-	      	tooltip-icon-size = 24;
-	      }
-	      {
-	      	type = "audio-in";
-	      	tooltip = true;
-	      	tooltip-icon-size = 24;
-	      }
-	    ];
+            icon-size = 18;
+            transition-duration = 250;
+            modules = [
+              {
+                type = "screenshare";
+                tooltip = true;
+                tooltip-icon-size = 24;
+              }
+              {
+                type = "audio-out";
+                tooltip = true;
+                tooltip-icon-size = 24;
+              }
+              {
+                type = "audio-in";
+                tooltip = true;
+                tooltip-icon-size = 24;
+              }
+            ];
           };
           "custom/idle" = {
             format = "{icon}";
-            exec = "${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
-            exec-if = "which ${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit";
+            exec = "${import ../sway-audio-idle-inhibit {inherit pkgs;}}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
+            exec-if = "which ${import ../sway-audio-idle-inhibit {inherit pkgs;}}/bin/sway-audio-idle-inhibit";
             format-alt = "";
             return-type = "json";
-            on-click = "${import ../sway-audio-idle-inhibit {inherit pkgs; }}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
+            on-click = "${import ../sway-audio-idle-inhibit {inherit pkgs;}}/bin/sway-audio-idle-inhibit --dry-print-both-waybar";
             format-icons = {
               output = "🎧";
               input = "🎙️";
@@ -233,7 +236,7 @@
           idle_inhibitor = {
             format = "{icon}";
             format-icons = {
-              activated = ""; 
+              activated = "";
               deactivated = "";
             };
           };
@@ -253,9 +256,9 @@
             inherit max-volume;
             format = "{volume}% {icon}";
             format-icons = {
-              default = [ "🔈" "🔉" "🔊" ];
-              headphones = [ "🎧" ];
-              headset = [ "🎧" ];
+              default = ["🔈" "🔉" "🔊"];
+              headphones = ["🎧"];
+              headset = ["🎧"];
             };
             format-muted = "🔇";
             on-click = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -278,25 +281,23 @@
           };
         }
       ];
-      style =
-        let 
-          padding = "padding: 12px;";
-          borderRadius = "12px";
-          defaultBackground = "background-color: #22272e;";
-          animation = "animation: gradient_f 20s ease-in infinite;";
-          hide = "background: transparent;";
-          fadeIn = ''
-            ${animation}
-            transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-          '';
-          fadeOut = ''
-            ${animation}
-            transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
-          '';
-          defaultColor = "color: #adbac7;";
-          defaultMargin = "12px";
-        in
-      ''
+      style = let
+        padding = "padding: 12px;";
+        borderRadius = "12px";
+        defaultBackground = "background-color: #22272e;";
+        animation = "animation: gradient_f 20s ease-in infinite;";
+        hide = "background: transparent;";
+        fadeIn = ''
+          ${animation}
+          transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        '';
+        fadeOut = ''
+          ${animation}
+          transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+        '';
+        defaultColor = "color: #adbac7;";
+        defaultMargin = "12px";
+      in ''
         * {
           padding: 0px;
           margin: 0px;
@@ -305,14 +306,14 @@
           font-family: "Iosevka Nerd Font Mono";
           font-size: 16px;
         }
-        
+
         window#waybar.topBar,
         window#waybar.bottomBar
         {
           ${hide}
           color: white;
         }
-        
+
         tooltip {
           border-radius: ${borderRadius};
           border-width: 0px;
@@ -324,14 +325,14 @@
         #image {
           margin: 0px 6px 12px ${defaultMargin};
         }
-        
+
         #workspaces {
           margin: ${defaultMargin} 0px 0px ${defaultMargin};
           border-radius: 12px;
           ${defaultBackground}
           ${defaultColor}
         }
-        
+
         #workspaces button {
           ${padding}
           ${fadeOut}
@@ -342,24 +343,24 @@
           border-top-left-radius: ${borderRadius};
           border-bottom-left-radius: ${borderRadius};
         }
-        
+
         #workspaces button:last-child {
           border-top-right-radius: ${borderRadius};
           border-bottom-right-radius: ${borderRadius};
         }
-        
+
         #workspaces button:hover {
           color: #909dab;
           background-color: white;
           ${fadeIn}
         }
-        
+
         #workspaces button.active {
           color: #282828;
           background-color: white;
           ${fadeIn}
         }
-        
+
         #workspaces button.urgent {
           background-color: #eb4d4b;
         }
@@ -450,7 +451,7 @@
           margin: 0px 4px ${defaultMargin} 4px;
         }
 
-        
+
         #custom-notification,
         #custom-powermenu,
         #idle_inhibitor {
@@ -467,13 +468,13 @@
           color: white;
           margin-right: ${defaultMargin};
         }
-        
+
         @keyframes blink {
           to {
             background-color: #f53c3c;
           }
         }
-        
+
         #battery.critical:not(.charging) {
           ${defaultBackground}
           ${defaultColor}
@@ -491,7 +492,7 @@
         #tray > .passive {
           -gtk-icon-effect: dim;
         }
-        
+
         #tray > .needs-attention {
           -gtk-icon-effect: highlight;
           background-color: #eb4d4b;

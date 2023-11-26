@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   gtk = {
     iconCache = {
       enable = true;

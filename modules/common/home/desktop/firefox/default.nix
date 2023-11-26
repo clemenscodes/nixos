@@ -1,4 +1,8 @@
-{ pkgs , user, ...}: {
+{
+  pkgs,
+  user,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       brave
@@ -83,26 +87,32 @@
                   {
                     template = "https://search.nixos.org/packages";
                     params = [
-                      { name = "type"; value = "packages"; }
-                      { name = "query"; value = "{searchTerms}"; }
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
                     ];
                   }
                 ];
                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
+                definedAliases = ["@np"];
               };
               "NixOS Wiki" = {
                 urls = [
-                  { template = "https://nixos.wiki/index.php?search={searchTerms}"; }
+                  {template = "https://nixos.wiki/index.php?search={searchTerms}";}
                 ];
                 iconUpdateURL = "https://nixos.wiki/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000;
-                definedAliases = [ "@nw" ];
+                definedAliases = ["@nw"];
               };
               "Google" = {
                 metadata = {
                   hidden = true;
-                }; 
+                };
               };
             };
           };
@@ -129,7 +139,12 @@
             "browser.bookmarks.showMobileBookmarks" = false;
             "browser.tabs.loadBookmarksInTabs" = false;
             "browser.toolbars.bookmarks.visibility" = "always";
-            "browser.newtabpage.pinned" = [ { title = "NixOS"; url = "https://nixos.org"; } ];
+            "browser.newtabpage.pinned" = [
+              {
+                title = "NixOS";
+                url = "https://nixos.org";
+              }
+            ];
             "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
             "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
             "browser.newtabpage.activity-stream.default.sites" = "";
@@ -152,7 +167,7 @@
             "browser.newtabpage.activity-stream.section.highlights.includeVisited" = false;
             "browser.newtabpage.activity-stream.showSearch" = false;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            "security.pki.sha1_enforcement_level" = 1; 
+            "security.pki.sha1_enforcement_level" = 1;
             "security.ssl.treat_unsafe_negotiation_as_broken" = true;
             "network.security.esni.enabled" = true;
             "beacon.enabled" = false;
@@ -219,7 +234,7 @@
             "network.cookie.thirdparty.sessionOnly" = true;
             "network.dns.disablePrefetch" = true;
             "network.dns.disablePrefetchFromHTTPS" = true;
-            "network.http.referer.XOriginPolicy" = 2; 
+            "network.http.referer.XOriginPolicy" = 2;
             "network.http.speculative-parallel-limit" = 0;
             "network.IDN_show_punycode" = true;
             "network.manage-offline-status" = false;
@@ -240,10 +255,10 @@
             "webgl.enable-debug-renderer-info" = false;
           };
           userChrome = ''
-           # CSS
+            # CSS
           '';
           userContent = ''
-           # CSS
+            # CSS
           '';
         };
       };

@@ -1,10 +1,14 @@
-{ buildInputs ? [], pkgs }: pkgs.stdenv.mkDerivation {
+{
+  buildInputs ? [],
+  pkgs,
+}:
+pkgs.stdenv.mkDerivation {
   name = "sway-audio-idle-inhibit";
 
-  buildInputs = with pkgs; [ 
-    cmake 
-    pkg-config 
-    wayland-protocols 
+  buildInputs = with pkgs; [
+    cmake
+    pkg-config
+    wayland-protocols
     libpulseaudio
     wayland
     ninja
@@ -16,7 +20,7 @@
 
   dontUseCmakeConfigure = true;
 
-  out = "out"; 
+  out = "out";
 
   src = pkgs.fetchFromGitHub {
     owner = "ErikReider";
@@ -38,4 +42,3 @@
     cp ./build/sway-audio-idle-inhibit $out/bin
   '';
 }
-

@@ -1,34 +1,35 @@
-{ 
+{
   inputs,
   nixpkgs,
   home-manager,
   user,
   nur,
+  alejandra,
   locale,
   browser,
   terminal,
   editor,
   timezone,
   hostname,
-  ... 
-}: 
-let
+  ...
+}: let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
     config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "nvidia-x11"
-        "nvidia-settings"
-        "code"
-        "vscode"
-        "idea-ultimate"
-      ];
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "nvidia-x11"
+          "nvidia-settings"
+          "code"
+          "vscode"
+          "idea-ultimate"
+        ];
       permittedInsecurePackages = [
         "electron-19.1.9"
       ];
     };
-    overlays = [ nur.overlay ];
+    overlays = [nur.overlay];
   };
   lib = nixpkgs.lib;
   themes = {
@@ -54,67 +55,76 @@ let
       base0F = "ffffff";
     };
   };
-  sops = (
-    {
-      sops = {
-        defaultSopsFile = ../secrets/secrets.yaml;
-        age = {
-          keyFile = "/home/${user}/.config/sops/age/keys.txt";
-          generateKey = false;
-          sshKeyPaths = [ "/home/${user}/.ssh/id_ed25519" ];
+  sops = {
+    sops = {
+      defaultSopsFile = ../secrets/secrets.yaml;
+      age = {
+        keyFile = "/home/${user}/.config/sops/age/keys.txt";
+        generateKey = false;
+        sshKeyPaths = ["/home/${user}/.ssh/id_ed25519"];
+      };
+      secrets = {
+        password = {
+          neededForUsers = true;
         };
-        secrets = {
-          password = {
-            neededForUsers = true;
-          };
-          wifi = {
-            neededForUsers = true;
-          };
+        wifi = {
+          neededForUsers = true;
         };
       };
-    }
-  );
-  home = (
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        users = {
-          ${user} = {
-            imports = [ ../modules/common/home ];
-          };
-        };
-      };
-    }
-  );
-  systemArgs = { inherit 
-    pkgs
-    system
-    ;
+    };
   };
-  homeArgs = { inherit
-    inputs
-    themes
-    user
-    locale
-    editor
-    browser
-    terminal
-    timezone
-    hostname
-    ;
+  home = {
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      users = {
+        ${user} = {
+          imports = [../modules/common/home];
+        };
+      };
+    };
+  };
+  formatter = {
+    environment = {
+      systemPackages = [alejandra.defaultPackage.${system}];
+    };
+  };
+  systemArgs = {
+    inherit
+      pkgs
+      system
+      ;
+  };
+  homeArgs = {
+    inherit
+      inputs
+      themes
+      user
+      locale
+      editor
+      browser
+      terminal
+      timezone
+      hostname
+      ;
   };
   machineArgs = homeArgs // systemArgs;
-  mkExtraSpecialArgs = machine: homeArgs // { 
-    machine = machine;
-  };
-  mkModules = { modulePath, machine }: [
+  mkExtraSpecialArgs = machine:
+    homeArgs
+    // {
+      machine = machine;
+    };
+  mkModules = {
+    modulePath,
+    machine,
+  }: [
     modulePath
     inputs.home-manager.nixosModules.home-manager
     inputs.xremap-flake.nixosModules.default
     inputs.sops-nix.nixosModules.sops
     home
     sops
+    formatter
     {
       home-manager = {
         extraSpecialArgs = mkExtraSpecialArgs machine;
@@ -122,13 +132,17 @@ let
     }
     ../modules
   ];
-  mkMachine = { modulePath, machine }: lib.nixosSystem {
-    specialArgs = machineArgs;
-    modules = mkModules { 
-      modulePath = modulePath;
-      machine = machine;
+  mkMachine = {
+    modulePath,
+    machine,
+  }:
+    lib.nixosSystem {
+      specialArgs = machineArgs;
+      modules = mkModules {
+        modulePath = modulePath;
+        machine = machine;
+      };
     };
-  };
 in {
   desktop = mkMachine {
     modulePath = ./desktop;
@@ -139,4 +153,3 @@ in {
     machine = "laptop";
   };
 }
-

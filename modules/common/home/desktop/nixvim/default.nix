@@ -1,5 +1,5 @@
-{ inputs, ... }: {
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
+{inputs, ...}: {
+  imports = [inputs.nixvim.homeManagerModules.nixvim];
   programs = {
     nixvim = {
       enable = true;
@@ -11,46 +11,46 @@
       autoCmd = [];
       autoGroups = {};
       editorconfig = {
-      	enable = true;
-	properties = {};
+        enable = true;
+        properties = {};
       };
       luaLoader = {
-      	enable = false;
+        enable = false;
       };
       maps = {
-      	command = {};
-	insert = {};
-	insertCommand = {};
-	lang = {};
-	normal = {};
-	normalVisualOp = {};
-	operator = {};
-	select = {};
-	visual = {};
-	visualOnly = {};
+        command = {};
+        insert = {};
+        insertCommand = {};
+        lang = {};
+        normal = {};
+        normalVisualOp = {};
+        operator = {};
+        select = {};
+        visual = {};
+        visualOnly = {};
       };
       userCommands = {};
       clipboard = {
-      	register = "unnamedplus";
-      	providers = {
-	  wl-copy = {
-	    enable = true;
-	  };
-	};
+        register = "unnamedplus";
+        providers = {
+          wl-copy = {
+            enable = true;
+          };
+        };
       };
       colorschemes = {
-      	catppuccin = {
-	  enable = true;
-	  flavour = "macchiato";
-	  integrations = {};
-	  styles = {};
-	};
+        catppuccin = {
+          enable = true;
+          flavour = "macchiato";
+          integrations = {};
+          styles = {};
+        };
       };
       keymaps = [];
       plugins = {
-      	which-key = {
-	  enable = true;
-	};
+        which-key = {
+          enable = true;
+        };
       };
       extraPlugins = [];
       extraPackages = [];

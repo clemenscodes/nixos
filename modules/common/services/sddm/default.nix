@@ -1,11 +1,15 @@
-{ pkgs, locale, ... }: {
+{
+  pkgs,
+  locale,
+  ...
+}: {
   environment = {
     systemPackages = with pkgs; [
-     libsForQt5.qt5.qtquickcontrols2   
-     libsForQt5.qt5.qtquickcontrols2   
-     libsForQt5.qt5.qtsvg
-     libsForQt5.qt5.qtgraphicaleffects
-     catppuccin-cursors.macchiatoBlue
+      libsForQt5.qt5.qtquickcontrols2
+      libsForQt5.qt5.qtquickcontrols2
+      libsForQt5.qt5.qtsvg
+      libsForQt5.qt5.qtgraphicaleffects
+      catppuccin-cursors.macchiatoBlue
     ];
   };
   programs = {
@@ -25,7 +29,7 @@
           wayland = {
             enable = true;
           };
-          theme = "${import ./themes/catppuccin-macchiato.nix { inherit pkgs; }}";
+          theme = "${import ./themes/catppuccin-macchiato.nix {inherit pkgs;}}";
           settings = {
             Theme = {
               CursorTheme = "Catppuccin-Macchiato-Blue-Cursors";

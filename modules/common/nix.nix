@@ -1,4 +1,4 @@
-{ user, ... }: {
+{user, ...}: {
   nix = {
     gc = {
       automatic = true;
@@ -10,10 +10,10 @@
     };
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "root" "${user}" ];
+      trusted-users = ["root" "${user}"];
       experimental-features = [
         "nix-command"
-	"flakes"
+        "flakes"
       ];
       substituters = [
         "https://hyprland.cachix.org"

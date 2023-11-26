@@ -1,4 +1,9 @@
-{ pkgs, inputs, machine, ... }: {
+{
+  pkgs,
+  inputs,
+  machine,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       xdg-desktop-portal-hyprland

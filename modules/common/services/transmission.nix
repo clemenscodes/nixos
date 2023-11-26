@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   services = {
     transmission = {
       enable = true;

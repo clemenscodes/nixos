@@ -1,4 +1,4 @@
-{ user, ... }: {
+{user, ...}: {
   services = {
     xremap = {
       withHypr = true;

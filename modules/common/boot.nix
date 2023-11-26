@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
@@ -7,19 +12,19 @@
       };
       grub = {
         enable = lib.mkForce true;
-	device = "nodev";
-	efiSupport = true;
-	useOSProber = false;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = false;
       };
       efi = {
         canTouchEfiVariables = true;
-	efiSysMountPoint = "/boot";
+        efiSysMountPoint = "/boot";
       };
     };
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback.out
     ];
-    kernelModules = [ 
+    kernelModules = [
       "v4l2loopback"
       "kvm_intel"
       "virtio"
