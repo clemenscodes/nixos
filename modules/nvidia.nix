@@ -20,6 +20,9 @@ in {
     ];
   };
   boot = {
+    kernelModules = [
+      "nvidia_uvm"
+    ];
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
