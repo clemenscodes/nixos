@@ -1,5 +1,10 @@
 {inputs, pkgs, ...}: {
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
+  environment = {
+    systemPackages = with pkgs; [
+      steamtinkerlaunch
+    ];
+  };
   programs = {
     steam = {
       enable = true;

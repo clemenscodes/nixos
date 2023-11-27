@@ -1,7 +1,8 @@
 {...}: {
   imports = [
     ./steam
-    # ./wine
+    ./wine
     ./lutris
+    ./emulators
   ];
 }
