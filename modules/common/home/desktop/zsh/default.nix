@@ -100,6 +100,8 @@
         export CARGO_HOME="$XDG_DATA_HOME/cargo"
         export GOPATH="$XDG_DATA_HOME/go"
         export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
+        export M2_HOME="$XDG_DATA_HOME/m2"
+        export CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
         export LESS=-R
         export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
         export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"

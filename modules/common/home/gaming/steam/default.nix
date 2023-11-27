@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{inputs, pkgs, ...}: {
+  imports = [inputs.nix-gaming.nixosModules.steamCompat];
   programs = {
     steam = {
       enable = true;
@@ -15,6 +16,9 @@
       dedicatedServer = {
         openFirewall = true;
       };
+      extraCompatPackages = [
+        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      ];
     };
   };
 }

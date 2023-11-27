@@ -108,6 +108,24 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
+        "lastModified": 1698882062,
+        "narHash": "sha256-HkhafUayIqxXyHH1X8d9RDl1M2CkFgZLjKD3MzabiEo=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "8c9fa2545007b49a5db5f650ae91f227672c3877",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_2"
+      },
+      "locked": {
         "lastModified": 1696343447,
         "narHash": "sha256-B2xAZKLkkeRFG5XcHHSXXcP7To9Xzr59KXeZiRf4vdQ=",
         "owner": "hercules-ci",
@@ -348,6 +366,47 @@
         "type": "github"
       }
     },
+    "nix-gaming": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1700961605,
+        "narHash": "sha256-nN5m0OhqmD0gxtpXDvXyqCPQux9L/o1Yr1ALKoaOT9o=",
+        "owner": "fufexan",
+        "repo": "nix-gaming",
+        "rev": "076d7864a6c2d02e41325c03ad3200a8a3739763",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "repo": "nix-gaming",
+        "type": "github"
+      }
+    },
+    "nix-ld": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1699785596,
+        "narHash": "sha256-njXqFmAEju1qZFePg6E3sca4xVp3P3T/Dm+D+be1fQM=",
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "rev": "35ba5d7e8e6f838121a422e25ca38a40c41b8636",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1700612854,
@@ -365,6 +424,24 @@
       }
     },
     "nixpkgs-lib": {
+      "locked": {
+        "dir": "lib",
+        "lastModified": 1698611440,
+        "narHash": "sha256-jPjHjrerhYDy3q9+s5EAsuhyhuknNfowY6yt6pjn9pc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0cbe9f69c234a7700596e943bfae7ef27a31b735",
+        "type": "github"
+      },
+      "original": {
+        "dir": "lib",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib_2": {
       "locked": {
         "dir": "lib",
         "lastModified": 1696019113,
@@ -603,6 +680,8 @@
         "alejandra": "alejandra",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "nix-gaming": "nix-gaming",
+        "nix-ld": "nix-ld",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
         "nur": "nur",
@@ -857,7 +936,7 @@
     "xremap-flake": {
       "inputs": {
         "devshell": "devshell",
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland_2",
         "naersk": "naersk",

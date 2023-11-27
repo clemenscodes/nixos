@@ -5,6 +5,7 @@
   user,
   nur,
   alejandra,
+  nix-ld,
   locale,
   browser,
   terminal,
@@ -21,6 +22,7 @@
         builtins.elem (lib.getName pkg) [
           "nvidia-x11"
           "nvidia-settings"
+          "nvidia-persistenced"
           "code"
           "vscode"
           "idea-ultimate"
@@ -132,6 +134,7 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.xremap-flake.nixosModules.default
     inputs.sops-nix.nixosModules.sops
+    nix-ld.nixosModules.nix-ld
     home
     sops
     formatter

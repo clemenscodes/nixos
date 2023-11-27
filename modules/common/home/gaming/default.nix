@@ -1,5 +1,7 @@
 {...}: {
   imports = [
     ./steam
+    # ./wine
+    ./lutris
   ];
 }
