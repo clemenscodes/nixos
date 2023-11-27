@@ -1,18 +1,19 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs = {
     steam = {
       enable = true;
-      package = (pkgs.steam.override {
-        extraPkgs = pkgs: with pkgs; [
-          gamescope
-          mangohud
-        ];
-      });
+      package = pkgs.steam.override {
+        extraPkgs = pkgs:
+          with pkgs; [
+            gamescope
+            mangohud
+          ];
+      };
       remotePlay = {
-        openFirewall = true; # Open ports in the firewall for Steam Remote Play
+        openFirewall = true;
       };
       dedicatedServer = {
-        openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+        openFirewall = true;
       };
     };
   };

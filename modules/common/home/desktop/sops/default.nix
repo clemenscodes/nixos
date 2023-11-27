@@ -1,6 +1,6 @@
 {
   inputs,
-  user,
+  config,
   ...
 }: {
   imports = [
@@ -9,8 +9,8 @@
   sops = {
     defaultSopsFile = ../../../../../secrets/secrets.yaml;
     age = {
-      keyFile = "/home/${user}/.config/sops/age/keys.txt";
-      sshKeyPaths = ["/home/${user}/.ssh/id_ed25519"];
+      keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+      sshKeyPaths = ["${config.home.homeDirectory}/.ssh/id_ed25519"];
     };
     secrets = {
       "email/clemens.horn@mni.thm.de/password" = {

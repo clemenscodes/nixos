@@ -12,10 +12,10 @@
   services = {
     mpd = {
       enable = true;
-      musicDirectory = "/home/${user}/.config/mpd/music";
-      playlistDirectory = "/home/${user}/.config/mpd/playlists";
-      dataDir = "/home/${user}/.config/mpd";
-      dbFile = "/home/${user}/.config/mpd/tag_cache";
+      musicDirectory = "${config.xdg.userDirs.music}";
+      playlistDirectory = "${config.services.mpd.dataDir}/playlists";
+      dataDir = "${config.xdg.configHome}/mpd";
+      dbFile = "${config.services.mpd.dataDir}/tag_cache";
       extraConfig = ''
         user "${user}"
 
@@ -47,9 +47,9 @@
         visualizerSupport = true;
         clockSupport = true;
       };
-      mpdMusicDir = ''"/home/${user}/.config/mpd/music"'';
+      mpdMusicDir = ''"${config.xdg.userDirs.music}"'';
       settings = {
-        lyrics_directory = ''/home/${user}/.local/share/lyrics'';
+        lyrics_directory = ''${config.xdg.dataHome}/lyrics'';
         mpd_host = "/run/user/1000/mpd/socket";
         mpd_port = 6600;
         mpd_connection_timeout = 5;

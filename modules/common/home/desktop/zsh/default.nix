@@ -28,18 +28,21 @@
       shellAliases = with pkgs; {
         update = "cd $XDG_CONFIG_HOME/nixos && git pull";
         sw = "update && sudo nixos-rebuild switch --flake ./#${machine}";
+        src = "omz reload";
         ls = "${eza}/bin/eza";
         grep = "${ripgrep}/bin/rg";
         nd = "nix develop -c $SHELL";
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         nedesk = "cd $NIX_CONFIG_HOME/modules/common/home/desktop && lfcd";
         nenvim = "cd $NIX_CONFIG_HOME/modules/common/home/desktop/nixvim && lfcd";
-        src = "omz reload";
-        img = "cd $XDG_PICTURES_DIR";
-        sss = "$XDG_PICTURES_DIR/screenshots";
-        isos = "$XDG_DATA_HOME/isos";
-        rr = "cd $HOME/.local/src";
+        V = "cd $XDG_VIDEOS_DIR";
         D = "cd $XDG_DOWNLOAD_DIR";
+        M = "cd $XDG_MUSIC_DIR";
+        I = "cd $XDG_PICTURES_DIR";
+        S = "cd $XDG_PICTURES_DIR/screenshots";
+        docs = "cd $XDG_DOCUMENTS_DIR";
+        isos = "cd $XDG_DATA_HOME/isos";
+        rr = "cd $HOME/.local/src";
       };
       history = {
         path = "${config.xdg.dataHome}/zsh/zsh_history";
@@ -92,6 +95,7 @@
         fi
       '';
       profileExtra = ''
+        export NIXOS_OZONE_WL=1
         export NIX_CONFIG_HOME=$XDG_CONFIG_HOME/nixos
         export CARGO_HOME="$XDG_DATA_HOME/cargo"
         export GOPATH="$XDG_DATA_HOME/go"

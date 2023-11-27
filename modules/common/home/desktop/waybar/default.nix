@@ -1,6 +1,6 @@
 {
   pkgs,
-  user,
+  config,
   terminal,
   ...
 }: {
@@ -94,7 +94,7 @@
           };
           cpu = {
             interval = 1;
-            format = "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage}%  ";
+            format = "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage}%";
             format-icons = [
               "<span color='#69ff94'>▁</span>" # green
               "<span color='#2aa9ff'>▂</span>" # blue
@@ -109,8 +109,8 @@
           };
           temperature = {
             critical-threshold = 80;
-            format = "{temperatureC}°C {icon}  ";
-            format-critical = "{temperatureC}°C 🔥  ";
+            format = "{temperatureC}°C {icon}";
+            format-critical = "{temperatureC}°C 🔥";
             on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
             format-icons = ["🌡️"];
           };
@@ -132,7 +132,7 @@
             format-charging = "{capacity}% ⚡";
             format-plugged = "{capacity}% 🔌";
             format-alt = "{time} {icon}";
-            format-icons = ["💀" "🪫" "🔋" ];
+            format-icons = ["💀" "🪫" "🔋"];
           };
           "custom/powermenu" = {
             format = "";
@@ -163,7 +163,7 @@
             "custom/clock"
           ];
           "image#logo" = {
-            path = "/home/${user}/.local/share/images/svg/nix-snowflake.svg";
+            path = "${config.xdg.dataHome}/images/svg/nix-snowflake.svg";
             size = height;
             on-click = "sleep 0.3; ${pkgs.rofi-wayland}/bin/rofi -show drun";
           };

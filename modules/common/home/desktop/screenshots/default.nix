@@ -1,6 +1,6 @@
 {
   pkgs,
-  user,
+  config,
   ...
 }: {
   home = {
@@ -15,7 +15,7 @@
       "swappy/config" = {
         text = ''
           [Default]
-          save_dir=/home/${user}/.local/share/images/screenshots
+          save_dir=${config.xdg.dataHome}/images/screenshots
         '';
       };
     };

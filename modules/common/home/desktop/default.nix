@@ -38,7 +38,7 @@
     ./spotdl
     ./spotify
     ./transgui
-    ./obs-studio
+    ./obs
     ./sops
     ./ssh
     ./starship

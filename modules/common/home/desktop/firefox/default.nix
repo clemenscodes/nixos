@@ -52,10 +52,6 @@
             TopSites = false;
             Highlights = false;
           };
-          Homepage = {
-            URL = "https://app.todoist.com/app/upcoming";
-            Locked = true;
-          };
           Preferences = {
             browser.theme.content-theme = "dark";
             extensions.activeThemeID = "firefox-compact-dark@mozilla.org";

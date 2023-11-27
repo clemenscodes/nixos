@@ -1,6 +1,6 @@
 {
   pkgs,
-  user,
+  config,
   ...
 }: let
   iconTheme = pkgs.catppuccin-papirus-folders.override {
@@ -47,7 +47,7 @@ in {
       size = 12;
     };
     gtk2 = {
-      configLocation = "/home/${user}/.config/gtk-2.0/settings.ini";
+      configLocation = "${config.xdg.configHome}/gtk-2.0/settings.ini";
       extraConfig = ''
         gtk-application-prefer-dark-theme=1
         gtk-toolbar-style=GTK_TOOLBAR_ICONS
