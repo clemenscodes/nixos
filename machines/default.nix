@@ -25,6 +25,7 @@
           "vscode"
           "idea-ultimate"
           "spotify"
+          "displaylink"
           "discord"
           "steam"
           "steam-original"
