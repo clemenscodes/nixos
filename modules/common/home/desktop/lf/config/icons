@@ -173,7 +173,7 @@ fi           📄
 *.slim      " " 
 *.xml       " " 
 *.mustasche " " 
-*.css       " " 
+*.css       " " 
 *.less      " " 
 *.bat       " " 
 *.conf      " " 
@@ -340,5 +340,5 @@ fi           📄
 *.idx      " "   
 *.mbsyncrc " " 
 *.nix      " " 
-*.lock 🔒 
 *lfrc      " "
+*.lock      🔒

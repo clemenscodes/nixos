@@ -63,6 +63,7 @@
     editor = "nvim";
     timezone = "Europe/Berlin";
     hostname = "nixos";
+    system = "x86_64-linux";
   in {
     nixosConfigurations = (
       import ./machines {
@@ -81,11 +82,12 @@
           editor
           timezone
           hostname
+          system
           ;
       }
     );
     formatter = {
-      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+      "${system}" = nixpkgs.legacyPackages.${system}.alejandra;
     };
   };
 }

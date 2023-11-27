@@ -11,9 +11,9 @@
   editor,
   timezone,
   hostname,
+  system,
   ...
 }: let
-  system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
     config = {
@@ -24,6 +24,15 @@
           "code"
           "vscode"
           "idea-ultimate"
+          "spotify"
+          "discord"
+          "steam"
+          "steam-original"
+          "steam-run"
+          "cudatoolkit"
+          "cudatoolkit-11-cudnn"
+          "libcublas"
+          "davinci-resolve"
         ];
       permittedInsecurePackages = [
         "electron-19.1.9"

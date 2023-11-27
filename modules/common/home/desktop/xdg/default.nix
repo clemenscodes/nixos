@@ -50,7 +50,7 @@
     in {
       enable = true;
       createDirectories = true;
-      music = "${config}/mpd/music";
+      music = "${home}/music";
       documents = "${local}/share/documents";
       pictures = "${local}/share/images";
       videos = "${local}/share/videos";

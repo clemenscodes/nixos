@@ -8,6 +8,7 @@
     ./cliphist
     ./calcurse
     ./direnv
+    ./discord
     ./dconf
     ./email
     ./etcher
@@ -21,6 +22,7 @@
     ./hyprland
     ./hyprshade
     ./kitty
+    ./kdenlive
     ./lf
     ./mpv
     ./mpris
@@ -34,8 +36,9 @@
     ./pup
     ./screenshots
     ./spotdl
+    ./spotify
     ./transgui
-    ./obs-studio
+    ./obs
     ./sops
     ./ssh
     ./starship

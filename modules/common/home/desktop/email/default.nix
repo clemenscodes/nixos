@@ -15,7 +15,7 @@
   services = {
     mbsync = {
       enable = true;
-      configFile = "/home/${user}/.mbsyncrc";
+      configFile = "${config.home.homeDirectory}/.mbsyncrc";
       frequency = "*:*:0/10";
     };
     imapnotify = {
@@ -117,7 +117,7 @@
         };
       };
     in {
-      maildirBasePath = "/home/${user}/.local/share/mail";
+      maildirBasePath = "${config.xdg.dataHome}/mail";
       accounts = let
         privateAccount = "horn_clemens@t-online.de";
         businessAccount = "me@clemenshorn.com";
@@ -417,17 +417,17 @@
         {
           map = ["index" "pager"];
           key = "i1";
-          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/horn_clemens@t-online.de<enter><change-folder>!<enter>;<check-stats>";
+          action = "<sync-mailbox><enter-command>source ${config.xdg.configHome}/neomutt/horn_clemens@t-online.de<enter><change-folder>!<enter>;<check-stats>";
         }
         {
           map = ["index" "pager"];
           key = "i2";
-          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/clemens.horn@mni.thm.de<enter><change-folder>!<enter>;<check-stats>";
+          action = "<sync-mailbox><enter-command>source ${config.xdg.configHome}/neomutt/clemens.horn@mni.thm.de<enter><change-folder>!<enter>;<check-stats>";
         }
         {
           map = ["index" "pager"];
           key = "i3";
-          action = "<sync-mailbox><enter-command>source /home/${user}/.config/neomutt/me@clemenshorn.com<enter><change-folder>!<enter>;<check-stats>";
+          action = "<sync-mailbox><enter-command>source ${config.xdg.configHome}/neomutt/me@clemenshorn.com<enter><change-folder>!<enter>;<check-stats>";
         }
         {
           map = ["browser"];
