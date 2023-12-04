@@ -1,13 +1,6 @@
-{pkgs,...}: 
+{pkgs,lib,...}: 
 let
-  bluez = (import (builtins.fetchTarball {
-
-
-
-
-    url = "https://github.com/NixOS/nixpkgs/archive/0ffaecb6f04404db2c739beb167a5942993cfd87.tar.gz";
-    sha256 = "1cpz6c9k8limrd84sp7rayn8ghv5v0pym8gjhg4vz9bdc9ikh4az";
-  }) {inherit (pkgs) system;}).bluez;
+  bluez = "${import ./bluez {inherit pkgs lib;}}";
 in
 {
   environment = {

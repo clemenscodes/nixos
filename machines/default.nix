@@ -36,6 +36,7 @@
           "cudatoolkit-11-cudnn"
           "libcublas"
           "davinci-resolve"
+          "hplip"
         ];
       permittedInsecurePackages = [
         "electron-19.1.9"
