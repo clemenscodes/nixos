@@ -1,6 +1,7 @@
 {
   user,
   locale,
+  config,
   ...
 }: {
   imports = [
@@ -15,7 +16,7 @@
     stateVersion = "23.11";
     username = "${user}";
     homeDirectory = "/home/${user}";
-    sessionPath = ["/home/${user}/.local/bin"];
+    sessionPath = ["${config.home.homeDirectory}/.local/bin"];
     file = {
       ".local/share/images/screenshots/README.md" = {
         text = ''

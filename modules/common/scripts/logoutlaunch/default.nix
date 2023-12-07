@@ -43,22 +43,25 @@ pkgs.writeShellScriptBin "logoutlaunch" ''
 
   run_cmd() {
     selected="$(confirm_exit)"
-    if [[ "$selected" == "$yes" ]]; then
-      if [[ $1 == '--shutdown' ]]; then
-        ${pkgs.systemd}/bin/systemctl poweroff
-      elif [[ $1 == '--reboot' ]]; then
-        ${pkgs.systemd}/bin/systemctl reboot
-      elif [[ $1 == '--hibernate' ]]; then
-        ${pkgs.systemd}/bin/systemctl hibernate
-      elif [[ $1 == '--suspend' ]]; then
-        ${pkgs.mpc-cli}/bin/mpc -q pause
-        ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-        ${pkgs.systemd}/bin/systemctl suspend
-      elif [[ $1 == '--logout' ]]; then
-        signout
-      fi
-    else
+    if [[ "$selected" != "$yes" ]]; then
       exit 0
+    fi
+    if [[ $1 == '--shutdown' ]]; then
+      ${pkgs.systemd}/bin/systemctl poweroff
+    elif [[ $1 == '--reboot' ]]; then
+      ${pkgs.systemd}/bin/systemctl reboot
+    elif [[ $1 == '--hibernate' ]]; then
+      lockout
+      sleep 1
+      ${pkgs.systemd}/bin/systemctl hibernate
+    elif [[ $1 == '--suspend' ]]; then
+      ${pkgs.mpc-cli}/bin/mpc -q pause
+      ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      lockout
+      sleep 1
+      ${pkgs.systemd}/bin/systemctl suspend
+    elif [[ $1 == '--logout' ]]; then
+      signout
     fi
   }
 

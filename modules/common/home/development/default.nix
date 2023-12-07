@@ -12,6 +12,7 @@
       nodePackages.yarn
       bun
       jetbrains.idea-ultimate
+      zulu
     ];
   };
   programs = {

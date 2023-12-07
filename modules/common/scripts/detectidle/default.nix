@@ -5,6 +5,5 @@ pkgs.writeShellScriptBin "detectidle" ''
     timeout 300 'lockout' \
     timeout 360 '${pkgs.hyprland}/bin/hyprctl dispatch dpms off' \
     timeout 420 '${pkgs.systemd}/bin/systemctl suspend' \
-    resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' \
-    before-sleep 'lockout; sleep 1'
+    resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on'
 ''

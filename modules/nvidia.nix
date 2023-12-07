@@ -13,10 +13,18 @@
   '';
 in {
   environment = {
-    systemPackages = with pkgs.cudaPackages; [
+    systemPackages = with pkgs; [
       nvidia-offload
-      cudatoolkit
-      cudnn
+      cudaPackages.cudatoolkit
+      cudaPackages.cudnn
+      nvtop-amd
+      mesa
+      vulkan-tools
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+      libva
+      libva-utils
     ];
   };
   boot = {
@@ -26,6 +34,7 @@ in {
     kernelParams = [
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
+    blacklistedKernelModules = ["nouveau"];
   };
   services = {
     xserver = {
@@ -54,11 +63,16 @@ in {
         intelBusId = "PCI:0:2:0";
       };
       open = true;
-      nvidiaSettings = true;
+      nvidiaSettings = false;
+      nvidiaPersistenced = true;
       # CS2 doesnt boot up in stable or beta
       # @see https://forums.developer.nvidia.com/t/cs2-stuck-on-valve-logo-on-startup-545-beta-branch/269778
       package = config.boot.kernelPackages.nvidiaPackages.production;
     };
+    opengl = {
+      extraPackages = with pkgs; [nvidia-vaapi-driver];
+      extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+    };   
   };
   programs = {
     zsh = {

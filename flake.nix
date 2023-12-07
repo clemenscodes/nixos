@@ -46,6 +46,22 @@
         };
       };
     };
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
   };
 
   outputs = inputs @ {
@@ -54,6 +70,7 @@
     hyprland,
     nur,
     alejandra,
+    nix-ld,
     ...
   }: let
     user = "clay";
@@ -75,6 +92,7 @@
           hyprland
           nur
           alejandra
+          nix-ld 
           user
           locale
           terminal

@@ -3,6 +3,12 @@
   pkgs,
   ...
 }: {
+  environment = {
+    systemPackages = with pkgs; [
+      glxinfo
+      glmark2
+    ];
+  };
   hardware = {
     pulseaudio = {
       enable = false;
