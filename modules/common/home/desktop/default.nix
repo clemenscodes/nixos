@@ -24,6 +24,7 @@
     ./kitty
     ./kdenlive
     ./lf
+    ./lact
     ./mpv
     ./mpris
     ./ncmpcpp
