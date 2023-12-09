@@ -10,5 +10,6 @@
     ./dbus.nix
     ./transmission.nix
     ./gnome-keyring.nix
+    ./corectrl.nix
   ];
 }

@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{...}: {
   programs = {
-    nix-ld = {
+    gamemode = {
       enable = true;
     };
   };

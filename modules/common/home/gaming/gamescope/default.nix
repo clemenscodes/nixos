@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{...}: {
   programs = {
-    nix-ld = {
+    gamescope = {
       enable = true;
     };
   };

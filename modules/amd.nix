@@ -1,13 +1,13 @@
-{...}: {
+{pkgs, ...}: {
   boot = {
     initrd = {
-      kernelModules = [ "amdgpu" ];
-    }; 
+      kernelModules = ["amdgpu"];
+    };
   };
   services = {
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu" ];
+      videoDrivers = ["amdgpu" ];
     };
   };
 }

@@ -7,6 +7,7 @@
     ./cursor
     ./cliphist
     ./calcurse
+    ./corectrl
     ./direnv
     ./discord
     ./dconf

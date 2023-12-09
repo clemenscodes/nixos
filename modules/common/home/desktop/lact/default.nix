@@ -1,6 +1,5 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home = {
-    packages = with pkgs; [ lact ];
+    packages = with pkgs; [lact];
   };
-  
 }

@@ -1,8 +1,14 @@
-{inputs, pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
   environment = {
     systemPackages = with pkgs; [
       steamtinkerlaunch
+      python3
+      er-patcher
     ];
   };
   programs = {
@@ -12,8 +18,13 @@
         extraPkgs = pkgs:
           with pkgs; [
             gamescope
-            mangohud
+            gamemode
+            python3
+            er-patcher
           ];
+      };
+      gamescopeSession = {
+        enable = true;
       };
       remotePlay = {
         openFirewall = true;

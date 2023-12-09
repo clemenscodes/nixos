@@ -1,8 +1,10 @@
-{pkgs,lib,...}: 
-let
-  bluez = "${import ./bluez {inherit pkgs lib;}}";
-in
 {
+  pkgs,
+  lib,
+  ...
+}: let
+  bluez = "${import ./bluez {inherit pkgs lib;}}";
+in {
   environment = {
     systemPackages = with pkgs; [
       python311Packages.ds4drv
