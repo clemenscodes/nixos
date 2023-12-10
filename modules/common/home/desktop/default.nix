@@ -24,6 +24,7 @@
     ./kitty
     ./kdenlive
     ./lf
+    ./libreoffice
     ./lact
     ./mpv
     ./mpris
