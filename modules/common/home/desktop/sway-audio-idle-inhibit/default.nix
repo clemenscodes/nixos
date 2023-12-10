@@ -1,7 +1,4 @@
-{
-  buildInputs ? [],
-  pkgs,
-}:
+{pkgs}:
 pkgs.stdenv.mkDerivation {
   name = "sway-audio-idle-inhibit";
 

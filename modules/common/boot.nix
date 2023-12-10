@@ -5,9 +5,6 @@
   ...
 }: {
   boot = {
-    initrd = {
-      kernelModules = [ "amdgpu" ];
-    };
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot = {
