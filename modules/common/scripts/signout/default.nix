@@ -1,5 +1,5 @@
 {pkgs}:
 pkgs.writeShellScriptBin "signout" ''
-  pkill corectrl
+  sudo pkill corectrl
   ${pkgs.systemd}/bin/loginctl kill-user $USER
 ''
