@@ -5,7 +5,6 @@
     ./gamescope
     ./wine
     ./lutris
-    ./nix-ld
     ./protontricks
     ./emulators
   ];

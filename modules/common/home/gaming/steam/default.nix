@@ -7,8 +7,6 @@
   environment = {
     systemPackages = with pkgs; [
       steamtinkerlaunch
-      python3
-      er-patcher
     ];
   };
   programs = {
@@ -19,8 +17,6 @@
           with pkgs; [
             gamescope
             gamemode
-            python3
-            er-patcher
           ];
       };
       gamescopeSession = {
