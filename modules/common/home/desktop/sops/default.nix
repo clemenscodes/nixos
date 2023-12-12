@@ -25,6 +25,9 @@
       github_token = {
         path = "/run/user/1000/secrets/github_token";
       };
+      gitlab_runner = {
+        path = "/run/user/1000/secrets/gitlab_runner";
+      };
     };
   };
 }
