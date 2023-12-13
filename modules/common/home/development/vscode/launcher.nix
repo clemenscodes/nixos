@@ -4,7 +4,7 @@
       codium = {
         name = "VSCodium";
         type = "Application";
-        categories = ["Utility" "TextEditor" "Development" "IDE" ];
+        categories = ["Utility" "TextEditor" "Development" "IDE"];
         comment = "Code Editing. Redefined.";
         exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations";
         genericName = "Text Editor";
@@ -17,4 +17,3 @@
     };
   };
 }
-

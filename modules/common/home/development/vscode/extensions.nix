@@ -1,7 +1,11 @@
-{pkgs,...}: {
+{
+  inputs,
+  system,
+  ...
+}: {
   programs = {
     vscode = {
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with inputs.nix-vscode-extensions.extensions.${system}.vscode-marketplace; [
         vspacecode.whichkey
         kamadorueda.alejandra
         esbenp.prettier-vscode
@@ -15,4 +19,3 @@
     };
   };
 }
-

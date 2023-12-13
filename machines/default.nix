@@ -119,6 +119,7 @@
       terminal
       timezone
       hostname
+      system
       ;
   };
   machineArgs = homeArgs // systemArgs;

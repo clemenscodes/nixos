@@ -24,6 +24,7 @@
           "editor.formatOnType" = false;
         };
         "alejandra.program" = "alejandra";
+        "nxConsole.showNodeVersionOnStartup" = false;
       };
     };
   };

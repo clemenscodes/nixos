@@ -8,7 +8,7 @@
   services = {
     xserver = {
       enable = true;
-      videoDrivers = ["amdgpu" ];
+      videoDrivers = ["amdgpu"];
     };
   };
   hardware = {
