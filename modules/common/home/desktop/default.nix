@@ -7,7 +7,6 @@
     ./cursor
     ./cliphist
     ./calcurse
-    ./corectrl
     ./direnv
     ./discord
     ./dconf
@@ -52,6 +51,7 @@
     ./udiskie
     ./waybar
     ./xdg
+    ./xwaylandvideobridge
     ./zathura
     ./zsh
   ];
