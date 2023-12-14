@@ -24,6 +24,7 @@
     ./kitty
     ./kdenlive
     ./lf
+    ./libreoffice
     ./lact
     ./mpv
     ./mpris
@@ -50,6 +51,7 @@
     ./udiskie
     ./waybar
     ./xdg
+    ./xwaylandvideobridge
     ./zathura
     ./zsh
   ];

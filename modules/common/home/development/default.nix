@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  imports = [
+    ./vscode
+  ];
   home = {
     packages = with pkgs; [
       gdb
@@ -7,18 +10,14 @@
       cmake-format
       clang-tools
       nasm
+      cloc
       nodejs_20
+      prettierd
       nodePackages.pnpm
       nodePackages.yarn
       bun
       jetbrains.idea-ultimate
       zulu
     ];
-  };
-  programs = {
-    vscode = {
-      enable = true;
-      package = pkgs.vscode.fhs;
-    };
   };
 }

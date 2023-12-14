@@ -1,4 +1,8 @@
-{inputs, pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
   environment = {
     systemPackages = with pkgs; [
@@ -12,8 +16,11 @@
         extraPkgs = pkgs:
           with pkgs; [
             gamescope
-            mangohud
+            gamemode
           ];
+      };
+      gamescopeSession = {
+        enable = true;
       };
       remotePlay = {
         openFirewall = true;

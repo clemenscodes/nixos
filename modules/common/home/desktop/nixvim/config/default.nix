@@ -6,7 +6,6 @@
     ./autocommands
     ./usercommands
     ./editorconfig
-    ./maps
     ./colorschemes
     ./clipboard
   ];
