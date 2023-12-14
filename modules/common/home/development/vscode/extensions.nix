@@ -15,6 +15,15 @@
         editorconfig.editorconfig
         asvetliakov.vscode-neovim
         ms-azuretools.vscode-docker
+        firsttris.vscode-jest-runner
+        ms-vscode.vscode-typescript-next
+        ecmel.vscode-html-css
+        vue.volar
+        arrterian.nix-env-selector
+        jnoortheen.nix-ide
+        mkhl.direnv
+        prisma.prisma
+        antfu.vite
       ];
     };
   };

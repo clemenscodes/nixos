@@ -93,6 +93,7 @@
         if [[ -o interactive ]]; then
           export GH_TOKEN=$(${pkgs.bat}/bin/bat ${config.sops.secrets.github_token.path} --style=plain)
         fi
+        eval "$(direnv hook zsh)"
       '';
       profileExtra = ''
         export NIXOS_OZONE_WL=1
