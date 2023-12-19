@@ -1,7 +1,7 @@
 {pkgs,...}: {
   home = {
     packages = with pkgs; [
-      davinci-resolve
+      gimp-with-plugins
     ];
   };
 }

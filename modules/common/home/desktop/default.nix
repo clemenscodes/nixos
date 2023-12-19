@@ -22,7 +22,6 @@
     ./hyprland
     ./hyprshade
     ./kitty
-    ./kdenlive
     ./lf
     ./libreoffice
     ./lact

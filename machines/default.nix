@@ -18,12 +18,8 @@
   pkgs = import nixpkgs {
     inherit system;
     config = {
-      allowUnfree = true;
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "nvidia-x11"
-          "nvidia-settings"
-          "nvidia-persistenced"
           "code"
           "vscode"
           "idea-ultimate"
@@ -33,11 +29,6 @@
           "steam"
           "steam-original"
           "steam-run"
-          "cudatoolkit"
-          "cudatoolkit-11-cudnn"
-          "libcublas"
-          "davinci-resolve"
-          "hplip"
         ];
       permittedInsecurePackages = [
         "electron-19.1.9"
