@@ -7,6 +7,7 @@
   imports = [
     ./desktop
     ./development
+    ./editing
   ];
 
   home = {
