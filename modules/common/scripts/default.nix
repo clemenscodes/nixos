@@ -6,6 +6,7 @@
       (import ./lidhandle {inherit pkgs;})
       (import ./lockout {inherit pkgs;})
       (import ./signout {inherit pkgs;})
+      (import ./lastchaos {inherit pkgs;})
       (import ./setupsops {inherit pkgs;})
       (import ./screenshot {inherit pkgs;})
       (import ./wallpaper {inherit pkgs;})

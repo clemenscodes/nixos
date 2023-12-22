@@ -20,6 +20,7 @@
     ./gtk
     ./fonts
     ./hyprland
+    ./hyprpicker
     ./hyprshade
     ./kitty
     ./lf
