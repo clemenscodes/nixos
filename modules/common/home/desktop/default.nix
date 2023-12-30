@@ -52,6 +52,7 @@
     ./waybar
     ./xdg
     ./xwaylandvideobridge
+    ./ydotool
     ./zathura
     ./zsh
   ];

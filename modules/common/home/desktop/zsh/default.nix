@@ -42,6 +42,7 @@
         S = "cd $XDG_PICTURES_DIR/screenshots";
         docs = "cd $XDG_DOCUMENTS_DIR";
         isos = "cd $XDG_DATA_HOME/isos";
+        notes = "cd $XDG_DATA_HOME/notes";
         rr = "cd $HOME/.local/src";
       };
       history = {

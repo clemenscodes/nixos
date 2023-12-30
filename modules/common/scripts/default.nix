@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment = {
     systemPackages = [
+      (import ./clicker {inherit pkgs;})
       (import ./detectidle {inherit pkgs;})
       (import ./nvidiagpuinfo {inherit pkgs;})
       (import ./lidhandle {inherit pkgs;})
