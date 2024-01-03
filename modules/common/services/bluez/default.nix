@@ -12,13 +12,6 @@ in
     pname = "bluez";
     version = "5.68";
 
-    # src = pkgs.fetchFromGitHub {
-    #   owner = "${pname}";
-    #   repo = "${pname}";
-    #   rev = "d764f78f27653bc1df71c462e9aca7a18bc75f9f";
-    #   sha256 = "1c1m04r43i6jfzcsmhdrajqhykzdqg0laczqacaqn7g75akyfcnz";
-    # };
-
     src = pkgs.fetchurl {
       url = "mirror://kernel/linux/bluetooth/${pname}-${version}.tar.xz";
       sha256 = "0czrbwbhmplnnqid6hr0a8hkjqqdwwgq5rnfr9arlmyb8mj5wl7w";

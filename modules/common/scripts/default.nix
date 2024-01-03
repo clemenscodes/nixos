@@ -10,6 +10,7 @@
       (import ./lastchaos {inherit pkgs;})
       (import ./setupsops {inherit pkgs;})
       (import ./screenshot {inherit pkgs;})
+      (import ./fullscreenshot {inherit pkgs;})
       (import ./wallpaper {inherit pkgs;})
       (import ./polkitagent {inherit pkgs;})
       (import ./sshagent {inherit pkgs;})

@@ -1,0 +1,7 @@
+{...}: {
+  programs = {
+    mtr = {
+      enable = true;
+    };
+  };
+}
