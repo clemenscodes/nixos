@@ -1,26 +1,18 @@
-{pkgs, ...}: {
+{pkgs, ...}: 
+let
+  driver = "amdgpu";
+in
+{
   boot = {
     initrd = {
-      kernelModules = ["amdgpu"];
+      kernelModules = [driver];
     };
-    kernelModules = ["amdgpu"];
+    kernelModules = [driver];
   };
   services = {
     xserver = {
       enable = true;
-      videoDrivers = ["amdgpu"];
-    };
-  };
-  systemd = {
-    tmpfiles = {
-      rules = [
-        "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-      ];
-    };
-  }; 
-  environment = {
-    variables = {
-      ROC_ENABLE_PRE_VEGA = "1";
+      videoDrivers = [driver];
     };
   };
   hardware = {
