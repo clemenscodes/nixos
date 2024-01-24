@@ -183,11 +183,6 @@
           command = "-workbench.action.togglePanel";
         }
         {
-          key = "shift+k";
-          command = "editor.action.showHover";
-          when = "editorTextFocus";
-        }
-        {
           key = "ctrl+k ctrl+i";
           command = "-editor.action.showHover";
           when = "editorTextFocus";

@@ -24,6 +24,9 @@
         mkhl.direnv
         prisma.prisma
         antfu.vite
+        tamasfe.even-better-toml
+        serayuzgur.crates
+        rust-lang.rust-analyzer
       ];
     };
   };
