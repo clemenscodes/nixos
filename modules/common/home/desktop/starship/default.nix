@@ -45,6 +45,10 @@
           renamed = " 📛 <!= \${count}";
           deleted = " 🗑️ <!= \${count}";
         };
+        nix_shell = {
+          format = "via [$symbol]($style)";
+          symbol = "❄️ ";
+        };
         battery = {
           full_symbol = "🔋";
           charging_symbol = "🔌";
