@@ -15,7 +15,6 @@
         clock = true;
         ignore-empty-password = true;
         indicator-caps-lock = true;
-        show-failed-attemts = true;
         indicator-radius = 169;
         indicator-thickness = 20;
         line-uses-ring = true;

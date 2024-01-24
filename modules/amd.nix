@@ -1,14 +1,18 @@
-{pkgs, ...}: {
+{pkgs, ...}: 
+let
+  driver = "amdgpu";
+in
+{
   boot = {
     initrd = {
-      kernelModules = ["amdgpu"];
+      kernelModules = [driver];
     };
-    kernelModules = ["amdgpu"];
+    kernelModules = [driver];
   };
   services = {
     xserver = {
       enable = true;
-      videoDrivers = ["amdgpu"];
+      videoDrivers = [driver];
     };
   };
   hardware = {
@@ -18,6 +22,7 @@
         rocm-opencl-icd
         rocm-opencl-runtime
         mesa
+        mesa.opencl
         vulkan-tools
         vulkan-loader
         vulkan-validation-layers

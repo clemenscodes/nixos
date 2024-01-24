@@ -28,7 +28,6 @@
     windowManager = {
       hyprland = {
         enable = true;
-        enableNvidiaPatches = machine == "desktop";
         systemd = {
           enable = false;
         };

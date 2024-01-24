@@ -1,4 +1,4 @@
-{pkgs,...}: {
+{pkgs, ...}: {
   programs = {
     vscode = {
       userSettings = {
@@ -26,6 +26,44 @@
         "editor.minimap.enabled" = false;
         "editor.cursorBlinking" = "solid";
         "editor.suggestSelection" = "first";
+        "editor.tokenColorCustomizations" = {
+          "textMateRules" = [
+            {
+              "name" = "One Dark italic";
+              "scope" = [
+                "comment"
+                "entity.other.attribute-name"
+                "keyword"
+                "markup.underline.link"
+                "storage.modifier"
+                "storage.type"
+                "string.url"
+                "variable.language.super"
+                "variable.language.this"
+              ];
+              "settings" = {
+                "fontStyle" = "italic";
+              };
+            }
+            {
+              "name" = "One Dark italic reset";
+              "scope" = [
+                "keyword.operator"
+                "keyword.other.type"
+                "storage.modifier.import"
+                "storage.modifier.package"
+                "storage.type.built-in"
+                "storage.type.function.arrow"
+                "storage.type.generic"
+                "storage.type.java"
+                "storage.type.primitive"
+              ];
+              "settings" = {
+                "fontStyle" = "";
+              };
+            }
+          ];
+        };
         "window.titleBarStyle" = "custom";
         "window.menuBarVisibility" = "toggle";
         "keyboard.dispatch" = "keyCode";

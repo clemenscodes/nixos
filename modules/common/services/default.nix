@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./sddm
+    ./mtr.nix
     ./bluetooth.nix
     ./sound.nix
     ./printing.nix

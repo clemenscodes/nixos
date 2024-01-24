@@ -1,5 +1,7 @@
 {...}: {
   imports = [
-    ./rpcs3
+    ./gimp
+    ./kdenlive
   ];
 }
+

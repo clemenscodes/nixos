@@ -4,7 +4,7 @@
       enable = true;
       enableSshSupport = true;
       enableZshIntegration = true;
-      pinentryFlavor = "gtk2";
+      pinentryFlavor = "gnome3";
     };
   };
   programs = {

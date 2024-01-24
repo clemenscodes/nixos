@@ -63,6 +63,14 @@
       };
     };
     dataFile = {
+      "notes/README.md" = {
+        text = ''
+          # Notes
+
+          - where general notes are stored
+          - run `notes` to cd into this directory
+        '';
+      };
       "images/wallpaper" = {
         source = ../../../../../assets/wallpaper;
         recursive = true;

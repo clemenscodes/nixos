@@ -5,7 +5,7 @@
   ...
 }: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_testing;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
     loader = {
       systemd-boot = {
         enable = lib.mkForce false;

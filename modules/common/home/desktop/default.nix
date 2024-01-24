@@ -20,9 +20,9 @@
     ./gtk
     ./fonts
     ./hyprland
+    ./hyprpicker
     ./hyprshade
     ./kitty
-    ./kdenlive
     ./lf
     ./libreoffice
     ./lact
@@ -52,6 +52,7 @@
     ./waybar
     ./xdg
     ./xwaylandvideobridge
+    ./ydotool
     ./zathura
     ./zsh
   ];

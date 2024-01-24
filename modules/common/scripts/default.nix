@@ -1,13 +1,17 @@
 {pkgs, ...}: {
   environment = {
     systemPackages = [
+      (import ./clicker {inherit pkgs;})
+      (import ./dlplaylist {inherit pkgs;})
       (import ./detectidle {inherit pkgs;})
       (import ./nvidiagpuinfo {inherit pkgs;})
       (import ./lidhandle {inherit pkgs;})
       (import ./lockout {inherit pkgs;})
       (import ./signout {inherit pkgs;})
+      (import ./lastchaos {inherit pkgs;})
       (import ./setupsops {inherit pkgs;})
       (import ./screenshot {inherit pkgs;})
+      (import ./fullscreenshot {inherit pkgs;})
       (import ./wallpaper {inherit pkgs;})
       (import ./polkitagent {inherit pkgs;})
       (import ./sshagent {inherit pkgs;})

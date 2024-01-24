@@ -2,6 +2,7 @@
   pkgs,
   config,
   machine,
+  user,
   ...
 }: {
   programs = {
@@ -42,6 +43,7 @@
         S = "cd $XDG_PICTURES_DIR/screenshots";
         docs = "cd $XDG_DOCUMENTS_DIR";
         isos = "cd $XDG_DATA_HOME/isos";
+        notes = "cd $XDG_DATA_HOME/notes";
         rr = "cd $HOME/.local/src";
       };
       history = {
@@ -99,6 +101,7 @@
         export NIXOS_OZONE_WL=1
         export NIX_CONFIG_HOME=$XDG_CONFIG_HOME/nixos
         export CARGO_HOME="$XDG_DATA_HOME/cargo"
+        export JAVA_HOME="/etc/profiles/per-user/${user}"
         export GOPATH="$XDG_DATA_HOME/go"
         export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
         export M2_HOME="$XDG_DATA_HOME/m2"
