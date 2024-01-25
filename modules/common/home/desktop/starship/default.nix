@@ -46,6 +46,7 @@
           deleted = " 🗑️ <!= \${count}";
         };
         nix_shell = {
+          disabled = true;
           format = "via [$symbol]($style)";
           symbol = "❄️ ";
         };
