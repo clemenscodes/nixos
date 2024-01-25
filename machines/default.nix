@@ -21,11 +21,7 @@
       allowUnfree = true;
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "code"
-          "vscode"
-          "idea-ultimate"
           "spotify"
-          "displaylink"
           "discord"
           "steam"
           "steam-original"
