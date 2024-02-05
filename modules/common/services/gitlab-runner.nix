@@ -20,7 +20,12 @@
           dockerImage = "ubuntu";
           description = "gitlab-runner";
           tagList = ["docker"];
-          dockerAllowedImages = ["gcr.io/kaniko-project/executor:v1.14.0-debug"];
+          dockerAllowedImages = [
+            "gcr.io/kaniko-project/executor:v1.14.0-debug" 
+            "node:21.4-alpine"
+            "registry.gitlab.com/security-products/secrets:4"
+            "sonarsource/sonar-scanner-cli:latest"
+          ];
         };
       };
     };

@@ -4,6 +4,7 @@
     ./scripts
     ./environment.nix
     ./nix.nix
+    ./ld.nix
     ./boot.nix
     ./time.nix
     ./i18n.nix
