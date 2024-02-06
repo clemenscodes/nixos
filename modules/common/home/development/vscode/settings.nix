@@ -12,16 +12,20 @@
           "editor.formatOnSave" = true;
           "editor.formatOnType" = false;
         };
-        "[typescript]" = {
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[rust]" = {
+          "editor.defaultFormatter" = "rust-lang.rust-analyzer";
+        };
+        "[toml]" = {
+          "editor.defaultFormatter" = "tamasfe.even-better-toml";
         };
         "vitest.enable" = true;
         "workbench.colorTheme" = "One Dark";
         "workbench.iconTheme" = "material-icon-theme";
         "terminal.integrated.fontSize" = 16;
         "terminal.external.linuxExec" = "${pkgs.kitty}/bin/kitty";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.fontSize" = 16;
-        "editor.fontFamily" = "Iosevka Nerd Font";
+        "editor.fontFamily" = "Iosevka NF";
         "editor.scrollbar.horizontal" = "hidden";
         "editor.scrollbar.vertical" = "hidden";
         "editor.minimap.enabled" = false;
