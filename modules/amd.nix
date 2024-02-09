@@ -17,8 +17,14 @@ in
   };
   hardware = {
     opengl = {
-      extraPackages = with pkgs; [];
-      extraPackages32 = with pkgs; [];
+      extraPackages = with pkgs; [
+      	amdvlk
+	mesa
+      ];
+      extraPackages32 = with pkgs; [
+        driversi686Linux.amdvlk
+        driversi686Linux.mesa
+      ];
     };
   };
 }
