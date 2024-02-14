@@ -18,14 +18,15 @@
         "[toml]" = {
           "editor.defaultFormatter" = "tamasfe.even-better-toml";
         };
-        "vitest.enable" = true;
         "workbench.colorTheme" = "One Dark";
         "workbench.iconTheme" = "material-icon-theme";
         "terminal.integrated.fontSize" = 16;
+        "terminal.integrated.fontFamily" = "Iosevka NFM";
         "terminal.external.linuxExec" = "${pkgs.kitty}/bin/kitty";
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.fontSize" = 16;
-        "editor.fontFamily" = "Iosevka NF";
+        "editor.fontFamily" = "Iosevka NFM";
+	"editor.fontLigatures" = true;
         "editor.scrollbar.horizontal" = "hidden";
         "editor.scrollbar.vertical" = "hidden";
         "editor.minimap.enabled" = false;

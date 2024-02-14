@@ -15,5 +15,8 @@
         serif = ["Iosevka Nerd Font"];
       };
     };
+    fontDir = {
+      enable = true;
+    };
   };
 }
