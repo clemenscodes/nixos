@@ -3,13 +3,23 @@
     ./auto-save
     ./auto-session
     ./bufferline
+    ./cmp-buffer
+    ./cmp-path
+    ./cmp-npm
+    ./cmp-nvim-lsp
+    ./cmp-nvim-lsp-document-symbol
+    ./cmp-nvim-lsp-signature-help
     ./cursorline
     ./comment-nvim
     ./lualine
+    ./lsp
+    ./lsp-format
     ./nvim-autopairs
     ./nvim-tree
+    ./nvim-cmp
     ./nvim-colorizer
     ./gitsigns
+    ./rustaceanvim
     ./indent-blankline
     ./rainbow-delimiters
     ./which-key
