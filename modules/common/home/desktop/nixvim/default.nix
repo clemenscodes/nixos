@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{inputs,pkgs, ...}: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./config
@@ -10,16 +10,6 @@
       enableMan = true;
       type = "lua";
       colorscheme = "catppuccin";
-      extraPlugins = [];
-      extraPackages = [];
-      extraConfigLuaPre = ''
-      '';
-      extraConfigLua = ''
-      '';
-      extraConfigLuaPost = ''
-      '';
-      extraFiles = {};
-      extraLuaPackages = _: [];
     };
   };
 }
