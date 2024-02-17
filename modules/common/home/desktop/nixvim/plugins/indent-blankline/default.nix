@@ -2,12 +2,8 @@
   programs = {
     nixvim = {
       plugins = {
-        project-nvim = {
+        indent-blankline = {
           enable = true;
-          patterns = [
-            ".git"
-            "nx.json"
-          ];
         };
       };
     };

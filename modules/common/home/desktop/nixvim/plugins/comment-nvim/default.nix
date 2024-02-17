@@ -2,12 +2,9 @@
   programs = {
     nixvim = {
       plugins = {
-        project-nvim = {
+        comment-nvim = {
           enable = true;
-          patterns = [
-            ".git"
-            "nx.json"
-          ];
+          sticky = true;
         };
       };
     };

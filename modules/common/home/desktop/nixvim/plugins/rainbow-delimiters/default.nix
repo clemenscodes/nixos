@@ -2,12 +2,9 @@
   programs = {
     nixvim = {
       plugins = {
-        project-nvim = {
+        rainbow-delimiters = {
           enable = true;
-          patterns = [
-            ".git"
-            "nx.json"
-          ];
+          extraOptions = {};
         };
       };
     };
