@@ -1,8 +1,9 @@
 {...}: {
   imports = [
+    ./auto-save
+    ./auto-session
     ./bufferline
     ./lualine
-    ./startup
     ./nvim-autopairs
     ./nvim-tree
     ./gitsigns
