@@ -20,6 +20,7 @@
     ./gtk
     ./fonts
     ./hyprland
+    ./stockfish
     ./hyprpicker
     ./hyprshade
     ./kitty

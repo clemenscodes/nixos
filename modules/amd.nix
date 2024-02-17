@@ -1,8 +1,6 @@
-{pkgs, ...}: 
-let
+{pkgs, ...}: let
   driver = "amdgpu";
-in
-{
+in {
   boot = {
     initrd = {
       kernelModules = [driver];
@@ -19,19 +17,10 @@ in
     opengl = {
       extraPackages = with pkgs; [
         amdvlk
-        rocm-opencl-icd
-        rocm-opencl-runtime
         mesa
-        mesa.opencl
-        vulkan-tools
-        vulkan-loader
-        vulkan-validation-layers
-        vulkan-extension-layer
       ];
       extraPackages32 = with pkgs; [
         driversi686Linux.amdvlk
-        rocm-opencl-icd
-        rocm-opencl-runtime
         driversi686Linux.mesa
       ];
     };

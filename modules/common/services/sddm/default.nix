@@ -20,7 +20,9 @@
   services = {
     xserver = {
       enable = true;
-      layout = locale;
+      xkb = {
+        layout = locale;
+      };
       displayManager = {
         defaultSession = "hyprland";
         sddm = {

@@ -19,11 +19,8 @@
       driSupport32Bit = true;
       extraPackages = with pkgs; [
         mesa.drivers
-        mangohud
       ];
-      extraPackages32 = with pkgs; [
-        mangohud
-      ];
+      extraPackages32 = with pkgs; [];
     };
   };
 }

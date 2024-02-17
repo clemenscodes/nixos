@@ -2,6 +2,7 @@
   programs = {
     vscode = {
       userSettings = {
+        "direnv.restart.automatic" = true;
         "extensions.experimental.affinity" = {
           "asvetliakov.vscode-neovim" = 1;
         };
@@ -11,16 +12,21 @@
           "editor.formatOnSave" = true;
           "editor.formatOnType" = false;
         };
-        "[typescript]" = {
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[rust]" = {
+          "editor.defaultFormatter" = "rust-lang.rust-analyzer";
         };
-        "vitest.enable" = true;
+        "[toml]" = {
+          "editor.defaultFormatter" = "tamasfe.even-better-toml";
+        };
         "workbench.colorTheme" = "One Dark";
         "workbench.iconTheme" = "material-icon-theme";
         "terminal.integrated.fontSize" = 16;
+        "terminal.integrated.fontFamily" = "Iosevka NFM";
         "terminal.external.linuxExec" = "${pkgs.kitty}/bin/kitty";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.fontSize" = 16;
-        "editor.fontFamily" = "Iosevka Nerd Font";
+        "editor.fontFamily" = "Iosevka NFM";
+        "editor.fontLigatures" = true;
         "editor.scrollbar.horizontal" = "hidden";
         "editor.scrollbar.vertical" = "hidden";
         "editor.minimap.enabled" = false;

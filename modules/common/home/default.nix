@@ -39,9 +39,15 @@
         source = ../../../assets/fonts;
         recursive = true;
       };
+      ".local/share/nvim/undo/README.md" = {
+        text = ''
+          # Neovim undo direcotry
+
+          - This is the directory where neovim stores its undo history
+        '';
+      };
     };
   };
-
   programs = {
     home-manager = {
       enable = true;

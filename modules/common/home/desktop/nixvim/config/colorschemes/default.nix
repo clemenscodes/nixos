@@ -5,7 +5,10 @@
         catppuccin = {
           enable = true;
           flavour = "macchiato";
-          integrations = {};
+          integrations = {
+            dashboard = true;
+            gitsigns = true;
+          };
           styles = {};
         };
       };
