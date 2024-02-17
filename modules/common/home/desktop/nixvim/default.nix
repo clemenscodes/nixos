@@ -8,8 +8,8 @@
     nixvim = {
       enable = true;
       enableMan = true;
-      viAlias = true;
       vimAlias = true;
+      viAlias = true;
       type = "lua";
       colorscheme = "catppuccin";
     };
