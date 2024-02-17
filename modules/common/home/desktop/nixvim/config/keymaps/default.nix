@@ -3,6 +3,24 @@
     nixvim = {
       keymaps = [
         {
+          action = "<c-u>zz";
+          key = "<c-u>";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Navigate up with centered cursor";
+          };
+        }
+        {
+          action = "<c-d>zz";
+          key = "<c-d>";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Navigate down with centered cursor";
+          };
+        }
+        {
           action = ":wincmd k<CR>";
           key = "<c-k>";
           mode = "n";

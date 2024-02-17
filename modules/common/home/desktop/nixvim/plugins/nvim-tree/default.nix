@@ -19,7 +19,6 @@
           autoReloadOnWrite = true;
           disableNetrw = true;
           hijackCursor = true;
-          openOnSetup = true;
           syncRootWithCwd = true;
           respectBufCwd = true;
           reloadOnBufenter = true;
