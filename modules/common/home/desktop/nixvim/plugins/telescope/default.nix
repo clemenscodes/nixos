@@ -51,10 +51,12 @@
         };
         which-key = {
           registrations = {
-            "<leader>f" = "Telescope";
-            "<leader>ff" = "Find files";
-            "<leader>fg" = "Live grep";
-            "<leader>fp" = "Projects";
+            "<leader>f" = {
+              name = "Telescope";
+              "f" = "Find files";
+              "g" = "Live grep";
+              "p" = "Projects";
+            };
           };
         };
       };
