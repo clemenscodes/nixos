@@ -36,10 +36,8 @@
         '';
       };
       ".local/share/fonts" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/run/current-system/sw/share/X11/fonts";
-      };
-      ".fonts" = {
-        source = config.lib.file.mkOutOfStoreSymlink "/run/current-system/sw/share/X11/fonts";
+        source = ../../../assets/fonts;
+        recursive = true;
       };
     };
   };

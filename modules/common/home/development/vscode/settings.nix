@@ -26,7 +26,7 @@
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.fontSize" = 16;
         "editor.fontFamily" = "Iosevka NFM";
-	"editor.fontLigatures" = true;
+        "editor.fontLigatures" = true;
         "editor.scrollbar.horizontal" = "hidden";
         "editor.scrollbar.vertical" = "hidden";
         "editor.minimap.enabled" = false;

@@ -1,8 +1,6 @@
-{pkgs, ...}: 
-let
+{pkgs, ...}: let
   driver = "amdgpu";
-in
-{
+in {
   boot = {
     initrd = {
       kernelModules = [driver];
@@ -18,8 +16,8 @@ in
   hardware = {
     opengl = {
       extraPackages = with pkgs; [
-      	amdvlk
-	mesa
+        amdvlk
+        mesa
       ];
       extraPackages32 = with pkgs; [
         driversi686Linux.amdvlk
