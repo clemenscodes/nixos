@@ -4,6 +4,7 @@
     ./auto-session
     ./bufferline
     ./cmp-buffer
+    ./cmp-cmdline
     ./cmp-path
     ./cmp-npm
     ./cmp-nvim-lsp
@@ -14,6 +15,7 @@
     ./lualine
     ./lsp
     ./lsp-format
+    ./luasnip
     ./nvim-autopairs
     ./nvim-tree
     ./nvim-cmp
