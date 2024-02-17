@@ -19,6 +19,11 @@
           closeIfLastWindow = true;
           extraOptions = {};
         };
+        which-key = {
+          registrations = {
+            "<leader>e" = "Toggle neo-tree";
+          };
+        };
       };
     };
   };
