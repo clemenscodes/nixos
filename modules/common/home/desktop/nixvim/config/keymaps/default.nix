@@ -8,6 +8,7 @@
           mode = "n";
           options = {
             silent = true;
+            desc = "Jump to top split";
           };
         }
         {
@@ -16,6 +17,7 @@
           mode = "n";
           options = {
             silent = true;
+            desc = "Jump to bottom split";
           };
         }
         {
@@ -24,6 +26,7 @@
           mode = "n";
           options = {
             silent = true;
+            desc = "Jump to left split";
           };
         }
         {
@@ -32,6 +35,7 @@
           mode = "n";
           options = {
             silent = true;
+            desc = "Jump to right split";
           };
         }
       ];
