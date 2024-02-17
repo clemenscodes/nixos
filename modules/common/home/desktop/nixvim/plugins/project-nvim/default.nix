@@ -7,10 +7,6 @@
           patterns = [
             ".git" 
             "nx.json"
-            "package.json"
-            "Cargo.toml"
-            "Makefile" 
-            "CMakeLists.txt" 
           ];
         };
       };

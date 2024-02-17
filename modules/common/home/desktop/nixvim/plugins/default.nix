@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./neo-tree
+    ./nvim-tree
     ./which-key
     ./project-nvim
     ./telescope
