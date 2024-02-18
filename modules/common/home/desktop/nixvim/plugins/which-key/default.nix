@@ -12,6 +12,7 @@
           registrations = {
             "<Tab>" = "Next buffer";
             "<S-Tab>" = "Previous buffer";
+            "<leader>h" = "Clear highlights and search term";
           };
         };
       };

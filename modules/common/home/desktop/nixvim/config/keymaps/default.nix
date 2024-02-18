@@ -21,6 +21,15 @@
           };
         }
         {
+          action = '':let @/=""'';
+          key = "<leader>h";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Clear highlights and search term";
+          };
+        }
+        {
           action = ":bnext<CR>";
           key = "<Tab>";
           mode = "n";
