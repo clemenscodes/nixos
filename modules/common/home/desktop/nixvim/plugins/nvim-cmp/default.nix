@@ -8,31 +8,33 @@
         nvim-cmp = {
           enable = true;
           preselect = "None";
-          mappingPresets = ["insert"];
           sources = [
-            {name = "nvim_lsp_document_symbol";}
-            {name = "nvim_lsp_signature_help";}
-            {name = "nvim_lsp:nil_ls";}
+            {name = "nvim_lsp";}
             {name = "cmdline";}
             {name = "luasnip";}
             {name = "path";}
-            {name = "buffer";}
           ];
           mapping = {
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-            "<C-e>" = "cmp.mapping.close()";
-            "<C-f>" = "cmp.mapping.scroll_docs(4)";
             "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<Tab>" = {
+              action = /* lua */ ''
+                function(fallback)
+                  local luasnip = require 'luasnip'
+                  if cmp.visible() then
+                    cmp.select_next_item()
+                  elseif luasnip.expandable() then
+                    luasnip.expand();
+                  elseif luasnip.expand_or_jumpable() then
+                    luasnip.expand_or_jump()
+                  else
+                    fallback()
+                  end
+                end
+              '';
+              modes = [ "i" "s" ];
+            };
             "<S-Tab>" = {
               action = "cmp.mapping.select_prev_item()";
-              modes = [
-                "i"
-                "s"
-              ];
-            };
-            "<Tab>" = {
-              action = "cmp.mapping.select_next_item()";
               modes = [
                 "i"
                 "s"

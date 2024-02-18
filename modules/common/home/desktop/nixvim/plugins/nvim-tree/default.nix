@@ -32,7 +32,7 @@
             showOnDirs = true;
           };
           onAttach = {
-            __raw = ''
+            __raw = /* lua */ ''
               function(bufnr)
                 local api = require("nvim-tree.api")
                 local function opts(desc)
