@@ -9,6 +9,10 @@
         which-key = {
           enable = true;
           ignoreMissing = true;
+          registrations = {
+            "<Tab>" = "Next buffer";
+            "<S-Tab>" = "Previous buffer";
+          };
         };
       };
     };

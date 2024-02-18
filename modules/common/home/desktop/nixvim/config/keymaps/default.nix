@@ -21,6 +21,24 @@
           };
         }
         {
+          action = ":bnext<CR>";
+          key = "<Tab>";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Next buffer";
+          };
+        }
+        {
+          action = ":bprevious<CR>";
+          key = "<S-Tab>";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Previous buffer";
+          };
+        }
+        {
           action = ":wincmd k<CR>";
           key = "<c-k>";
           mode = "n";
