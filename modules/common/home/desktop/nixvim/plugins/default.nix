@@ -13,6 +13,7 @@
     ./friendly-snippets
     ./lualine
     ./lsp
+    ./lspsaga
     ./lsp-format
     ./luasnip
     ./nvim-autopairs
