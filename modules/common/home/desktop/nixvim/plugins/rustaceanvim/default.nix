@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [cargo rustc];
+      extraPackages = with pkgs; [cargo];
       plugins = {
         rustaceanvim = {
           enable = true;

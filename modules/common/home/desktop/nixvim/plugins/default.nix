@@ -12,6 +12,7 @@
     ./cmp-nvim-lsp-signature-help
     ./cursorline
     ./comment-nvim
+    ./friendly-snippets
     ./lualine
     ./lsp
     ./lsp-format
