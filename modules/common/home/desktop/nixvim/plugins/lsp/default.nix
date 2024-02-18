@@ -4,7 +4,15 @@
     nixvim = {
       keymaps = [
         {
-          action = "function() vim.lsp.buf.code_action({apply = true}) end";
+          action =
+            /*
+            lua
+            */
+            ''
+              function()
+                vim.lsp.buf.code_action()
+              end
+            '';
           lua = true;
           key = "ca";
           mode = "n";

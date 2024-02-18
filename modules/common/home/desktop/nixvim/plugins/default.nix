@@ -8,18 +8,19 @@
     ./cmp-nvim-lsp-signature-help
     ./cmp_luasnip
     ./cursorline
+    ./conform-nvim
     ./comment-nvim
     ./crates-nvim
     ./friendly-snippets
     ./lualine
     ./lsp
     ./lspsaga
-    ./lsp-format
     ./luasnip
     ./nvim-autopairs
     ./nvim-tree
     ./nvim-cmp
     ./nvim-colorizer
+    ./nvim-lint
     ./gitsigns
     ./rustaceanvim
     ./indent-blankline
