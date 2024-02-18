@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./auto-save
-    ./auto-session
     ./bufferline
     ./cmp-buffer
     ./cmp-cmdline

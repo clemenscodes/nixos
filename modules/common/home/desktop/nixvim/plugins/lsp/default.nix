@@ -1,5 +1,5 @@
 {...}: {
-  imports = [ ./servers ];
+  imports = [./servers];
   programs = {
     nixvim = {
       keymaps = [

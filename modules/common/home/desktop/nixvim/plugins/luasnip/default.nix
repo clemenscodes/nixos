@@ -4,7 +4,7 @@
       keymaps = [
         {
           action = ''
-            function() 
+            function()
               if require'luasnip'.expand_or_jumpable() then
                 require'luasnip'.expand_or_jump()
               end
@@ -23,7 +23,7 @@
         luasnip = {
           enable = true;
           extraConfig = {
-            enable_autosnippets = true; 
+            enable_autosnippets = true;
           };
         };
       };
