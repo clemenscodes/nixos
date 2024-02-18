@@ -21,7 +21,7 @@
           };
         }
         {
-          action = '':let @/=""'';
+          action = '':let @/=""<CR>'';
           key = "<leader>h";
           mode = "n";
           options = {

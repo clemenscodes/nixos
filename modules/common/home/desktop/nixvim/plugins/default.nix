@@ -2,13 +2,11 @@
   imports = [
     ./auto-save
     ./bufferline
-    ./cmp-buffer
-    ./cmp-cmdline
     ./cmp-path
-    ./cmp-npm
     ./cmp-nvim-lsp
     ./cmp-nvim-lsp-document-symbol
     ./cmp-nvim-lsp-signature-help
+    ./cmp_luasnip
     ./cursorline
     ./comment-nvim
     ./friendly-snippets
