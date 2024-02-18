@@ -20,7 +20,7 @@
     ./nvim-tree
     ./nvim-cmp
     ./nvim-colorizer
-    ./nvim-lint
+    ./lint
     ./gitsigns
     ./rustaceanvim
     ./indent-blankline
