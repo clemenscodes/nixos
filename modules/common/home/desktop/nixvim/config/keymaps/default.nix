@@ -48,7 +48,7 @@
           };
         }
         {
-          action = ":%bd|e#|bd#<CR>";
+          action = '':%bd|e#|bd#<CR>|'"'';
           key = "<leader>o";
           mode = "n";
           options = {
