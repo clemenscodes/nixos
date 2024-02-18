@@ -23,6 +23,7 @@
               }
               {name = "luasnip";}
               {name = "path";}
+              {name = "crates";}
             ];
           };
           preselect = "None";

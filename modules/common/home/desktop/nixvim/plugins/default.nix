@@ -9,6 +9,7 @@
     ./cmp_luasnip
     ./cursorline
     ./comment-nvim
+    ./crates-nvim
     ./friendly-snippets
     ./lualine
     ./lsp
