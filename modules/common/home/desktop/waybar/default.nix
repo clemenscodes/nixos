@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  terminal,
   ...
 }: {
   home = {

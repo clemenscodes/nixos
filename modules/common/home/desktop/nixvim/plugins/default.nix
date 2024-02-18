@@ -25,6 +25,7 @@
     ./indent-blankline
     ./rainbow-delimiters
     ./which-key
+    ./vim-bbye
     ./project-nvim
     ./toggleterm
     ./telescope
