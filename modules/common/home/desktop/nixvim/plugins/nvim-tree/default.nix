@@ -27,6 +27,10 @@
             enable = true;
             updateRoot = true;
           };
+          diagnostics = {
+            enable = true;
+            showOnDirs = true;
+          };
           onAttach = {
             __raw = ''
               function(bufnr)
@@ -44,8 +48,6 @@
                   else
                     -- open file
                     api.node.open.edit()
-                    -- Close the tree if file was opened
-                    api.tree.close()
                   end
                 end
 

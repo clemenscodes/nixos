@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -20,7 +19,7 @@
       extraPackages = with pkgs; [
         mesa.drivers
       ];
-      extraPackages32 = with pkgs; [];
+      extraPackages32 = [];
     };
   };
 }

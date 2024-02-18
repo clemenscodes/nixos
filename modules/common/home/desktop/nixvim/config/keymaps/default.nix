@@ -48,6 +48,15 @@
           };
         }
         {
+          action = ":%bd|e#|bd#<CR>";
+          key = "<leader>o";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Close all buffers except current";
+          };
+        }
+        {
           action = ":wincmd k<CR>";
           key = "<c-k>";
           mode = "n";
