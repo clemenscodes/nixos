@@ -21,6 +21,7 @@
     ./nvim-cmp
     ./nvim-colorizer
     ./lint
+    ./tmux-navigator
     ./gitsigns
     ./rustaceanvim
     ./indent-blankline
