@@ -29,26 +29,19 @@
       plugins = {
         conform-nvim = {
           enable = true;
-          extraOptions = {
-            format_on_save = {
-              timeout_ms = 500;
-              lsp_fallback = true;
-            };
-          };
           formattersByFt = {
             nix = ["alejandra"];
-            lua = ["stylua "];
             rust = ["rustfmt"];
-            javascript = [["prettierd" "prettier"]];
-            typescript = [["prettierd" "prettier"]];
-            javascriptreact = [["prettierd" "prettier"]];
-            typescriptreact = [["prettierd" "prettier"]];
-            css = [["prettierd" "prettier"]];
-            html = [["prettierd" "prettier"]];
-            json = [["prettierd" "prettier"]];
-            yaml = [["prettierd" "prettier"]];
-            graphql = [["prettierd" "prettier"]];
-            markdown = [["prettierd" "prettier"]];
+            javascript = ["prettierd"];
+            typescript = ["prettierd"];
+            javascriptreact = ["prettierd"];
+            typescriptreact = ["prettierd"];
+            css = ["prettierd"];
+            html = ["prettierd"];
+            json = ["prettierd"];
+            yaml = ["prettierd"];
+            graphql = ["prettierd"];
+            markdown = ["prettierd"];
           };
         };
         which-key = {

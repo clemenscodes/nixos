@@ -86,9 +86,6 @@
               padding = 1;
             };
           };
-          git = {
-            enable = true;
-          };
           modified = {
             enable = true;
           };

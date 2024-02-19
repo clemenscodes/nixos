@@ -12,7 +12,6 @@
     ./comment-nvim
     ./crates-nvim
     ./friendly-snippets
-    ./leap
     ./lualine
     ./lsp
     ./lspsaga

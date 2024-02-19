@@ -8,6 +8,7 @@
         undodir = "${config.xdg.dataHome}/nvim/undo";
         undofile = true;
         expandtab = true;
+        termguicolors = true;
       };
     };
   };

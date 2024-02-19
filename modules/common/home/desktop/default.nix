@@ -33,6 +33,7 @@
     ./ncdu
     ./nm
     ./nixvim
+    ./tmux
     ./qt
     ./rofi
     ./vhs

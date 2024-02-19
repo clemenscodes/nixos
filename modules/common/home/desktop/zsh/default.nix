@@ -87,7 +87,17 @@
                 [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
             fi
         }
+        vhere () {
+            tmp="$(mktemp -uq)"
+            trap 'rm -f $tmp >/dev/null 2>&1' HUP INT QUIT TERM PWR EXIT
+            nvim .
+            if [ -f "$tmp" ]; then
+                dir="$(cat "$tmp")"
+                [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+            fi
+        }
         bindkey -s '^o' 'lfcd\n'
+        bindkey -s '^v' 'vhere\n'
         autoload edit-command-line; zle -N edit-command-line
         bindkey '^e' edit-command-line
         bindkey -M vicmd '^[[P' vi-delete-char

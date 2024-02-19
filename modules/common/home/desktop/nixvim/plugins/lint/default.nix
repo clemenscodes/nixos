@@ -10,7 +10,7 @@
             */
             ''
               function()
-                lint.try_lint()
+                    lint.try_lint()
               end
             '';
           key = "<leader>l";
@@ -21,6 +21,7 @@
           };
         }
       ];
+
       plugins = {
         lint = {
           enable = true;
@@ -34,7 +35,7 @@
         };
         which-key = {
           registrations = {
-            "<leader>l" = "Trigger linting for currentl file";
+            "<leader>l" = "Trigger linting for current file";
           };
         };
       };
