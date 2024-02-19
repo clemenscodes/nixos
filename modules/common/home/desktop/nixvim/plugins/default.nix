@@ -2,6 +2,7 @@
   imports = [
     ./auto-save
     ./bufferline
+    ./better-escape
     ./cmp-path
     ./cmp-nvim-lsp
     ./cmp-nvim-lsp-document-symbol
@@ -18,10 +19,12 @@
     ./luasnip
     ./nvim-autopairs
     ./nvim-tree
+    ./notify
     ./nvim-cmp
     ./nvim-colorizer
     ./lint
     ./tmux-navigator
+    ./ts-context-commentstring
     ./gitsigns
     ./rustaceanvim
     ./indent-blankline
