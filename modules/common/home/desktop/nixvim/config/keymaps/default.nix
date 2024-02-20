@@ -21,6 +21,42 @@
           };
         }
         {
+          action = '':let @/=""<CR>'';
+          key = "<leader>h";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Clear highlights and search term";
+          };
+        }
+        {
+          action = ":bnext<CR>";
+          key = "<Tab>";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Next buffer";
+          };
+        }
+        {
+          action = ":bprevious<CR>";
+          key = "<S-Tab>";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Previous buffer";
+          };
+        }
+        {
+          action = '':%bd|e#|bd#<CR>|'"'';
+          key = "<leader>o";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Close all buffers except current";
+          };
+        }
+        {
           action = ":wincmd k<CR>";
           key = "<c-k>";
           mode = "n";

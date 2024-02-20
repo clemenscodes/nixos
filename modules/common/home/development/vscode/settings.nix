@@ -2,6 +2,7 @@
   programs = {
     vscode = {
       userSettings = {
+        "vscode-neovim.neovimClean" = true;
         "direnv.restart.automatic" = true;
         "extensions.experimental.affinity" = {
           "asvetliakov.vscode-neovim" = 1;

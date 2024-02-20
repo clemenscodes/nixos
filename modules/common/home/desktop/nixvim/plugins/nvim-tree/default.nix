@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   programs = {
     nixvim = {
       keymaps = [
@@ -26,6 +26,68 @@
           updateFocusedFile = {
             enable = true;
             updateRoot = true;
+          };
+          diagnostics = {
+            enable = true;
+            showOnDirs = true;
+          };
+          onAttach = {
+            __raw =
+              /*
+              lua
+              */
+              ''
+                function(bufnr)
+                  local api = require("nvim-tree.api")
+                  local function opts(desc)
+                    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+                  end
+
+                  local function edit_or_open()
+                    local node = api.tree.get_node_under_cursor()
+
+                    if node.nodes ~= nil then
+                      -- expand or collapse folder
+                      api.node.open.edit()
+                    else
+                      -- open file
+                      api.node.open.edit()
+                    end
+                  end
+
+                  -- open as vsplit on current node
+                  local function vsplit_preview()
+                    local node = api.tree.get_node_under_cursor()
+
+                    if node.nodes ~= nil then
+                      -- expand or collapse folder
+                      api.node.open.edit()
+                    else
+                      -- open file as vsplit
+                      api.node.open.vertical()
+                    end
+
+                    -- Finally refocus on tree if it was lost
+                    api.tree.focus()
+                  end
+                  api.config.mappings.default_on_attach(bufnr)
+                  vim.keymap.set("n", "l", edit_or_open,          opts("Edit Or Open"))
+                  vim.keymap.set("n", "L", vsplit_preview,        opts("Vsplit Preview"))
+                  vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close folder"))
+                  vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
+                end
+              '';
+          };
+          view = {
+            centralizeSelection = true;
+            width = {
+              min = 30;
+              max = -1;
+              padding = 1;
+            };
+          };
+          modified = {
+            enable = true;
           };
           extraOptions = {};
         };

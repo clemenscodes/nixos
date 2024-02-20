@@ -1,8 +1,6 @@
 {
   pkgs,
-  system,
   config,
-  user,
   ...
 }: let
   # spotdl v4.1.8 is latest version that is not broken
@@ -14,7 +12,7 @@
     .spotdl;
 in {
   home = {
-    packages = with pkgs; [
+    packages = [
       spotdl
     ];
   };

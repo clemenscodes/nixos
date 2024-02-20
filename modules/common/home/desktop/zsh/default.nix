@@ -36,6 +36,7 @@
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         nedesk = "cd $NIX_CONFIG_HOME/modules/common/home/desktop && lfcd";
         nenvim = "cd $NIX_CONFIG_HOME/modules/common/home/desktop/nixvim && lfcd";
+        v = "nvim .";
         V = "cd $XDG_VIDEOS_DIR";
         D = "cd $XDG_DOWNLOAD_DIR";
         M = "cd $XDG_MUSIC_DIR";
@@ -86,7 +87,17 @@
                 [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
             fi
         }
+        vhere () {
+            tmp="$(mktemp -uq)"
+            trap 'rm -f $tmp >/dev/null 2>&1' HUP INT QUIT TERM PWR EXIT
+            nvim .
+            if [ -f "$tmp" ]; then
+                dir="$(cat "$tmp")"
+                [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+            fi
+        }
         bindkey -s '^o' 'lfcd\n'
+        bindkey -s '^v' 'vhere\n'
         autoload edit-command-line; zle -N edit-command-line
         bindkey '^e' edit-command-line
         bindkey -M vicmd '^[[P' vi-delete-char

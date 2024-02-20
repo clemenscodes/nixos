@@ -1,18 +1,36 @@
 {...}: {
   imports = [
+    ./alpha
     ./auto-save
-    ./auto-session
     ./bufferline
+    ./better-escape
+    ./cmp
     ./cursorline
+    ./conform-nvim
     ./comment-nvim
+    ./crates-nvim
+    ./dap
+    ./friendly-snippets
     ./lualine
+    ./lsp
+    ./lspsaga
+    ./luasnip
     ./nvim-autopairs
     ./nvim-tree
+    ./neotest
+    ./notify
+    ./nix-develop
+    ./nvim-cmp
     ./nvim-colorizer
+    ./lint
+    ./tmux-navigator
+    ./ts-context-commentstring
     ./gitsigns
+    ./rustaceanvim
     ./indent-blankline
     ./rainbow-delimiters
     ./which-key
+    ./vim-bbye
     ./project-nvim
     ./toggleterm
     ./telescope
