@@ -1,7 +1,39 @@
 {pkgs, ...}: {
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [cargo];
+      extraPackages = with pkgs; [cargo rustc vscode-extensions.vadimcn.vscode-lldb.adapter];
+      plugins = {
+        rustaceanvim = {
+          enable = true;
+          dap = {
+            autoloadConfigurations = true;
+          };
+          tools = {
+            executor = "toggleterm";
+            onInitialized =
+              /*
+              lua
+              */
+              ''
+                function()
+                  vim.notify("successfully initialized rust-analyzer")
+                end
+              '';
+          };
+          extraOptions = {};
+        };
+        which-key = {
+          registrations = {
+            "<leader>fr" = {
+              name = "+Rust";
+              r = "Find rust runnables";
+              t = "Find rust testables";
+              d = "Find rust debuggables";
+              a = "Run last rust test";
+            };
+          };
+        };
+      };
       keymaps = [
         {
           action = ":RustLsp runnables<CR>";
@@ -22,6 +54,15 @@
           };
         }
         {
+          action = ":RustLsp debuggables<CR>";
+          key = "<leader>frd";
+          mode = "n";
+          options = {
+            desc = "Find rust debuggables";
+            silent = true;
+          };
+        }
+        {
           action = ":RustLsp testables last<CR>";
           key = "<leader>fra";
           mode = "n";
@@ -31,25 +72,6 @@
           };
         }
       ];
-      plugins = {
-        rustaceanvim = {
-          enable = true;
-          tools = {
-            executor = "toggleterm";
-          };
-          extraOptions = {};
-        };
-        which-key = {
-          registrations = {
-            "<leader>fr" = {
-              name = "+Rust";
-              r = "Find rust runnables";
-              t = "Find rust testables";
-              a = "Run last rust test";
-            };
-          };
-        };
-      };
     };
   };
 }

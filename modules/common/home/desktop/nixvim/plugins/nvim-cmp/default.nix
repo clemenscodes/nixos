@@ -24,6 +24,9 @@
               {name = "luasnip";}
               {name = "path";}
               {name = "crates";}
+              {name = "lua";}
+              {name = "tmux";}
+              {name = "npm";}
             ];
           };
           preselect = "None";

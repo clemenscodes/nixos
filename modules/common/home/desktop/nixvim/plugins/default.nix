@@ -9,6 +9,7 @@
     ./conform-nvim
     ./comment-nvim
     ./crates-nvim
+    ./dap
     ./friendly-snippets
     ./lualine
     ./lsp

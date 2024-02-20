@@ -2,6 +2,9 @@
   programs = {
     nixvim = {
       plugins = {
+        cmp_luasnip = {
+          enable = true;
+        };
         cmp-nvim-lsp = {
           enable = true;
         };
@@ -20,7 +23,7 @@
         cmp-path = {
           enable = true;
         };
-        cmp_luasnip = {
+        cmp-npm = {
           enable = true;
         };
       };

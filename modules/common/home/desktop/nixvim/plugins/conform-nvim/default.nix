@@ -5,6 +5,7 @@
         prettierd
         stylua
         alejandra
+        rustfmt
       ];
       keymaps = [
         {

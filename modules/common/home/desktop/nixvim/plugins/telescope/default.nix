@@ -40,9 +40,6 @@
               caseMode = "smart_case";
               fuzzy = true;
             };
-            frecency = {
-              enable = true;
-            };
             ui-select = {
               enable = true;
             };
