@@ -16,7 +16,7 @@
             enabled = true;
           };
           integrations = {
-            dashboard = true;
+            alpha = true;
             gitsigns = true;
             notify = true;
             illuminate = {

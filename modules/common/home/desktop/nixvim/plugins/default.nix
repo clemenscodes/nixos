@@ -1,13 +1,10 @@
 {...}: {
   imports = [
+    ./alpha
     ./auto-save
     ./bufferline
     ./better-escape
-    ./cmp-path
-    ./cmp-nvim-lsp
-    ./cmp-nvim-lsp-document-symbol
-    ./cmp-nvim-lsp-signature-help
-    ./cmp_luasnip
+    ./cmp
     ./cursorline
     ./conform-nvim
     ./comment-nvim
