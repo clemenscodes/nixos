@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [cargo rustc vscode-extensions.vadimcn.vscode-lldb.adapter];
+      extraPackages = with pkgs; [
+        cargo
+        rustc
+        vscode-extensions.vadimcn.vscode-lldb.adapter
+      ];
       plugins = {
         rustaceanvim = {
           enable = true;
