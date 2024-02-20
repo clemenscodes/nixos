@@ -16,7 +16,9 @@
     ./luasnip
     ./nvim-autopairs
     ./nvim-tree
+    ./neotest
     ./notify
+    ./nix-develop
     ./nvim-cmp
     ./nvim-colorizer
     ./lint

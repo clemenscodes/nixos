@@ -13,7 +13,16 @@
           };
         }
         {
-          action = ":RustLsp runnables last<CR>";
+          action = ":RustLsp testables<CR>";
+          key = "<leader>frt";
+          mode = "n";
+          options = {
+            desc = "Find rust testables";
+            silent = true;
+          };
+        }
+        {
+          action = ":RustLsp testables last<CR>";
           key = "<leader>fra";
           mode = "n";
           options = {
@@ -35,6 +44,7 @@
             "<leader>fr" = {
               name = "+Rust";
               r = "Find rust runnables";
+              t = "Find rust testables";
               a = "Run last rust test";
             };
           };
