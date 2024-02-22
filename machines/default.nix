@@ -1,7 +1,6 @@
 {
   inputs,
   nixpkgs,
-  home-manager,
   user,
   nur,
   alejandra,
@@ -31,7 +30,7 @@
         "electron-19.1.9"
       ];
     };
-    overlays = [nur.overlay];
+    overlays = [nur.overlay inputs.neovim-nightly-overlay.overlay];
   };
   lib = nixpkgs.lib;
   themes = {
