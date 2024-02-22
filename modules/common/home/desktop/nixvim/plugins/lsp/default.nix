@@ -2,6 +2,30 @@
   imports = [./servers];
   programs = {
     nixvim = {
+      extraConfigLuaPost = /* lua */ ''
+          vim.diagnostic.config({
+              signs = {
+                  text = {
+                      [vim.diagnostic.severity.ERROR] = '',
+                      [vim.diagnostic.severity.WARN] = '',
+                      [vim.diagnostic.severity.INFO] = '',
+                      [vim.diagnostic.severity.HINT] = '',
+                  },
+                  linehl = {
+                      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+                      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+                      [vim.diagnostic.severity.INFO] = 'InformationMsg',
+                      [vim.diagnostic.severity.HINT] = 'HintMsg',
+                  },
+                  numhl = {
+                      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+                      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+                      [vim.diagnostic.severity.INFO] = 'InformationMsg',
+                      [vim.diagnostic.severity.HINT] = 'HintMsg',
+                  },
+              }
+          })
+      '';
       plugins = {
         lsp = {
           enable = true;

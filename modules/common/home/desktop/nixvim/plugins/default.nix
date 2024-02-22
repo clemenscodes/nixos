@@ -11,6 +11,7 @@
     ./crates-nvim
     ./dap
     ./friendly-snippets
+    ./fine-cmdline
     ./lualine
     ./lsp
     ./lspsaga
