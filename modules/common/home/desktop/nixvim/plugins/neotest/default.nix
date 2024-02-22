@@ -27,7 +27,7 @@
         }
         {
           action = ":Neotest summary toggle<CR>";
-          key = "<leader>rs";
+          key = "<leader>ts";
           mode = "n";
           options = {
             silent = true;
@@ -68,11 +68,11 @@
             "<leader>r" = {
               name = "+Test";
               r = "Run nearest test";
-              s = "Toggle test summary";
               n = "Jump to next test";
               p = "Jump to previous test";
               a = "Run all tests";
             };
+            "<leader>ts" = "Toggle test summary";
           };
         };
       };

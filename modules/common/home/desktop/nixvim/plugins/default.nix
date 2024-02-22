@@ -21,6 +21,8 @@
     ./nvim-tree
     ./neotest
     ./notify
+    ./ts-autotag
+    ./trouble
     ./nix-develop
     ./neodev
     ./nx

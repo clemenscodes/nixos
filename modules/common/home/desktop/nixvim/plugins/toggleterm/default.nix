@@ -4,7 +4,7 @@
       keymaps = [
         {
           action = ":ToggleTerm<CR>";
-          key = "<leader>tt";
+          key = "<leader>tm";
           mode = "n";
           options = {
             silent = true;
@@ -20,10 +20,7 @@
         };
         which-key = {
           registrations = {
-            "<leader>t" = {
-              name = "+Terminal";
-              t = "Toggle terminal";
-            };
+            "<leader>tm" = "Toggle terminal";
           };
         };
       };

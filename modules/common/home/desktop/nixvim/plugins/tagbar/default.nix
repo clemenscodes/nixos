@@ -45,10 +45,7 @@
         };
         which-key = {
           registrations = {
-            "<leader>b" = {
-              name = "+Tagbar";
-              t = "Toggle tagbar";
-            };
+            "<leader>tb" = "Toggle tagbar";
           };
         };
       };
@@ -56,7 +53,7 @@
         {
           action = ":TagbarToggle<CR>";
           mode = "n";
-          key = "<leader>bt";
+          key = "<leader>tb";
           options = {
             silent = true;
             desc = "Toggle tagbar";

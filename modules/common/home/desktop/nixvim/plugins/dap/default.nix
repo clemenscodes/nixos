@@ -48,7 +48,7 @@
                     }
                   ];
                   position = "right";
-                  size = 100;                                                     
+                  size = 100;
                 }
                 {
                   elements = [
@@ -73,12 +73,11 @@
         };
         which-key = {
           registrations = {
+            "<leader>td" = "Toggle dapui";
             "<leader>d" = {
               name = "+Debug";
               b = "Toggle breakpoint";
               c = "Continue";
-              t = "Toggle UI";
-              r = "Toggle repl";
               k = "Kill debugging session";
             };
             "<leader>ds" = {
@@ -156,11 +155,11 @@
         }
         {
           action = ":lua require('dapui').toggle()<CR>";
-          key = "<leader>dt";
+          key = "<leader>td";
           mode = "n";
           options = {
             silent = true;
-            desc = "Toggle UI";
+            desc = "Toggle dapui";
           };
         }
       ];
