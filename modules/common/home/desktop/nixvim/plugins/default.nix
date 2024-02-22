@@ -10,6 +10,7 @@
     ./comment-nvim
     ./crates-nvim
     ./dap
+    ./dressing
     ./friendly-snippets
     ./fine-cmdline
     ./lualine
@@ -21,6 +22,8 @@
     ./neotest
     ./notify
     ./nix-develop
+    ./neodev
+    ./nx
     ./nvim-cmp
     ./nvim-colorizer
     ./lint

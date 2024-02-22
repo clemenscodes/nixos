@@ -1,5 +1,6 @@
 {...}: {
   imports = [
     ./nil
+    ./lua
   ];
 }

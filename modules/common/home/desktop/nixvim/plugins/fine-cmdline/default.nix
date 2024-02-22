@@ -57,7 +57,6 @@ in {
             }
           })
         '';
-
       keymaps = [
         {
           action =

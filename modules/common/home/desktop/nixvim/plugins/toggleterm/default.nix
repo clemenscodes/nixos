@@ -16,6 +16,7 @@
         toggleterm = {
           enable = true;
           direction = "float";
+          closeOnExit = false;
         };
         which-key = {
           registrations = {
