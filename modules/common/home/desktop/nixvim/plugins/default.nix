@@ -26,6 +26,7 @@
     ./lint
     ./leap
     ./tmux-navigator
+    ./tagbar
     ./ts-context-commentstring
     ./searchbox
     ./gitsigns
