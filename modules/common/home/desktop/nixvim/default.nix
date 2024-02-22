@@ -10,6 +10,7 @@
       enableMan = true;
       vimAlias = true;
       viAlias = true;
+      wrapRc = true;
       type = "lua";
       colorscheme = "catppuccin";
     };

@@ -26,6 +26,7 @@
     ./lint
     ./tmux-navigator
     ./ts-context-commentstring
+    ./searchbox
     ./gitsigns
     ./rustaceanvim
     ./indent-blankline

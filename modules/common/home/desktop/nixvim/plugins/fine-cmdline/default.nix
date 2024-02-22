@@ -14,6 +14,10 @@ in {
       options = {
         cmdheight = 0;
       };
+      extraPlugins = with pkgs; [
+        vimPlugins.nui-nvim
+        fine-cmdline
+      ];
       extraConfigLuaPost =
         /*
         lua
@@ -53,10 +57,7 @@ in {
             }
           })
         '';
-      extraPlugins = with pkgs; [
-        vimPlugins.nui-nvim
-        fine-cmdline
-      ];
+
       keymaps = [
         {
           action =
