@@ -24,6 +24,7 @@
     ./nvim-cmp
     ./nvim-colorizer
     ./lint
+    ./leap
     ./tmux-navigator
     ./ts-context-commentstring
     ./searchbox
