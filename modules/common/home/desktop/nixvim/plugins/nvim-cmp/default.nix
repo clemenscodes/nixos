@@ -30,18 +30,6 @@
             ];
           };
           preselect = "None";
-          # sources = [
-          #   {
-          #     name = "nvim_lsp";
-          #     entryFilter = ''
-          #       function(entry, ctx)
-          #         return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Text'
-          #       end
-          #     '';
-          #   }
-          #   {name = "luasnip";}
-          #   {name = "path";}
-          # ];
           mapping = {
             "<CR>" =
               /*
