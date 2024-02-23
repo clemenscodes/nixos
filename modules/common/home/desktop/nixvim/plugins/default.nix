@@ -28,6 +28,7 @@
     ./nx
     ./nvim-cmp
     ./nvim-colorizer
+    ./mini
     ./lint
     ./leap
     ./tmux-navigator
