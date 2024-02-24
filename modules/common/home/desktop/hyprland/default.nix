@@ -24,9 +24,7 @@
         xwayland = {
           enable = true;
         };
-        plugins = [
-          inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
-        ];
+        plugins = [];
         settings = {
           input = {
             kb_layout = "de";
