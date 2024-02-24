@@ -24,10 +24,13 @@
                 end
               '';
           };
-          extraOptions = {};
+          extraOptions = {
+            auto_focus = true;
+          };
         };
         which-key = {
           registrations = {
+            "<leader>a" = "Rust Action";
             "<leader>fr" = {
               name = "+Rust";
               r = "Find rust runnables";
@@ -39,6 +42,23 @@
         };
       };
       keymaps = [
+        {
+          action =
+            /*
+            lua
+            */
+            ''
+              function()
+                vim.cmd.RustLsp('codeAction')
+              end
+            '';
+          key = "<leader>a";
+          mode = "n";
+          options = {
+            desc = "Rust Action";
+            silent = true;
+          };
+        }
         {
           action = ":RustLsp runnables<CR>";
           key = "<leader>frr";

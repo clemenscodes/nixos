@@ -1,10 +1,12 @@
-{pkgs, ...}: {
+{...}: {
+  imports = [./filetypes];
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [gnutar curl gcc_multi];
       plugins = {
         treesitter = {
           enable = true;
+          nixvimInjections = true;
+          nixGrammars = true;
         };
       };
     };

@@ -34,6 +34,7 @@
         grep = "${ripgrep}/bin/rg";
         nd = "nix develop -c $SHELL";
         ne = "cd $NIX_CONFIG_HOME && lfcd";
+        ssh = "kitten ssh";
         nedesk = "cd $NIX_CONFIG_HOME/modules/common/home/desktop && lfcd";
         nenvim = "cd $NIX_CONFIG_HOME/modules/common/home/desktop/nixvim && lfcd";
         v = "nvim .";

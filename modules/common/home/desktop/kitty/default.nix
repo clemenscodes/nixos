@@ -7,7 +7,7 @@
       };
       font = {
         name = "Iosevka Nerd Font";
-        size = 14;
+        size = 10;
       };
       settings = with themes.custom; {
         dynamic_background_opacity = "yes";

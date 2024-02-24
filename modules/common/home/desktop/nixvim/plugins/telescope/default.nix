@@ -40,9 +40,6 @@
               caseMode = "smart_case";
               fuzzy = true;
             };
-            ui-select = {
-              enable = true;
-            };
             project-nvim = {
               enable = true;
             };

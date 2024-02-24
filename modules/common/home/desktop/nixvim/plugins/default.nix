@@ -10,7 +10,9 @@
     ./comment-nvim
     ./crates-nvim
     ./dap
+    ./dressing
     ./friendly-snippets
+    ./fine-cmdline
     ./lualine
     ./lsp
     ./lspsaga
@@ -19,12 +21,20 @@
     ./nvim-tree
     ./neotest
     ./notify
+    ./ts-autotag
+    ./trouble
     ./nix-develop
+    ./neodev
+    ./nx
     ./nvim-cmp
     ./nvim-colorizer
+    ./mini
     ./lint
+    ./leap
     ./tmux-navigator
+    ./tagbar
     ./ts-context-commentstring
+    ./searchbox
     ./gitsigns
     ./rustaceanvim
     ./indent-blankline
