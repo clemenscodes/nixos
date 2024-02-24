@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./options
+    ./filetype
     ./globals
     ./keymaps
     ./autogroups
