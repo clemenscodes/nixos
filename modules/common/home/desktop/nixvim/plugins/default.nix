@@ -14,6 +14,7 @@
     ./friendly-snippets
     ./fine-cmdline
     ./lualine
+    ./haskell-tools-nvim
     ./lsp
     ./lspsaga
     ./luasnip

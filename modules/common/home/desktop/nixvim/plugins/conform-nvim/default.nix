@@ -6,6 +6,7 @@
         stylua
         alejandra
         rustfmt
+        haskellPackages.cabal-fmt
       ];
       keymaps = [
         {

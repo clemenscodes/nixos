@@ -2,6 +2,35 @@
   programs = {
     nixvim = {
       extraPackages = with pkgs; [ripgrep fd];
+      plugins = {
+        telescope = {
+          enable = true;
+          extensions = {
+            fzf-native = {
+              enable = true;
+              caseMode = "smart_case";
+              fuzzy = true;
+            };
+            project-nvim = {
+              enable = true;
+            };
+          };
+          highlightTheme = "catppuccin";
+          keymaps = {};
+          keymapsSilent = true;
+          extraOptions = {};
+        };
+        which-key = {
+          registrations = {
+            "<leader>f" = {
+              name = "Telescope";
+              f = "Find files";
+              g = "Live grep";
+              p = "Projects";
+            };
+          };
+        };
+      };
       keymaps = [
         {
           action = ":Telescope find_files<CR>";
@@ -31,35 +60,6 @@
           };
         }
       ];
-      plugins = {
-        telescope = {
-          enable = true;
-          extensions = {
-            fzf-native = {
-              enable = true;
-              caseMode = "smart_case";
-              fuzzy = true;
-            };
-            project-nvim = {
-              enable = true;
-            };
-          };
-          highlightTheme = "catppuccin";
-          keymaps = {};
-          keymapsSilent = true;
-          extraOptions = {};
-        };
-        which-key = {
-          registrations = {
-            "<leader>f" = {
-              name = "Telescope";
-              "f" = "Find files";
-              "g" = "Live grep";
-              "p" = "Projects";
-            };
-          };
-        };
-      };
     };
   };
 }

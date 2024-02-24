@@ -242,9 +242,6 @@
             "privacy.trackingprotection.enabled" = true;
             "privacy.trackingprotection.pbmode.enabled" = true;
             "privacy.userContext.enabled" = true;
-            "security.fileuri.strict_origin_policy" = true;
-            "security.mixed_content.block_active_content" = true;
-            "security.mixed_content.block_display_content" = true;
             "webgl.min_capability_mode" = true;
             "webgl.disable-extensions" = true;
             "webgl.disable-fail-if-major-performance-caveat" = true;

@@ -1,7 +1,7 @@
 {user, ...}: {
   services = {
     xremap = {
-      withHypr = true;
+      withWlroots = true;
       userName = "${user}";
       yamlConfig = ''
         modmap:

@@ -8,6 +8,7 @@
     ./desktop
     ./development
     ./editing
+    ./crypto
   ];
 
   home = {
