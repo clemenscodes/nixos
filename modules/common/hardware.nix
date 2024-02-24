@@ -9,6 +9,9 @@
     pulseaudio = {
       enable = false;
     };
+    ledger = {
+      enable = true;
+    };
     opengl = {
       enable = true;
       driSupport = true;

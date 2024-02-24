@@ -8,12 +8,14 @@
         ''
           require('neotest').setup {
             adapters = {
-              require('rustaceanvim.neotest')
+              require('rustaceanvim.neotest'),
+              require('neotest-haskell')
             },
           }
         '';
       extraPlugins = with pkgs; [
         vimPlugins.neotest
+        vimPlugins.neotest-haskell
       ];
       keymaps = [
         {

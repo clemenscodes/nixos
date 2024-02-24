@@ -4,7 +4,7 @@
       keymaps = [
         {
           action = ":TroubleToggle<CR>";
-          key = "<leader>tr";
+          key = "<leader>tt";
           mode = "n";
           options = {
             silent = true;

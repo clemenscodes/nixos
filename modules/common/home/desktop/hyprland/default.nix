@@ -291,21 +291,6 @@
             windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
             windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
 
-            animations {
-              enabled = yes
-              bezier = overshot, 0.05, 0.9, 0.1, 1.05
-              bezier = smoothOut, 0.5, 0, 0.99, 0.99
-              bezier = smoothIn, 0.5, -0.5, 0.68, 1.5
-              animation = windows, 1, 5, overshot, slide
-              animation = windowsOut, 1, 3, smoothOut
-              animation = windowsIn, 1, 3, smoothOut
-              animation = windowsMove, 1, 4, smoothIn, slide
-              animation = border, 1, 5, default
-              animation = fade, 1, 5, smoothIn
-              animation = fadeDim, 1, 5, smoothIn
-              animation = workspaces, 1, 6, default
-            }
-
             bind = CTRL ALT_L, V, submap,passthrough
             submap = passthrough
             bind = CTRL ALT_L, V, submap,reset
