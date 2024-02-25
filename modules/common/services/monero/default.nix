@@ -39,7 +39,7 @@ in
     };
     networking = {
       firewall = {
-        allowedTCPPorts = [p2pPort restrictedRpcPort p2poolPort p2poolStratumPort];
+        allowedTCPPorts = [p2pPort rpcPort p2poolPort p2poolMiniPort p2poolStratumPort];
       };
     };
   }
