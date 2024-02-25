@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./sddm
-    ./monero
     ./mtr.nix
     ./bluetooth.nix
     ./sound.nix
