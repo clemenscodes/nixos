@@ -19,6 +19,7 @@
           confirm-external-bind=1
           out-peers=50
           in-peers=50
+          fast-block-sync=1
           limit-rate-up=${builtins.toString rateLimit}
           limit-rate-down=${builtins.toString rateLimit}
         '';

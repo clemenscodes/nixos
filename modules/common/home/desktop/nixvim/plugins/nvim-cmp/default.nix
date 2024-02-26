@@ -31,6 +31,16 @@
           };
           preselect = "None";
           mapping = {
+            "<C-x>" =
+              /*
+              lua
+              */
+              "cmp.mapping.scroll_docs(-4)";
+            "<C-h>" =
+              /*
+              lua
+              */
+              "cmp.mapping.scroll_docs(4)";
             "<CR>" =
               /*
               lua

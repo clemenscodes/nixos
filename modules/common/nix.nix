@@ -8,9 +8,6 @@
     optimise = {
       automatic = true;
     };
-    extraOptions = ''
-      allow-import-from-derivation = true
-    '';
     settings = {
       auto-optimise-store = true;
       trusted-users = ["root" "${user}"];
