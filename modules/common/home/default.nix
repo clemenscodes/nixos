@@ -15,7 +15,7 @@
     keyboard = {
       layout = locale;
     };
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     username = "${user}";
     homeDirectory = "/home/${user}";
     sessionPath = ["${config.home.homeDirectory}/.local/bin"];

@@ -18,8 +18,6 @@
         wants = dependencies;
         wantedBy = ["multi-user.target"];
         serviceConfig = {
-          User = "${xmrig}";
-          Group = "${xmrig}";
           LogsDirectory = "${xmrig}";
           LogsDirectoryMode = "0710";
           Restart = "always";
