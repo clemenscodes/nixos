@@ -1,7 +1,16 @@
 {pkgs, ...}: {
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [ripgrep fd];
+      extraPackages = with pkgs; [ripgrep fd "${import ../../../manix/manix.nix {inherit pkgs;}}"];
+      extraPlugins = with pkgs.vimPlugins; [telescope-manix];
+      extraConfigLuaPost =
+        /*
+        lua
+        */
+        ''
+          local telescope = require('telescope')
+          telescope.load_extension('manix')
+        '';
       plugins = {
         telescope = {
           enable = true;
@@ -27,11 +36,34 @@
               f = "Find files";
               g = "Live grep";
               p = "Projects";
+              n = "Nix";
             };
           };
         };
       };
       keymaps = [
+        {
+          action = /* lua */ ''
+          function() 
+            require('telescope').extensions.manix.manix({
+              manix_args = {
+              '--source','nixpkgs-doc',
+              '--source','nixpkgs-comments',
+              '--source','nixpkgs-tree',
+              '--source','hm-options',
+              '--source','nixos-options',
+              },
+              cword = false
+            })
+          end'';
+          lua = true;
+          key = "<leader>fn";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Nix documentation";
+          };
+        }
         {
           action = ":Telescope find_files<CR>";
           key = "<leader>ff";

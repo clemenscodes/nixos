@@ -4,7 +4,7 @@
       plugins = {
         auto-save = {
           enable = true;
-          triggerEvents = ["TextChanged"];
+          writeAllBuffers = true;
           extraOptions = {};
         };
       };

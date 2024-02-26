@@ -2,6 +2,7 @@
   imports = [
     ./services
     ./scripts
+    ./documentation.nix
     ./environment.nix
     ./nix.nix
     ./ld.nix

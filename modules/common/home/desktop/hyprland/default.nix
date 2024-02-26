@@ -24,7 +24,9 @@
         xwayland = {
           enable = true;
         };
-        plugins = [];
+        plugins = [
+          inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
+        ];
         settings = {
           input = {
             kb_layout = "de";
@@ -84,8 +86,8 @@
 
           plugin = {
             csgo-vulkan-fix = {
-              res_w = 1680;
-              res_h = 1050;
+              res_w = 1920;
+              res_h = 1080;
               class = "cs2";
             };
           };

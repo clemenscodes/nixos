@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs = {
     nixvim = {
       extraConfigLuaPost =
@@ -33,6 +33,23 @@
       plugins = {
         dap = {
           enable = true;
+          adapters = {
+            servers = {
+              codelldb = let
+                port = 13000;
+              in {
+                inherit port;
+                host = "127.0.0.1";
+                executable = {
+                  command = "${pkgs.vscode-extensions.vadimcn.vscode-lldb.adapter}/bin/codelldb";
+                  args = ["--port" "${builtins.toString port}"];
+                };
+              };
+            };
+          };
+          configurations = {
+            rust = [];
+          };
           extensions = {
             dap-ui = {
               enable = true;
