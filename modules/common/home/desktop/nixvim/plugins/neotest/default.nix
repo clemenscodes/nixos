@@ -9,13 +9,21 @@
           require('neotest').setup {
             adapters = {
               require('rustaceanvim.neotest'),
-              require('neotest-haskell')
-            },
+              require('neotest-haskell'),
+              require('neotest-jest')({
+                jestCommand = "jest",
+                jestConfigFile = "jest.config.ts",
+                cwd = function(path)
+                  return vim.fn.getcwd()
+                end,
+              }),
+            }
           }
         '';
-      extraPlugins = with pkgs; [
-        vimPlugins.neotest
-        vimPlugins.neotest-haskell
+      extraPlugins = with pkgs.vimPlugins; [
+        neotest
+        neotest-haskell
+        neotest-jest
       ];
       keymaps = [
         {
@@ -25,6 +33,32 @@
           options = {
             silent = true;
             desc = "Run nearest test";
+          };
+        }
+        {
+          action =
+            /*
+            lua
+            */
+            ''
+              function() 
+                require('neotest').run.run({strategy = "dap"})
+              end'';
+          lua = true;
+          key = "<leader>rd";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Run nearest test";
+          };
+        }
+        {
+          action = ":Neotest output-panel toggle<CR>";
+          key = "<leader>to";
+          mode = "n";
+          options = {
+            silent = true;
+            desc = "Toggle test output panel";
           };
         }
         {
@@ -70,11 +104,13 @@
             "<leader>r" = {
               name = "+Test";
               r = "Run nearest test";
+              d = "Debug nearest test";
               n = "Jump to next test";
               p = "Jump to previous test";
               a = "Run all tests";
             };
             "<leader>ts" = "Toggle test summary";
+            "<leader>to" = "Toggle test output panel";
           };
         };
       };
