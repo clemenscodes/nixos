@@ -19,6 +19,6 @@ with pkgs;
       npm install
       mkdir $out
       cp -r ./* $out
-      chmod +x -R $out
+      chmod +x -R $out/bin
     '';
   }

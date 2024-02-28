@@ -1,11 +1,8 @@
-{pkgs, ...}: 
-let 
+{pkgs, ...}: let
   nxls = "${import ./nxls.nix {inherit pkgs;}}";
-in
-{
+in {
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [nodejs];
       plugins = {
         lsp = {
           postConfig =
