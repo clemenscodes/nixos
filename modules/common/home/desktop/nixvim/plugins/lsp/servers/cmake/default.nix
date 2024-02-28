@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             cmake = {
+            cmake = {
               enable = true;
               extraOptions = {};
             };

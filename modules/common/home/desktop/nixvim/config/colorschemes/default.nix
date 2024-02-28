@@ -3,8 +3,7 @@
     nixvim = {
       colorschemes = let
         flavour = "macchiato";
-      in
-      {
+      in {
         catppuccin = {
           inherit flavour;
           enable = true;

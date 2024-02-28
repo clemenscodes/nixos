@@ -43,19 +43,23 @@
       };
       keymaps = [
         {
-          action = /* lua */ ''
-          function() 
-            require('telescope').extensions.manix.manix({
-              manix_args = {
-              '--source','nixpkgs-doc',
-              '--source','nixpkgs-comments',
-              '--source','nixpkgs-tree',
-              '--source','hm-options',
-              '--source','nixos-options',
-              },
-              cword = false
-            })
-          end'';
+          action =
+            /*
+            lua
+            */
+            ''
+              function() 
+                require('telescope').extensions.manix.manix({
+                  manix_args = {
+                  '--source','nixpkgs-doc',
+                  '--source','nixpkgs-comments',
+                  '--source','nixpkgs-tree',
+                  '--source','hm-options',
+                  '--source','nixos-options',
+                  },
+                  cword = false
+                })
+              end'';
           lua = true;
           key = "<leader>fn";
           mode = "n";

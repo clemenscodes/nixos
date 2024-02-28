@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             tailwindcss = {
+            tailwindcss = {
               enable = true;
               extraOptions = {};
             };

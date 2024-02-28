@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             eslint = {
+            eslint = {
               enable = true;
               extraOptions = {};
             };

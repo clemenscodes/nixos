@@ -1,5 +1,5 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   home = {
-    packages = with pkgs; [lact];
+    packages = ["${import ../../../services/lact {inherit pkgs lib;}}"];
   };
 }

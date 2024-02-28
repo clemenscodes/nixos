@@ -261,7 +261,6 @@
             exec-once = wallpaper
             exec-once = polkitagent
             exec-once = sshagent
-            exec-once = lact daemon
             exec-once = ydotoold
 
             env = XCURSOR_SIZE,24

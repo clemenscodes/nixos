@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             html = {
+            html = {
               enable = true;
               extraOptions = {};
             };

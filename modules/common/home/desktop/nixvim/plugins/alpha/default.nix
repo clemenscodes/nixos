@@ -6,8 +6,7 @@
           enable = true;
           iconsEnabled = true;
           opts = {};
-          layout = 
-          [
+          layout = [
             {
               type = "padding";
               val = 2;

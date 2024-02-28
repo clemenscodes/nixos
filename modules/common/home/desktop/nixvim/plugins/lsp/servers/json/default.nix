@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             jsonls = {
+            jsonls = {
               enable = true;
               extraOptions = {};
             };
