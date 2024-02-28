@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [ripgrep fd "${import ../../../manix/manix.nix {inherit pkgs;}}"];
+      extraPackages = with pkgs; [ripgrep fd "${import ./manix {inherit pkgs;}}"];
       extraPlugins = with pkgs.vimPlugins; [telescope-manix];
       extraConfigLuaPost =
         /*

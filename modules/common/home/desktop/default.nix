@@ -27,7 +27,6 @@
     ./lf
     ./libreoffice
     ./lact
-    ./manix
     ./mpv
     ./mpris
     ./ncmpcpp
