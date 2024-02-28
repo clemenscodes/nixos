@@ -12,6 +12,7 @@
     ./lua
     ./markdown
     ./nix
+    ./nx
     ./tailwind
     ./typescript
     ./yaml
