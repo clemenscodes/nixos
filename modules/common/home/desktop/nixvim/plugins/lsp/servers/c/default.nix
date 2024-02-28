@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             ccls = {
+            ccls = {
               enable = true;
               extraOptions = {};
             };

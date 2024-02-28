@@ -2,7 +2,11 @@
   imports = [./servers];
   programs = {
     nixvim = {
-      extraConfigLuaPost = /* lua */ ''
+      extraConfigLuaPost =
+        /*
+        lua
+        */
+        ''
           vim.diagnostic.config({
               signs = {
                   text = {
@@ -25,7 +29,7 @@
                   },
               }
           })
-      '';
+        '';
       plugins = {
         lsp = {
           enable = true;

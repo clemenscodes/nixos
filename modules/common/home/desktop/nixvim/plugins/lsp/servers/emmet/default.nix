@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             emmet_ls = {
+            emmet_ls = {
               enable = true;
               extraOptions = {};
             };

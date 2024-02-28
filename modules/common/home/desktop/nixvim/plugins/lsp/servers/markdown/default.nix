@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             marksman = {
+            marksman = {
               enable = true;
               extraOptions = {};
             };

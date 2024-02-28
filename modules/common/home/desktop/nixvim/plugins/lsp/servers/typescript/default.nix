@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             tsserver = {
+            tsserver = {
               enable = true;
               extraOptions = {};
             };

@@ -6,6 +6,7 @@
     ./btop
     ./cursor
     ./cliphist
+    ./corectrl
     ./calcurse
     ./direnv
     ./discord

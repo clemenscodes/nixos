@@ -4,7 +4,7 @@
       plugins = {
         lsp = {
           servers = {
-             yamlls = {
+            yamlls = {
               enable = true;
               extraOptions = {};
             };
