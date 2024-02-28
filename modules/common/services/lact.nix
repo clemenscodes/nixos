@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: let
+  lact = "${import ./lact {inherit pkgs lib;}}";
+in {
   systemd = {
     services = {
       lactd = {
@@ -14,7 +16,7 @@
             /*
             bash
             */
-            ''${pkgs.lact}/bin/lact daemon'';
+            ''${lact}/bin/lact daemon'';
         };
       };
     };
