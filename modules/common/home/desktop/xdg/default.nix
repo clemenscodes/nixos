@@ -46,7 +46,6 @@
     userDirs = let
       home = "/home/${user}";
       local = "${home}/.local";
-      config = "${home}/.config";
     in {
       enable = true;
       createDirectories = true;

@@ -281,6 +281,8 @@
             windowrulev2 = center 1,class:(firefox)
             windowrulev2 = size 80% 80%,class:(firefox)
             windowrulev2 = unset,title:^(.*)(Firefox)$
+            windowrulev2 = unset,class:(resolve),title:(resolve)
+            windowrulev2 = tile,title:^(DaVinci Resolve)(.*)$
 
             windowrulev2 = float,class:^(blueman-manager)$
             windowrulev2 = float,class:^(nm-applet)$
