@@ -17,6 +17,8 @@
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
     };
+    localBinInPath = true;
+    homeBinInPath = true;
     shells = with pkgs; [zsh];
     etc = {
       "ssl/certs/ca.pem" = {
