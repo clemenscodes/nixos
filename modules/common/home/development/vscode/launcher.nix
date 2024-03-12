@@ -6,7 +6,7 @@
         type = "Application";
         categories = ["Utility" "TextEditor" "Development" "IDE"];
         comment = "Code Editing. Redefined.";
-        exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations";
+        exec = ''sh -c "LD_LIBRARY_PATH=\\$NIX_LD_LIBRARY_PATH codium --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WaylandWindowDecorations"'';
         genericName = "Text Editor";
         icon = "vscodium";
         mimeType = ["x-scheme-handler/vscode"];
