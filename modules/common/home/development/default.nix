@@ -1,5 +1,7 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     ./vscode
+    ./corepack
+    ./node
   ];
 }

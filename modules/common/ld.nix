@@ -11,6 +11,8 @@
         dbus
         openssl_3
         stdenv.cc.cc
+        systemd
+        pkg-config
       ];
     };
   };
