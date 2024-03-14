@@ -1,4 +1,4 @@
-{config, ...}: {
+{...}: {
   programs = {
     nixvim = {
       options = {
@@ -8,7 +8,7 @@
         smartcase = true;
         ignorecase = true;
         number = true;
-        undodir = "${config.xdg.dataHome}/nvim/undo";
+        undodir = "~/.local/share/nvim/undo";
         signcolumn = "yes";
         wrap = false;
         undofile = true;
