@@ -9,6 +9,7 @@
     ./development
     ./editing
     ./crypto
+    ./utils
   ];
 
   home = {

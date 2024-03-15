@@ -8,7 +8,7 @@
         smartcase = true;
         ignorecase = true;
         number = true;
-        undodir = "${config.xdg.dataDir}/nvim/undo";
+        undodir = "${config.xdg.dataHome}/nvim/undo";
         signcolumn = "yes";
         wrap = false;
         undofile = true;
