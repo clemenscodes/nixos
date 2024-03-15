@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./bat
     ./bitwarden
     ./blueman
     ./btop
@@ -14,7 +13,6 @@
     ./email
     ./etcher
     ./firefox
-    ./fzf
     ./gh
     ./gpg
     ./git
