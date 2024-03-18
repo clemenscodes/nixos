@@ -26,6 +26,9 @@
         serayuzgur.crates
         rust-lang.rust-analyzer
         nrwl.angular-console
+        ms-python.python
+        ms-python.black-formatter
+        mikoz.black-py
       ];
     };
   };

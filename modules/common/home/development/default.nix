@@ -3,6 +3,5 @@
     ./vscode
     ./corepack
     ./node
-    ./pycharm
   ];
 }
