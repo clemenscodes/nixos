@@ -3,5 +3,6 @@
     ./vscode
     ./corepack
     ./node
+    ./jetbrains
   ];
 }
