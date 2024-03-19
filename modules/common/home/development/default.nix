@@ -4,5 +4,6 @@
     ./corepack
     ./node
     ./jetbrains
+    ./c
   ];
 }
