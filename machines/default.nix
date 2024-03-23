@@ -127,7 +127,7 @@
     nix-ld.nixosModules.nix-ld
     home
     sops
-    # formatter
+    formatter
     {
       home-manager = {
         extraSpecialArgs = mkExtraSpecialArgs machine;

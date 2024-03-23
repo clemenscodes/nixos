@@ -118,8 +118,8 @@
           ;
       }
     );
-    # formatter = {
-    #   "${system}" = nixpkgs.legacyPackages.${system}.alejandra;
-    # };
+    formatter = {
+      "${system}" = nixpkgs.legacyPackages.${system}.alejandra;
+    };
   };
 }
