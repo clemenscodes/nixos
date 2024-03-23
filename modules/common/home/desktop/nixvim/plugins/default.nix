@@ -27,7 +27,6 @@
     ./nix-develop
     ./neodev
     ./nx
-    # ./nvim-cmp
     ./nvim-colorizer
     ./mini
     ./lint
