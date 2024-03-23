@@ -31,6 +31,13 @@
             enable = true;
             showOnDirs = true;
           };
+          filters = {
+            gitClean = false;
+            dotfiles = false;
+          };
+          git = {
+            ignore = false;
+          };
           onAttach = {
             __raw =
               /*

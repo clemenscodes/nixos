@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   lact = "${import ./lact {inherit pkgs lib;}}";
 in {
   systemd = {

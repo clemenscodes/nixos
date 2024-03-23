@@ -27,7 +27,6 @@
     ./nix-develop
     ./neodev
     ./nx
-    ./nvim-cmp
     ./nvim-colorizer
     ./mini
     ./lint
@@ -37,6 +36,7 @@
     ./ts-context-commentstring
     ./searchbox
     ./gitsigns
+    ./gitblame
     ./rustaceanvim
     ./indent-blankline
     ./rainbow-delimiters

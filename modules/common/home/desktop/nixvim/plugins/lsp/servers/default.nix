@@ -16,5 +16,6 @@
     ./tailwind
     ./typescript
     ./yaml
+    ./python
   ];
 }

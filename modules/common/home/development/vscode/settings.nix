@@ -19,6 +19,9 @@
         "[toml]" = {
           "editor.defaultFormatter" = "tamasfe.even-better-toml";
         };
+        "[python]" = {
+          "editor.defaultFormatter" = "mikoz.black-py";
+        };
         "workbench.colorTheme" = "One Dark";
         "workbench.iconTheme" = "material-icon-theme";
         "terminal.integrated.fontSize" = 16;

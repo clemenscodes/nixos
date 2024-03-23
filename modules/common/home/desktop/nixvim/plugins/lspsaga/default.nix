@@ -3,7 +3,7 @@
     nixvim = {
       plugins = {
         lspsaga = {
-          enable = true;
+          enable = false;
           lightbulb = {
             sign = false;
           };

@@ -19,7 +19,6 @@
         ms-vscode.vscode-typescript-next
         ecmel.vscode-html-css
         arrterian.nix-env-selector
-        jnoortheen.nix-ide
         mkhl.direnv
         prisma.prisma
         tamasfe.even-better-toml

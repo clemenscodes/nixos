@@ -21,7 +21,7 @@
       in [
         {
           inherit height;
-          layer = "top";
+          layer = "bottom";
           position = "top";
           name = "topBar";
           modules-left = [
@@ -143,15 +143,13 @@
         {
           inherit height;
           name = "bottomBar";
-          layer = "top";
+          layer = "bottom";
           position = "bottom";
           modules-left = [
             "image#logo"
             "wlr/taskbar"
           ];
-          modules-center = [
-            "privacy"
-          ];
+          modules-center = [];
           modules-right = [
             "custom/notification"
             "idle_inhibitor"
