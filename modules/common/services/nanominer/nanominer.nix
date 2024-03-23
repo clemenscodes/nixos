@@ -9,7 +9,7 @@ with pkgs;
       url = "https://github.com/nanopool/${name}/releases/download/v${version}/${tarball}";
       sha256 = "1fwfh21g410yywi641rmzyr4pda262njabbywhwfsf6nkck2x69m";
     };
-    
+
     unpackPhase = ''
       echo "Skipping unpackPhase, unpacking in installPhase"
     '';

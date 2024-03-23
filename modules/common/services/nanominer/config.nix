@@ -3,6 +3,6 @@
   pool = "de.ergo.herominers.com:1180";
   rig = "xtx7900";
   coin = "ergo";
-  email = "horn_clemens@t-online.de"; 
+  email = "horn_clemens@t-online.de";
   ethmanPort = "3335";
 }

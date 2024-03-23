@@ -11,7 +11,6 @@
     ./discord
     ./dconf
     ./email
-    ./etcher
     ./firefox
     ./gh
     ./gpg

@@ -12,7 +12,9 @@
       syntaxHighlighting = {
         enable = true;
       };
-      enableAutosuggestions = true;
+      autosuggestion = {
+        enable = true;
+      };
       autocd = true;
       completionInit = true;
       oh-my-zsh = {

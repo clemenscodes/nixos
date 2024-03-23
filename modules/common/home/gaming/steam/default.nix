@@ -1,9 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [inputs.nix-gaming.nixosModules.steamCompat];
+{pkgs, ...}: {
   environment = {
     systemPackages = with pkgs; [
       steamtinkerlaunch
@@ -28,8 +23,8 @@
       dedicatedServer = {
         openFirewall = true;
       };
-      extraCompatPackages = [
-        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
       ];
     };
   };

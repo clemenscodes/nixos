@@ -1,10 +1,14 @@
-{config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   services = {
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
       enableZshIntegration = true;
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
   };
   programs = {

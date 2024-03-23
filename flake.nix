@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:clemenscodes/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -118,8 +118,8 @@
           ;
       }
     );
-    formatter = {
-      "${system}" = nixpkgs.legacyPackages.${system}.alejandra;
-    };
+    # formatter = {
+    #   "${system}" = nixpkgs.legacyPackages.${system}.alejandra;
+    # };
   };
 }

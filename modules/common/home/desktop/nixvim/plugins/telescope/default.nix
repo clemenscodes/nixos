@@ -20,9 +20,6 @@
               caseMode = "smart_case";
               fuzzy = true;
             };
-            project-nvim = {
-              enable = true;
-            };
           };
           highlightTheme = "catppuccin";
           keymaps = {};
