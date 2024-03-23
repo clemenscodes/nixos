@@ -15,6 +15,7 @@
     ./fine-cmdline
     ./lualine
     ./haskell-tools-nvim
+    ./hardtime
     ./lsp
     ./lspsaga
     ./luasnip
@@ -36,7 +37,6 @@
     ./ts-context-commentstring
     ./searchbox
     ./gitsigns
-    ./gitblame
     ./rustaceanvim
     ./indent-blankline
     ./rainbow-delimiters
@@ -47,5 +47,6 @@
     ./telescope
     ./treesitter
     ./surround
+    ./vimtex
   ];
 }

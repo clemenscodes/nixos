@@ -4,6 +4,7 @@
       plugins = {
         gitblame = {
           enable = true;
+          displayVirtualText = false;
         };
         which-key = {
           registrations = {

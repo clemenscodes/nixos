@@ -17,5 +17,6 @@
     ./typescript
     ./yaml
     ./python
+    ./tex
   ];
 }
