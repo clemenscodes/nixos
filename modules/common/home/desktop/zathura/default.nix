@@ -8,6 +8,8 @@
         statusbar-v-padding = 0;
         page-padding = 1;
         selection-clipboard = "clipboard";
+        synctex = true;
+        synctex-editor-command = ''nvim --headless -c \"VimtexInverseSearch %{line} '%{input}'"'';
       };
       mappings = {
         u = "scroll half-up";
