@@ -23,4 +23,25 @@
       };
     };
   };
+  xdg = {
+    enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = ["zathura.desktop"];
+      };
+    };
+    desktopEntries = {
+      zathura = {
+        name = "Zathura";
+        type = "Application";
+        genericName = "PDF Viewer";
+        exec = "zathura %U";
+        icon = "org.pwmt.zathura";
+        terminal = false;
+        categories = ["Viewer"];
+        mimeType = ["application/pdf"];
+      };
+    };
+  };
 }

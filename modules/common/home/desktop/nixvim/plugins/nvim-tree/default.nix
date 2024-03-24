@@ -27,6 +27,9 @@
             enable = true;
             updateRoot = true;
           };
+          systemOpen = {
+            cmd = "xdg-open";
+          };
           diagnostics = {
             enable = true;
             showOnDirs = true;
