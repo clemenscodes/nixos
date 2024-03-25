@@ -82,6 +82,12 @@
     cardano-cli = {
       url = "github:intersectmbo/cardano-cli";
     };
+    cardano-wallet = {
+      url = "github:cardano-foundation/cardano-wallet";
+    };
+    aiken = {
+      url = "github:aiken-lang/aiken";
+    };
   };
 
   outputs = inputs @ {
@@ -91,8 +97,10 @@
     nur,
     alejandra,
     nix-ld,
-    cardano-cli,
+    aiken,
     cardano-node,
+    cardano-cli,
+    cardano-wallet,
     ...
   }: let
     user = "clay";

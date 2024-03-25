@@ -17,6 +17,7 @@
         hlsearch = true;
         virtualedit = "block";
         termguicolors = true;
+        syntax = "on";
       };
     };
   };

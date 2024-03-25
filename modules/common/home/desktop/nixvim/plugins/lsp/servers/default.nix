@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./aiken
     ./bash
     ./c
     ./cmake
