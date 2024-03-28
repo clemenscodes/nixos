@@ -7,7 +7,7 @@
     ./cmp
     ./cursorline
     ./conform-nvim
-    ./comment-nvim
+    ./comment
     ./crates-nvim
     ./dap
     ./dressing
