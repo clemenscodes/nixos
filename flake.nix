@@ -76,6 +76,9 @@
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
+    aiken = {
+      url = "github:aiken-lang/aiken";
+    };
     cardano-node = {
       url = "github:intersectmbo/cardano-node";
     };
@@ -84,9 +87,6 @@
     };
     cardano-wallet = {
       url = "github:cardano-foundation/cardano-wallet";
-    };
-    aiken = {
-      url = "github:aiken-lang/aiken";
     };
   };
 
