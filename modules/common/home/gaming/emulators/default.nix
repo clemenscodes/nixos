@@ -1,5 +1,3 @@
 {...}: {
-  imports = [
-    ./rpcs3
-  ];
+  imports = [];
 }
