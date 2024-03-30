@@ -30,7 +30,6 @@
     ./nx
     ./nvim-colorizer
     ./mini
-    ./lint
     ./leap
     ./tmux-navigator
     ./tagbar

@@ -11,7 +11,7 @@
 in {
   programs = {
     nixvim = {
-      options = {
+      opts = {
         cmdheight = 0;
       };
       extraPlugins = with pkgs; [

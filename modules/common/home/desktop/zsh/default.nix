@@ -33,7 +33,6 @@
         sw = "update && sudo nixos-rebuild switch --flake ./#${machine}";
         src = "omz reload";
         ls = "${eza}/bin/eza";
-        grep = "${ripgrep}/bin/rg";
         nd = "nix develop -c $SHELL";
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         ssh = "kitten ssh";

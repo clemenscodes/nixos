@@ -7,9 +7,9 @@
     ./css
     ./docker
     ./emmet
-    ./eslint
     ./html
     ./json
+    ./eslint
     ./lua
     ./markdown
     ./nix

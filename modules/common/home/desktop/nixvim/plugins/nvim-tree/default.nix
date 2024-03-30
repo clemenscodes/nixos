@@ -92,7 +92,7 @@
             centralizeSelection = true;
             width = {
               min = 30;
-              max = -1;
+              max = 100;
               padding = 1;
             };
           };
