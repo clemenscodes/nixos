@@ -19,7 +19,6 @@
         removed = {};
       };
       defaultApplications = {
-        "application/pdf" = ["zathura.desktop"];
         "x-scheme-handler/http" = ["firefox.desktop"];
         "x-scheme-handler/https" = ["firefox.desktop"];
         "x-scheme-handler/chrome" = ["firefox.desktop"];

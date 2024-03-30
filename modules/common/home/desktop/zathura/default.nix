@@ -8,6 +8,8 @@
         statusbar-v-padding = 0;
         page-padding = 1;
         selection-clipboard = "clipboard";
+        synctex = true;
+        synctex-editor-command = ''nvim --headless -c \"VimtexInverseSearch %{line} '%{input}'"'';
       };
       mappings = {
         u = "scroll half-up";
@@ -20,6 +22,27 @@
         i = "recolor";
         p = "print";
         g = "goto top";
+      };
+    };
+  };
+  xdg = {
+    enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = ["zathura.desktop"];
+      };
+    };
+    desktopEntries = {
+      zathura = {
+        name = "Zathura";
+        type = "Application";
+        genericName = "PDF Viewer";
+        exec = "zathura %U";
+        icon = "org.pwmt.zathura";
+        terminal = false;
+        categories = ["Viewer"];
+        mimeType = ["application/pdf"];
       };
     };
   };

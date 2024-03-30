@@ -76,6 +76,18 @@
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
+    aiken = {
+      url = "github:aiken-lang/aiken";
+    };
+    cardano-node = {
+      url = "github:intersectmbo/cardano-node";
+    };
+    cardano-cli = {
+      url = "github:intersectmbo/cardano-cli";
+    };
+    cardano-wallet = {
+      url = "github:cardano-foundation/cardano-wallet";
+    };
   };
 
   outputs = inputs @ {
@@ -85,6 +97,10 @@
     nur,
     alejandra,
     nix-ld,
+    aiken,
+    cardano-node,
+    cardano-cli,
+    cardano-wallet,
     ...
   }: let
     user = "clay";

@@ -1,7 +1,7 @@
 {config, ...}: {
   programs = {
     nixvim = {
-      options = {
+      opts = {
         shiftwidth = 2;
         tabstop = 2;
         scrolloff = 8;
@@ -17,6 +17,7 @@
         hlsearch = true;
         virtualedit = "block";
         termguicolors = true;
+        syntax = "on";
       };
     };
   };

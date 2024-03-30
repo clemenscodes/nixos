@@ -11,7 +11,8 @@ in {
             */
             ''
               require('lspconfig')["nxls"].setup({
-                cmd = {"${nxls}/bin/nxls", "--stdio"}
+                cmd = {"${nxls}/bin/nxls", "--stdio"},
+                root_dir = require('lspconfig')["util"].root_pattern(".git")
               })
             '';
         };

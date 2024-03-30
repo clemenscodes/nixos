@@ -7,7 +7,7 @@
     ./cmp
     ./cursorline
     ./conform-nvim
-    ./comment-nvim
+    ./comment
     ./crates-nvim
     ./dap
     ./dressing
@@ -15,6 +15,7 @@
     ./fine-cmdline
     ./lualine
     ./haskell-tools-nvim
+    ./hardtime
     ./lsp
     ./lspsaga
     ./luasnip
@@ -29,14 +30,12 @@
     ./nx
     ./nvim-colorizer
     ./mini
-    ./lint
     ./leap
     ./tmux-navigator
     ./tagbar
     ./ts-context-commentstring
     ./searchbox
     ./gitsigns
-    ./gitblame
     ./rustaceanvim
     ./indent-blankline
     ./rainbow-delimiters
@@ -47,5 +46,6 @@
     ./telescope
     ./treesitter
     ./surround
+    ./vimtex
   ];
 }

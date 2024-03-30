@@ -1,14 +1,15 @@
 {...}: {
   imports = [
+    ./aiken
     ./bash
     ./c
     ./cmake
     ./css
     ./docker
     ./emmet
-    ./eslint
     ./html
     ./json
+    ./eslint
     ./lua
     ./markdown
     ./nix
@@ -17,5 +18,6 @@
     ./typescript
     ./yaml
     ./python
+    ./tex
   ];
 }
