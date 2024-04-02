@@ -71,6 +71,7 @@
         wifi = {
           neededForUsers = true;
         };
+        nix_access_tokens = {};
       };
     };
   };

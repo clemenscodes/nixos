@@ -2,10 +2,10 @@
   description = "Clays NixOS flake";
 
   inputs = {
-    nixpkgs-unstable = {
+    nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixpkgs = {
+    nixpkgs-23 = {
       url = "github:NixOS/nixpkgs/nixos-23.11";
     };
     wsl = {
@@ -103,7 +103,7 @@
 
   outputs = inputs @ {
     nixpkgs,
-    nixpkgs-unstable,
+    nixpkgs-23,
     wsl,
     home-manager,
     hyprland,
@@ -131,7 +131,7 @@
         inherit
           inputs
           nixpkgs
-          nixpkgs-unstable
+          nixpkgs-23
           wsl
           home-manager
           hyprland
