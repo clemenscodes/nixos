@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./cli
-    ./desktop
   ];
   home = {
     keyboard = {

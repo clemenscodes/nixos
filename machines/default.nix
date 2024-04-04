@@ -149,22 +149,8 @@ in {
     modulePath = ./laptop;
     machine = "laptop";
   };
-  wsl = lib.nixosSystem {
-    specialArgs = machineArgs;
-    modules = [
-      ./wsl
-      inputs.home-manager.nixosModules.home-manager
-      inputs.xremap-flake.nixosModules.default
-      inputs.sops-nix.nixosModules.sops
-      inputs.wsl.nixosModules.wsl
-      nix-ld.nixosModules.nix-ld
-      home
-      sops
-      {
-        home-manager = {
-          extraSpecialArgs = mkExtraSpecialArgs "wsl";
-        };
-      }
-    ];
+  wsl = mkMachine {
+    modulePath = ./wsl;
+    machine = "wsl";
   };
 }

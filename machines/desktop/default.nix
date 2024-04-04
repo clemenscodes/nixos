@@ -1,4 +1,4 @@
-{...}: {
+{user, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/common/gaming
@@ -12,4 +12,13 @@
     ../../modules/common/services/desktop/ravencoin
     ../../modules/common/services/desktop/teamredminer
   ];
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users = {
+      ${user} = {
+        imports = [../../modules/common/home/desktop];
+      };
+    };
+  };
 }

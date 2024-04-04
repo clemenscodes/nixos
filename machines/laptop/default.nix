@@ -1,4 +1,4 @@
-{...}: {
+{user, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/common/gaming
@@ -11,7 +11,13 @@
     # @see https://github.com/NixOS/nixpkgs/issues/265868
     # ../../modules/common/services/displaylink.nix
   ];
-  desktop = {
-    enable = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users = {
+      ${user} = {
+        imports = [../../modules/common/home/desktop];
+      };
+    };
   };
 }

@@ -1,9 +1,4 @@
-{lib, ...}: {
-  options = {
-    desktop = {
-      enable = lib.mkEnableOption "Enable desktop support";
-    };
-  };
+{...}: {
   imports = [
     ./bitwarden
     ./blueman
