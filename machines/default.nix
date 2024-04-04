@@ -3,7 +3,6 @@
   nixpkgs,
   user,
   nur,
-  alejandra,
   nix-ld,
   locale,
   browser,
@@ -86,11 +85,6 @@
       };
     };
   };
-  formatter = {
-    environment = {
-      systemPackages = [alejandra.defaultPackage.${system}];
-    };
-  };
   systemArgs = {
     inherit
       pkgs
@@ -128,7 +122,6 @@
     nix-ld.nixosModules.nix-ld
     home
     sops
-    formatter
     {
       home-manager = {
         extraSpecialArgs = mkExtraSpecialArgs machine;
@@ -167,7 +160,6 @@ in {
       nix-ld.nixosModules.nix-ld
       home
       sops
-      formatter
       {
         home-manager = {
           extraSpecialArgs = mkExtraSpecialArgs "wsl";

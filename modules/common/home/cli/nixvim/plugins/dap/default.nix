@@ -1,6 +1,18 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  nio = pkgs.vimUtils.buildVimPlugin {
+    name = "nio";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-neotest";
+      repo = "nvim-nio";
+      rev = "173f285eebb410199273fa178aa517fd2d7edd80";
+      hash = "sha256-bjYtZygrL05qB2dM7Q8lJor81VYO+u8/JWQqfZ19Wzk=";
+    };
+  };
+in
+{
   programs = {
     nixvim = {
+      extraPlugins = [nio];
       extraConfigLuaPost =
         /*
         lua

@@ -1,59 +1,42 @@
-{...}: {
+{lib, ...}: {
+  options = {
+    desktop = {
+      enable = lib.mkEnableOption "Enable desktop support";
+    };
+  };
   imports = [
     ./bitwarden
     ./blueman
-    ./btop
     ./cursor
-    ./cliphist
     ./corectrl
-    ./calcurse
-    ./direnv
     ./discord
     ./dconf
-    ./email
     ./firefox
-    ./gh
-    ./gpg
-    ./git
     ./gtk
-    ./fonts
     ./hyprland
-    ./stockfish
     ./hyprpicker
     ./hyprshade
-    ./kitty
-    ./lf
     ./libreoffice
     ./lact
-    ./mpv
-    ./mpris
-    ./ncmpcpp
-    ./ncdu
     ./nm
-    ./nixvim
-    ./tmux
     ./qt
     ./rofi
     ./vhs
-    ./pup
     ./screenshots
-    ./spotdl
     ./spotify
     ./transgui
     ./obs
-    ./sops
-    ./ssh
-    ./starship
     ./swayidle
     ./swayimg
     ./swaylock
     ./swaync
     ./udiskie
     ./waybar
-    ./xdg
     ./xwaylandvideobridge
     ./ydotool
     ./zathura
-    ./zsh
+    ./jetbrains
+    ./vscode
+    ./ledger-live-desktop
   ];
 }

@@ -8,6 +8,50 @@
       brave
     ];
   };
+  xdg = {
+    enable = true;
+    mimeApps = {
+      enable = true;
+      associations = {
+        added = {
+          "x-scheme-handler/http" = ["firefox.desktop"];
+          "x-scheme-handler/https" = ["firefox.desktop"];
+          "x-scheme-handler/chrome" = ["firefox.desktop"];
+          "text/html" = ["firefox.desktop"];
+          "application/x-extension-htm" = ["firefox.desktop"];
+          "application/x-extension-html" = ["firefox.desktop"];
+          "application/x-extension-shtml" = ["firefox.desktop"];
+          "application/xhtml+xml" = ["firefox.desktop"];
+          "application/x-extension-xhtml" = ["firefox.desktop"];
+          "application/x-extension-xht" = ["firefox.desktop"];
+        };
+        removed = {};
+      };
+      defaultApplications = {
+        "x-scheme-handler/http" = ["firefox.desktop"];
+        "x-scheme-handler/https" = ["firefox.desktop"];
+        "x-scheme-handler/chrome" = ["firefox.desktop"];
+        "text/html" = ["firefox.desktop"];
+        "application/x-extension-htm" = ["firefox.desktop"];
+        "application/x-extension-html" = ["firefox.desktop"];
+        "application/x-extension-shtml" = ["firefox.desktop"];
+        "application/xhtml+xml" = ["firefox.desktop"];
+        "application/x-extension-xhtml" = ["firefox.desktop"];
+        "application/x-extension-xht" = ["firefox.desktop"];
+      };
+    };
+    desktopEntries = {
+      firefox = {
+        name = "Firefox";
+        genericName = "Web Browser";
+        exec = "firefox %U";
+        icon = "firefox";
+        terminal = false;
+        categories = ["Application" "Network" "WebBrowser"];
+        mimeType = ["text/html" "text/xml"];
+      };
+    };
+  };
   programs = {
     firefox = {
       enable = true;

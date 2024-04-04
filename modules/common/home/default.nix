@@ -5,13 +5,9 @@
   ...
 }: {
   imports = [
+    ./cli
     ./desktop
-    ./development
-    ./editing
-    ./crypto
-    ./utils
   ];
-
   home = {
     keyboard = {
       layout = locale;

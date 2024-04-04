@@ -5,7 +5,7 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixpkgs-23 = {
+    nixpkgs-stable = {
       url = "github:NixOS/nixpkgs/nixos-23.11";
     };
     wsl = {
@@ -57,14 +57,6 @@
         };
       };
     };
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
     nix-ld = {
       url = "github:Mic92/nix-ld";
       inputs = {
@@ -103,12 +95,11 @@
 
   outputs = inputs @ {
     nixpkgs,
-    nixpkgs-23,
+    nixpkgs-stable,
     wsl,
     home-manager,
     hyprland,
     nur,
-    alejandra,
     nix-ld,
     aiken,
     cardano-node,
@@ -131,12 +122,11 @@
         inherit
           inputs
           nixpkgs
-          nixpkgs-23
+          nixpkgs-stable
           wsl
           home-manager
           hyprland
           nur
-          alejandra
           nix-ld
           user
           locale
@@ -149,8 +139,5 @@
           ;
       }
     );
-    formatter = {
-      "${system}" = nixpkgs.legacyPackages.${system}.alejandra;
-    };
   };
 }
