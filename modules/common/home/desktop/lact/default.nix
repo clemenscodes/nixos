@@ -4,6 +4,6 @@
   ...
 }: {
   home = {
-    packages = ["${import ../../../services/lact {inherit pkgs lib;}}"];
+    packages = ["${import ../../../services/desktop/lact {inherit pkgs lib;}}"];
   };
 }

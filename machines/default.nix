@@ -3,7 +3,6 @@
   nixpkgs,
   user,
   nur,
-  alejandra,
   nix-ld,
   locale,
   browser,
@@ -12,6 +11,7 @@
   timezone,
   hostname,
   system,
+  uid,
   ...
 }: let
   pkgs = import nixpkgs {
@@ -71,6 +71,7 @@
         wifi = {
           neededForUsers = true;
         };
+        nix_access_tokens = {};
       };
     };
   };
@@ -83,11 +84,6 @@
           imports = [../modules/common/home];
         };
       };
-    };
-  };
-  formatter = {
-    environment = {
-      systemPackages = [alejandra.defaultPackage.${system}];
     };
   };
   systemArgs = {
@@ -108,6 +104,7 @@
       timezone
       hostname
       system
+      uid
       ;
   };
   machineArgs = homeArgs // systemArgs;
@@ -122,12 +119,10 @@
   }: [
     modulePath
     inputs.home-manager.nixosModules.home-manager
-    inputs.xremap-flake.nixosModules.default
     inputs.sops-nix.nixosModules.sops
     nix-ld.nixosModules.nix-ld
     home
     sops
-    formatter
     {
       home-manager = {
         extraSpecialArgs = mkExtraSpecialArgs machine;
@@ -154,5 +149,9 @@ in {
   laptop = mkMachine {
     modulePath = ./laptop;
     machine = "laptop";
+  };
+  wsl = mkMachine {
+    modulePath = ./wsl;
+    machine = "wsl";
   };
 }

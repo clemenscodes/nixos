@@ -6,6 +6,7 @@
 }: {
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    supportedFilesystems = [ "ntfs" ];
     loader = {
       systemd-boot = {
         enable = lib.mkForce false;
@@ -14,7 +15,7 @@
         enable = lib.mkForce true;
         device = "nodev";
         efiSupport = true;
-        useOSProber = false;
+        useOSProber = true;
       };
       efi = {
         canTouchEfiVariables = true;

@@ -1,5 +1,0 @@
-{...}: {
-  imports = [
-    ./ledger-live-desktop
-  ];
-}

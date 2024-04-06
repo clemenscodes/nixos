@@ -5,6 +5,17 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    nixpkgs-stable = {
+      url = "github:NixOS/nixpkgs/nixos-23.11";
+    };
+    wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs = {
@@ -40,14 +51,6 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
       inputs = {
         nixpkgs = {
           follows = "nixpkgs";
@@ -92,10 +95,11 @@
 
   outputs = inputs @ {
     nixpkgs,
+    nixpkgs-stable,
+    wsl,
     home-manager,
     hyprland,
     nur,
-    alejandra,
     nix-ld,
     aiken,
     cardano-node,
@@ -103,7 +107,7 @@
     cardano-wallet,
     ...
   }: let
-    user = "clay";
+    user = "nixos";
     locale = "de";
     terminal = "kitty";
     browser = "firefox";
@@ -111,6 +115,7 @@
     timezone = "Europe/Berlin";
     hostname = "nixos";
     system = "x86_64-linux";
+    uid = 1000;
   in {
     nixosConfigurations = (
       import ./machines {
@@ -118,10 +123,11 @@
         inherit
           inputs
           nixpkgs
+          nixpkgs-stable
+          wsl
           home-manager
           hyprland
           nur
-          alejandra
           nix-ld
           user
           locale
@@ -131,11 +137,9 @@
           timezone
           hostname
           system
+          uid
           ;
       }
     );
-    formatter = {
-      "${system}" = nixpkgs.legacyPackages.${system}.alejandra;
-    };
   };
 }
