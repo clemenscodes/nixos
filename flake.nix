@@ -107,7 +107,7 @@
     cardano-wallet,
     ...
   }: let
-    user = "clay";
+    user = "nixos";
     locale = "de";
     terminal = "kitty";
     browser = "firefox";

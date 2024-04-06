@@ -20,10 +20,6 @@
         options = "metadata,uid=1000,gid=100";
         root = "/mnt";
       };
-      boot = {
-        command = "";
-        systemd = false;
-      };
       interop = {
         enabled = true;
         appendWindowsPath = false;
@@ -31,7 +27,7 @@
       network = {
         generateHosts = true;
         generateResolvConf = true;
-        hostname = config.networking.hostname;
+        hostname = config.networking.hostName;
       };
       user = {
         default = user;
