@@ -37,7 +37,7 @@
         ne = "cd $NIX_CONFIG_HOME && lfcd";
         ssh = "kitten ssh";
         nedesk = "cd $NIX_CONFIG_HOME/modules/common/home/desktop && lfcd";
-        nenvim = "cd $NIX_CONFIG_HOME/modules/common/home/desktop/nixvim && lfcd";
+        nenvim = "cd $NIX_CONFIG_HOME/modules/common/home/cli/nixvim && lfcd";
         v = "nvim .";
         V = "cd $XDG_VIDEOS_DIR";
         D = "cd $XDG_DOWNLOAD_DIR";
