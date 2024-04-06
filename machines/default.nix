@@ -11,6 +11,7 @@
   timezone,
   hostname,
   system,
+  uid,
   ...
 }: let
   pkgs = import nixpkgs {
@@ -103,6 +104,7 @@
       timezone
       hostname
       system
+      uid
       ;
   };
   machineArgs = homeArgs // systemArgs;
@@ -117,7 +119,6 @@
   }: [
     modulePath
     inputs.home-manager.nixosModules.home-manager
-    inputs.xremap-flake.nixosModules.default
     inputs.sops-nix.nixosModules.sops
     nix-ld.nixosModules.nix-ld
     home

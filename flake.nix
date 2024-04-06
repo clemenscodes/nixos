@@ -115,6 +115,7 @@
     timezone = "Europe/Berlin";
     hostname = "nixos";
     system = "x86_64-linux";
+    uid = 1000;
   in {
     nixosConfigurations = (
       import ./machines {
@@ -136,6 +137,7 @@
           timezone
           hostname
           system
+          uid
           ;
       }
     );

@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  uid,
   ...
 }: {
   imports = [
@@ -14,19 +15,19 @@
     };
     secrets = {
       "email/clemens.horn@mni.thm.de/password" = {
-        path = "/run/user/1000/secrets/email/clemens.horn@mni.thm.de/password";
+        path = "/run/user/${builtins.toString uid}/secrets/email/clemens.horn@mni.thm.de/password";
       };
       "email/horn_clemens@t-online.de/password" = {
-        path = "/run/user/1000/secrets/email/horn_clemens@t-online.de/password";
+        path = "/run/user/${builtins.toString uid}/secrets/email/horn_clemens@t-online.de/password";
       };
       "email/me@clemenshorn.com/password" = {
-        path = "/run/user/1000/secrets/email/me@clemenshorn.com/password";
+        path = "/run/user/${builtins.toString uid}/secrets/email/me@clemenshorn.com/password";
       };
       github_token = {
-        path = "/run/user/1000/secrets/github_token";
+        path = "/run/user/${builtins.toString uid}/secrets/github_token";
       };
       gitlab_runner = {
-        path = "/run/user/1000/secrets/gitlab_runner";
+        path = "/run/user/${builtins.toString uid}/secrets/gitlab_runner";
       };
     };
   };

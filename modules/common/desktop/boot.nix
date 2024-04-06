@@ -6,6 +6,7 @@
 }: {
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    supportedFilesystems = [ "ntfs" ];
     loader = {
       systemd-boot = {
         enable = lib.mkForce false;

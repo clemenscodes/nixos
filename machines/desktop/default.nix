@@ -1,4 +1,4 @@
-{user, ...}: {
+{user, inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/common/gaming
@@ -11,6 +11,7 @@
     ../../modules/common/services/desktop/corectrl.nix
     ../../modules/common/services/desktop/ravencoin
     ../../modules/common/services/desktop/teamredminer
+    inputs.xremap-flake.nixosModules.default
   ];
   home-manager = {
     useGlobalPkgs = true;
