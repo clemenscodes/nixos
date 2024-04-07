@@ -19,7 +19,6 @@
     ./vhs
     ./screenshots
     ./spotify
-    ./transgui
     ./obs
     ./swayidle
     ./swayimg
@@ -32,6 +31,8 @@
     ./zathura
     ./jetbrains
     ./vscode
+    ./transgui
     ./ledger-live-desktop
+    ./editing
   ];
 }

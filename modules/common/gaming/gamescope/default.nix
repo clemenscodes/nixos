@@ -1,7 +1,0 @@
-{...}: {
-  programs = {
-    gamescope = {
-      enable = true;
-    };
-  };
-}

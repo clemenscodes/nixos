@@ -1,7 +1,6 @@
 {user, inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common/gaming
     ../../modules/common/desktop
     ../../modules/common/services/desktop
     ../../modules/common/services/desktop/tlp.nix

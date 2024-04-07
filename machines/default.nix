@@ -19,23 +19,15 @@
   pkgs = import nixpkgs {
     inherit system;
     config = {
-      allowUnfree = true; # IntelliJ products are ignored in predicate
+      allowUnfree = false;
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "spotify"
-          "discord"
           "steam"
           "steam-original"
           "steam-run"
         ];
-      permittedInsecurePackages = [
-        "electron-19.1.9"
-      ];
     };
-    overlays = [
-      nur.overlay
-      inputs.neovim-nightly-overlay.overlay
-    ];
+    overlays = [nur.overlay inputs.neovim-nightly-overlay.overlay];
   };
   themes = {
     custom = {
@@ -70,6 +62,7 @@
   homeArgs = {
     inherit
       inputs
+      nixpkgs
       themes
       locale
       editor

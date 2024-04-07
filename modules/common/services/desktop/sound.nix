@@ -1,7 +1,4 @@
-{inputs, ...}: {
-  imports = [
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
-  ];
+{...}: {
   sound = {
     enable = true;
   };
@@ -17,11 +14,6 @@
       };
       jack = {
         enable = true;
-      };
-      lowLatency = {
-        enable = true;
-        quantum = 64;
-        rate = 48000;
       };
     };
   };
