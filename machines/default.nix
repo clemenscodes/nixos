@@ -64,13 +64,13 @@
     inherit
       pkgs
       system
+      nix-ld
       ;
   };
   homeArgs = {
     inherit
       inputs
       themes
-      user
       locale
       editor
       browser
@@ -83,47 +83,30 @@
       ;
   };
   machineArgs = homeArgs // systemArgs;
-  mkExtraSpecialArgs = machine:
+  mkExtraSpecialArgs = {
+    machine,
+    user,
+  }:
     homeArgs
     // {
-      machine = machine;
+      inherit machine user;
     };
   mkModules = {
     modulePath,
     machine,
+    user,
   }: [
     modulePath
     inputs.home-manager.nixosModules.home-manager
-    inputs.sops-nix.nixosModules.sops
-    nix-ld.nixosModules.nix-ld
     {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = mkExtraSpecialArgs machine;
+        extraSpecialArgs = mkExtraSpecialArgs {inherit machine user;};
         users = {
           ${user} = {
             imports = [../modules/common/home];
           };
-        };
-      };
-    }
-    {
-      sops = {
-        defaultSopsFile = ../secrets/secrets.yaml;
-        age = {
-          keyFile = "/home/${user}/.config/sops/age/keys.txt";
-          generateKey = false;
-          sshKeyPaths = ["/home/${user}/.ssh/id_ed25519"];
-        };
-        secrets = {
-          password = {
-            neededForUsers = true;
-          };
-          wifi = {
-            neededForUsers = true;
-          };
-          nix_access_tokens = {};
         };
       };
     }
@@ -132,25 +115,28 @@
   mkMachine = {
     modulePath,
     machine,
+    user,
   }:
     lib.nixosSystem {
-      specialArgs = machineArgs;
+      specialArgs = machineArgs // {inherit user;};
       modules = mkModules {
-        modulePath = modulePath;
-        machine = machine;
+        inherit user modulePath machine;
       };
     };
 in {
   desktop = mkMachine {
     modulePath = ./desktop;
     machine = "desktop";
+    inherit user;
   };
   laptop = mkMachine {
     modulePath = ./laptop;
     machine = "laptop";
+    inherit user;
   };
   wsl = mkMachine {
     modulePath = ./wsl;
     machine = "wsl";
+    user = "nixos"; # Changing this might lead to issues, @see https://github.com/nix-community/NixOS-WSL/issues/250
   };
 }

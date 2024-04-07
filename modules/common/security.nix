@@ -32,7 +32,6 @@
       };
     };
     sudo = {
-      wheelNeedsPassword = false;
       extraRules = [
         {
           users = ["${user}"];

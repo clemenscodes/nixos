@@ -1,4 +1,8 @@
-{user, inputs, ...}: {
+{
+  user,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/common/gaming

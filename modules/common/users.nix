@@ -13,8 +13,8 @@
     users = {
       ${user} = {
         isNormalUser = true;
-        description = "${user}";
-        group = "${user}";
+        description = user;
+        group = user;
         shell = pkgs.zsh;
         hashedPasswordFile = config.sops.secrets.password.path;
         extraGroups = [
