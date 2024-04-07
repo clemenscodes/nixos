@@ -127,6 +127,11 @@ in {
     machine = "laptop";
     inherit user;
   };
+  server = mkMachine {
+    modulePath = ./server;
+    machine = "server";
+    inherit user;
+  };
   wsl = mkMachine {
     modulePath = ./wsl;
     machine = "wsl";
