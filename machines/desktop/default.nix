@@ -14,8 +14,6 @@
     inputs.xremap-flake.nixosModules.default
   ];
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
     users = {
       ${user} = {
         imports = [../../modules/common/home/desktop];

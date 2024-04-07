@@ -12,12 +12,14 @@
   hostname,
   system,
   uid,
+  version,
   ...
 }: let
+  inherit (nixpkgs) lib;
   pkgs = import nixpkgs {
     inherit system;
     config = {
-      allowUnfree = true;
+      allowUnfree = true; # IntelliJ products are ignored in predicate
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "spotify"
@@ -30,9 +32,11 @@
         "electron-19.1.9"
       ];
     };
-    overlays = [nur.overlay inputs.neovim-nightly-overlay.overlay];
+    overlays = [
+      nur.overlay
+      inputs.neovim-nightly-overlay.overlay
+    ];
   };
-  lib = nixpkgs.lib;
   themes = {
     custom = {
       background = "282828";
@@ -56,36 +60,6 @@
       base0F = "ffffff";
     };
   };
-  sops = {
-    sops = {
-      defaultSopsFile = ../secrets/secrets.yaml;
-      age = {
-        keyFile = "/home/${user}/.config/sops/age/keys.txt";
-        generateKey = false;
-        sshKeyPaths = ["/home/${user}/.ssh/id_ed25519"];
-      };
-      secrets = {
-        password = {
-          neededForUsers = true;
-        };
-        wifi = {
-          neededForUsers = true;
-        };
-        nix_access_tokens = {};
-      };
-    };
-  };
-  home = {
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      users = {
-        ${user} = {
-          imports = [../modules/common/home];
-        };
-      };
-    };
-  };
   systemArgs = {
     inherit
       pkgs
@@ -105,6 +79,7 @@
       hostname
       system
       uid
+      version
       ;
   };
   machineArgs = homeArgs // systemArgs;
@@ -121,11 +96,35 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.sops-nix.nixosModules.sops
     nix-ld.nixosModules.nix-ld
-    home
-    sops
     {
       home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
         extraSpecialArgs = mkExtraSpecialArgs machine;
+        users = {
+          ${user} = {
+            imports = [../modules/common/home];
+          };
+        };
+      };
+    }
+    {
+      sops = {
+        defaultSopsFile = ../secrets/secrets.yaml;
+        age = {
+          keyFile = "/home/${user}/.config/sops/age/keys.txt";
+          generateKey = false;
+          sshKeyPaths = ["/home/${user}/.ssh/id_ed25519"];
+        };
+        secrets = {
+          password = {
+            neededForUsers = true;
+          };
+          wifi = {
+            neededForUsers = true;
+          };
+          nix_access_tokens = {};
+        };
       };
     }
     ../modules

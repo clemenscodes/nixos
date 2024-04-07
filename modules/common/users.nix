@@ -5,6 +5,7 @@
   ...
 }: {
   users = {
+    mutableUsers = false;
     defaultUserShell = pkgs.zsh;
     groups = {
       ${user} = {};

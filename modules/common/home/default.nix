@@ -2,16 +2,22 @@
   user,
   locale,
   config,
+  version,
   ...
 }: {
   imports = [
     ./cli
   ];
+  programs = {
+    home-manager = {
+      enable = true;
+    };
+  };
   home = {
     keyboard = {
       layout = locale;
     };
-    stateVersion = "24.05";
+    stateVersion = version;
     username = "${user}";
     homeDirectory = "/home/${user}";
     sessionPath = ["${config.home.homeDirectory}/.local/bin"];
@@ -43,11 +49,6 @@
           - This is the directory where neovim stores its undo history
         '';
       };
-    };
-  };
-  programs = {
-    home-manager = {
-      enable = true;
     };
   };
 }

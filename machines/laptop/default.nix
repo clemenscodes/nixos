@@ -13,8 +13,6 @@
     # ../../modules/common/services/displaylink.nix
   ];
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
     users = {
       ${user} = {
         imports = [../../modules/common/home/desktop];
