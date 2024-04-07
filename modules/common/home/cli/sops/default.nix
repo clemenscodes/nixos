@@ -11,6 +11,7 @@
     defaultSopsFile = ../../../../../secrets/secrets.yaml;
     age = {
       keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+      generateKey = true;
       sshKeyPaths = ["${config.home.homeDirectory}/.ssh/id_ed25519"];
     };
     secrets = {
@@ -25,9 +26,6 @@
       };
       github_token = {
         path = "/run/user/${builtins.toString uid}/secrets/github_token";
-      };
-      gitlab_runner = {
-        path = "/run/user/${builtins.toString uid}/secrets/gitlab_runner";
       };
     };
   };

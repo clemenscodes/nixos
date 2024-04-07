@@ -107,6 +107,7 @@
     cardano-wallet,
     ...
   }: let
+    version = "24.05";
     user = "clay";
     locale = "de";
     terminal = "kitty";
@@ -138,6 +139,7 @@
           hostname
           system
           uid
+          version
           ;
       }
     );

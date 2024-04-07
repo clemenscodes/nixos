@@ -12,27 +12,23 @@
   hostname,
   system,
   uid,
+  version,
   ...
 }: let
+  inherit (nixpkgs) lib;
   pkgs = import nixpkgs {
     inherit system;
     config = {
-      allowUnfree = true;
+      allowUnfree = false;
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "spotify"
-          "discord"
           "steam"
           "steam-original"
           "steam-run"
         ];
-      permittedInsecurePackages = [
-        "electron-19.1.9"
-      ];
     };
     overlays = [nur.overlay inputs.neovim-nightly-overlay.overlay];
   };
-  lib = nixpkgs.lib;
   themes = {
     custom = {
       background = "282828";
@@ -56,47 +52,18 @@
       base0F = "ffffff";
     };
   };
-  sops = {
-    sops = {
-      defaultSopsFile = ../secrets/secrets.yaml;
-      age = {
-        keyFile = "/home/${user}/.config/sops/age/keys.txt";
-        generateKey = false;
-        sshKeyPaths = ["/home/${user}/.ssh/id_ed25519"];
-      };
-      secrets = {
-        password = {
-          neededForUsers = true;
-        };
-        wifi = {
-          neededForUsers = true;
-        };
-        nix_access_tokens = {};
-      };
-    };
-  };
-  home = {
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      users = {
-        ${user} = {
-          imports = [../modules/common/home];
-        };
-      };
-    };
-  };
   systemArgs = {
     inherit
       pkgs
       system
+      nix-ld
       ;
   };
   homeArgs = {
     inherit
       inputs
+      nixpkgs
       themes
-      user
       locale
       editor
       browser
@@ -105,27 +72,35 @@
       hostname
       system
       uid
+      version
       ;
   };
   machineArgs = homeArgs // systemArgs;
-  mkExtraSpecialArgs = machine:
+  mkExtraSpecialArgs = {
+    machine,
+    user,
+  }:
     homeArgs
     // {
-      machine = machine;
+      inherit machine user;
     };
   mkModules = {
     modulePath,
     machine,
+    user,
   }: [
     modulePath
     inputs.home-manager.nixosModules.home-manager
-    inputs.sops-nix.nixosModules.sops
-    nix-ld.nixosModules.nix-ld
-    home
-    sops
     {
       home-manager = {
-        extraSpecialArgs = mkExtraSpecialArgs machine;
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = mkExtraSpecialArgs {inherit machine user;};
+        users = {
+          ${user} = {
+            imports = [../modules/common/home];
+          };
+        };
       };
     }
     ../modules
@@ -133,25 +108,28 @@
   mkMachine = {
     modulePath,
     machine,
+    user,
   }:
     lib.nixosSystem {
-      specialArgs = machineArgs;
+      specialArgs = machineArgs // {inherit user;};
       modules = mkModules {
-        modulePath = modulePath;
-        machine = machine;
+        inherit user modulePath machine;
       };
     };
 in {
   desktop = mkMachine {
     modulePath = ./desktop;
     machine = "desktop";
+    inherit user;
   };
   laptop = mkMachine {
     modulePath = ./laptop;
     machine = "laptop";
+    inherit user;
   };
   wsl = mkMachine {
     modulePath = ./wsl;
     machine = "wsl";
+    user = "nixos"; # Changing this might lead to issues, @see https://github.com/nix-community/NixOS-WSL/issues/250
   };
 }
