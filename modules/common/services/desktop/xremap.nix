@@ -2,7 +2,7 @@
   services = {
     xremap = {
       withWlroots = true;
-      userName = "${user}";
+      userName = user;
       yamlConfig = ''
         modmap:
           - name: "Better CapsLock"

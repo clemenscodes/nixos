@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nix-ld,
+  ...
+}: {
+  imports = [
+    nix-ld.nixosModules.nix-ld
+  ];
   programs = {
     nix-ld = {
       enable = true;

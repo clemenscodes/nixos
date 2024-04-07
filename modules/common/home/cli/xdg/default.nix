@@ -1,8 +1,8 @@
-{user, ...}: {
+{config, ...}: {
   xdg = {
     enable = true;
     userDirs = let
-      home = "/home/${user}";
+      home = config.home.homeDirectory;
       local = "${home}/.local";
     in {
       enable = true;

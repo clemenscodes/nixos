@@ -11,10 +11,13 @@
         */
         ''
           polkit.addRule(function(action, subject) {
-              if ((action.id == "org.corectrl.helper.init" || action.id == "org.corectrl.helperkiller.init") && subject.local == true && subject.active == true &&
-                  subject.isInGroup("${user}")) {
-                      return polkit.Result.YES;
-              }
+            const isInit = action.id == "org.corectrl.helper.init" || action.id == "org.corectrl.helperkiller.init";
+            const isLocal = subject.local == true;
+            const isActive = subject.active == true; 
+            const hasUserGroup = subject.isInGroup("${user}");
+            if (isInit && isLocal && isActive && hasUserGroup) {
+              return polkit.Result.YES;
+            }
           });
         '';
     };

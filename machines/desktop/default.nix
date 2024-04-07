@@ -1,9 +1,13 @@
-{user, inputs, ...}: {
+{
+  user,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common/gaming
     ../../modules/amd.nix
     ../../modules/common/desktop
+    ../../modules/common/desktop/steam.nix
     ../../modules/common/services/desktop
     ../../modules/common/services/desktop/monero
     ../../modules/common/services/desktop/nanominer
@@ -14,8 +18,6 @@
     inputs.xremap-flake.nixosModules.default
   ];
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
     users = {
       ${user} = {
         imports = [../../modules/common/home/desktop];

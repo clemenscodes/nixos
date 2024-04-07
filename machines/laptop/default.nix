@@ -1,7 +1,6 @@
 {user, inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common/gaming
     ../../modules/common/desktop
     ../../modules/common/services/desktop
     ../../modules/common/services/desktop/tlp.nix
@@ -13,8 +12,6 @@
     # ../../modules/common/services/displaylink.nix
   ];
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
     users = {
       ${user} = {
         imports = [../../modules/common/home/desktop];
