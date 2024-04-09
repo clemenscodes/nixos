@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs = {
     nixvim = {
-      extraPackages = with pkgs; [ripgrep fd "${import ./manix {inherit pkgs;}}"];
+      extraPackages = with pkgs; [ripgrep fd];
       extraPlugins = with pkgs.vimPlugins; [telescope-manix];
       extraConfigLuaPost =
         /*
@@ -17,14 +17,16 @@
           extensions = {
             fzf-native = {
               enable = true;
-              caseMode = "smart_case";
-              fuzzy = true;
+              settings = {
+                caseMode = "smart_case";
+                fuzzy = true;
+              };
             };
           };
           highlightTheme = "catppuccin";
           keymaps = {};
           keymapsSilent = true;
-          extraOptions = {};
+          settings = {};
         };
         which-key = {
           registrations = {
