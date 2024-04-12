@@ -21,7 +21,7 @@
         enable = lib.mkForce false;
       };
       grub = {
-        enable = lib.mkForce true;
+        enable = lib.mkForce false;
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
