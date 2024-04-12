@@ -2,11 +2,20 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
+  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
+  environment = {
+    systemPackages = with pkgs; [sbctl];
+  };
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
     supportedFilesystems = [ "ntfs" ];
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
     loader = {
       systemd-boot = {
         enable = lib.mkForce false;
