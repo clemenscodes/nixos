@@ -6,13 +6,13 @@
 }: {
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
     loader = {
       systemd-boot = {
-        enable = lib.mkForce false;
+        enable = true;
       };
       grub = {
-        enable = lib.mkForce true;
+        enable = lib.mkForce false;
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
