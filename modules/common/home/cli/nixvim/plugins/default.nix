@@ -47,5 +47,6 @@
     ./treesitter
     ./surround
     ./vimtex
+    ./winbar
   ];
 }
