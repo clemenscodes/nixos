@@ -7,6 +7,10 @@
         */
         ''
           do
+            require('cmp-npm').setup({
+              ignore = {},
+              only_semantic_versions = true,
+            })
             local cmp = require('cmp')
             cmp.setup({
               ["completion"] = {
@@ -54,6 +58,7 @@
                 end
               },
               ["sources"] = {
+                { ["name"] = "npm", priority = 2000 },
                 {
                   ["name"] = "nvim_lsp",
                   ["entryFilter"] = function(entry, ctx)
@@ -65,7 +70,6 @@
                 { ["name"] = "crates" },
                 { ["name"] = "lua" },
                 { ["name"] = "tmux" },
-                { ["name"] = "npm" }
               }
             })
           end
