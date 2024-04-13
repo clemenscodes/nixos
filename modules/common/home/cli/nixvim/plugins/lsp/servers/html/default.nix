@@ -7,6 +7,12 @@
             html = {
               enable = true;
               extraOptions = {};
+              filetypes = [
+                "typescript"
+                "html"
+                "typescriptreact"
+                "typescript.tsx"
+              ];
             };
           };
         };
