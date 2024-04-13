@@ -2,23 +2,14 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: {
-  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
-  environment = {
-    systemPackages = with pkgs; [sbctl];
-  };
   boot = {
     kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
-    supportedFilesystems = [ "ntfs" ];
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
+    supportedFilesystems = ["ntfs"];
     loader = {
       systemd-boot = {
-        enable = lib.mkForce false;
+        enable = true;
       };
       grub = {
         enable = lib.mkForce false;
