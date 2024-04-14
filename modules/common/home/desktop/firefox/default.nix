@@ -55,7 +55,7 @@
   programs = {
     firefox = {
       enable = true;
-      package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      package = pkgs.wrapFirefox pkgs.firefox-esr-115-unwrapped {
         extraPolicies = {
           DisableFirefoxStudies = true;
           DisablePocket = true;
