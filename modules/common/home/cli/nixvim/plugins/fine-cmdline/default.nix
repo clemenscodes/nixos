@@ -12,7 +12,7 @@ in {
   programs = {
     nixvim = {
       opts = {
-        cmdheight = 0;
+        cmdheight = 1;
       };
       extraPlugins = with pkgs; [
         vimPlugins.nui-nvim

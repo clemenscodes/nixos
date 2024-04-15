@@ -22,19 +22,19 @@
       xkb = {
         layout = locale;
       };
-      displayManager = {
-        defaultSession = "hyprland";
-        sddm = {
+    };
+    displayManager = {
+      defaultSession = "hyprland";
+      sddm = {
+        enable = true;
+        enableHidpi = true;
+        wayland = {
           enable = true;
-          enableHidpi = true;
-          wayland = {
-            enable = true;
-          };
-          theme = "${import ./themes/catppuccin-macchiato.nix {inherit pkgs;}}";
-          settings = {
-            Theme = {
-              CursorTheme = "Catppuccin-Macchiato-Blue-Cursors";
-            };
+        };
+        theme = "${import ./themes/catppuccin-macchiato.nix {inherit pkgs;}}";
+        settings = {
+          Theme = {
+            CursorTheme = "Catppuccin-Macchiato-Blue-Cursors";
           };
         };
       };

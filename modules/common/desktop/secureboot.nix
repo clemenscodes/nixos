@@ -1,24 +1,35 @@
 {
   lib,
   pkgs,
+  config,
   inputs,
   ...
-}: {
+}:
+with lib; let
+  cfg = config.secureboot;
+in {
   imports = [inputs.lanzaboote.nixosModules.lanzaboote];
-  environment = {
-    systemPackages = with pkgs; [sbctl];
-  };
-  boot = {
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
+  options = {
+    secureboot = {
+      enable = mkEnableOption "Enables secureboot";
     };
-    loader = {
-      systemd-boot = {
-        enable = lib.mkForce false;
+  };
+  config = mkIf cfg.enable {
+    environment = {
+      systemPackages = with pkgs; [sbctl];
+    };
+    boot = {
+      lanzaboote = {
+        enable = true;
+        pkiBundle = "/etc/secureboot";
       };
-      efi = {
-        efiSysMountPoint = "/boot";
+      loader = {
+        systemd-boot = {
+          enable = lib.mkForce false;
+        };
+        efi = {
+          efiSysMountPoint = "/boot";
+        };
       };
     };
   };
