@@ -15,11 +15,19 @@
     ../../modules/common/services/desktop/corectrl.nix
     inputs.xremap-flake.nixosModules.default
   ];
-  home-manager = {
-    users = {
-      ${user} = {
-        imports = [../../modules/common/home/desktop];
+  config = {
+    home-manager = {
+      users = {
+        ${user} = {
+          imports = [../../modules/common/home/desktop];
+          bat = {
+            enable = true;
+          };
+        };
       };
+    };
+    secureboot = {
+      enable = false;
     };
   };
 }
