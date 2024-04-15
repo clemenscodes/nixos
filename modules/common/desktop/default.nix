@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./boot.nix
-    ./tpm.nix
     ./dconf.nix
     ./fonts.nix
     ./hardware.nix

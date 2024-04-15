@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/common/desktop
+    ../../modules/common/desktop/tpm.nix
     ../../modules/common/services/desktop
     ../../modules/common/services/desktop/tlp.nix
     ../../modules/common/services/desktop/thermald.nix
