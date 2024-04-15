@@ -23,6 +23,15 @@
           bat = {
             enable = true;
           };
+          jetbrains = {
+            enable = true;
+            clion = {
+              enable = false;
+            };
+            pycharm = {
+              enable = false;
+            };
+          };
         };
       };
     };

@@ -4,8 +4,9 @@
       plugins = {
         nvim-autopairs = {
           enable = true;
-          checkTs = true;
-          extraOptions = {};
+          settings = {
+            checkTs = true;
+          };
         };
       };
     };

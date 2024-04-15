@@ -15,8 +15,10 @@
       plugins = {
         toggleterm = {
           enable = true;
-          direction = "float";
-          closeOnExit = false;
+          settings = {
+            direction = "float";
+            closeOnExit = false;
+          };
         };
         which-key = {
           registrations = {
