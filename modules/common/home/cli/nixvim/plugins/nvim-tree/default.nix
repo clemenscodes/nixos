@@ -91,8 +91,8 @@
           view = {
             centralizeSelection = true;
             width = {
-              min = 30;
-              max = 30;
+              min = 69;
+              max = 69;
               padding = 1;
             };
           };
