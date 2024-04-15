@@ -7,7 +7,6 @@
     ./hardware-configuration.nix
     ../../modules/amd.nix
     ../../modules/common/desktop
-    ../../modules/common/desktop/secureboot.nix
     ../../modules/common/desktop/tpm.nix
     ../../modules/common/desktop/steam.nix
     ../../modules/common/services/desktop
@@ -36,7 +35,7 @@
       };
     };
     secureboot = {
-      enable = false;
+      enable = true;
     };
   };
 }

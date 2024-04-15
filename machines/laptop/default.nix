@@ -1,4 +1,8 @@
-{user, inputs, ...}: {
+{
+  user,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/common/desktop
@@ -12,11 +16,28 @@
     # @see https://github.com/NixOS/nixpkgs/issues/265868
     # ../../modules/common/services/displaylink.nix
   ];
-  home-manager = {
-    users = {
-      ${user} = {
-        imports = [../../modules/common/home/desktop];
+  config = {
+    home-manager = {
+      users = {
+        ${user} = {
+          imports = [../../modules/common/home/desktop];
+          bat = {
+            enable = true;
+          };
+          jetbrains = {
+            enable = true;
+            clion = {
+              enable = false;
+            };
+            pycharm = {
+              enable = false;
+            };
+          };
+        };
       };
+    };
+    secureboot = {
+      enable = false;
     };
   };
 }

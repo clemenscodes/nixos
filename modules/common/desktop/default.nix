@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./boot.nix
+    ./secureboot.nix
     ./dconf.nix
     ./fonts.nix
     ./hardware.nix
