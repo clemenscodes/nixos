@@ -17,7 +17,7 @@
     home-manager = {
       users = {
         ${user} = {
-          imports = [../../modules/home/desktop];
+          imports = [../../home/desktop];
           bat = {
             enable = true;
           };

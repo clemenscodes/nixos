@@ -98,7 +98,7 @@
         extraSpecialArgs = mkExtraSpecialArgs {inherit machine user;};
         users = {
           ${user} = {
-            imports = [../modules/home];
+            imports = [../home];
           };
         };
       };

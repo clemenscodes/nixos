@@ -59,7 +59,7 @@ The currently used secrets are:
 
 System secrets are managed in `./machines/default.nix`.
 
-User secrets are managed in `./modules/home/desktop/sops/default.nix`.
+User secrets are managed in `./home/desktop/sops/default.nix`.
 
 Everytime a secret is added or removed it needs to be added or removed accordingly in the mentioned files as well.
 
@@ -99,7 +99,7 @@ to only include networks that are relevant to you.
 
 ### Email Configuration
 
-Similarly, you will want to edit `./modules/home/desktop/email/default.nix`
+Similarly, you will want to edit `./home/desktop/email/default.nix`
 to only include email accounts relevant to you.
 
 ```nix
@@ -151,7 +151,7 @@ NixOS will then populate `GH_TOKEN=<your-github-pat>` into your shell environmen
 
 ### Hyprland Configuration
 
-Hyprland has be configured to support your individual machines by adding a machine specific configuration at `./modules/home/desktop/hyprland/config/machine/<your-machine>.conf`.
+Hyprland has be configured to support your individual machines by adding a machine specific configuration at `./home/desktop/hyprland/config/machine/<your-machine>.conf`.
 
 ## Installation
 

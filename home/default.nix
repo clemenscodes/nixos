@@ -39,7 +39,7 @@
         '';
       };
       ".local/share/fonts" = {
-        source = ../../assets/fonts;
+        source = ../assets/fonts;
         recursive = true;
       };
       ".local/share/nvim/undo/README.md" = {
