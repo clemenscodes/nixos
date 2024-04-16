@@ -5,7 +5,7 @@
 }: {
   imports = [inputs.sops-nix.nixosModules.sops];
   sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFile = ../secrets/secrets.yaml;
     age = {
       keyFile = "/home/${user}/.config/sops/age/keys.txt";
       generateKey = true;

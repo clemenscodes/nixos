@@ -5,19 +5,19 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common/desktop
-    ../../modules/common/desktop/tpm.nix
-    ../../modules/common/desktop/steam.nix
-    ../../modules/common/services/desktop
-    ../../modules/common/services/desktop/lact.nix
-    ../../modules/common/services/desktop/corectrl.nix
+    ../../modules/desktop
+    ../../modules/desktop/tpm.nix
+    ../../modules/desktop/steam.nix
+    ../../modules/services/desktop
+    ../../modules/services/desktop/lact.nix
+    ../../modules/services/desktop/corectrl.nix
     inputs.xremap-flake.nixosModules.default
   ];
   config = {
     home-manager = {
       users = {
         ${user} = {
-          imports = [../../modules/common/home/desktop];
+          imports = [../../modules/home/desktop];
           bat = {
             enable = true;
           };

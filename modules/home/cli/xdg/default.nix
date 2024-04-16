@@ -29,11 +29,11 @@
         '';
       };
       "images/wallpaper" = {
-        source = ../../../../../assets/wallpaper;
+        source = ../../../../assets/wallpaper;
         recursive = true;
       };
       "images/svg" = {
-        source = ../../../../../assets/svg;
+        source = ../../../../assets/svg;
         recursive = true;
       };
       "isos/README.md" = {

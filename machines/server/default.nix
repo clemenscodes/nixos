@@ -1,7 +1,5 @@
 {user, ...}: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [./hardware-configuration.nix];
   config = {
     home-manager = {
       users = {

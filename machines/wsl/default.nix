@@ -1,13 +1,5 @@
-{
-  inputs,
-  user,
-  ...
-}: {
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/wsl.nix
-    inputs.wsl.nixosModules.default
-  ];
+{user, ...}: {
+  imports = [./hardware-configuration.nix];
   config = {
     home-manager = {
       users = {
@@ -17,6 +9,9 @@
           };
         };
       };
+    };
+    windows = {
+      enable = true;
     };
   };
 }

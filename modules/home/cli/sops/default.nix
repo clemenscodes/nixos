@@ -8,7 +8,7 @@
     inputs.sops-nix.homeManagerModule
   ];
   sops = {
-    defaultSopsFile = ../../../../../secrets/secrets.yaml;
+    defaultSopsFile = ../../../../secrets/secrets.yaml;
     age = {
       keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
       generateKey = true;
