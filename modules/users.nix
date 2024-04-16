@@ -1,9 +1,11 @@
 {
+  lib,
   config,
   pkgs,
   user,
   ...
-}: {
+}:
+with lib; {
   users = {
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;
@@ -16,7 +18,7 @@
         description = user;
         group = user;
         shell = pkgs.zsh;
-        hashedPasswordFile = config.sops.secrets.password.path;
+        hashedPasswordFile = mkIf config.secrets.enable config.sops.secrets.password.path;
         extraGroups = [
           "networkmanager"
           "wheel"

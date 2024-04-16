@@ -1,8 +1,10 @@
 {
+  lib,
   user,
   config,
   ...
-}: {
+}:
+with lib; {
   nix = {
     gc = {
       automatic = true;
@@ -32,7 +34,7 @@
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       ];
     };
-    extraOptions = ''
+    extraOptions = mkIf config.secrets.enable ''
       !include ${config.sops.secrets.nix_access_tokens.path}
     '';
   };

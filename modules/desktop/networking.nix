@@ -1,8 +1,10 @@
 {
+  lib,
   config,
   hostname,
   ...
-}: {
+}:
+with lib; {
   networking = {
     hostName = hostname;
     firewall = {
@@ -21,7 +23,7 @@
         "except:type:ethernet"
       ];
     };
-    wireless = {
+    wireless = mkIf config.secrets.enable {
       enable = true;
       userControlled = {
         enable = true;

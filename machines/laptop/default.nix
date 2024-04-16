@@ -21,23 +21,20 @@
       users = {
         ${user} = {
           imports = [../../home/desktop];
-          bat = {
+          secrets = {
             enable = true;
           };
-          jetbrains = {
+          email = {
             enable = true;
-            clion = {
-              enable = false;
-            };
-            pycharm = {
-              enable = false;
-            };
+          };
+          bat = {
+            enable = true;
           };
         };
       };
     };
-    secureboot = {
-      enable = false;
+    secrets = {
+      enable = true;
     };
   };
 }
