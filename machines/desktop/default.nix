@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/amd.nix
     ../../modules/common/desktop
     ../../modules/common/desktop/tpm.nix
     ../../modules/common/desktop/steam.nix
@@ -32,6 +31,12 @@
             };
           };
         };
+      };
+    };
+    gpu = {
+      enable = true;
+      amd = {
+        enable = true;
       };
     };
     secureboot = {

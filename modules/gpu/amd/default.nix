@@ -1,7 +1,22 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib;
+with pkgs; let
+  cfg = config.gpu;
   driver = "amdgpu";
-in
-  with pkgs; {
+in {
+  options = {
+    gpu = {
+      amd = {
+        enable = mkEnableOption "Enable AMD GPU support";
+      };
+    };
+  };
+  config = mkIf (cfg.enable && cfg.amd.enable) {
     environment = {
       systemPackages = [clinfo rocmPackages.rocminfo];
       variables = {
@@ -42,4 +57,5 @@ in
         ];
       };
     };
-  }
+  };
+}
