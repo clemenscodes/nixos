@@ -14,21 +14,8 @@
     inputs.xremap-flake.nixosModules.default
   ];
   config = {
-    home-manager = {
-      users = {
-        ${user} = {
-          imports = [../../home/desktop];
-          secrets = {
-            enable = true;
-          };
-          email = {
-            enable = true;
-          };
-          bat = {
-            enable = true;
-          };
-        };
-      };
+    modules = {
+      enable = true;
     };
     gpu = {
       enable = true;
@@ -41,6 +28,27 @@
     };
     secrets = {
       enable = true;
+    };
+    home-manager = {
+      users = {
+        ${user} = {
+          imports = [../../home/desktop];
+          modules = {
+            home = {
+              enable = true;
+            };
+          };
+          secrets = {
+            enable = true;
+          };
+          email = {
+            enable = true;
+          };
+          bat = {
+            enable = true;
+          };
+        };
+      };
     };
   };
 }

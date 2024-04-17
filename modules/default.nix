@@ -1,4 +1,5 @@
-{...}: {
+{lib, ...}:
+with lib; {
   imports = [
     ./gpu
     ./wsl
@@ -18,4 +19,9 @@
     ./sops.nix
     ./zsh.nix
   ];
+  options = {
+    modules = {
+      enable = mkEnableOption "Enable custom modules" // {default = true;};
+    };
+  };
 }

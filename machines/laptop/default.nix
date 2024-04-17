@@ -17,10 +17,30 @@
     # ../../modules/services/displaylink.nix
   ];
   config = {
+    modules = {
+      enable = true;
+    };
+    secrets = {
+      enable = true;
+    };
+    gpu = {
+      enable = false;
+      amd = {
+        enable = false;
+      };
+    };
+    secureboot = {
+      enable = false;
+    };
     home-manager = {
       users = {
         ${user} = {
           imports = [../../home/desktop];
+          modules = {
+            home = {
+              enable = true;
+            };
+          };
           secrets = {
             enable = true;
           };
@@ -32,9 +52,6 @@
           };
         };
       };
-    };
-    secrets = {
-      enable = true;
     };
   };
 }
