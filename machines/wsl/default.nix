@@ -4,25 +4,12 @@
     modules = {
       enable = true;
     };
-    secrets = {
-      enable = false;
-    };
-    gpu = {
-      enable = false;
-      amd = {
-        enable = false;
-      };
-    };
-    secureboot = {
-      enable = false;
-    };
     windows = {
       enable = true;
     };
     home-manager = {
       users = {
         ${user} = {
-          imports = [../../home/desktop];
           modules = {
             home = {
               enable = true;

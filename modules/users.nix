@@ -7,7 +7,7 @@
 }:
 with lib; {
   users = {
-    mutableUsers = false;
+    mutableUsers = true;
     defaultUserShell = pkgs.zsh;
     groups = {
       ${user} = {};
