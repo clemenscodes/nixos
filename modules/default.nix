@@ -13,6 +13,7 @@ with lib; {
     ./i18n.nix
     ./console.nix
     ./gnupg.nix
+    ./nh.nix
     ./security.nix
     ./system.nix
     ./users.nix

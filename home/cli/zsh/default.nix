@@ -31,15 +31,15 @@ with lib; {
       };
       dotDir = ".config/zsh";
       shellAliases = with pkgs; {
-        update = "cd $XDG_CONFIG_HOME/nixos && git pull";
-        sw = "update && sudo nixos-rebuild switch --flake ./#${machine}";
+        update = "cd $FLAKE && git pull";
+        sw = "update && sudo nh os switch -H ${machine}";
         src = "omz reload";
         ls = "${eza}/bin/eza";
         nd = "nix develop -c $SHELL";
-        ne = "cd $NIX_CONFIG_HOME && lfcd";
+        ne = "cd $FLAKE && lfcd";
         ssh = "kitten ssh";
-        nedesk = "cd $NIX_CONFIG_HOME/home/desktop && lfcd";
-        nenvim = "cd $NIX_CONFIG_HOME/home/cli/nixvim && lfcd";
+        nedesk = "cd $FLAKE/home/desktop && lfcd";
+        nenvim = "cd $FLAKE/home/cli/nixvim && lfcd";
         v = "nvim .";
         V = "cd $XDG_VIDEOS_DIR";
         D = "cd $XDG_DOWNLOAD_DIR";
@@ -118,7 +118,7 @@ with lib; {
       '';
       profileExtra = ''
         export NIXOS_OZONE_WL=1
-        export NIX_CONFIG_HOME=$XDG_CONFIG_HOME/nixos
+        export FLAKE=$XDG_CONFIG_HOME/nixos
         export CARGO_HOME="$XDG_DATA_HOME/cargo"
         export JAVA_HOME="/etc/profiles/per-user/${user}"
         export GOPATH="$XDG_DATA_HOME/go"
