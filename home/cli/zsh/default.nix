@@ -32,7 +32,7 @@ with lib; {
       dotDir = ".config/zsh";
       shellAliases = with pkgs; {
         update = "cd $FLAKE && git pull";
-        sw = "update && sudo nh os switch -H ${machine}";
+        sw = "update && nh os switch -H ${machine}";
         src = "omz reload";
         ls = "${eza}/bin/eza";
         nd = "nix develop -c $SHELL";
