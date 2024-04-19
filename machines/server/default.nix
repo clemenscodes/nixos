@@ -19,7 +19,6 @@
     home-manager = {
       users = {
         ${user} = {
-          imports = [../../home/desktop];
           modules = {
             home = {
               enable = true;
