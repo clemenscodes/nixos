@@ -37,6 +37,11 @@
             home = {
               enable = true;
             };
+            desktop = {
+              browser = {
+                enable = true;
+              };
+            };
           };
           secrets = {
             enable = true;

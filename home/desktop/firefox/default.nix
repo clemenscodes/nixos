@@ -3,11 +3,6 @@
   user,
   ...
 }: {
-  home = {
-    packages = with pkgs; [
-      brave
-    ];
-  };
   xdg = {
     enable = true;
     mimeApps = {

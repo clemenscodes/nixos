@@ -2,6 +2,7 @@
   imports = [
     ./bitwarden
     ./blueman
+    ./browser
     ./cursor
     ./corectrl
     ./discord
