@@ -23,7 +23,7 @@ in
           icon = "DV_Resolve";
           terminal = false;
           type = "Application";
-          categories = ["AudioVideoEditing"];
+          categories = ["AudioVideo"];
           mimeType = ["application/x-resolveproj"];
         };
       };
