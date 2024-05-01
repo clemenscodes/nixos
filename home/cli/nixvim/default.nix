@@ -8,9 +8,9 @@
     nixvim = {
       enable = true;
       enableMan = true;
-      vimAlias = true;
-      viAlias = true;
-      wrapRc = false;
+      vimAlias = false;
+      viAlias = false;
+      wrapRc = true;
       type = "lua";
       colorscheme = "catppuccin";
     };
