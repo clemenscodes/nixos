@@ -1,7 +1,0 @@
-{...}: {
-  imports = [
-    ./gimp
-    ./kdenlive
-    ./davinci
-  ];
-}

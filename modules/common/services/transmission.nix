@@ -1,7 +1,0 @@
-{...}: {
-  services = {
-    transmission = {
-      enable = true;
-    };
-  };
-}

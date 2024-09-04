@@ -1,7 +1,0 @@
-{...}: {
-  services = {
-    thermald = {
-      enable = true;
-    };
-  };
-}
