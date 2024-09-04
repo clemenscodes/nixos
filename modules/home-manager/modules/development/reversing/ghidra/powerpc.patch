@@ -1,0 +1,12 @@
+diff --git a/Ghidra/Processors/PowerPC/data/languages/ppc_64_32.cspec b/Ghidra/Processors/PowerPC/data/languages/ppc_64_32.cspec
+index d91f7d4bbf..eda736c7a7 100644
+--- a/Ghidra/Processors/PowerPC/data/languages/ppc_64_32.cspec
++++ b/Ghidra/Processors/PowerPC/data/languages/ppc_64_32.cspec
+@@ -114,6 +114,7 @@
+         <register name="r31"/>
+         <register name="r1"/>
+         <register name="cr4"/>
++        <register name="2"/>
+       </unaffected>
+     </prototype>
+   </default_proto>
