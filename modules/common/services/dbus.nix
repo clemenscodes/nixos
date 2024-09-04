@@ -1,7 +1,0 @@
-{...}: {
-  services = {
-    dbus = {
-      enable = true;
-    };
-  };
-}

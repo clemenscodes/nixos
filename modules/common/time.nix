@@ -1,5 +1,0 @@
-{timezone, ...}: {
-  time = {
-    timeZone = timezone;
-  };
-}

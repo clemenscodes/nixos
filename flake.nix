@@ -1,12 +1,22 @@
 {
-  description = "Clays NixOS flake";
-
   inputs = {
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixos-unstable-small = {
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+    };
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
     };
     wsl = {
       url = "github:nix-community/NixOS-WSL";
@@ -24,19 +34,21 @@
         };
       };
     };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
+    nvim = {
+      url = "github:cymenix/nvim";
       inputs = {
-        hyprland = {
-          follows = "hyprland";
+        nixpkgs = {
+          follows = "nixpkgs";
         };
       };
     };
     xremap-flake = {
       url = "github:xremap/nix-flake";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -46,27 +58,8 @@
         };
       };
     };
-    nur = {
-      url = "github:nix-community/NUR";
-    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.3.0";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
       inputs = {
         nixpkgs = {
           follows = "nixpkgs";
@@ -83,73 +76,40 @@
     };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-    };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     aiken = {
       url = "github:aiken-lang/aiken";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
-    cardano-node = {
-      url = "github:intersectmbo/cardano-node";
-    };
-    cardano-cli = {
-      url = "github:intersectmbo/cardano-cli";
-    };
-    cardano-wallet = {
-      url = "github:cardano-foundation/cardano-wallet";
+    lpi = {
+      url = "github:cymenix/lpi";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
   };
-
-  outputs = inputs @ {
-    nixpkgs,
-    nixpkgs-stable,
-    wsl,
-    home-manager,
-    hyprland,
-    nur,
-    nix-ld,
-    aiken,
-    cardano-node,
-    cardano-cli,
-    cardano-wallet,
-    ...
-  }: let
-    version = "24.05";
-    user = "clay";
-    locale = "de";
-    terminal = "kitty";
-    browser = "firefox";
-    editor = "nvim";
-    timezone = "Europe/Berlin";
-    hostname = "nixos";
-    system = "x86_64-linux";
-    uid = 1000;
-  in {
-    nixosConfigurations = (
-      import ./machines {
-        inherit (nixpkgs) lib;
-        inherit
-          inputs
-          nixpkgs
-          nixpkgs-stable
-          wsl
-          home-manager
-          hyprland
-          nur
-          nix-ld
-          user
-          locale
-          terminal
-          browser
-          editor
-          timezone
-          hostname
-          system
-          uid
-          version
-          ;
+  outputs = inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system: let
+        inherit (inputs) nixpkgs;
+        pkgs = import nixpkgs {inherit system;};
+      in {
+        nixosModules = {
+          default = import ./modules {inherit inputs;};
+        };
+        overlays = import ./overlays {inherit inputs nixpkgs system;};
+        formatter = pkgs.alejandra;
       }
     );
-  };
 }

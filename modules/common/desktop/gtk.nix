@@ -1,7 +1,0 @@
-{...}: {
-  gtk = {
-    iconCache = {
-      enable = true;
-    };
-  };
-}
