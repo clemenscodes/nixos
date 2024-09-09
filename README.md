@@ -49,7 +49,6 @@ A minimal example in a `flake.nix`
       }
     );
 }
-
 ```
 
 ## Software used
