@@ -210,10 +210,10 @@ in
                 (mkIf useMusic "$mod, PERIOD, exec, mpc next")
                 (mkIf useMusic "$mod SHIFT, PERIOD, exec, mpc repeat")
                 (mkIf useObs "$mod, O, exec, obs")
-                (mkIf useObs "ALT, F8, pass, ^(com\.obsproject\.Studio)$")
-                (mkIf useObs "ALT, F9, pass, ^(com\.obsproject\.Studio)$")
-                (mkIf useObs "ALT, F10, pass, ^(com\.obsproject\.Studio)$")
-                (mkIf useObs "ALT, F11, pass, ^(com\.obsproject\.Studio)$")
+                (mkIf useObs "SHIFT, F8, pass, ^(com\.obsproject\.Studio)$")
+                (mkIf useObs "SHIFT, F9, pass, ^(com\.obsproject\.Studio)$")
+                (mkIf useObs "SHIFT, F10, pass, ^(com\.obsproject\.Studio)$")
+                (mkIf useObs "SHIFT, F11, pass, ^(com\.obsproject\.Studio)$")
 
                 # Move/resize windows with mod + LMB/RMB and dragging
                 (mkIf useMusic ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
