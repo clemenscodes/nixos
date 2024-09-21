@@ -33,8 +33,8 @@ in
                 altsubject_match="DNS:wlan.thm.de"
                 phase2="auth=MSCHAPV2"
                 anonymous_identity="anonymous@thm.de"
-                identity=ext:uni_identity
-                password=ext:uni_password
+                identity="ext:uni_identity"
+                password="ext:uni_password"
               '';
             };
           };
