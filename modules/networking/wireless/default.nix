@@ -25,7 +25,17 @@ in
           userControlled = {
             enable = true;
           };
-          environmentFile = config.sops.secrets.wifi.path;
+          secretsFile = config.sops.secrets.wifi.path;
+          networks = {
+            "ext:home_uuid" = {
+              priority = 1;
+              pskRaw = "ext:home_psk";
+            };
+            "ext:alt_home_uuid" = {
+              priority = 2;
+              pskRaw = "ext:alt_home_psk";
+            };
+          };
         };
       };
     };
