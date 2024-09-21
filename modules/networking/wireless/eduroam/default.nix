@@ -20,7 +20,7 @@ in
     config = mkIf (cfg.enable && cfg.eduroam.enable) {
       networking = {
         wireless = mkIf config.modules.security.sops.enable {
-          environmentFile = config.sops.secrets.wifi.path;
+          secretsFile = config.sops.secrets.wifi.path;
           networks = {
             eduroam = {
               priority = 3;
