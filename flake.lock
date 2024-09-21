@@ -1791,11 +1791,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1726915836,
-        "narHash": "sha256-ocFCy5YHcy+dOZlJ1ToQHj/AMHTZfBxh3g+qaEJxcFg=",
+        "lastModified": 1726916157,
+        "narHash": "sha256-+qDqJDbZWbpswIEk2cKC8GWRQewwvi4keZI7cU8mn+c=",
         "owner": "cymenix",
         "repo": "nvim",
-        "rev": "77f8f0c5b25940159ddc2a1225eafa2d5928883a",
+        "rev": "3894e01b7d2348cf897d7552e313eacbb50a309d",
         "type": "github"
       },
       "original": {
