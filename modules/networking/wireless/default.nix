@@ -26,16 +26,6 @@ in
             enable = true;
           };
           environmentFile = config.sops.secrets.wifi.path;
-          networks = {
-            "@home_uuid@" = {
-              priority = 1;
-              pskRaw = "@home_psk@";
-            };
-            "@alt_home_uuid@" = {
-              priority = 2;
-              pskRaw = "@alt_home_psk@";
-            };
-          };
         };
       };
     };
