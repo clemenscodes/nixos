@@ -18,7 +18,6 @@ in
     config = mkIf (cfg.enable && cfg.qt.enable) {
       qt = {
         inherit (cfg.qt) enable;
-        # platformTheme = "qt5ct";
       };
     };
   }
