@@ -27,13 +27,13 @@ in
           };
           secretsFile = config.sops.secrets.wifi.path;
           networks = {
-            "home_uuid" = {
+            "Internet" = {
               priority = 1;
-              pskRaw = "home_psk";
+              pskRaw = "ext:home_psk";
             };
-            "alt_home_uuid" = {
+            "FRITZ!Box 7490" = {
               priority = 2;
-              pskRaw = "alt_home_psk";
+              pskRaw = "ext:alt_home_psk";
             };
           };
         };
