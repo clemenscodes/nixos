@@ -27,13 +27,13 @@ in
           };
           secretsFile = config.sops.secrets.wifi.path;
           networks = {
-            "ext:home_uuid" = {
+            "home_uuid" = {
               priority = 1;
-              pskRaw = "ext:home_psk";
+              pskRaw = "home_psk";
             };
-            "ext:alt_home_uuid" = {
+            "alt_home_uuid" = {
               priority = 2;
-              pskRaw = "ext:alt_home_psk";
+              pskRaw = "alt_home_psk";
             };
           };
         };
