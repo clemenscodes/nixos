@@ -7,6 +7,7 @@
 in
   with lib; {
     imports = [
+      ./cachix
       ./nix
     ];
     options = {
