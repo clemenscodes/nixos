@@ -12,6 +12,10 @@ in
         config = {
           cachix = {
             enable = mkEnableOption "Enable common cachix options" // {default = cfg.enable;};
+            token = mkOption {
+              type = types.path;
+              default = null;
+            };
           };
         };
       };
