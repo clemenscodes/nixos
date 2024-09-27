@@ -10,7 +10,7 @@ in
       modules = {
         io = {
           printing = {
-            enable = mkEnableOption "Enable printing services" // {default = cfg.enable;};
+            enable = mkEnableOption "Enable printing services" // {default = false;};
           };
         };
       };
