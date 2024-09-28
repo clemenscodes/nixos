@@ -33,6 +33,11 @@
     };
     nvim = {
       url = "github:cymenix/nvim";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     xremap-flake = {
       url = "github:xremap/nix-flake";
