@@ -8,8 +8,4 @@
 in
   headlessOverlays
   ++ guiOverlays
-  ++ [
-    (final: prev: {
-      inherit (import (inputs.nixos-unstable-small) {inherit system;}) xdg-desktop-portal-hyprland;
-    })
-  ]
+
