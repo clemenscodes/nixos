@@ -19,6 +19,8 @@
         redhat.vscode-yaml
         moonrepo.moon-console
         catppuccin.catppuccin-vsc
+        ms-azuretools.vscode-docker
+        exiasr.hadolint
       ];
     };
   };
