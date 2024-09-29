@@ -21,6 +21,7 @@
         catppuccin.catppuccin-vsc
         ms-azuretools.vscode-docker
         exiasr.hadolint
+        ms-vscode-remote.remote-containers
       ];
     };
   };
