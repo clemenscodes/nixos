@@ -21,7 +21,7 @@
         "[toml]" = {
           "editor.defaultFormatter" = "tamasfe.even-better-toml";
         };
-        "workbench.colorTheme" = "One Dark";
+        "workbench.colorTheme" = "Catppuccin Macchiato";
         "workbench.iconTheme" = "material-icon-theme";
         "terminal.integrated.fontSize" = 16;
         "terminal.integrated.fontFamily" = "Iosevka NFM";

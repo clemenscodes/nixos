@@ -10,16 +10,15 @@
         vspacecode.whichkey
         bbenoist.nix
         kamadorueda.alejandra
-        mskelton.one-dark-theme
         pkief.material-icon-theme
         editorconfig.editorconfig
         mkhl.direnv
-        prisma.prisma
         tamasfe.even-better-toml
         serayuzgur.crates
         rust-lang.rust-analyzer
         redhat.vscode-yaml
         moonrepo.moon-console
+        catppuccin.catppuccin-vsc
       ];
     };
   };
