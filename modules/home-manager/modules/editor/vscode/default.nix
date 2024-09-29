@@ -32,7 +32,7 @@ in
       programs = {
         vscode = {
           enable = cfg.vscode.enable;
-          package = pkgs.vscodium;
+          # package = pkgs.vscodium;
           enableExtensionUpdateCheck = true;
           enableUpdateCheck = true;
         };
