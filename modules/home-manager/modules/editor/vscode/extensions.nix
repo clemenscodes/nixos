@@ -25,9 +25,7 @@
           ms-azuretools.vscode-docker
           exiasr.hadolint
         ]
-        ++ lib.optional config.modules.editor.vscode.proprietary [
-          ms-vscode-remote.remote-containers
-        ];
+        ++ lib.optional config.modules.editor.vscode.proprietary ms-vscode-remote.remote-containers;
     };
   };
 }
