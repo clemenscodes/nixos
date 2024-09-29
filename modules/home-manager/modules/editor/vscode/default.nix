@@ -6,7 +6,7 @@
 }: let
   cfg = config.modules.editor;
   codevim = pkgs.writeShellScriptBin "codevim" ''
-    nix run github:nix-community/kickstart-nix.nvim -- "$@"
+    nix run github:clemenscodes/codevim -- "$@"
   '';
 in
   with lib; {
