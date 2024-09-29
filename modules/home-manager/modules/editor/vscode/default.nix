@@ -6,7 +6,7 @@
 }: let
   cfg = config.modules.editor;
   codevim = pkgs.writeShellScriptBin "codevim" ''
-    nix run 'github:neovim/neovim?dir=contrib' -- "$@"
+    nix run github:nix-community/kickstart-nix.nvim -- "$@"
   '';
 in
   with lib; {
