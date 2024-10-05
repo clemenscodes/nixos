@@ -1959,11 +1959,11 @@
         "rpcs3": "rpcs3"
       },
       "locked": {
-        "lastModified": 1728155014,
-        "narHash": "sha256-x6UeDmFXAKXfO3rxlFKeqBa4xrwL/iijUybgTr/Wag4=",
+        "lastModified": 1728155130,
+        "narHash": "sha256-MNu78wFR2s0v+VnLD1xNUkoESAQMGgF/vHDQEupEIzI=",
         "owner": "clemenscodes",
         "repo": "ps3-nix",
-        "rev": "33891e2628bcc5a687047d5a64f2e2292ad335ad",
+        "rev": "4cb831746bd510dfaf9b0262c68b5ce642cb7dd9",
         "type": "github"
       },
       "original": {
