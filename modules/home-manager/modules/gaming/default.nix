@@ -19,6 +19,9 @@ in {
   config = mkIf (cfg.gaming.enable) {
     playstation3 = {
       inherit (cfg.gaming) enable;
+      uncharted-reloaded = {
+        inherit (cfg.gaming) enable;
+      };
     };
   };
 }
