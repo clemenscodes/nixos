@@ -17,12 +17,8 @@ in {
     };
   };
   config = mkIf (cfg.gaming.enable) {
-    modules = {
-      gaming = {
-        playstation3 = {
-          inherit (cfg.gaming) enable;
-        };
-      };
+    playstation3 = {
+      inherit (cfg.gaming) enable;
     };
   };
 }
