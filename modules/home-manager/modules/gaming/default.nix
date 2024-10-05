@@ -3,7 +3,9 @@
   lib,
   ...
 }:
-with lib; {
+with lib; let
+  cfg = config.modules;
+in {
   imports = [
     inputs.ps3-nix.homeManagerModules.default
   ];
@@ -11,6 +13,15 @@ with lib; {
     modules = {
       gaming = {
         enable = mkEnableOption "Enable home-manager gaming" // {default = false;};
+      };
+    };
+  };
+  config = mkIf (cfg.gaming.enable) {
+    modules = {
+      gaming = {
+        playstation3 = {
+          inherit (cfg.gaming) enable;
+        };
       };
     };
   };
