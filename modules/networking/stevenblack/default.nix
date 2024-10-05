@@ -19,7 +19,7 @@ in
       networking = {
         stevenblack = {
           enable = cfg.stevenblack.enable;
-          block = ["fakenews" "gambling" "porn" "social"];
+          block = ["fakenews" "gambling" "porn"];
         };
       };
     };
