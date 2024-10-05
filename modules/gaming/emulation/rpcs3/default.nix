@@ -10,7 +10,7 @@ with pkgs; let
   cfg = config.modules.gaming.emulation;
   ps3bios = import ./firmware {inherit pkgs;};
 in {
-  imports = [inputs.ps3-nix.nixosModules.${system}.default];
+  imports = [inputs.ps3-nix.nixosModules.default];
   options = {
     modules = {
       gaming = {
