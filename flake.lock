@@ -1801,11 +1801,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1728133132,
-        "narHash": "sha256-P/Qi2vcgVM+Gq4oCR95BPWCiCFvdsIBlYT30lJRjsY8=",
+        "lastModified": 1728133659,
+        "narHash": "sha256-5qkv0DZo/nppx56a0VV2D8IhiJszJeYTUP72bLF0fUw=",
         "owner": "cymenix",
         "repo": "nvim",
-        "rev": "c3fec81c6ad0ead9feeb2971d598e13080f3f85e",
+        "rev": "ab1403d0178c9c54ce014e7a7bff86c8b19d0336",
         "type": "github"
       },
       "original": {
