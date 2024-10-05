@@ -1,7 +1,8 @@
-{
+{inputs}: {
   pkgs,
   lib,
   config,
+  system,
   ...
 }:
 with lib;
@@ -9,6 +10,7 @@ with pkgs; let
   cfg = config.modules.gaming.emulation;
   ps3bios = import ./firmware {inherit pkgs;};
 in {
+  imports = [inputs.rpcs3.nixosModules.${system}.default];
   options = {
     modules = {
       gaming = {
@@ -25,7 +27,6 @@ in {
       users = {
         ${config.modules.users.user} = {
           home = {
-            packages = [rpcs3];
             file = {
               ".config/rpcs3/bios" = {
                 source = "${ps3bios}/bios";
