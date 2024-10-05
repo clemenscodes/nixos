@@ -16,6 +16,7 @@ in
       (import ./editor {inherit inputs;})
       ./explorer
       ./fonts
+      (import ./gaming {inherit inputs;})
       ./media
       ./monitoring
       ./networking
