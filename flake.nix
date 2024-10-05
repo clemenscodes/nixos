@@ -95,6 +95,9 @@
         };
       };
     };
+    ps3-nix = {
+      url = "github:clemenscodes/ps3-nix";
+    };
   };
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (

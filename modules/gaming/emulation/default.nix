@@ -1,4 +1,4 @@
-{
+{inputs}: {
   lib,
   config,
   ...
@@ -8,7 +8,7 @@ in
   with lib; {
     imports = [
       ./pcsx2
-      ./rpcs3
+      (import ./rpcs3 {inherit inputs;})
     ];
     options = {
       modules = {
