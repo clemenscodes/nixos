@@ -873,11 +873,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728041527,
-        "narHash": "sha256-03liqiJtk9UP7YQHW4r8MduKCK242FQzud8iWvvlK+o=",
+        "lastModified": 1728296299,
+        "narHash": "sha256-waPSn8ddmvPJBctQaFmSILtElg/Hd62mQPZcbGAxHCI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "509dbf8d45606b618e9ec3bbe4e936b7c5bc6c1e",
+        "rev": "fcf5e608ac65f64463bc0ccc5ea86f2170f20689",
         "type": "github"
       },
       "original": {
@@ -1860,11 +1860,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1728290317,
-        "narHash": "sha256-zvf8kAAyE4rxrFPwwVG364KneZu7yS0DlcHD1ehtFYc=",
+        "lastModified": 1728297256,
+        "narHash": "sha256-sw13Nr+vGwR572ErXsyOoD3H7VcIMleJX6qW00YbS0s=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "1dd950d232696e712638807eeb1a741163f86185",
+        "rev": "e7902d008045cab316f6da30616a92cb18867f85",
         "type": "github"
       },
       "original": {
@@ -1959,11 +1959,11 @@
         "rpcs3": "rpcs3"
       },
       "locked": {
-        "lastModified": 1728293928,
-        "narHash": "sha256-aluI2vwdp+LT94hz1t1wFB3JhqqGM1FdsIqTnS+tsMA=",
+        "lastModified": 1728298002,
+        "narHash": "sha256-VAR5I13WEN/umatQWYLHx+XsZJJyOykC6Wfu47EhUkU=",
         "owner": "clemenscodes",
         "repo": "ps3-nix",
-        "rev": "15a9f26fef3e390f3c942cd5f9c9b4b02823209c",
+        "rev": "e219f6de65a9380466f012cd929a91d0f8981053",
         "type": "github"
       },
       "original": {
