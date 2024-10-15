@@ -16,6 +16,7 @@ in
       ./lazygit
       ./gitui
       ./node
+      ./postman
       ./reversing
     ];
     options = {
