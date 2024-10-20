@@ -7,6 +7,7 @@
 in
   with lib; {
     imports = [
+      ./android
       ./printing
       ./sound
       ./udisks
