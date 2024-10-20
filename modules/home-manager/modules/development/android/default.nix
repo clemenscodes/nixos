@@ -7,7 +7,7 @@
   cfg = config.modules.development;
 in
   with lib; {
-    import = [inputs.android-nixpkgs.hmModule];
+    imports = [inputs.android-nixpkgs.hmModule];
     options = {
       modules = {
         development = {
