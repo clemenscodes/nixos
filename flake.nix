@@ -95,6 +95,14 @@
         };
       };
     };
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
     ps3-nix = {
       url = "github:clemenscodes/ps3-nix";
     };

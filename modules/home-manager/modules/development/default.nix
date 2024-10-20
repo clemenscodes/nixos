@@ -7,6 +7,7 @@
 in
   with lib; {
     imports = [
+      (import ./android {inherit inputs;})
       ./c
       (import ./cardano {inherit inputs;})
       ./corepack
