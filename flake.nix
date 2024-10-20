@@ -3,9 +3,6 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixos-unstable-small = {
-      url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    };
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -97,6 +94,9 @@
           follows = "nixpkgs";
         };
       };
+    };
+    ps3-nix = {
+      url = "github:clemenscodes/ps3-nix";
     };
   };
   outputs = inputs:

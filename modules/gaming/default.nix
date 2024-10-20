@@ -9,7 +9,7 @@ in
   with lib; {
     imports = [
       inputs.nix-gaming.nixosModules.pipewireLowLatency
-      ./emulation
+      (import ./emulation {inherit inputs;})
       ./gamemode
       ./games
       ./gamescope

@@ -15,6 +15,7 @@ in
       ./mtr
       ./stevenblack
       ./torrent
+      ./upnp
       ./vpn
       ./wireless
       ./wireshark
