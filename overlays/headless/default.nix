@@ -3,5 +3,5 @@
   nixpkgs,
   system,
 }: [
-  inputs.android-nixpkgs.overlay
+  inputs.android-nixpkgs.overlays.default
 ]
