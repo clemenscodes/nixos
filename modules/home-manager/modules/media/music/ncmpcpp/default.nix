@@ -207,14 +207,6 @@ in
               command = "show_search_engine";
             }
             {
-              key = "f";
-              command = "show_browser";
-            }
-            {
-              key = "f";
-              command = "change_browse_mode";
-            }
-            {
               key = "x";
               command = "delete_playlist_items";
             }
