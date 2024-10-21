@@ -1997,11 +1997,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1729522755,
-        "narHash": "sha256-0D3zMSa0OA/FPGNiR5yI2K+I5jHteDnE7qm9Ex39Jt8=",
+        "lastModified": 1729523117,
+        "narHash": "sha256-gs8+Ky39O2LdyX+UK53Z4o5fNBrntBUNO55F56IdwPY=",
         "owner": "cymenix",
         "repo": "nvim",
-        "rev": "a9abe2f0d4b9705bc1408515f05e178d2a000b3a",
+        "rev": "97a4bafafb905e16a646a8f599c50b9b1fda866a",
         "type": "github"
       },
       "original": {
