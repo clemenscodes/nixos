@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  size = 12;
+  size = 8;
   font = "VictorMono";
   fonts = ["${font}" "Iosevka" "Meslo"];
   monospace = "${font} Nerd Font Mono";
