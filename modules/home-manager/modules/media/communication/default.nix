@@ -8,6 +8,7 @@ in
   with lib; {
     imports = [
       ./discord
+      ./element
     ];
     options = {
       modules = {
