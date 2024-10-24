@@ -31,7 +31,7 @@ in
       };
       xdg = {
         desktopEntries = {
-          discord = {
+          element = {
             name = "Element";
             type = "Application";
             categories = ["Network" "InstantMessaging"];
