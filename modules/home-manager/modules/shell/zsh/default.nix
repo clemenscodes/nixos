@@ -91,7 +91,7 @@ in
             docs = "${explorer} $XDG_DOCUMENTS_DIR";
             isos = "${explorer} $XDG_DATA_HOME/isos";
             rr = "${explorer} $HOME/.local/src";
-            ma = "${explorer}" "$HOME/.local/src/master/semester/1";
+            ma = "${explorer} $HOME/.local/src/master/semester/1";
           };
           history = {
             path = "${config.xdg.dataHome}/zsh/zsh_history";
