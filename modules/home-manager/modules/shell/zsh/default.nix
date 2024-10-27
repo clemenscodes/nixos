@@ -170,7 +170,7 @@ in
               export M2_HOME="$XDG_DATA_HOME/m2"
               export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv";
               export WINEPREFIX="$XDG_DATA_HOME/wine";
-              export LD_LIBRARY_PATH="/run/opengl-driver/lib:/run/opengl-driver-32/lib:$LD_LIBRARY_PATH";
+              export LD_LIBRARY_PATH="/run/opengl-driver/lib:$LD_LIBRARY_PATH";
               export LESS=-R
               export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
               export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
