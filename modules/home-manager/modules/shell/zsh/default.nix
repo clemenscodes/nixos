@@ -91,6 +91,7 @@ in
             docs = "${explorer} $XDG_DOCUMENTS_DIR";
             isos = "${explorer} $XDG_DATA_HOME/isos";
             rr = "${explorer} $HOME/.local/src";
+            ma = "${explorer}" "$HOME/.local/src/master/semester/1";
           };
           history = {
             path = "${config.xdg.dataHome}/zsh/zsh_history";
@@ -160,6 +161,7 @@ in
             ''
               export MOON="${config.home.homeDirectory}/${flake}"
               export FLAKE="${config.home.homeDirectory}/${flake}/nix"
+              export ANDROID_USER_HOME="$XDG_DATA_HOME/android"
               export NIXOS_OZONE_WL=1
               export CARGO_HOME="$XDG_DATA_HOME/cargo"
               export JAVA_HOME="/etc/profiles/per-user/${user}"
