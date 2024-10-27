@@ -56,7 +56,7 @@ in
             environment = {
               NIX_LD = "${stdenv.cc.libc}/lib/ld-linux-x86-64.so.2";
               OCL_ICD_VENDORS = "${rocm-opencl-icd}/etc/OpenCL/vendors/";
-              LD_LIBRARY_PATH = "/run/opengl-driver/lib:/run/opengl-driver-32/lib:${pkgs.lib.makeLibraryPath [pkg-config systemd]}:''$LD_LIBRARY_PATH";
+              LD_LIBRARY_PATH = "/run/opengl-driver/lib:${pkgs.lib.makeLibraryPath [pkg-config systemd]}:''$LD_LIBRARY_PATH";
               GPU_MAX_ALLOC_PERCENT = "100";
               GPU_SINGLE_ALLOC_PERCENT = "100";
               GPU_MAX_HEAP_SIZE = "100";
