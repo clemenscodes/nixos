@@ -24,13 +24,12 @@ in
     config = mkIf (cfg.enable && cfg.qt.enable) {
       home = {
         packages = with pkgs; [
-          kvantum
           libsForQt5.qtstyleplugin-kvantum
           libsForQt5.qt5ct
           libsForQt5.qt5.qtwayland
           catppuccin-qt5ct
-          catppuccin-kvantum
           qt6.qtwayland
+          kvantum
         ];
         sessionVariables = {
           QT_QPA_PLATFORM = "wayland";
