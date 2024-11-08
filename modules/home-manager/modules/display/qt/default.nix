@@ -48,7 +48,7 @@ in
           package = pkgs.catppuccin-kvantum;
           catppuccin = mkIf (osConfig.modules.themes.catppuccin.enable) {
             inherit (osConfig.modules.themes.catppuccin) enable;
-            flavor = "Blue";
+            flavor = "Macchiato";
           };
         };
       };
