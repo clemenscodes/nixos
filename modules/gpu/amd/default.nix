@@ -38,7 +38,7 @@ in {
         (import ./gpu-usage-waybar {inherit pkgs;})
       ];
       variables = {
-        OCL_ICD_VENDORS = "${rocm-opencl-icd}/etc/OpenCL/vendors/";
+        OCL_ICD_VENDORS = "${rocmPackages.clr.icd}/etc/OpenCL/vendors/";
       };
     };
     boot = {

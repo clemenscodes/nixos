@@ -63,7 +63,7 @@ in
             wantedBy = ["invalid.target"];
             environment = {
               NIX_LD = "${stdenv.cc.libc}/lib/ld-linux-x86-64.so.2";
-              OCL_ICD_VENDORS = "${rocm-opencl-icd}/etc/OpenCL/vendors/";
+              OCL_ICD_VENDORS = "${rocmPackages.clr.icd}/etc/OpenCL/vendors/";
               LD_LIBRARY_PATH = "/run/opengl-driver/lib:''$LD_LIBRARY_PATH";
             };
             serviceConfig = {

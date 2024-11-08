@@ -29,7 +29,7 @@ in
             after = ["lactd.service"];
             wantedBy = ["invalid.target"];
             environment = {
-              OCL_ICD_VENDORS = "${rocm-opencl-icd}/etc/OpenCL/vendors/";
+              OCL_ICD_VENDORS = "${rocm.clr.icd}/etc/OpenCL/vendors/";
               LD_LIBRARY_PATH = "/run/opengl-driver/lib:''$LD_LIBRARY_PATH";
             };
             serviceConfig = {
