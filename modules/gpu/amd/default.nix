@@ -66,7 +66,6 @@ in {
           rocmPackages.clr
           rocmPackages.clr.icd
           rocmPackages.rocm-runtime
-          rocm-opencl-icd
           rocm-opencl-runtime
         ];
         extraPackages32 = [
