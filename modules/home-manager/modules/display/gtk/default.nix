@@ -6,8 +6,8 @@
   ...
 }: let
   iconTheme = pkgs.catppuccin-papirus-folders.override {
-    flavor = "macchiato";
-    accent = "blue";
+    flavor = "Macchiato";
+    accent = "Blue";
   };
   theme = {
     name = "Colloid-Dark-Catppuccin";
