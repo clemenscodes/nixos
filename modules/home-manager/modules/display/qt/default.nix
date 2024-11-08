@@ -6,6 +6,10 @@
   ...
 }: let
   cfg = config.modules.display;
+  kvantum = pkgs.catppuccin-kvantum.override {
+    accent = "Blue";
+    variant = "Macchiato";
+  };
 in
   with lib; {
     options = {
@@ -20,10 +24,7 @@ in
     config = mkIf (cfg.enable && cfg.qt.enable) {
       home = {
         packages = with pkgs; [
-          (catppuccin-kvantum.override {
-            accent = "Blue";
-            variant = "Macchiato";
-          })
+          kvantum
           libsForQt5.qtstyleplugin-kvantum
           libsForQt5.qt5ct
           libsForQt5.qt5.qtwayland
@@ -45,10 +46,9 @@ in
         };
         style = {
           name = "kvantum";
-          package = pkgs.catppuccin-kvantum;
+          package = kvantum;
           catppuccin = mkIf (osConfig.modules.themes.catppuccin.enable) {
-            inherit (osConfig.modules.themes.catppuccin) enable;
-            flavor = "macchiato";
+            inherit (osConfig.modules.themes.catppuccin) enable flavor;
           };
         };
       };
