@@ -52,7 +52,6 @@ in
               qtsvg
               qtvirtualkeyboard
             ];
-            # theme = mkForce "${import ./themes/catppuccin-macchiato.nix {inherit pkgs;}}";
             settings = {
               Theme = mkForce {
                 CursorTheme = "catppuccin-macchiato-blue-cursors";

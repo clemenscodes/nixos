@@ -7,8 +7,8 @@
 }: let
   cfg = config.modules.display;
   kvantum = pkgs.catppuccin-kvantum.override {
-    accent = "Blue";
-    variant = "Macchiato";
+    accent = "blue";
+    variant = "macchiato";
   };
 in
   with lib; {
