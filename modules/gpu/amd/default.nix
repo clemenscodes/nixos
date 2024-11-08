@@ -66,7 +66,6 @@ in {
           rocmPackages.clr
           rocmPackages.clr.icd
           rocmPackages.rocm-runtime
-          rocm-opencl-runtime
         ];
         extraPackages32 = [
           driversi686Linux.amdvlk
