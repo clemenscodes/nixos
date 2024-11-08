@@ -24,22 +24,22 @@ in
             };
             accent = mkOption {
               type = types.enum [
-                "blue"
-                "flamingo"
-                "green"
-                "lavender"
-                "maroon"
-                "mauve"
-                "peach"
-                "pink"
-                "red"
-                "rosewater"
-                "sapphire"
-                "sky"
-                "teal"
-                "yellow"
+                "Blue"
+                "Flamingo"
+                "Green"
+                "Lavender"
+                "Maroon"
+                "Mauve"
+                "Peach"
+                "Pink"
+                "Red"
+                "Rosewater"
+                "Sapphire"
+                "Sky"
+                "Teal"
+                "Yellow"
               ];
-              default = "blue";
+              default = "Blue";
             };
           };
         };
