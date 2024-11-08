@@ -36,7 +36,6 @@ in
           experimental-features = [
             "nix-command"
             "flakes"
-            "repl-flake"
           ];
           substituters = [
             "https://cache.nixos.org"
