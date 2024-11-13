@@ -106,6 +106,9 @@
     ps3-nix = {
       url = "github:clemenscodes/ps3-nix";
     };
+    cardanix = {
+      url = "github:clemenscodes/cardanix";
+    };
   };
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (
