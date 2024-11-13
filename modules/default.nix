@@ -4,7 +4,7 @@ with lib; {
     (import ./boot {inherit inputs;})
     ./config
     ./cpu
-    ./crypto
+    (import ./crypto {inherit inputs;})
     ./display
     ./docs
     ./fonts
