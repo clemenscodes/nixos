@@ -1,5 +1,5 @@
-{inputs}: {
-  system,
+{...}: {
+  pkgs,
   config,
   lib,
   ...
@@ -20,9 +20,7 @@ in
     };
     config = mkIf (cfg.enable && cfg.aiken.enable) {
       home = {
-        packages = with inputs.aiken.packages.${system}; [
-          aiken
-        ];
+        packages = [pkgs.aiken];
       };
     };
   }

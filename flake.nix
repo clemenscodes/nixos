@@ -79,14 +79,6 @@
         };
       };
     };
-    aiken = {
-      url = "github:aiken-lang/aiken";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
     lpi = {
       url = "github:cymenix/lpi";
       inputs = {
