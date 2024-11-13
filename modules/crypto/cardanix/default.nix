@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.modules.crypto;
-  inherit (cfg.cardanix) enable;
 in
   with lib; {
     options = {
@@ -20,18 +19,18 @@ in
     imports = [inputs.cardanix.nixosModules.${system}];
     config = mkIf (cfg.enable && cfg.cardanix.enable) {
       cardano = {
-        inherit enable;
+        enable = true;
         cli = {
-          inherit enable;
+          enable = true;
         };
         node = {
-          inherit enable;
+          enable = true;
         };
         wallet = {
-          inherit enable;
+          enable = true;
         };
         daedalus = {
-          inherit enable;
+          enable = true;
         };
       };
     };
