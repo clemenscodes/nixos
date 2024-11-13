@@ -1,6 +1,7 @@
 {lib, ...}:
 with lib; {
   imports = [
+    ./cardanix
     ./ledger-live
     ./monero
     ./nanominer
