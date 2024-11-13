@@ -17,7 +17,7 @@ in
         };
       };
     };
-    imports = [inputs.cardanix.nixosModules.${system}.default];
+    imports = [inputs.cardanix.nixosModules.${system}];
     config = mkIf (cfg.enable && cfg.cardanix.enable) {
       cardano = {
         inherit enable;
