@@ -21,13 +21,13 @@ in
     config = mkIf (cfg.enable && cfg.cardanix.enable) {
       cardano = {
         inherit enable;
-        cardano-cli = {
+        cli = {
           inherit enable;
         };
-        cardano-node = {
+        node = {
           inherit enable;
         };
-        cardano-wallet = {
+        wallet = {
           inherit enable;
         };
         daedalus = {
