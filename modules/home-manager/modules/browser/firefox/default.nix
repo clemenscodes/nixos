@@ -21,7 +21,7 @@ in
       modules = {
         browser = {
           firefox = {
-            enable = mkEnableOption "Enable firefox" // {default = cfg.enable;};
+            enable = mkEnableOption "Enable firefox" // {default = false;};
           };
         };
       };
