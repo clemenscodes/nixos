@@ -63,9 +63,6 @@ in {
           {
             id = "bmnlcjabgnpnenekpadlanbbkooimhnj"; # Honey - get coupons
           }
-          {
-            id = "cofdbpoegempjloogbagkncekinflcnj"; # DeepL - Translations
-          }
         ];
       };
     };
