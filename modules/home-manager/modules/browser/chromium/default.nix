@@ -36,6 +36,15 @@ in {
           {
             id = "nngceckbapebfimnlniiiahkandclblb"; # bitwarden
           }
+          {
+            id = "cmpdlhmnmjhihmcfnigoememnffkimlk"; # Catppuccin Chrome Theme - Macchiato
+          }
+          {
+            id = "kmhcihpebfmpgmihbkipmjlmmioameka"; # Eternl
+          }
+          {
+            id = "dbepggeogbaibhgnhhndojpepiihcmeb"; # Vimium
+          }
         ];
       };
     };
