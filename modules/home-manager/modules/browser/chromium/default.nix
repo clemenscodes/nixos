@@ -40,10 +40,31 @@ in {
             id = "cmpdlhmnmjhihmcfnigoememnffkimlk"; # Catppuccin Chrome Theme - Macchiato
           }
           {
+            id = "lnjaiaapbakfhlbjenjkhffcdpoompki"; # Catppuccin GitHub File Explorer Icons
+          }
+          {
+            id = "hlepfoohegkhhmjieoechaddaejaokhf"; # Refined GitHub
+          }
+          {
             id = "kmhcihpebfmpgmihbkipmjlmmioameka"; # Eternl
           }
           {
             id = "dbepggeogbaibhgnhhndojpepiihcmeb"; # Vimium
+          }
+          {
+            id = "khncfooichmfjbepaaaebmommgaepoid"; # Remove YouTube Shorts / Recommended
+          }
+          {
+            id = "gebbhagfogifgggkldgodflihgfeippi"; # YouTube Dislikes
+          }
+          {
+            id = "edibdbjcniadpccecjdfdjjppcpchdlm"; # I still don't care about cookies
+          }
+          {
+            id = "bmnlcjabgnpnenekpadlanbbkooimhnj"; # Honey - get coupons
+          }
+          {
+            id = "cofdbpoegempjloogbagkncekinflcnj"; # DeepL - Translations
           }
         ];
       };
