@@ -20,7 +20,7 @@ in {
           type = types.str;
           default =
             if isDesktop
-            then "firefox"
+            then "brave"
             else "echo";
         };
       };

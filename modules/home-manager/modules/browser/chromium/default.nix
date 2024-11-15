@@ -25,6 +25,10 @@ in {
           "--enable-features=UseOzonePlatform"
           "--ozone-platform=wayland"
         ];
+        dictionaries = [
+          pkgs.hunspellDictsChromium.de_DE
+          pkgs.hunspellDictsChromium.en_US
+        ];
         extensions = [
           {
             id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; # ublock origin
