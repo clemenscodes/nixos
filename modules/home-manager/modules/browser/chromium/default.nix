@@ -57,12 +57,6 @@ in {
           {
             id = "gebbhagfogifgggkldgodflihgfeippi"; # YouTube Dislikes
           }
-          {
-            id = "edibdbjcniadpccecjdfdjjppcpchdlm"; # I still don't care about cookies
-          }
-          {
-            id = "bmnlcjabgnpnenekpadlanbbkooimhnj"; # Honey - get coupons
-          }
         ];
       };
     };
