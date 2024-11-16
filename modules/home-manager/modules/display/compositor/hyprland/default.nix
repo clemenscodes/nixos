@@ -393,7 +393,7 @@ in
               ${davinci}
               ${blueman}
               ${nm}
-              # ${torrent}
+              ${torrent}
               ${hypridle}
               ${hyprsunset}
             '';
