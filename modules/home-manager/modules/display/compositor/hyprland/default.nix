@@ -9,6 +9,7 @@
   cfg = displayCfg.compositor;
   machine = osConfig.modules.machine.kind;
   useHyprpicker = cfg.hyprland.hyprpicker.enable;
+  useHyprsunset = cfg.hyprland.hyprsunset.enable;
   useKitty = config.modules.terminal.kitty.enable;
   useObs = config.modules.media.video.obs.enable;
   useMusic = config.modules.media.music.enable;
@@ -317,6 +318,12 @@ in
                   exec-once = hypridle &
                 ''
                 else "";
+              hyprsunset =
+                if useHyprsunset
+                then ''
+                  exec-once = hyprsunset &
+                ''
+                else "";
               kitty =
                 if useKitty
                 then ''
@@ -388,6 +395,7 @@ in
               ${nm}
               ${torrent}
               ${hypridle}
+              ${hyprsunset}
             '';
           };
         };
