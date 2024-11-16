@@ -130,7 +130,7 @@ in
                 "$mod, Q, killactive"
                 "$mod, C, exec, hyprctl reload"
                 "$mod, W, exec, uwsm app -- $BROWSER"
-                "$mod SHIFT, C, ${pkgs.uwsm}/bin/uwsm stop"
+                "$mod SHIFT, C, exec, ${pkgs.uwsm}/bin/uwsm stop"
                 "$mod SHIFT, F, togglefloating,"
                 "$mod, SPACE, layoutmsg, swapwithmaster"
 
