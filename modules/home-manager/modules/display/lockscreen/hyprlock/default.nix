@@ -40,9 +40,8 @@ in
             };
             background = [
               {
-                path = "$XDG_DATA_HOME/images/wallpaper/car.jpeg";
-                blur_passes = "6";
-                blur_size = "2";
+                path = "$XDG_DATA_HOME/images/wallpaper/badassluffy.jpg";
+                blur_passes = "0";
                 color = "$base";
               }
             ];
@@ -64,7 +63,8 @@ in
                 valign = "top";
               }
               {
-                inherit font_family font_size;
+                inherit font_family;
+                font_size = 90;
                 text = ''cmd[update:43200000] date +"%A, %d %B %Y"'';
                 color = "$text";
                 position = "-30, -150";
