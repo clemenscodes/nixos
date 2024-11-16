@@ -7,6 +7,8 @@
 }: let
   cfg = config.modules.display.lockscreen;
   hyprlock = pkgs.hyprlock;
+  font_family = "${osConfig.modules.fonts.defaultFont}";
+  font_size = "${builtins.toString osConfig.modules.fonts.size}";
 in
   with lib; {
     options = {
@@ -38,42 +40,40 @@ in
             };
             background = [
               {
-                path = "$XDG_DATA_HOME/images/wallpaper/gojo.jpeg";
-                blur_passes = "1";
+                path = "$XDG_DATA_HOME/images/wallpaper/car.jpeg";
+                blur_passes = "6";
+                blur_size = "2";
                 color = "$base";
               }
             ];
             label = [
               {
+                inherit font_family font_size;
                 text = "Layout: $LAYOUT";
                 color = "$text";
-                font_size = "25";
-                font_family = "$font";
                 position = "30, -30";
                 halign = "left";
                 valign = "top";
               }
               {
+                inherit font_family font_size;
                 text = "$TIME";
                 color = "$text";
-                font_size = "90";
-                font_family = "$font";
                 position = "-30, 0";
                 halign = "right";
                 valign = "top";
               }
               {
+                inherit font_family font_size;
                 text = ''cmd[update:43200000] date +"%A, %d %B %Y"'';
                 color = "$text";
-                font_size = "25";
-                font_family = "$font";
                 position = "-30, -150";
                 halign = "right";
                 valign = "top";
               }
             ];
             image = {
-              path = "$XDG_DATA_HOME/face/.face";
+              path = "$XDG_DATA_HOME/images/wallpaper/luffycolor.png";
               size = "100";
               border_color = "$accent";
               position = "0, 75";
