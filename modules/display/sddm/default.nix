@@ -33,7 +33,6 @@ in
           };
         };
         displayManager = {
-          defaultSession = "hyprland";
           sddm = {
             catppuccin = mkIf (catppuccin.enable) {
               inherit (catppuccin) enable flavor;
