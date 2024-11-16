@@ -49,9 +49,11 @@ in
             };
             background = [
               {
+                monitor = "";
                 path = "$XDG_DATA_HOME/images/wallpaper/car.jpeg";
                 blur_passes = "0";
                 color = "$base";
+                ignore_empty_input = true;
               }
             ];
             label = [
@@ -64,16 +66,16 @@ in
                 valign = "top";
               }
               {
-                inherit font_family font_size;
+                inherit font_family;
                 text = "$TIME";
+                font_size = "90";
                 color = "$text";
                 position = "-30, 0";
                 halign = "right";
                 valign = "top";
               }
               {
-                inherit font_family;
-                font_size = 90;
+                inherit font_family font_size;
                 text = ''cmd[update:43200000] date +"%A, %d %B %Y"'';
                 color = "$text";
                 position = "-30, -150";
@@ -81,32 +83,26 @@ in
                 valign = "top";
               }
             ];
-            image = {
-              path = "$XDG_DATA_HOME/images/wallpaper/luffycolor.png";
-              size = "50";
-              border_color = "$accent";
-              position = "0, 75";
-              halign = "center";
-              valign = "center";
-            };
             input-field = {
+              monitor = "";
               inherit font_family;
-              size = "300, 60";
-              outline_thickness = "4";
+              size = "250, 60";
+              outline_thickness = "2";
               dots_size = "0.2";
-              dots_spacing = "0.2";
+              dots_spacing = "0.35";
               dots_center = true;
               outer_color = "$accent";
               inner_color = "$surface0";
               font_color = "$text";
               fade_on_empty = false;
+              check_color = "$accent";
+              rounding = "-1";
               placeholder_text = ''<span foreground="##$textAlpha"><i>󰌾 Logged in as </i><span foreground="##$accentAlpha">$USER</span></span>'';
               hide_input = false;
-              check_color = "$accent";
               fail_color = "$red";
               fail_text = ''<i>$FAIL <b>($ATTEMPTS)</b></i>'';
               capslock_color = "$yellow";
-              position = "0, -47";
+              position = "0, -200";
               halign = "center";
               valign = "center";
             };
@@ -137,7 +133,7 @@ in
               }
               {
                 inherit timeout;
-                on-timeout = "${pkgs.systemd}bin/loginctl lock-session";
+                on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
               }
               {
                 timeout = timeout + 30;
