@@ -39,6 +39,7 @@ in
     imports = [
       ./hyprshade
       ./hyprpicker
+      ./hyprsunset
       ./xwayland
     ];
     options = {
@@ -67,9 +68,9 @@ in
       wayland = {
         windowManager = {
           hyprland = {
-            enable = cfg.hyprland.enable;
+            inherit (cfg.hyprland) enable;
             catppuccin = mkIf (osConfig.modules.themes.catppuccin.enable) {
-              inherit (osConfig.modules.themes.catppuccin) enable flavor;
+              inherit (osConfig.modules.themes.catppuccin) enable accent flavor;
             };
             systemd = {
               enable = false;
