@@ -14,7 +14,7 @@ in
           notifications = {
             swaync = {
               enable = mkEnableOption "Enable swaync" // {default = cfg.enable;};
-            };
+r           };
           };
         };
       };
