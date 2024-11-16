@@ -115,6 +115,10 @@ in
             };
             listener = [
               {
+                timeout = 120;
+                on-timeout = ''${pkgs.libnotify}/bin/notify-send "Idle! dimming colors soon..."'';
+              }
+              {
                 timeout = 150;
                 on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10";
                 on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r";
@@ -123,6 +127,10 @@ in
                 timeout = 150;
                 on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -sd rgb:kbd_backlight set 0";
                 on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -rd rgb:kbd_backlight";
+              }
+              {
+                timeout = 270;
+                on-timeout = ''${pkgs.libnotify}/bin/notify-send "Locking session soon..."'';
               }
               {
                 timeout = 300;
