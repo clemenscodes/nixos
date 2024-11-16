@@ -32,7 +32,7 @@
   useSsh = config.modules.security.ssh.enable;
   useTorrent = osConfig.modules.networking.torrent.enable;
   useUdiskie = osConfig.modules.io.udisks.enable;
-  useHypridle = displayCfg.lockscreen.hypridle.enable;
+  useHyprlock = displayCfg.lockscreen.hyprlock.enable;
   isLaptop = machine == "laptop";
 in
   with lib; {
@@ -311,7 +311,7 @@ in
                 ''
                 else "";
               hypridle =
-                if useHypridle
+                if useHyprlock
                 then ''
                   exec-once = hypridle &
                 ''
