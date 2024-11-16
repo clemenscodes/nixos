@@ -13,7 +13,6 @@ with lib; let
     "194.242.2.5#extended.dns.mullvad.net"
     "194.242.2.6#family.dns.mullvad.net"
     "194.242.2.9#all.dns.mullvad.net"
-    "194.242.2.9#all.dns.mullvad.net"
   ];
 in {
   options = {
