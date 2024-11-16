@@ -32,6 +32,7 @@
   useSsh = config.modules.security.ssh.enable;
   useTorrent = osConfig.modules.networking.torrent.enable;
   useUdiskie = osConfig.modules.io.udisks.enable;
+  useHypridle = cfg.lockscreen.hypridle.enable;
   isLaptop = machine == "laptop";
 in
   with lib; {
@@ -129,8 +130,8 @@ in
                 "$mod, F, fullscreen"
                 "$mod, Q, killactive"
                 "$mod, C, exec, hyprctl reload"
-                "$mod, W, exec, uwsm app -- $BROWSER"
-                "$mod SHIFT, C, exec, ${pkgs.uwsm}/bin/uwsm stop"
+                "$mod, W, exec, $BROWSER"
+                "$mod SHIFT, C, ${pkgs.uwsm}/bin/uwsm stop"
                 "$mod SHIFT, F, togglefloating,"
                 "$mod, SPACE, layoutmsg, swapwithmaster"
 
@@ -176,29 +177,29 @@ in
                 "$mod, mouse_down, workspace, e+1"
                 "$mod, mouse_up, workspace, e-1"
 
-                (mkIf useHyprpicker "$mod, U, exec, uwsm app -- hyprpicker")
-                (mkIf useKitty "$mod, RETURN, exec, uwsm app -- kitty")
-                (mkIf (useKitty && useNvim) "$mod, V, exec, uwsm app -- kitty nvim")
-                (mkIf (useKitty && useLf) "$mod, R, exec, uwsm app -- kitty lf")
-                (mkIf (useKitty && useYazi) "$mod, R, exec, uwsm app -- kitty yazi")
-                (mkIf (useKitty && useEmail) "$mod, E, exec, uwsm app -- kitty neomutt")
-                (mkIf (useKitty && useBtop) "$mod SHIFT, R, exec, uwsm app -- kitty btop")
-                (mkIf (useKitty && useNcmpcpp) "$mod, M, exec, uwsm app -- kitty ncmpcpp")
-                (mkIf (useKitty && useCalcurse) "$mod SHIFT, K, exec, uwsm app -- kitty calcurse")
-                (mkIf useWaybar "$mod, B, exec, uwsm app -- waybar-toggle")
-                (mkIf useWaybar "$mod SHIFT, B, exec, uwsm app -- waybar-reload")
-                (mkIf useSwaync "$mod, N, exec, uwsm app -- swaync-client -t -sw")
-                (mkIf useRofi "$mod SHIFT, V, exec, uwsm app -- cliphist list | rofi -dmenu | cliphist decode | wl-copy")
-                (mkIf useRofi "$mod, D, exec, uwsm app -- rofi -show drun")
-                (mkIf useRofi "$mod, BACKSPACE, exec, uwsm app -- logoutlaunch")
-                (mkIf useScreenshots "$mod, S, exec, uwsm app -- screenshot")
-                (mkIf useScreenshots "$mod SHIFT, D, exec, uwsm app -- fullscreenshot")
-                (mkIf useMusic "$mod, P, exec, uwsm app -- mpc toggle")
-                (mkIf useMusic "$mod, COMMA, exec, uwsm app -- mpc prev")
-                (mkIf useMusic ''$mod SHIFT, COMMA, exec, uwsm app -- mpc seek "0%"'')
-                (mkIf useMusic "$mod, PERIOD, exec, uwsm app -- mpc next")
-                (mkIf useMusic "$mod SHIFT, PERIOD, exec, uwsm app -- mpc repeat")
-                (mkIf useObs "$mod, O, exec, uwsm app -- obs")
+                (mkIf useHyprpicker "$mod, U, exec, hyprpicker")
+                (mkIf useKitty "$mod, RETURN, exec, kitty")
+                (mkIf (useKitty && useNvim) "$mod, V, exec, kitty nvim")
+                (mkIf (useKitty && useLf) "$mod, R, exec, kitty lf")
+                (mkIf (useKitty && useYazi) "$mod, R, exec, kitty yazi")
+                (mkIf (useKitty && useEmail) "$mod, E, exec, kitty neomutt")
+                (mkIf (useKitty && useBtop) "$mod SHIFT, R, exec, kitty btop")
+                (mkIf (useKitty && useNcmpcpp) "$mod, M, exec, kitty ncmpcpp")
+                (mkIf (useKitty && useCalcurse) "$mod SHIFT, K, exec, kitty calcurse")
+                (mkIf useWaybar "$mod, B, exec, waybar-toggle")
+                (mkIf useWaybar "$mod SHIFT, B, exec, waybar-reload")
+                (mkIf useSwaync "$mod, N, exec, swaync-client -t -sw")
+                (mkIf useRofi "$mod SHIFT, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy")
+                (mkIf useRofi "$mod, D, exec, rofi -show drun")
+                (mkIf useRofi "$mod, BACKSPACE, exec, logoutlaunch")
+                (mkIf useScreenshots "$mod, S, exec, screenshot")
+                (mkIf useScreenshots "$mod SHIFT, D, exec, fullscreenshot")
+                (mkIf useMusic "$mod, P, exec, mpc toggle")
+                (mkIf useMusic "$mod, COMMA, exec, mpc prev")
+                (mkIf useMusic ''$mod SHIFT, COMMA, exec, mpc seek "0%"'')
+                (mkIf useMusic "$mod, PERIOD, exec, mpc next")
+                (mkIf useMusic "$mod SHIFT, PERIOD, exec, mpc repeat")
+                (mkIf useObs "$mod, O, exec, obs")
                 (mkIf useObs "SHIFT, F8, pass, ^(com\.obsproject\.Studio)$")
                 (mkIf useObs "SHIFT, F9, pass, ^(com\.obsproject\.Studio)$")
                 (mkIf useObs "SHIFT, F10, pass, ^(com\.obsproject\.Studio)$")
@@ -207,23 +208,23 @@ in
                 # Move/resize windows with mod + LMB/RMB and dragging
                 (mkIf useMusic ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
                 (mkIf useMusic ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
-                (mkIf useMusic ", XF86AudioAudioPrev, exec, uwsm app -- mpc prev")
-                (mkIf useMusic ", XF86AudioAudioNext, exec, uwsm app -- mpc next")
-                (mkIf useMusic ", XF86AudioAudioPause, exec, uwsm app -- mpc pause")
-                (mkIf useMusic ", XF86AudioAudioPlay, exec, uwsm app -- mpc play")
-                (mkIf useMusic ", XF86AudioAudioStop, exec, uwsm app -- mpc stop")
-                (mkIf useMusic ", XF86AudioAudioRewind, exec, uwsm app -- mpc seek -10")
-                (mkIf useMusic ", XF86AudioAudioForward, exec, uwsm app -- mpc seek +10")
-                (mkIf isLaptop ", XF86MonBrightnessDown, exec, uwsm app -- brightnessctl set 1%-")
-                (mkIf isLaptop ", XF86MonBrightnessUp, exec, uwsm app -- brightnessctl set 1%+")
-                (mkIf isLaptop "SHIFT, XF86MonBrightnessDown, exec, uwsm app -- brightnessctl set 5%-")
-                (mkIf isLaptop "SHIFT, XF86MonBrightnessUp, exec, uwsm app -- brightnessctl set 5%+")
-                (mkIf (useMusic && useKitty) ", XF86AudioAudioMedia, exec, uwsm app -- kitty ncmpcpp")
+                (mkIf useMusic ", XF86AudioAudioPrev, exec, mpc prev")
+                (mkIf useMusic ", XF86AudioAudioNext, exec, mpc next")
+                (mkIf useMusic ", XF86AudioAudioPause, exec, mpc pause")
+                (mkIf useMusic ", XF86AudioAudioPlay, exec, mpc play")
+                (mkIf useMusic ", XF86AudioAudioStop, exec, mpc stop")
+                (mkIf useMusic ", XF86AudioAudioRewind, exec, mpc seek -10")
+                (mkIf useMusic ", XF86AudioAudioForward, exec, mpc seek +10")
+                (mkIf isLaptop ", XF86MonBrightnessDown, exec, brightnessctl set 1%-")
+                (mkIf isLaptop ", XF86MonBrightnessUp, exec, brightnessctl set 1%+")
+                (mkIf isLaptop "SHIFT, XF86MonBrightnessDown, exec, brightnessctl set 5%-")
+                (mkIf isLaptop "SHIFT, XF86MonBrightnessUp, exec, brightnessctl set 5%+")
+                (mkIf (useMusic && useKitty) ", XF86AudioAudioMedia, exec, kitty ncmpcpp")
               ];
 
               bindl = mkIf isLaptop [
-                ", switch:on:Lid Switch, exec, luwsm app -- idhandle on"
-                ", switch:off:Lid Switch, exec, uwsm app -- lidhandle off"
+                ", switch:on:Lid Switch, exec, lidhandle on"
+                ", switch:off:Lid Switch, exec, lidhandle off"
               ];
 
               binde = [
@@ -243,8 +244,8 @@ in
                 "$mod, LEFT, workspace, -1"
                 "$mod, RIGHT, workspace, +1"
 
-                (mkIf useMusic ", XF86AudioRaiseVolume, exec, uwsm app -- wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+")
-                (mkIf useMusic ", XF86AudioLowerVolume, exec, uwsm app -- wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+                (mkIf useMusic ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+")
+                (mkIf useMusic ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
               ];
 
               bindm = [
@@ -267,11 +268,11 @@ in
                 '';
               waybar =
                 if useWaybar
-                then "exec-once = uwsm app -- waybar-watch"
+                then "exec-once = waybar-watch"
                 else "";
               swaync =
                 if useSwaync
-                then "exec-once = uwsm app -- swaync"
+                then "exec-once = swaync"
                 else "";
               firefox =
                 if useFirefox
@@ -291,14 +292,14 @@ in
               blueman =
                 if useBlueman
                 then ''
-                  exec-once = uwsm app -- blueman-applet
+                  exec-once = blueman-applet
                   windowrulev2 = float,class:^(blueman-manager)$
                 ''
                 else "";
               nm =
                 if useNm
                 then ''
-                  exec-once = uwsm app -- nm-applet --indicator
+                  exec-once = nm-applet --indicator
                   windowrulev2 = float,class:^(nm-applet)$
                   windowrulev2 = float,class:^(nm-connection-editor)$
                 ''
@@ -306,7 +307,13 @@ in
               torrent =
                 if useTorrent
                 then ''
-                  exec-once = uwsm app -- mullvad-vpn
+                  exec-once = mullvad-vpn
+                ''
+                else "";
+              hypridle =
+                if useHypridle
+                then ''
+                  exec-once = hypridle &
                 ''
                 else "";
               kitty =
@@ -324,25 +331,25 @@ in
               swayidle =
                 if useSwayidle
                 then ''
-                  exec-once = uwsm app -- detectidle
+                  exec-once = detectidle
                 ''
                 else "";
               swayaudioidle =
                 if useSwayAudioIdle
                 then ''
-                  exec-once = uwsm app -- sway-audio-idle-inhibit
+                  exec-once = sway-audio-idle-inhibit
                 ''
                 else "";
               ssh =
                 if useSsh
                 then ''
-                  exec-once = uwsm app -- sshagent
+                  exec-once = sshagent
                 ''
                 else "";
               udiskie =
                 if useUdiskie
                 then ''
-                  exec-once = uwsm app -- udiskie &
+                  exec-once = udiskie &
                 ''
                 else "";
             in ''
@@ -359,10 +366,10 @@ in
               bind = CTRL ALT_L, V, submap,reset
               submap = reset
 
-              exec-once = uwsm app -- wl-paste --type text --watch cliphist store
-              exec-once = uwsm app -- wl-paste --type image --watch cliphist store
-              exec-once = uwsm app -- wallpaper
-              exec-once = uwsm app -- polkitagent
+              exec-once = wl-paste --type text --watch cliphist store
+              exec-once = wl-paste --type image --watch cliphist store
+              exec-once = wallpaper
+              exec-once = polkitagent
 
               windowrulev2 = float,class:^(org.kde.polkit-kde-authentication-agent-1)$
 
@@ -379,6 +386,7 @@ in
               ${blueman}
               ${nm}
               ${torrent}
+              ${hypridle}
             '';
           };
         };
