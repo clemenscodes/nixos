@@ -45,6 +45,19 @@ in
           (import ./scripts/swupdate.nix {inherit pkgs;})
           (import ./scripts/tracewarning.nix {inherit pkgs;})
         ];
+        sessionVariables = {
+          MOON = "${config.home.homeDirectory}/${flake}";
+          FLAKE = "${config.home.homeDirectory}/${flake}/nix";
+          ANDROID_USER_HOME = "$XDG_DATA_HOME/android";
+          NIXOS_OZONE_WL = 1;
+          CARGO_HOME = "$XDG_DATA_HOME/cargo";
+          JAVA_HOME = "/etc/profiles/per-user/${user}";
+          GOPATH = "$XDG_DATA_HOME/go";
+          MBSYNCRC = "$XDG_CONFIG_HOME/mbsync/config";
+          M2_HOME = "$XDG_DATA_HOME/m2";
+          CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+          WINEPREFIX = "$XDG_DATA_HOME/wine";
+        };
       };
       programs = {
         zsh = {
@@ -159,17 +172,6 @@ in
             bash
             */
             ''
-              export MOON="${config.home.homeDirectory}/${flake}"
-              export FLAKE="${config.home.homeDirectory}/${flake}/nix"
-              export ANDROID_USER_HOME="$XDG_DATA_HOME/android"
-              export NIXOS_OZONE_WL=1
-              export CARGO_HOME="$XDG_DATA_HOME/cargo"
-              export JAVA_HOME="/etc/profiles/per-user/${user}"
-              export GOPATH="$XDG_DATA_HOME/go"
-              export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
-              export M2_HOME="$XDG_DATA_HOME/m2"
-              export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv";
-              export WINEPREFIX="$XDG_DATA_HOME/wine";
               export LD_LIBRARY_PATH="/run/opengl-driver/lib:$LD_LIBRARY_PATH";
               export LESS=-R
               export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
