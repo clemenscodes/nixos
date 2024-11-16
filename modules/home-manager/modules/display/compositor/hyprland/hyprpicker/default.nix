@@ -22,9 +22,7 @@ in
     };
     config = mkIf (cfg.enable && cfg.hyprpicker.enable) {
       home = {
-        packages = with pkgs; [
-          hyprpicker
-        ];
+        packages = [pkgs.hyprpicker];
       };
     };
   }

@@ -13,7 +13,7 @@ in
           compositor = {
             hyprland = {
               hyprshade = {
-                enable = mkEnableOption "Enable hyprshade" // {default = cfg.enable;};
+                enable = mkEnableOption "Enable hyprshade" // {default = false;};
               };
             };
           };
@@ -22,9 +22,7 @@ in
     };
     config = mkIf (cfg.enable && cfg.hyprshade.enable) {
       home = {
-        packages = with pkgs; [
-          hyprshade
-        ];
+        packages = [pkgs.hyprshade];
       };
       xdg = {
         configFile = {
