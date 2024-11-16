@@ -132,7 +132,7 @@ in
                 "$mod, F, fullscreen"
                 "$mod, Q, killactive"
                 "$mod, C, exec, hyprctl reload"
-                "$mod, W, exec, $BROWSER"
+                "$mod, W, exec, ${config.modules.browser.defaultBrowser}"
                 "$mod SHIFT, C, exit"
                 "$mod SHIFT, F, togglefloating,"
                 "$mod, SPACE, layoutmsg, swapwithmaster"
