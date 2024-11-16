@@ -10,7 +10,7 @@ in
       modules = {
         display = {
           uwsm = {
-            enable = mkEnableOption "Enable the universal wayland session manager" // {default = cfg.enable && cfg.gui == "wayland";};
+            enable = mkEnableOption "Enable the universal wayland session manager" // {default = false;};
           };
         };
       };
