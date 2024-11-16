@@ -37,6 +37,10 @@ in
           };
         };
         dataFile = {
+          "face" = {
+            source = ./assets/face;
+            recursive = true;
+          };
           "chars" = {
             source = ./assets/chars;
             recursive = true;
