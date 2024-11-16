@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  inherit (pkgs) hyprlock;
+  inherit (pkgs) hyprlock hypridle;
   hyprlockExe = lib.getExe hyprlock;
   cfg = config.modules.display.lockscreen;
   font_family = "${osConfig.modules.fonts.defaultFont}";
@@ -33,7 +33,7 @@ in
     };
     config = mkIf (cfg.enable && cfg.hyprlock.enable) {
       home = {
-        packages = [hyprlock];
+        packages = [hyprlock hypridle];
       };
       programs = {
         hyprlock = {
