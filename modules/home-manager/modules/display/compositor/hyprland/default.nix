@@ -32,7 +32,7 @@
   useSsh = config.modules.security.ssh.enable;
   useTorrent = osConfig.modules.networking.torrent.enable;
   useUdiskie = osConfig.modules.io.udisks.enable;
-  useHypridle = cfg.lockscreen.hypridle.enable;
+  useHypridle = displayCfg.lockscreen.hypridle.enable;
   isLaptop = machine == "laptop";
 in
   with lib; {
