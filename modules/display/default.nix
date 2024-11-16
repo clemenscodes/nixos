@@ -11,6 +11,7 @@ in
       ./hyprland
       ./qt
       ./sddm
+      ./uwsm
     ];
     options = {
       modules = {
