@@ -9,9 +9,6 @@
     nur = {
       url = "github:nix-community/NUR";
     };
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    };
     catppuccin = {
       url = "github:catppuccin/nix";
     };

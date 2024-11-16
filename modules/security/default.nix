@@ -9,6 +9,7 @@ in
     imports = [
       ./gnome-keyring
       ./gnupg
+      ./hyprlock
       ./polkit
       ./rtkit
       (import ./sops {inherit inputs;})

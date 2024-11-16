@@ -7,6 +7,7 @@
 in
   with lib; {
     imports = [
+      ./hyprlock
       ./sway-audio-idle-inhibit
       ./swaylock
       ./swayidle
@@ -17,8 +18,8 @@ in
           lockscreen = {
             enable = mkEnableOption "Enable lockscreen" // {default = cfg.enable;};
             defaultLockScreen = mkOption {
-              type = types.enum ["swaylock"];
-              default = "swaylock";
+              type = types.enum ["hyprlock"];
+              default = "hyprlock";
             };
           };
         };
