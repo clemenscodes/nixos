@@ -4,7 +4,7 @@ pkgs.writeShellScriptBin "lidhandle" ''
   count_monitors=$(${pkgs.hyprland}/bin/hyprctl monitors | grep -c '^Monitor')
   if [ "$state" == "on" ]; then
     if [ "$count_monitors" = 1 ]; then
-      lockout
+      ${pkgs.hyprlock}/bin/hyprlock
       sleep 1
       ${pkgs.systemd}/bin/systemctl suspend
     else

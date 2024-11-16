@@ -22,9 +22,7 @@ in
     };
     config = mkIf (cfg.enable && cfg.xwayland.enable) {
       home = {
-        packages = with pkgs; [
-          xwaylandvideobridge
-        ];
+        packages = [pkgs.xwaylandvideobridge];
       };
       wayland = {
         windowManager = {
