@@ -9,7 +9,7 @@
   hyprlockExe = lib.getExe hyprlock;
   cfg = config.modules.display.lockscreen;
   font_family = "${osConfig.modules.fonts.defaultFont}";
-  font_size = "${builtins.toString osConfig.modules.fonts.size}";
+  font_size = "25";
   suspendScript = pkgs.writeShellScript "suspend-script" ''
     ${lib.getExe pkgs.playerctl} -a status | ${lib.getExe pkgs.ripgrep} Playing -q
     if [ $? == 1 ]; then
@@ -49,7 +49,7 @@ in
             };
             background = [
               {
-                path = "$XDG_DATA_HOME/images/wallpaper/badassluffy.jpg";
+                path = "$XDG_DATA_HOME/images/wallpaper/car.jpeg";
                 blur_passes = "0";
                 color = "$base";
               }
@@ -83,13 +83,14 @@ in
             ];
             image = {
               path = "$XDG_DATA_HOME/images/wallpaper/luffycolor.png";
-              size = "100";
+              size = "50";
               border_color = "$accent";
               position = "0, 75";
               halign = "center";
               valign = "center";
             };
             input-field = {
+              inherit font_family;
               size = "300, 60";
               outline_thickness = "4";
               dots_size = "0.2";
