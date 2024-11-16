@@ -57,6 +57,7 @@ in
           M2_HOME = "$XDG_DATA_HOME/m2";
           CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
           WINEPREFIX = "$XDG_DATA_HOME/wine";
+          LD_LIBRARY_PATH = "/run/opengl-driver/lib:$LD_LIBRARY_PATH";
         };
       };
       programs = {
@@ -172,7 +173,6 @@ in
             bash
             */
             ''
-              export LD_LIBRARY_PATH="/run/opengl-driver/lib:$LD_LIBRARY_PATH";
               export LESS=-R
               export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
               export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
