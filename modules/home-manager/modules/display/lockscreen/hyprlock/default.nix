@@ -14,7 +14,7 @@ in
         display = {
           lockscreen = {
             hyprlock = {
-              enable = mkEnableOption "Enable hyprlock" // {default = cfg.enable;};
+              enable = mkEnableOption "Enable hyprlock" // {default = false;};
             };
           };
         };

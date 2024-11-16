@@ -52,7 +52,7 @@ in
         display = {
           lockscreen = {
             sway-audio-idle-inhibit = {
-              enable = mkEnableOption "Enable sway-audio-idle-inhibit" // {default = cfg.enable;};
+              enable = mkEnableOption "Enable sway-audio-idle-inhibit" // {default = false;};
             };
           };
         };

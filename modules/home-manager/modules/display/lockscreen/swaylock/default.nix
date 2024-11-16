@@ -13,7 +13,7 @@ in
         display = {
           lockscreen = {
             swaylock = {
-              enable = mkEnableOption "Enable swaylock" // {default = cfg.enable;};
+              enable = mkEnableOption "Enable swaylock" // {default = false;};
             };
           };
         };

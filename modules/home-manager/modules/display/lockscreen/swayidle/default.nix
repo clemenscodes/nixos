@@ -12,7 +12,7 @@ in
         display = {
           lockscreen = {
             swayidle = {
-              enable = mkEnableOption "Enable swayidle" // {default = cfg.enable;};
+              enable = mkEnableOption "Enable swayidle" // {default = false;};
             };
           };
         };
