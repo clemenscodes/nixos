@@ -1,4 +1,4 @@
-{inputs}: {
+{...}: {
   pkgs,
   config,
   osConfig,
@@ -73,7 +73,6 @@ in
             systemd = {
               enable = false;
             };
-            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
             settings = {
               input = {
                 kb_layout = osConfig.modules.locale.defaultLocale;
