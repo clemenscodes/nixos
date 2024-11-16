@@ -5,10 +5,21 @@
   lib,
   ...
 }: let
+  inherit (pkgs) hyprlock;
+
   cfg = config.modules.display.lockscreen;
-  hyprlock = pkgs.hyprlock;
   font_family = "${osConfig.modules.fonts.defaultFont}";
   font_size = "${builtins.toString osConfig.modules.fonts.size}";
+  suspendScript = pkgs.writeShellScript "suspend-script" ''
+    # check if any player has status "Playing"
+    ${lib.getExe pkgs.playerctl} -a status | ${lib.getExe pkgs.ripgrep} Playing -q
+    # only suspend if nothing is playing
+    if [ $? == 1 ]; then
+      ${pkgs.systemd}/bin/systemctl suspend
+    fi
+  '';
+  brillo = lib.getExe pkgs.brillo;
+  timeout = 300;
 in
   with lib; {
     options = {
@@ -115,35 +126,33 @@ in
             };
             listener = [
               {
-                timeout = 120;
+                timeout = (timeout / 2) - 30;
                 on-timeout = ''${pkgs.libnotify}/bin/notify-send "Idle! dimming colors soon..."'';
               }
               {
-                timeout = 150;
-                on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10";
-                on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+                timeout = (timeout / 2) - 10;
+                # save the current brightness and dim the screen over a period of
+                # 1 second
+                on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 10";
+                # brighten the screen over a period of 500ms to the saved value
+                on-resume = "${brillo} -I -u 500000";
               }
               {
-                timeout = 150;
-                on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -sd rgb:kbd_backlight set 0";
-                on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -rd rgb:kbd_backlight";
-              }
-              {
-                timeout = 270;
+                timeout = timeout - 30;
                 on-timeout = ''${pkgs.libnotify}/bin/notify-send "Locking session soon..."'';
               }
               {
-                timeout = 300;
+                inherit timeout;
                 on-timeout = "${pkgs.systemd}bin/loginctl lock-session";
               }
               {
-                timeout = 330;
+                timeout = timeout + 30;
                 on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
                 on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
               }
               {
-                timeout = 1800;
-                on-timeout = "${pkgs.systemd}bin/systemctl suspend";
+                timeout = timeout * 2;
+                on-timeout = suspendScript.outPath;
               }
             ];
           };
