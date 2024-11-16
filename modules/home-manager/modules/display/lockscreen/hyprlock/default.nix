@@ -116,6 +116,8 @@ in
             general = {
               lock_cmd = "pidof ${hyprlockExe} || ${hyprlockExe}";
               before_sleep_cmd = "${pkgs.systemd}bin/loginctl lock-session";
+              ignore_dbus_inhibit = false; # whether to ignore dbus-sent idle-inhibit requests (used by e.g. firefox or steam)
+              ignore_systemd_inhibit = false; # whether to ignore systemd-inhibit --what=idle inhibitors
             };
             listener = [
               {
