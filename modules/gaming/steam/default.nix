@@ -23,7 +23,7 @@ in
       programs = {
         steam = {
           enable = cfg.steam.enable;
-          steam.package = pkgs.steam.override {
+          package = pkgs.steam.override {
             extraPkgs = pkgs:
               with pkgs; [
                 xorg.libXcursor
