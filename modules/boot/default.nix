@@ -26,9 +26,16 @@ in
       };
     };
     config = mkIf (cfg.enable && cfg.boot.enable && isDesktop) {
+      environment = {
+        systemPackages = [
+          pkgs.ntfs3g
+          pkgs.exfat
+          pkgs.exfatprogs
+        ];
+      };
       boot = {
         kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
-        supportedFilesystems = ["ext4" "ntfs"];
+        supportedFilesystems = ["ext4" "ntfs" "exfat"];
         loader = {
           systemd-boot = {
             enable = efiSupport;
