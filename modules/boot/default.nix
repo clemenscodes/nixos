@@ -31,6 +31,7 @@ in
           pkgs.ntfs3g
           pkgs.exfat
           pkgs.exfatprogs
+          pkgs.gparted
         ];
       };
       boot = {
