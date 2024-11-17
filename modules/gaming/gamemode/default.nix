@@ -20,19 +20,19 @@ in
       programs = {
         gamemode = {
           enable = cfg.gamemode.enable;
-        };
-        settings = {
-          general = {
-            renice = 10;
-          };
-          gpu = {
-            apply_gpu_optimisations = "accept-responsibility";
-            gpu_device = 0;
-            amd_performance_level = "high";
-          };
-          custom = {
-            start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-            end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+          settings = {
+            general = {
+              renice = 10;
+            };
+            gpu = {
+              apply_gpu_optimisations = "accept-responsibility";
+              gpu_device = 0;
+              amd_performance_level = "high";
+            };
+            custom = {
+              start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+              end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+            };
           };
         };
       };
