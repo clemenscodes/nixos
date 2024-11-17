@@ -5,16 +5,15 @@
   ...
 }: let
   cfg = config.modules.gaming;
+  wine = pkgs.wineWowPackages.waylandFull;
 in
   with lib; {
     imports = [
       inputs.nix-gaming.nixosModules.pipewireLowLatency
       (import ./emulation {inherit inputs;})
       ./gamemode
-      ./games
       ./gamescope
       ./steam
-      ./wine
     ];
     options = {
       modules = {
@@ -26,10 +25,17 @@ in
     config = mkIf (cfg.enable) {
       environment = {
         systemPackages = with pkgs; [
-          wineWowPackages.waylandFull
+          wine
           winetricks
           protontricks
-          lutris
+          mangohud
+          (lutris.override {
+            extraPkgs = pkgs: [
+              wine
+              winetricks
+              gamescope
+            ];
+          })
         ];
       };
       services = {
