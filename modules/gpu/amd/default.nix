@@ -35,6 +35,7 @@ in {
         glxinfo
         glmark2
         libva-utils
+        vulkan-tools
         (import ./gpu-usage-waybar {inherit pkgs;})
       ];
       variables = {
