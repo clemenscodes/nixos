@@ -30,8 +30,9 @@ in
         systemPackages = [
           pkgs.ntfs3g
           pkgs.exfat
-          pkgs.exfatprogs
           pkgs.gparted
+          pkgs.parted
+          pkgs.xorg.xhost
         ];
       };
       boot = {
