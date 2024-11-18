@@ -34,6 +34,7 @@ in
               wine
               winetricks
               gamescope
+              vulkan-tools
             ];
           })
         ];
