@@ -7,12 +7,12 @@
 with lib; let
   cfg = config.modules.networking;
   nameservers = [
-  #   "194.242.2.2#dns.mullvad.net"
-  #   "194.242.2.3#adblock.dns.mullvad.net"
-  #   "194.242.2.4#base.dns.mullvad.net"
-  #   "194.242.2.5#extended.dns.mullvad.net"
-  #   "194.242.2.6#family.dns.mullvad.net"
-  #   "194.242.2.9#all.dns.mullvad.net"
+    "194.242.2.2"
+    "194.242.2.3"
+    "194.242.2.4"
+    "194.242.2.5"
+    "194.242.2.6"
+    "194.242.2.9"
   ];
 in {
   options = {
