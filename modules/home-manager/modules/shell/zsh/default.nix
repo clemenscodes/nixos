@@ -48,16 +48,17 @@ in
         sessionVariables = {
           MOON = "${config.home.homeDirectory}/${flake}";
           FLAKE = "${config.home.homeDirectory}/${flake}/nix";
-          ANDROID_USER_HOME = "$XDG_DATA_HOME/android";
           NIXOS_OZONE_WL = 1;
+          XDG_DATA_HOME = ''''${$XDG_DATA_HOME:-$HOME/.local/share}'';
+          ANDROID_USER_HOME = "$XDG_DATA_HOME/android";
           CARGO_HOME = "$XDG_DATA_HOME/cargo";
-          JAVA_HOME = "/etc/profiles/per-user/${user}";
           GOPATH = "$XDG_DATA_HOME/go";
           MBSYNCRC = "$XDG_CONFIG_HOME/mbsync/config";
           M2_HOME = "$XDG_DATA_HOME/m2";
           CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
           WINEPREFIX = "$XDG_DATA_HOME/wine";
           LD_LIBRARY_PATH = "/run/opengl-driver/lib:$LD_LIBRARY_PATH";
+          JAVA_HOME = "/etc/profiles/per-user/${user}";
         };
       };
       programs = {
