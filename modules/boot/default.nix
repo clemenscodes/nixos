@@ -10,6 +10,7 @@
 in
   with lib; {
     imports = [
+      ./fuse
       (import ./secureboot {inherit inputs;})
       ./themes
     ];
