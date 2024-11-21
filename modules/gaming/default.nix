@@ -1,11 +1,11 @@
-{inputs}: {
+{inputs, ...}: {
   lib,
   config,
   pkgs,
   ...
 }: let
   cfg = config.modules.gaming;
-  wine = pkgs.wineWowPackages.waylandFull;
+  wine = pkgs.wineWowPackages.unstableFull;
 in
   with lib; {
     imports = [
@@ -24,17 +24,17 @@ in
     };
     config = mkIf (cfg.enable) {
       environment = {
-        systemPackages = with pkgs; [
+        systemPackages = [
           wine
-          winetricks
-          protontricks
-          mangohud
-          (lutris.override {
+          pkgs.winetricks
+          pkgs.protontricks
+          pkgs.mangohud
+          (pkgs.lutris.override {
             extraPkgs = pkgs: [
               wine
-              winetricks
-              gamescope
-              vulkan-tools
+              pkgs.winetricks
+              pkgs.gamescope
+              pkgs.vulkan-tools
             ];
           })
         ];
