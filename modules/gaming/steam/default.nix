@@ -18,39 +18,43 @@ in
     };
     config = mkIf (cfg.enable && cfg.steam.enable) {
       environment = {
-        systemPackages = with pkgs; [steamtinkerlaunch];
+        systemPackages = [pkgs.steamtinkerlaunch];
       };
       programs = {
         steam = {
-          enable = cfg.steam.enable;
-          package = pkgs.steam.override {
-            extraPkgs = pkgs:
-              with pkgs; [
-                xorg.libXcursor
-                xorg.libXi
-                xorg.libXinerama
-                xorg.libXScrnSaver
-                libpng
-                libpulseaudio
-                libvorbis
-                stdenv.cc.cc.lib
-                libkrb5
-                keyutils
-              ];
+          inherit (cfg.steam) enable;
+          protontricks = {
+            inherit (cfg.steam) enable;
           };
           gamescopeSession = {
-            enable = cfg.gamescope.enable;
+            inherit (cfg.gamescope) enable;
           };
           remotePlay = {
-            openFirewall = true;
+            openFirewall = cfg.steam.enable;
+          };
+          localNetworkGameTransfers = {
+            openFirewall = cfg.steam.enable;
           };
           dedicatedServer = {
-            openFirewall = true;
+            openFirewall = cfg.steam.enable;
           };
           extest = {
-            enable = true;
+            enable = cfg.steam.enable;
           };
-          extraCompatPackages = with pkgs; [proton-ge-bin];
+          package = pkgs.steam;
+          extraPackages = [
+            pkgs.xorg.libXcursor
+            pkgs.xorg.libXi
+            pkgs.xorg.libXinerama
+            pkgs.xorg.libXScrnSaver
+            pkgs.libpng
+            pkgs.libpulseaudio
+            pkgs.libvorbis
+            pkgs.stdenv.cc.cc.lib
+            pkgs.libkrb5
+            pkgs.keyutils
+          ];
+          extraCompatPackages = [pkgs.proton-ge-bin];
         };
       };
     };
