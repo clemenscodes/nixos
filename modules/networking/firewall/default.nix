@@ -18,7 +18,8 @@ in
     config = mkIf (cfg.enable && cfg.firewall.enable) {
       networking = {
         firewall = {
-          enable = cfg.firewall.enable;
+          # enable = cfg.firewall.enable;
+          enable = false;
           allowedTCPPorts = [
             80
             443
