@@ -19,7 +19,7 @@ in
       networking = {
         firewall = {
           # enable = cfg.firewall.enable;
-          enable = false;
+          enable = lib.mkForce false;
           allowedTCPPorts = [
             80
             443
