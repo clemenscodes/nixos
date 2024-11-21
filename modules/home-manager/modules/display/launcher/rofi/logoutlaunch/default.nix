@@ -71,7 +71,7 @@ pkgs.writeShellScriptBin "logoutlaunch" ''
     $shutdown) run_cmd --shutdown ;;
     $reboot) run_cmd --reboot ;;
     $hibernate) run_cmd --hibernate ;;
-    $lock) swaylock -f ;;
+    $lock) loginctl lock-session ;;
     $suspend) run_cmd --suspend ;;
     $logout) run_cmd --logout ;;
   esac
