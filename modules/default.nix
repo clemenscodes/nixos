@@ -5,6 +5,7 @@ with lib; {
     ./config
     ./cpu
     (import ./crypto {inherit inputs;})
+    ./databases
     ./display
     ./docs
     ./fonts
