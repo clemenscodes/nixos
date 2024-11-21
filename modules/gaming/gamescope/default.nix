@@ -18,7 +18,7 @@ in
     config = mkIf (cfg.enable && cfg.gamescope.enable) {
       programs = {
         gamescope = {
-          enable = cfg.gamescope.enable;
+          inherit (cfg.gamescope) enable;
         };
       };
     };

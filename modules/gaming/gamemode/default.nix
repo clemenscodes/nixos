@@ -19,7 +19,7 @@ in
     config = mkIf (cfg.enable && cfg.gamemode.enable) {
       programs = {
         gamemode = {
-          enable = cfg.gamemode.enable;
+          inherit (cfg.gamemode) enable;
           settings = {
             general = {
               renice = 10;

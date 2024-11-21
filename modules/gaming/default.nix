@@ -42,7 +42,7 @@ in
       services = {
         pipewire = {
           lowLatency = {
-            enable = cfg.enable;
+            inherit (cfg) enable;
             quantum = 64;
             rate = 48000;
           };
