@@ -31,6 +31,18 @@ in
             8000
             8080
           ];
+          allowedTCPPortRanges = [
+            {
+              from = 30000;
+              to = 60000;
+            }
+          ];
+          allowedUDPPortRanges = [
+            {
+              from = 30000;
+              to = 60000;
+            }
+          ];
         };
       };
     };
