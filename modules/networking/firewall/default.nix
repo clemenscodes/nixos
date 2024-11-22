@@ -17,8 +17,11 @@ in
     };
     config = mkIf (cfg.enable && cfg.firewall.enable) {
       networking = {
+        nftables = {
+          inherit (cfg.firewall) enable;
+        };
         firewall = {
-          enable = cfg.firewall.enable;
+          inherit (cfg.firewall) enable;
           allowedTCPPorts = [
             80
             443
@@ -33,14 +36,14 @@ in
           ];
           allowedTCPPortRanges = [
             {
-              from = 30000;
-              to = 60000;
+              from = 6112;
+              to = 6119;
             }
           ];
           allowedUDPPortRanges = [
             {
-              from = 30000;
-              to = 60000;
+              from = 6112;
+              to = 6119;
             }
           ];
         };
