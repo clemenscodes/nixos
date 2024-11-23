@@ -14,8 +14,6 @@ in
       ./direnv
       ./gh
       ./git
-      ./lazygit
-      ./gitui
       ./node
       ./postman
       ./reversing

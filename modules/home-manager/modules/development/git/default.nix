@@ -13,6 +13,14 @@ in
         development = {
           git = {
             enable = mkEnableOption "Enable Git" // {default = cfg.enable;};
+            userName = mkOption {
+              type = types.str;
+              default = null;
+            };
+            userEmail = mkOption {
+              type = types.str;
+              default = null;
+            };
           };
         };
       };
@@ -25,29 +33,47 @@ in
       };
       programs = {
         lazygit = {
-          enable = cfg.git.enable;
+          inherit (cfg.git) enable;
+          catppuccin = mkIf (osConfig.modules.themes.catppuccin.enable) {
+            inherit (osConfig.modules.themes.catppuccin) enable accent flavor;
+          };
+        };
+        gitui = {
+          inherit (cfg.git) enable;
+          catppuccin = mkIf (osConfig.modules.themes.catppuccin.enable) {
+            inherit (osConfig.modules.themes.catppuccin) enable flavor;
+          };
         };
         git = {
-          enable = cfg.git.enable;
-          userName = "Clemens Horn";
-          userEmail = "clemens.horn@mni.thm.de";
+          inherit (cfg.git) enable userName userEmail;
           package = pkgs.gitFull;
-          delta = {
-            enable = true;
-            catppuccin = mkIf (osConfig.modules.themes.catppuccin.enable) {
-              inherit (osConfig.modules.themes.catppuccin) enable flavor;
-            };
+          attributes = [
+            "*.pdf diff=pdf"
+          ];
+          difftastic = {
+            inherit (cfg.git) enable;
+            display = "inline";
+            background = "dark";
+            color = "always";
           };
           extraConfig = {
+            core = {
+              whitespace = "trailing-space,space-before-tab";
+              autocrlf = "input";
+              editor = config.modules.editor.defaultEditor;
+            };
+            credential = {
+              helper = "libsecret";
+            };
             user = {
               signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
-            };
-            init = {
-              defaultBranch = "main";
             };
             gpg = {
               program = "gpg2";
               format = "ssh";
+            };
+            init = {
+              defaultBranch = "main";
             };
             commit = {
               gpgsign = true;
@@ -58,14 +84,6 @@ in
             push = {
               autoSetupRemote = true;
               default = "current";
-            };
-            credential = {
-              helper = "libsecret";
-            };
-            core = {
-              whitespace = "trailing-space,space-before-tab";
-              autocrlf = "input";
-              editor = config.modules.editor.defaultEditor;
             };
             diff = {
               tool = "nvimdiff";
