@@ -10,6 +10,7 @@ in
     imports = [
       ./bluetooth
       ./dbus
+      ./dns
       ./firewall
       ./irc
       ./mtr
