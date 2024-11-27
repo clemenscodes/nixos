@@ -14,6 +14,7 @@ in
       ./gamemode
       ./gamescope
       ./steam
+      (import ./umu {inherit inputs;})
     ];
     options = {
       modules = {
