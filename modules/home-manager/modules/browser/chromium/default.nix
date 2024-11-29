@@ -57,6 +57,9 @@ in {
           {
             id = "gebbhagfogifgggkldgodflihgfeippi"; # YouTube Dislikes
           }
+          {
+            id = "ekhagklcjbdpajgpjgmbionohlpdbjgc"; # Zotero Connector
+          }
         ];
       };
     };
