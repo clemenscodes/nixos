@@ -37,11 +37,11 @@
     "CHaP_3": {
       "flake": false,
       "locked": {
-        "lastModified": 1730295876,
-        "narHash": "sha256-ijnHTQ6eKIQ9FpEqDKt6c7vuFYN8aOBDhonp67utx2s=",
+        "lastModified": 1732639071,
+        "narHash": "sha256-XY+LlzuumeRovfBMXIPS90Trk7HTxpUMFFdL4bmMZDU=",
         "owner": "intersectmbo",
         "repo": "cardano-haskell-packages",
-        "rev": "25591f43ab943d5a070db5e8a2b9ff3a499d4d92",
+        "rev": "6df7fca74cc3a34babfa7ce7cb4b7a8c72c70982",
         "type": "github"
       },
       "original": {
@@ -665,11 +665,11 @@
         "nixpkgs": "nixpkgs_17"
       },
       "locked": {
-        "lastModified": 1733073208,
-        "narHash": "sha256-+lp/HLixJD/4xaYWzBaNjTeph+mAHUgf39jnJTPrVr4=",
+        "lastModified": 1733074900,
+        "narHash": "sha256-wzViIQJb1O+azantorYjkqb7OE9yB3m24iNMepkILRc=",
         "owner": "clemenscodes",
         "repo": "cardanix",
-        "rev": "ddefcaa78010c21fbe40001f2f9484add29e5649",
+        "rev": "70632ab4834077f144290723f4223b307d6c6ba7",
         "type": "github"
       },
       "original": {
@@ -867,15 +867,16 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1732547686,
-        "narHash": "sha256-8kP3gX9kAHC9mG/QM8Ks7ty/qRHMehC3Yxtd3QfK9J0=",
+        "lastModified": 1732705838,
+        "narHash": "sha256-v0q8qHdI6LKc8mP43QZt3UGdTNDQXE0aF6QapvZsTvU=",
         "owner": "IntersectMBO",
         "repo": "cardano-node",
-        "rev": "ef5f0a9ed52d969b3753c96955add25b9e08f02d",
+        "rev": "36871ba0cd3e86a5dbcfd6878cdb7168bb4e56a1",
         "type": "github"
       },
       "original": {
         "owner": "IntersectMBO",
+        "ref": "10.1.3",
         "repo": "cardano-node",
         "type": "github"
       }
@@ -4504,11 +4505,11 @@
         "sodium": "sodium_3"
       },
       "locked": {
-        "lastModified": 1732287300,
-        "narHash": "sha256-lURsE6HdJX0alscWhbzCWyLRK8GpAgKuXeIgX31Kfqg=",
+        "lastModified": 1728687575,
+        "narHash": "sha256-38uD8SqT557eh5yyRYuthKm1yTtiWzAN0FH7L/01QKM=",
         "owner": "input-output-hk",
         "repo": "iohk-nix",
-        "rev": "262cb2aec2ddd914124bab90b06fe24a1a74d02c",
+        "rev": "86c2bd46e8a08f62ea38ffe77cb4e9c337b42217",
         "type": "github"
       },
       "original": {
