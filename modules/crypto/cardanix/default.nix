@@ -20,10 +20,16 @@ in
     config = mkIf (cfg.enable && cfg.cardanix.enable) {
       cardano = {
         enable = true;
+        address = {
+          enable = true;
+        };
         node = {
           enable = true;
         };
         wallet = {
+          enable = true;
+        };
+        db-sync = {
           enable = true;
         };
         daedalus = {
