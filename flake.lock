@@ -461,11 +461,11 @@
         "nixpkgs": "nixpkgs_15"
       },
       "locked": {
-        "lastModified": 1732111892,
-        "narHash": "sha256-GAFYGwbEJ4ZH/be+ZQJNFulGfeBorJOlYeVrR7Ytcao=",
+        "lastModified": 1733054676,
+        "narHash": "sha256-QxJO/VuuMawYoR8o/fWKKEWc8SpreuAqhmKHsotsrtc=",
         "owner": "clemenscodes",
         "repo": "cardanix",
-        "rev": "4c3a90650a28728ba33ed7d188ecb249b7a749a8",
+        "rev": "18076cae2335c8b445e1f16bf88fc0323c41639c",
         "type": "github"
       },
       "original": {
@@ -600,11 +600,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1731964321,
-        "narHash": "sha256-8YZ88+q16TBIICduypjqcX/M2wR/39Woaljk2C+HAfw=",
+        "lastModified": 1732547686,
+        "narHash": "sha256-8kP3gX9kAHC9mG/QM8Ks7ty/qRHMehC3Yxtd3QfK9J0=",
         "owner": "IntersectMBO",
         "repo": "cardano-node",
-        "rev": "6e969c6bcc0f07bd1a69f4d76b85d6fa9371a90b",
+        "rev": "ef5f0a9ed52d969b3753c96955add25b9e08f02d",
         "type": "github"
       },
       "original": {
@@ -763,11 +763,11 @@
         "nixpkgs-unstable": "nixpkgs-unstable_4"
       },
       "locked": {
-        "lastModified": 1732090737,
-        "narHash": "sha256-dhOtdFRExlkCZi+9k/vJ+qTz0JOcTGujeHci0vDquQY=",
+        "lastModified": 1732894569,
+        "narHash": "sha256-OFuadKMXKDd5S++Uxn3glAdgQ6NaawZPXJQC+60PD1A=",
         "owner": "cardano-foundation",
         "repo": "cardano-wallet",
-        "rev": "077bf688f39f4a04ea325a85920c80ca1528c737",
+        "rev": "e7547fc27f1f01985cc5aad6b0cb92ce5fda649b",
         "type": "github"
       },
       "original": {
@@ -912,11 +912,11 @@
         "tullia": "tullia_3"
       },
       "locked": {
-        "lastModified": 1732099336,
-        "narHash": "sha256-9xVv6j0Gepk1Pdbuaz8Q0JJV7KVQl+U7efyUyphacZk=",
+        "lastModified": 1732732377,
+        "narHash": "sha256-SnHqQq08ZZaELhhKFo0NePrmDU5hS92XxrhNrpkgITY=",
         "owner": "input-output-hk",
         "repo": "daedalus",
-        "rev": "a852174555f1e3081ff3f32b43128dfd8583695a",
+        "rev": "ba63f08ab6958c1f8f31d9e7a8b2228fcd460a75",
         "type": "github"
       },
       "original": {
@@ -3443,11 +3443,11 @@
         "sodium": "sodium"
       },
       "locked": {
-        "lastModified": 1728687575,
-        "narHash": "sha256-38uD8SqT557eh5yyRYuthKm1yTtiWzAN0FH7L/01QKM=",
+        "lastModified": 1732287300,
+        "narHash": "sha256-lURsE6HdJX0alscWhbzCWyLRK8GpAgKuXeIgX31Kfqg=",
         "owner": "input-output-hk",
         "repo": "iohk-nix",
-        "rev": "86c2bd46e8a08f62ea38ffe77cb4e9c337b42217",
+        "rev": "262cb2aec2ddd914124bab90b06fe24a1a74d02c",
         "type": "github"
       },
       "original": {
@@ -4845,11 +4845,11 @@
     },
     "nixpkgs_15": {
       "locked": {
-        "lastModified": 1731676054,
-        "narHash": "sha256-OZiZ3m8SCMfh3B6bfGC/Bm4x3qc1m2SVEAlkV6iY7Yg=",
+        "lastModified": 1732837521,
+        "narHash": "sha256-jNRNr49UiuIwaarqijgdTR2qLPifxsVhlJrKzQ8XUIE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5e4fbfb6b3de1aa2872b76d49fafc942626e2add",
+        "rev": "970e93b9f82e2a0f3675757eb0bfc73297cc6370",
         "type": "github"
       },
       "original": {
