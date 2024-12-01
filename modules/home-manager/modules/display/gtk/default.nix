@@ -59,7 +59,7 @@ in
           name = "Papirus-Dark";
         };
         font = {
-          package = pkgs.nerdfonts.override {fonts = ["Iosevka" "VictorMono"];};
+          package = pkgs.nerd-fonts.iosevka;
           name = "${osConfig.modules.fonts.defaultFont}";
           inherit (osConfig.modules.fonts) size;
         };
