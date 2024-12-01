@@ -20,9 +20,6 @@ in
     config = mkIf (cfg.enable && cfg.cardanix.enable) {
       cardano = {
         enable = true;
-        cli = {
-          enable = true;
-        };
         node = {
           enable = true;
         };
