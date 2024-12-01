@@ -6,7 +6,6 @@
 }: let
   size = 8;
   font = "VictorMono";
-  fonts = ["${font}" "Iosevka" "Meslo"];
   monospace = "${font} Nerd Font Mono";
   sansSerif = "${font} Nerd Font";
   serif = "${font} Nerd Font";
@@ -30,8 +29,9 @@ in
     };
     config = mkIf (cfg.enable && cfg.fonts.enable) {
       fonts = {
-        packages = with pkgs; [
-          (nerdfonts.override {inherit fonts;})
+        packages = with pkgs.nerd-fonts; [
+          iosevka
+          victor-mono
         ];
         fontconfig = {
           enable = cfg.fonts.enable;
