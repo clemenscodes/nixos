@@ -117,7 +117,7 @@
         };
       in {
         nixosModules = {
-          default = import ./modules {inherit inputs;};
+          default = import ./modules {inherit inputs pkgs;};
         };
         overlays = import ./overlays {inherit inputs nixpkgs system;};
         formatter = pkgs.alejandra;
