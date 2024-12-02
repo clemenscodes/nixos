@@ -665,11 +665,11 @@
         "nixpkgs": "nixpkgs_17"
       },
       "locked": {
-        "lastModified": 1733152002,
-        "narHash": "sha256-uRmTc/HoQc2wF6NMXlcPQgAaKGnNcOzGiYQbxH7YwKg=",
+        "lastModified": 1733152869,
+        "narHash": "sha256-2wjWUqwGUXnHZnqUUQHjW1UW5CTeYj9+9vLzIpR7zXo=",
         "owner": "clemenscodes",
         "repo": "cardanix",
-        "rev": "7cd0271ecf3e1afe3650c2793e5d1028824ed539",
+        "rev": "2e597050fc0bd8fc7083b421c52fb3160d530c88",
         "type": "github"
       },
       "original": {
@@ -867,11 +867,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1733151946,
-        "narHash": "sha256-J3ZG6l3M6SVc+HSWqCyfMy0ld0Gtaae9pI67fEJLrho=",
+        "lastModified": 1733152804,
+        "narHash": "sha256-PKURZ0WazZ7FMrn3DsZiy6PXTtV4oK8RseGROWaQ8bY=",
         "owner": "clemenscodes",
         "repo": "cardano-node",
-        "rev": "51bdea59bda3e888bf214fa2b8e82675f152b293",
+        "rev": "1bf5fa387a63741f30fee799c29cf0c188c983c1",
         "type": "github"
       },
       "original": {
