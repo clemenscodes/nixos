@@ -17,6 +17,11 @@ in
       };
     };
     imports = [inputs.cardanix.nixosModules.${system}];
+    services = {
+      cardano-node = {
+        package = pkgs.cardano-node;
+      };
+    };
     config = mkIf (cfg.enable && cfg.cardanix.enable) {
       cardano = {
         enable = true;

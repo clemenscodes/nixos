@@ -111,7 +111,10 @@
     inputs.flake-utils.lib.eachDefaultSystem (
       system: let
         inherit (inputs) nixpkgs;
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [inputs.cardanix.overlays.${system}];
+        };
       in {
         nixosModules = {
           default = import ./modules {inherit inputs;};
