@@ -113,7 +113,7 @@
         inherit (inputs) nixpkgs;
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [inputs.cardanix.overlays.${system}];
+          overlays = [] ++ inputs.cardanix.overlays.${system};
         };
       in {
         nixosModules = {
