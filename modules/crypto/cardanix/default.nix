@@ -36,7 +36,6 @@ in {
       };
       node = {
         inherit (cfg.cardanix) enable;
-        port = 3001;
       };
       wallet = {
         inherit (cfg.cardanix) enable;
