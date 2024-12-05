@@ -19,16 +19,17 @@ in {
     modules = {
       networking = {
         torrent = {
-          enable = mkEnableOption "Enable torrenting" // {default = false;};
+          enable = mkEnableOption "Use mullvad DNS" // {default = false;};
           mullvadAccountSecretPath = mkOption {
             type = types.path;
           };
+          mullvadDns = mkEnableOption "Use mullvad DNS" // {default = false;};
         };
       };
     };
   };
   config = mkIf (cfg.enable && cfg.torrent.enable) {
-    networking = {
+    networking = mkIf (cfg.torrent.mullvadDns) {
       inherit nameservers;
     };
     services = {

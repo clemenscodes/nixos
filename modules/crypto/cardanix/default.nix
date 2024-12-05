@@ -1,37 +1,51 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   config,
   lib,
   system,
   ...
-}: let
+}:
+with lib; let
   cfg = config.modules.crypto;
-in
-  with lib; {
-    options = {
-      modules = {
-        crypto = {
-          cardanix = {
-            enable = mkEnableOption "Enable cardanix" // {default = false;};
-          };
+in {
+  options = {
+    modules = {
+      crypto = {
+        cardanix = {
+          enable = mkEnableOption "Enable cardanix" // {default = false;};
         };
       };
     };
-    imports = [inputs.cardanix.nixosModules.${system}];
-    config = mkIf (cfg.enable && cfg.cardanix.enable) {
-      cardano = {
-        enable = true;
-        cli = {
-          enable = true;
-        };
-        node = {
-          enable = true;
-        };
-        wallet = {
-          enable = true;
-        };
-        daedalus = {
-          enable = true;
-        };
+  };
+  imports = [
+    inputs.cardanix.nixosModules.${system}
+  ];
+  config = mkIf (cfg.enable && cfg.cardanix.enable) {
+    services = {
+      cardano-node = {
+        package = pkgs.cardano-node;
       };
     };
-  }
+    cardano = {
+      inherit (cfg.cardanix) enable;
+      address = {
+        inherit (cfg.cardanix) enable;
+      };
+      node = {
+        inherit (cfg.cardanix) enable;
+      };
+      wallet = {
+        inherit (cfg.cardanix) enable;
+      };
+      db-sync = {
+        inherit (cfg.cardanix) enable;
+      };
+      daedalus = {
+        inherit (cfg.cardanix) enable;
+      };
+    };
+  };
+}

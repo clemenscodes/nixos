@@ -1,10 +1,11 @@
-{inputs}: {lib, ...}:
+{inputs, pkgs, ...}: {lib, ...}:
 with lib; {
   imports = [
     (import ./boot {inherit inputs;})
     ./config
     ./cpu
-    (import ./crypto {inherit inputs;})
+    (import ./crypto {inherit inputs pkgs;})
+    ./databases
     ./display
     ./docs
     ./fonts

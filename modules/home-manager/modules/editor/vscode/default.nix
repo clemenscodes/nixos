@@ -12,7 +12,10 @@
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["vscode"];
     };
   };
-  code = if cfg.vscode.proprietary then pkgs.vscode else pkgs.vscodium;
+  code =
+    if cfg.vscode.proprietary
+    then pkgs.vscode
+    else pkgs.vscodium;
   codevim = pkgs.writeShellScriptBin "codevim" ''
     nix run github:clemenscodes/codevim -- "$@"
   '';

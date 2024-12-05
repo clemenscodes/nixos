@@ -9,13 +9,10 @@ in
     imports = [
       (import ./android {inherit inputs;})
       ./c
-      (import ./cardano {inherit inputs;})
       ./corepack
       ./direnv
       ./gh
       ./git
-      ./lazygit
-      ./gitui
       ./node
       ./postman
       ./reversing

@@ -1,7 +1,7 @@
-{inputs, ...}: {lib, ...}:
+{inputs, pkgs, ...}: {lib, ...}:
 with lib; {
   imports = [
-    (import ./cardanix {inherit inputs;})
+    (import ./cardanix {inherit inputs pkgs;})
     ./ledger-live
     ./monero
     ./nanominer

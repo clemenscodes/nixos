@@ -68,6 +68,14 @@
         };
       };
     };
+    umu = {
+      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs = {
@@ -103,10 +111,13 @@
     inputs.flake-utils.lib.eachDefaultSystem (
       system: let
         inherit (inputs) nixpkgs;
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [] ++ inputs.cardanix.overlays.${system};
+        };
       in {
         nixosModules = {
-          default = import ./modules {inherit inputs;};
+          default = import ./modules {inherit inputs pkgs;};
         };
         overlays = import ./overlays {inherit inputs nixpkgs system;};
         formatter = pkgs.alejandra;
