@@ -5,12 +5,12 @@ pkgs.writeShellScriptBin "logoutlaunch" ''
   lastlogin="`${pkgs.util-linux}/bin/last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
   uptime="`${pkgs.procps}/bin/uptime -p | sed -e 's/up //g'`"
   host=`${pkgs.hostname}/bin/hostname`
-  shutdown="";
-  reboot="";
-  hibernate="";
-  logout="";
-  lock="";
-  suspend='⏸︎'
+  shutdown="shutdown";
+  reboot="reboot";
+  hibernate="hibernate";
+  logout="logout";
+  lock="lock";
+  suspend='suspend'
   yes='✓'
   no='✗'
 
