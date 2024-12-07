@@ -2757,11 +2757,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1733595340,
-        "narHash": "sha256-gnArZDC0DIgR2d0YgpSe20YGzijdn38S86StFDKyDO8=",
+        "lastModified": 1733610188,
+        "narHash": "sha256-zmkGfTjGI2Prbk9UerZE7PogBWinV+mXIKAfPGVHGgY=",
         "owner": "clemenscodes",
         "repo": "cardano-workbench",
-        "rev": "ecd5f8c22277b2a28a31ad88e35f5200aea70e0d",
+        "rev": "1cd8b06f084d43e4df8b05e0962a0b2c551cb89d",
         "type": "github"
       },
       "original": {
