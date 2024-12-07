@@ -1,4 +1,4 @@
 {inputs}:
 with inputs; [
-  nur.overlay
+  nur.overlays.default
 ]
