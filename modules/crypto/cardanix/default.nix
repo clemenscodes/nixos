@@ -24,6 +24,9 @@ in {
     inputs.cardanix.nixosModules.${system}
   ];
   config = mkIf (cfg.enable && cfg.cardanix.enable) {
+    environment = {
+      systemPackages = [inputs.cardano-workbench.packages.${system}.cdwb];
+    };
     services = {
       cardano-node = {
         package = pkgs.cardano-node;
