@@ -42,7 +42,10 @@ in
             description = cfg.users.user;
             group = cfg.users.user;
             hashedPasswordFile = mkIf cfg.security.sops.enable config.sops.secrets.password.path;
-            extraGroups = [(mkIf cfg.users.wheel "wheel")];
+            extraGroups = [
+              (mkIf cfg.users.wheel "wheel")
+              (mkIf cfg.crypto.cardanix.enable "cardano-node")
+            ];
           };
         };
         groups = {
