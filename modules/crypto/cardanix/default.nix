@@ -27,11 +27,6 @@ in {
     environment = {
       systemPackages = [inputs.cardano-workbench.packages.${system}.cdwb];
     };
-    services = {
-      cardano-node = {
-        package = pkgs.cardano-node;
-      };
-    };
     cardano = {
       inherit (cfg.cardanix) enable;
       bech32 = {
