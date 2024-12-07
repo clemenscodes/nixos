@@ -31,7 +31,13 @@ in {
     };
     cardano = {
       inherit (cfg.cardanix) enable;
+      bech32 = {
+        inherit (cfg.cardanix) enable;
+      };
       address = {
+        inherit (cfg.cardanix) enable;
+      };
+      cli = {
         inherit (cfg.cardanix) enable;
       };
       node = {
