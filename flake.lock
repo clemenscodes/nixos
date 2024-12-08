@@ -1386,11 +1386,11 @@
         "nixpkgs": "nixpkgs_16"
       },
       "locked": {
-        "lastModified": 1733672996,
-        "narHash": "sha256-KLZdjVzrvm76JvoANuXaVodkb+PTvjN6VwzXtxUxiaU=",
+        "lastModified": 1733673390,
+        "narHash": "sha256-Fye5bl1p0QcyqHgq63A7M0fEXVB3YflCaCyWsC22qio=",
         "owner": "clemenscodes",
         "repo": "cardanix",
-        "rev": "86b004399e2e92db142e63939c9fdb7df04e5749",
+        "rev": "a5430aa3d5fbec787f4d24b3d96b29658911cd84",
         "type": "github"
       },
       "original": {
