@@ -7,8 +7,8 @@
   cfg = config.modules.storage;
   mountStorage = pkgs.writeShellScriptBin "mount-storage" ''
     echo "[${cfg.rclone.mount}]" > ~/.config/rclone/${cfg.rclone.config}
-    echo "type = ${cfg.rclone.type}" > ~/.config/rclone/${cfg.rclone.config}
-    echo "team_drive = " > ~/.config/rclone/${cfg.rclone.config}
+    echo "type = ${cfg.rclone.type}" >> ~/.config/rclone/${cfg.rclone.config}
+    echo "team_drive = " >> ~/.config/rclone/${cfg.rclone.config}
 
     ${pkgs.rclone}/bin/rclone \
       --config ~/.config/rclone/${cfg.rclone.config} \
@@ -19,7 +19,6 @@
       --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.token} --style=plain) \
       --drive-scope ${cfg.rclone.scope} \
       ${cfg.rclone.mount}: ${cfg.rclone.storage} \
-      --fast-list \
       --poll-interval 10m
   '';
 in {
