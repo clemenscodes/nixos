@@ -70,14 +70,13 @@ in {
         pkgs.rclone-browser
       ];
       sessionVariables = {
-        RCLONE_HOME = "$XDG_CONFIG_HOME/rclone";
         GDRIVE_STORAGE = "$HOME/${cfg.rclone.gdrive.storage}";
       };
     };
     programs = {
       zsh = {
         shellAliases = lib.mkIf config.modules.shell.zsh.enable {
-          storage = "$EXPLORER $RCLONE_HOME";
+          storage = "$EXPLORER $XDG_CONFIG_HOME/rclone";
           gdrives = "$EXPLORER $GDRIVE_STORAGE";
         };
       };
