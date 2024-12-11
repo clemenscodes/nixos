@@ -13,7 +13,9 @@ in
       ./nix-prefetch-github
       ./nix-prefetch-git
       ./ripgrep
+      ./tldr
       ./unzip
+      ./zip
     ];
     options = {
       modules = {
