@@ -18,7 +18,7 @@ in
         };
       };
     };
-    config = mkIf (cfg.enable && cfg.gimp.enable) {
+    config = mkIf (cfg.enable && cfg.gstreamer.enable) {
       home = {
         packages = with pkgs.gst_all_1; [
           gstreamer

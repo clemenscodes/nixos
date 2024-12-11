@@ -11,18 +11,17 @@ in
       modules = {
         media = {
           editing = {
-            kdenlive = {
-              enable = mkEnableOption "Enable kdenlive" // {default = cfg.enable;};
+            backgroundremover = {
+              enable = mkEnableOption "Enable backgroundremover" // {default = cfg.enable;};
             };
           };
         };
       };
     };
-    config = mkIf (cfg.enable && cfg.kdenlive.enable) {
+    config = mkIf (cfg.enable && cfg.backgroundremover.enable) {
       home = {
         packages = with pkgs; [
-          glaxnimate
-          kdenlive
+          backgroundremover
         ];
       };
     };

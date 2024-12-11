@@ -8,6 +8,7 @@
 in
   with lib; {
     imports = [
+      ./backgroundremover
       ./davinci
       ./gimp
       ./gstreamer
