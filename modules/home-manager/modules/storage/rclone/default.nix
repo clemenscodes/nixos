@@ -14,7 +14,8 @@
       --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.clientId} --style=plain) \
       --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.clientSecret} --style=plain) \
       --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.token} --style=plain) \
-      \"${cfg.rclone.mount}:\" \"${cfg.rclone.storage}\"
+      ${cfg.rclone.mount}: ${cfg.rclone.storage} \
+      --poll-interval 10m
   '';
 in {
   options = {
@@ -84,10 +85,12 @@ in {
               WantedBy = ["default.target"];
             };
             Service = {
-              Type = "notify";
+              Type = "simple";
               ExecStartPre = "/usr/bin/env mkdir -p %h/${cfg.rclone.storage}";
               ExecStart = lib.getExe mountStorage;
               ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/${cfg.rclone.storage}/%i";
+              Restart = "always";
+              RestartSec = 10;
             };
           };
         };
