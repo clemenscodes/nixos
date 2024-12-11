@@ -8,6 +8,7 @@
   mountStorage = pkgs.writeShellScriptBin "mount-storage" ''
     RCLONE_HOME=$XDG_CONFIG_HOME/rclone
 
+    mkdir -p $HOME/${cfg.rclone.storage}
     mkdir -p $RCLONE_HOME
 
     echo "[${cfg.rclone.mount}]" > $RCLONE_HOME/${cfg.rclone.config}
@@ -97,7 +98,6 @@ in {
             };
             Service = {
               Type = "simple";
-              ExecStartPre = "/usr/bin/env mkdir -p %h/${cfg.rclone.storage}";
               ExecStart = lib.getExe mountStorage;
               ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/${cfg.rclone.storage}/%i";
               Restart = "always";
