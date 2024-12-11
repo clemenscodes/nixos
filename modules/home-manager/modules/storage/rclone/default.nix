@@ -11,7 +11,7 @@
     mkdir -p $HOME/${cfg.rclone.gdrive.storage}
     mkdir -p $RCLONE_HOME
 
-    echo "[gdrive]" > $RCLONE_HOME/${cfg.rclone.gdrive.config}
+    echo "[${cfg.rclone.gdrive.mount}]" > $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "type = drive" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "team_drive = " >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
 
@@ -23,7 +23,7 @@
       --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientId} --style=plain) \
       --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientSecret} --style=plain) \
       --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.token} --style=plain) \
-      gdrive: ${cfg.rclone.gdrive.storage} \
+      ${cfg.rclone.gdrive.mount}: ${cfg.rclone.gdrive.storage} \
       --poll-interval 10m
   '';
 in {
@@ -33,14 +33,18 @@ in {
         rclone = {
           enable = lib.mkEnableOption "Enable rclone for storage" // {default = false;};
           gdrive = {
-            enable = lib.mkEnableOption "Enable Google Drive " // {default = false;};
+            enable = lib.mkEnableOption "Enable Google Drive" // {default = false;};
+            mount = lib.mkOption {
+              type = lib.types.str;
+              default = "gdrive";
+            };
             config = lib.mkOption {
               type = lib.types.str;
-              default = "gdrive.conf";
+              default = "${cfg.rclone.gdrive.mount}.conf";
             };
             storage = lib.mkOption {
               type = lib.types.str;
-              default = ".local/share/storage/gdrive";
+              default = ".local/share/storage/${cfg.rclone.gdrive.mount}";
             };
             clientId = lib.mkOption {
               type = lib.types.path;
