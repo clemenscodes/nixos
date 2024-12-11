@@ -73,6 +73,13 @@ in {
         };
       };
     };
+    programs = {
+      zsh = {
+        shellAliases = lib.mkIf config.modules.shell.zsh.enable {
+          storage = "cd $HOME/${cfg.rclone.storage}";
+        };
+      };
+    };
     systemd = {
       user = {
         services = {
