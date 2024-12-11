@@ -5,25 +5,25 @@
   ...
 }: let
   cfg = config.modules.storage;
-  mountStorage = pkgs.writeShellScriptBin "mount-storage" ''
+  mountGoogleDrive = pkgs.writeShellScriptBin "mount-gdrive" ''
     RCLONE_HOME=$XDG_CONFIG_HOME/rclone
 
-    mkdir -p $HOME/${cfg.rclone.storage}
+    mkdir -p $HOME/${cfg.rclone.gdrive.storage}
     mkdir -p $RCLONE_HOME
 
-    echo "[${cfg.rclone.mount}]" > $RCLONE_HOME/${cfg.rclone.config}
-    echo "type = ${cfg.rclone.type}" >> $RCLONE_HOME/${cfg.rclone.config}
-    echo "team_drive = " >> $RCLONE_HOME/${cfg.rclone.config}
+    echo "[gdrive]" > $RCLONE_HOME/${cfg.rclone.gdrive.config}
+    echo "type = drive" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
+    echo "team_drive = " >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
 
     ${pkgs.rclone}/bin/rclone \
-      --config $RCLONE_HOME/${cfg.rclone.config} \
+      --config $RCLONE_HOME/${cfg.rclone.gdrive.config} \
       --vfs-cache-mode writes \
       --ignore-checksum mount \
-      --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.clientId} --style=plain) \
-      --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.clientSecret} --style=plain) \
-      --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.token} --style=plain) \
-      --drive-scope ${cfg.rclone.scope} \
-      ${cfg.rclone.mount}: ${cfg.rclone.storage} \
+      --drive-scope drive \
+      --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientId} --style=plain) \
+      --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientSecret} --style=plain) \
+      --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.token} --style=plain) \
+      gdrive: ${cfg.rclone.gdrive.storage} \
       --poll-interval 10m
   '';
 in {
@@ -32,37 +32,28 @@ in {
       storage = {
         rclone = {
           enable = lib.mkEnableOption "Enable rclone for storage" // {default = false;};
-          config = lib.mkOption {
-            type = lib.types.str;
-            default = "rclone.conf";
-          };
-          mount = lib.mkOption {
-            type = lib.types.str;
-            default = "gdrive";
-          };
-          storage = lib.mkOption {
-            type = lib.types.str;
-            default = ".local/share/storage";
-          };
-          type = lib.mkOption {
-            type = lib.types.enum ["drive"];
-            default = "drive";
-          };
-          scope = lib.mkOption {
-            type = lib.types.enum ["drive"];
-            default = "drive";
-          };
-          clientId = lib.mkOption {
-            type = lib.types.path;
-            default = null;
-          };
-          clientSecret = lib.mkOption {
-            type = lib.types.path;
-            default = null;
-          };
-          token = lib.mkOption {
-            type = lib.types.path;
-            default = null;
+          gdrive = {
+            enable = lib.mkEnableOption "Enable Google Drive " // {default = false;};
+            config = lib.mkOption {
+              type = lib.types.str;
+              default = "gdrive.conf";
+            };
+            storage = lib.mkOption {
+              type = lib.types.str;
+              default = ".local/share/storage/gdrive";
+            };
+            clientId = lib.mkOption {
+              type = lib.types.path;
+              default = null;
+            };
+            clientSecret = lib.mkOption {
+              type = lib.types.path;
+              default = null;
+            };
+            token = lib.mkOption {
+              type = lib.types.path;
+              default = null;
+            };
           };
         };
       };
@@ -88,9 +79,9 @@ in {
     systemd = {
       user = {
         services = {
-          rclone = {
+          rclone-gdrive = lib.mkIf cfg.rclone.gdrive.enable {
             Unit = {
-              Description = "Example programmatic mount configuration with nix and home-manager.";
+              Description = "${cfg.rclone.gdrive.mount}";
               After = ["network-online.target"];
             };
             Install = {
@@ -98,8 +89,8 @@ in {
             };
             Service = {
               Type = "simple";
-              ExecStart = lib.getExe mountStorage;
-              ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/${cfg.rclone.storage}/%i";
+              ExecStart = lib.getExe mountGoogleDrive;
+              ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/${cfg.rclone.gdrive.storage}/%i";
               Restart = "always";
               RestartSec = 10;
             };
