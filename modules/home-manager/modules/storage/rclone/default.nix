@@ -69,7 +69,7 @@ in {
         pkgs.rclone
         pkgs.rclone-browser
       ];
-      sessionVariables = {
+      sessionVariables = lib.mkIf cfg.rclone.gdrive.enable {
         GDRIVE_STORAGE = "$HOME/${cfg.rclone.gdrive.storage}";
       };
     };
@@ -77,7 +77,10 @@ in {
       zsh = {
         shellAliases = lib.mkIf config.modules.shell.zsh.enable {
           storage = "$EXPLORER $XDG_CONFIG_HOME/rclone";
-          gdrives = "$EXPLORER $GDRIVE_STORAGE";
+          gdrives =
+            if cfg.rclone.gdrive.enable
+            then "$EXPLORER $GDRIVE_STORAGE"
+            else null;
         };
       };
     };
