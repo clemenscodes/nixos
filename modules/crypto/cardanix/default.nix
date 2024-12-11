@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   config,
   lib,
   system,
@@ -24,9 +20,6 @@ in {
     inputs.cardanix.nixosModules.${system}
   ];
   config = mkIf (cfg.enable && cfg.cardanix.enable) {
-    environment = {
-      systemPackages = [inputs.cardano-workbench.packages.${system}.cdwb];
-    };
     cardano = {
       inherit (cfg.cardanix) enable;
       bech32 = {

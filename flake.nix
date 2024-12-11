@@ -106,9 +106,6 @@
     cardanix = {
       url = "github:clemenscodes/cardanix";
     };
-    cardano-workbench = {
-      url = "github:clemenscodes/cardano-workbench";
-    };
   };
   outputs = inputs:
     inputs.flake-utils.lib.eachDefaultSystem (
