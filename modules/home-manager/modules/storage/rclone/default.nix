@@ -6,14 +6,16 @@
 }: let
   cfg = config.modules.storage;
   mountStorage = pkgs.writeShellScriptBin "mount-storage" ''
-    mkdir -p ~/config/rclone
+    RCLONE_HOME=$XDG_CONFIG_HOME/rclone
 
-    echo "[${cfg.rclone.mount}]" > ~/.config/rclone/${cfg.rclone.config}
-    echo "type = ${cfg.rclone.type}" >> ~/.config/rclone/${cfg.rclone.config}
-    echo "team_drive = " >> ~/.config/rclone/${cfg.rclone.config}
+    mkdir -p $RCLONE_HOME
+
+    echo "[${cfg.rclone.mount}]" > $RCLONE_HOME/${cfg.rclone.config}
+    echo "type = ${cfg.rclone.type}" >> $RCLONE_HOME/${cfg.rclone.config}
+    echo "team_drive = " >> $RCLONE_HOME/${cfg.rclone.config}
 
     ${pkgs.rclone}/bin/rclone \
-      --config ~/.config/rclone/${cfg.rclone.config} \
+      --config $RCLONE_HOME/${cfg.rclone.config} \
       --vfs-cache-mode writes \
       --ignore-checksum mount \
       --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.clientId} --style=plain) \
