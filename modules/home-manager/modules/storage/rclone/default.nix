@@ -25,15 +25,15 @@ in {
             default = "drive";
           };
           clientId = lib.mkOption {
-            type = lib.types.str;
+            type = lib.types.path;
             default = null;
           };
           clientSecret = lib.mkOption {
-            type = lib.types.str;
+            type = lib.types.path;
             default = null;
           };
           token = lib.mkOption {
-            type = lib.types.str;
+            type = lib.types.path;
             default = null;
           };
         };
