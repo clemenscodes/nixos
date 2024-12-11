@@ -61,6 +61,9 @@ in {
         pkgs.rclone
         pkgs.rclone-browser
       ];
+      sessionVariables = {
+        STORAGE = "$HOME/${cfg.rclone.storage}";
+      };
     };
     xdg = {
       configFile = {
@@ -76,7 +79,7 @@ in {
     programs = {
       zsh = {
         shellAliases = lib.mkIf config.modules.shell.zsh.enable {
-          storage = "cd $HOME/${cfg.rclone.storage}";
+          storage = "cd $STORAGE";
         };
       };
     };
