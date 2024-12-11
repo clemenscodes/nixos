@@ -58,6 +58,7 @@ in
           WINEPREFIX = "$HOME/.local/share/wine";
           LD_LIBRARY_PATH = "/run/opengl-driver/lib:$LD_LIBRARY_PATH";
           JAVA_HOME = "/etc/profiles/per-user/${user}";
+          EXPLORER = "${explorer}";
         };
       };
       programs = {
