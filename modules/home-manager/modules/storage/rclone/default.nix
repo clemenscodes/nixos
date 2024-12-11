@@ -6,6 +6,8 @@
 }: let
   cfg = config.modules.storage;
   mountStorage = pkgs.writeShellScriptBin "mount-storage" ''
+    mkdir -p ~/config/rclone
+
     echo "[${cfg.rclone.mount}]" > ~/.config/rclone/${cfg.rclone.config}
     echo "type = ${cfg.rclone.type}" >> ~/.config/rclone/${cfg.rclone.config}
     echo "team_drive = " >> ~/.config/rclone/${cfg.rclone.config}
