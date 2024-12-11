@@ -24,6 +24,7 @@ in
       ./organization
       (import ./security {inherit inputs;})
       ./shell
+      ./storage
       ./terminal
       ./utils
       ./xdg
