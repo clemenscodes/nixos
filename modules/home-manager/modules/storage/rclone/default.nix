@@ -53,10 +53,6 @@ in {
           text = ''
             [Google Drive]
             type = ${cfg.rclone.type}
-            client_id = ${cfg.rclone.clientId}
-            client_secret = ${cfg.rclone.clientSecret}
-            scope = ${cfg.rclone.scope}
-            token = ${cfg.rclone.token}
             team_drive =
           '';
         };
