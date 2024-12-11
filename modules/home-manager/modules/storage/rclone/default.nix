@@ -46,6 +46,11 @@ in {
         pkgs.rclone
         pkgs.rclone-browser
       ];
+      sessionVariables = {
+        RCLONE_DRIVE_CLIENT_ID = "$(${pkgs.bat}/bin/bat ${cfg.rclone.clientId} --style=plain)";
+        RCLONE_DRIVE_CLIENT_SECRET = "$(${pkgs.bat}/bin/bat ${cfg.rclone.clientSecret} --style=plain)";
+        RCLONE_DRIVE_TOKEN = "$(${pkgs.bat}/bin/bat ${cfg.rclone.token} --style=plain)";
+      };
     };
     xdg = {
       configFile = {
