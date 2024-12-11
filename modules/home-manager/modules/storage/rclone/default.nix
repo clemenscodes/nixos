@@ -12,6 +12,10 @@ in {
       storage = {
         rclone = {
           enable = lib.mkEnableOption "Enable rclone for storage" // {default = false;};
+          mount = lib.mkOption {
+            type = lib.types.str;
+            default = "Google Drive";
+          };
           storage = lib.mkOption {
             type = lib.types.str;
             default = ".local/share/storage";
@@ -56,7 +60,7 @@ in {
       configFile = {
         "rclone/${rcloneConf}" = {
           text = ''
-            [Google Drive]
+            [${cfg.rclone.mount}]
             type = ${cfg.rclone.type}
             team_drive =
           '';
@@ -77,7 +81,7 @@ in {
             Service = {
               Type = "notify";
               ExecStartPre = "/usr/bin/env mkdir -p %h/${cfg.rclone.storage}";
-              ExecStart = "${pkgs.rclone}/bin/rclone --config=%h/.config/rclone/${rcloneConf} --vfs-cache-mode writes --ignore-checksum mount \"${cfg.rclone.type}:\" \"${cfg.rclone.storage}\"";
+              ExecStart = "${pkgs.rclone}/bin/rclone --config=%h/.config/rclone/${rcloneConf} --vfs-cache-mode writes --ignore-checksum mount \"${cfg.rclone.mount}:\" \"${cfg.rclone.storage}\"";
               ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/${cfg.rclone.storage}/%i";
             };
           };
