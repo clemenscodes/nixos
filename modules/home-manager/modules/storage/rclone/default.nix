@@ -84,12 +84,5 @@ in {
         };
       };
     };
-
-    assertions = [
-      {
-        assertion = (cfg.rclone.clientId == null) || (cfg.rclone.clientSecret == null) || (cfg.rclone.token == null);
-        message = "None of the options clientId, clientSecret and token can be null and must be defined.";
-      }
-    ];
   };
 }
