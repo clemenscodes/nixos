@@ -13,6 +13,7 @@ in
       ./gimp
       ./gstreamer
       ./handbrake
+      ./inkscape
       ./kdenlive
     ];
     options = {
