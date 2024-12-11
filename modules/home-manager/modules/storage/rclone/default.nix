@@ -6,6 +6,16 @@
 }: let
   cfg = config.modules.storage;
   rcloneConf = "rclone.conf";
+  mountStorage = pkgs.writeShellScriptBin "mount-storage" ''
+    ${pkgs.rclone}/bin/rclone \
+      --config ~/.config/rclone/${rcloneConf} \
+      --vfs-cache-mode writes \
+      --ignore-checksum mount \
+      --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.clientId} --style=plain) \
+      --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.clientSecret} --style=plain) \
+      --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.token} --style=plain) \
+      \"${cfg.rclone.mount}:\" \"${cfg.rclone.storage}\"
+  '';
 in {
   options = {
     modules = {
@@ -14,7 +24,7 @@ in {
           enable = lib.mkEnableOption "Enable rclone for storage" // {default = false;};
           mount = lib.mkOption {
             type = lib.types.str;
-            default = "Google Drive";
+            default = "gdrive";
           };
           storage = lib.mkOption {
             type = lib.types.str;
@@ -50,11 +60,6 @@ in {
         pkgs.rclone
         pkgs.rclone-browser
       ];
-      sessionVariables = {
-        RCLONE_DRIVE_CLIENT_ID = "$(${pkgs.bat}/bin/bat ${cfg.rclone.clientId} --style=plain)";
-        RCLONE_DRIVE_CLIENT_SECRET = "$(${pkgs.bat}/bin/bat ${cfg.rclone.clientSecret} --style=plain)";
-        RCLONE_DRIVE_TOKEN = "$(${pkgs.bat}/bin/bat ${cfg.rclone.token} --style=plain)";
-      };
     };
     xdg = {
       configFile = {
@@ -81,7 +86,7 @@ in {
             Service = {
               Type = "notify";
               ExecStartPre = "/usr/bin/env mkdir -p %h/${cfg.rclone.storage}";
-              ExecStart = "${pkgs.rclone}/bin/rclone --config=%h/.config/rclone/${rcloneConf} --vfs-cache-mode writes --ignore-checksum mount \"${cfg.rclone.mount}:\" \"${cfg.rclone.storage}\"";
+              ExecStart = lib.getExe mountStorage;
               ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/${cfg.rclone.storage}/%i";
             };
           };
