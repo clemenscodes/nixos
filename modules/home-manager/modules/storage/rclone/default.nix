@@ -13,6 +13,7 @@
 
     echo "[${cfg.rclone.gdrive.mount}]" > $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "type = drive" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
+    echo "scope = drive" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "team_drive = " >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
 
     echo >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
@@ -26,8 +27,8 @@
     ${pkgs.rclone}/bin/rclone \
       --config $RCLONE_HOME/${cfg.rclone.gdrive.config} \
       --vfs-cache-mode writes \
-      --ignore-checksum mount \
-      --drive-scope drive \
+      --ignore-checksum \
+      mount \
       --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientId} --style=plain) \
       --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientSecret} --style=plain) \
       --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.token} --style=plain) \
@@ -49,7 +50,12 @@
       echo "Starting sync to $SYNC_PATH"
       ${pkgs.rclone}/bin/rclone \
         --config $RCLONE_HOME/${cfg.rclone.gdrive.config} \
-        sync ${cfg.rclone.gdrive.mount}: $SYNC_PATH \
+        --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientId} --style=plain) \
+        --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientSecret} --style=plain) \
+        --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.token} --style=plain) \
+        --crypt-password $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_password} --style=plain) \
+        --crypt-password2 $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_salt} --style=plain) \
+        sync ${cfg.rclone.gdrive.crypt}: $SYNC_PATH \
         --bwlimit=8.5M \
         --progress
       echo "Sync completed. Waiting for 10 minutes..."
