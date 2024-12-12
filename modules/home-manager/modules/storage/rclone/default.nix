@@ -37,12 +37,18 @@
       --poll-interval 10m
   '';
   syncGoogleDrive = pkgs.writeShellScriptBin "sync-gdrive" ''
+    RCLONE_HOME="$XDG_CONFIG_HOME/rclone"
     SYNC_PATH="${cfg.rclone.gdrive.sync}"
-    mkdir -p $SYNC_PATH
+
+    mkdir -p $RCLONE_HOME $SYNC_PATH
 
     while true; do
       echo "Starting sync at $(date)"
-      ${pkgs.rclone}/bin/rclone sync "${cfg.rclone.gdrive.mount}:" "$SYNC_PATH" --bwlimit=8.5M --progress
+      ${pkgs.rclone}/bin/rclone \
+        --config $RCLONE_HOME/${cfg.rclone.gdrive.config} \
+        sync "${cfg.rclone.gdrive.mount}:" "$SYNC_PATH" \
+        --bwlimit=8.5M \
+        --progress
       echo "Sync completed at $(date). Waiting for 10 minutes..."
       sleep 600
     done
