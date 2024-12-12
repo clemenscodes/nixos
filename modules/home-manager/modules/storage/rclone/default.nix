@@ -20,7 +20,7 @@
 
     echo "[${cfg.rclone.gdrive.mount}_crypt]" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "type = crypt" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
-    echo "remote = ${cfg.rclone.gdrive.mount}" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
+    echo "remote = ${cfg.rclone.gdrive.mount}:" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "filename_encryption = standard" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "directory_name_encryption = true" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
 
