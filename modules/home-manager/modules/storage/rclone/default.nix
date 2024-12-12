@@ -88,7 +88,7 @@ in {
             };
             sync = lib.mkOption {
               type = lib.types.str;
-              default = "$HOME/.local/share/sync/${cfg.rclone.gdrive.mount}";
+              default = "$HOME/.local/share/sync/${cfg.rclone.gdrive.mount}/mount";
             };
             clientId = lib.mkOption {
               type = lib.types.path;
@@ -117,10 +117,16 @@ in {
   };
   config = lib.mkIf (cfg.enable && cfg.rclone.enable) {
     home = {
-      packages = [
-        pkgs.rclone
-        pkgs.rclone-browser
-      ];
+      packages =
+        [
+          pkgs.rclone
+          pkgs.rclone-browser
+        ]
+        ++ (
+          if cfg.rclone.gdrive.enable
+          then [mountGoogleDrive umountGoogleDrive syncGoogleDrive]
+          else []
+        );
       sessionVariables = lib.mkIf cfg.rclone.gdrive.enable {
         GDRIVE_STORAGE = "${cfg.rclone.gdrive.storage}";
       };
