@@ -6,10 +6,10 @@
 }: let
   cfg = config.modules.storage;
   mountGoogleDrive = pkgs.writeShellScriptBin "mount-gdrive" ''
-    RCLONE_HOME=$XDG_CONFIG_HOME/rclone
+    RCLONE_HOME="$XDG_CONFIG_HOME/rclone"
+    STORAGE="${cfg.rclone.gdrive.storage}"
 
-    mkdir -p $HOME/${cfg.rclone.gdrive.storage}
-    mkdir -p $RCLONE_HOME
+    mkdir -p $STORAGE $RCLONE_HOME
 
     echo "[${cfg.rclone.gdrive.mount}]" > $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "type = drive" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
@@ -33,11 +33,11 @@
       --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.token} --style=plain) \
       --crypt-password $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_password} --style=plain) \
       --crypt-password2 $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_salt} --style=plain) \
-      ${cfg.rclone.gdrive.crypt}: ${cfg.rclone.gdrive.storage} \
+      ${cfg.rclone.gdrive.crypt}: $STORAGE \
       --poll-interval 10m
   '';
   syncGoogleDrive = pkgs.writeShellScriptBin "sync-gdrive" ''
-    SYNC_PATH="$HOME/${cfg.rclone.gdrive.sync}"
+    SYNC_PATH="${cfg.rclone.gdrive.sync}"
     mkdir -p $SYNC_PATH
 
     while true; do
@@ -69,11 +69,11 @@ in {
             };
             storage = lib.mkOption {
               type = lib.types.str;
-              default = ".local/share/storage/${cfg.rclone.gdrive.mount}";
+              default = "$HOME/.local/share/storage/${cfg.rclone.gdrive.mount}";
             };
             sync = lib.mkOption {
               type = lib.types.str;
-              default = ".local/share/sync/${cfg.rclone.gdrive.mount}";
+              default = "$HOME/.local/share/sync/${cfg.rclone.gdrive.mount}";
             };
             clientId = lib.mkOption {
               type = lib.types.path;
@@ -107,13 +107,12 @@ in {
         pkgs.rclone-browser
       ];
       sessionVariables = lib.mkIf cfg.rclone.gdrive.enable {
-        GDRIVE_STORAGE = "$HOME/${cfg.rclone.gdrive.storage}";
+        GDRIVE_STORAGE = "${cfg.rclone.gdrive.storage}";
       };
     };
     programs = {
       zsh = {
         shellAliases = lib.mkIf config.modules.shell.zsh.enable {
-          storage = "$EXPLORER $XDG_CONFIG_HOME/rclone";
           gdrives =
             if cfg.rclone.gdrive.enable
             then "$EXPLORER $GDRIVE_STORAGE"
@@ -135,7 +134,7 @@ in {
             Service = {
               Type = "simple";
               ExecStart = lib.getExe mountGoogleDrive;
-              ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/${cfg.rclone.gdrive.storage}/%i";
+              ExecStop = "${pkgs.fuse}/bin/fusermount -u ${cfg.rclone.gdrive.storage}/%i";
               Restart = "always";
               RestartSec = 10;
             };
