@@ -36,7 +36,7 @@
       ${cfg.rclone.gdrive.crypt}: $STORAGE \
       --poll-interval 10m
   '';
-  umountGoogleDrive = pkgs.writeShellScriptBin "mount-gdrive" ''
+  umountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
     ${pkgs.fuse}/bin/fusermount -u ${cfg.rclone.gdrive.storage}
   '';
   syncGoogleDrive = pkgs.writeShellScriptBin "sync-gdrive" ''
