@@ -36,6 +36,9 @@
       ${cfg.rclone.gdrive.crypt}: $STORAGE \
       --poll-interval 10m
   '';
+  umountGoogleDrive = pkgs.writeShellScriptBin "mount-gdrive" ''
+    ${pkgs.fuse}/bin/fusermount -u ${cfg.rclone.gdrive.storage}
+  '';
   syncGoogleDrive = pkgs.writeShellScriptBin "sync-gdrive" ''
     RCLONE_HOME="$XDG_CONFIG_HOME/rclone"
     SYNC_PATH="${cfg.rclone.gdrive.sync}"
@@ -140,7 +143,7 @@ in {
             Service = {
               Type = "simple";
               ExecStart = lib.getExe mountGoogleDrive;
-              ExecStop = "${pkgs.fuse}/bin/fusermount -u ${cfg.rclone.gdrive.storage}/%i";
+              ExecStop = lib.getExe umountGoogleDrive;
               Restart = "always";
               RestartSec = 10;
             };
