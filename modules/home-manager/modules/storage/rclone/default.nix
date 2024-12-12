@@ -44,7 +44,7 @@
     RCLONE_HOME="$XDG_CONFIG_HOME/rclone"
     SYNC_PATH="${cfg.rclone.gdrive.sync}"
 
-    mkdir -p $RCLONE_HOME $SYNC_PATH
+    ${pkgs.coreutils}/bin/mkdir -p $RCLONE_HOME $SYNC_PATH
 
     while true; do
       echo "Starting sync to $SYNC_PATH"
@@ -59,7 +59,7 @@
         --bwlimit=8.5M \
         --progress
       echo "Sync completed. Waiting for 10 minutes..."
-      sleep 600
+      ${pkgs.coreutils}/bin/sleep 600
     done
   '';
 in {
