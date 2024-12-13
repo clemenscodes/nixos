@@ -67,11 +67,6 @@
       ${pkgs.coreutils}/bin/sleep 600
     done
   '';
-  gdrivePackages = [
-    mountGoogleDrive
-    umountGoogleDrive
-    syncGoogleDrive
-  ];
 in {
   options = {
     modules = {
@@ -126,8 +121,12 @@ in {
   };
   config = lib.mkIf (cfg.enable && cfg.rclone.enable && cfg.rclone.gdrive.enable) {
     home = {
-      packages = [pkgs.rclone pkgs.rclone-browser] ++ lib.optionals cfg.rclone.gdrive.enable gdrivePackages;
-      sessionVariables = lib.mkIf cfg.rclone.gdrive.enable {
+      packages = [
+        mountGoogleDrive
+        umountGoogleDrive
+        syncGoogleDrive
+      ];
+      sessionVariables = {
         GDRIVE_STORAGE = cfg.rclone.gdrive.storage;
         GDRIVE_SYNC = cfg.rclone.gdrive.sync;
       };
@@ -135,17 +134,14 @@ in {
     programs = {
       zsh = {
         shellAliases = lib.mkIf config.modules.shell.zsh.enable {
-          gdrives =
-            if cfg.rclone.gdrive.enable
-            then "$EXPLORER $GDRIVE_STORAGE"
-            else null;
+          gdrives = "$EXPLORER $GDRIVE_STORAGE";
         };
       };
     };
     systemd = {
       user = {
         services = {
-          "rclone-${cfg.rclone.gdrive.mount}" = lib.mkIf cfg.rclone.gdrive.enable {
+          "rclone-${cfg.rclone.gdrive.mount}" = {
             Unit = {
               Description = cfg.rclone.gdrive.mount;
               After = ["network-online.target"];
@@ -161,7 +157,7 @@ in {
               RestartSec = 10;
             };
           };
-          "rclone-${cfg.rclone.gdrive.mount}-sync" = lib.mkIf cfg.rclone.gdrive.enable {
+          "rclone-${cfg.rclone.gdrive.mount}-sync" = {
             Unit = {
               Description = "${cfg.rclone.gdrive.mount} sync";
               After = ["rclone-${cfg.rclone.gdrive.mount}.service"];
