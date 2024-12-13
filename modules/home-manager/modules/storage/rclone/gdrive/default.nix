@@ -172,7 +172,7 @@ in {
             };
             Service = {
               Type = "simple";
-              Restart = "on-abort";
+              Restart = "always";
               RestartSec = "5s";
               ExecStart = lib.getExe mountGoogleDrive;
               ExecStop = lib.getExe unmountGoogleDrive;
