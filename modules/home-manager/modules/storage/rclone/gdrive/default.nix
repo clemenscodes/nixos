@@ -26,20 +26,17 @@
 
     ${pkgs.rclone}/bin/rclone \
       --config $RCLONE_HOME/${cfg.rclone.gdrive.config} \
-      --vfs-cache-mode writes \
-      --ignore-checksum \
-      mount \
       --drive-client-id $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientId} --style=plain) \
       --drive-client-secret $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.clientSecret} --style=plain) \
       --drive-token $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.token} --style=plain) \
       --crypt-password $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_password} --style=plain) \
       --crypt-password2 $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_salt} --style=plain) \
-      ${cfg.rclone.gdrive.crypt}: $STORAGE \
       --cache-dir "$XDG_RUNTIME_DIR" \
       --vfs-cache-mode full \
       --vfs-cache-max-size 262144 \
       --poll-interval 10m \
-      &
+      --umask 022 \
+      mount ${cfg.rclone.gdrive.crypt}: $STORAGE 
   '';
   unmountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
     MOUNT="${cfg.rclone.gdrive.storage}"
