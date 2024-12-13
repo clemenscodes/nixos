@@ -41,8 +41,8 @@
     ${pkgs.fuse}/bin/fusermount -u ${cfg.rclone.gdrive.storage}
   '';
   remountGoogleDrive = pkgs.writeShellScriptBin "remount-gdrive" ''
-    ${lib.getExe unmountGoogleDrive}
-    ${lib.getExe mountGoogleDrive}
+    ${pkgs.systemd}/bin/systemctl --user stop rclone-${cfg.rclone.gdrive.mount}.service
+    ${pkgs.systemd}/bin/systemctl --user start rclone-${cfg.rclone.gdrive.mount}.service
   '';
   syncGoogleDrive = pkgs.writeShellScriptBin "sync-gdrive" ''
     RCLONE_HOME="$XDG_CONFIG_HOME/rclone"
