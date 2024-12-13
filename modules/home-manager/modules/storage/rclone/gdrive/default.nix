@@ -40,11 +40,12 @@
   '';
   unmountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
     MOUNT="${cfg.rclone.gdrive.storage}"
+
     # next line sends SIGTERM to any process accessing the mounted filesystem:
     ${pkgs.psmisc}/bin/fuser -Mk -SIGTERM -m "$MOUNT"
-    whoami
-    groups
-    echo "IAM TRYING TO UNMOUNT THAT AND HOPE I HAVE THE PERMISSIONS"
+
+    echo "I am $(id -un) with groups $(id -Gn)"
+
     while true;
     do
       if ${pkgs.psmisc}/bin/fuser -m "$MOUNT";
@@ -52,7 +53,14 @@
         echo "Mount $MOUNT is busy, waiting..."
         ${pkgs.coreutils}/bin/sleep 1
       else
-        ${pkgs.fuse}/bin/fusermount -u "$MOUNT" && exit 0
+        echo "Unmounting $MOUNT"
+        if ${pkgs.fuse}/bin/fusermount -u "$MOUNT"; then
+            echo "Successfully unmounted $MOUNT"
+            exit 0
+        else
+            echo "Failed to unmount $MOUNT" >&2
+            exit 1
+        fi
       fi
     done
   '';
