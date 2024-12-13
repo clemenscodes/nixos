@@ -153,6 +153,7 @@ in {
               Type = "simple";
               ExecStart = lib.getExe mountGoogleDrive;
               ExecStop = lib.getExe umountGoogleDrive;
+              ExecReload = "${lib.getExe umountGoogleDrive} && ${lib.getExe mountGoogleDrive}";
               Restart = "always";
               RestartSec = 10;
             };
