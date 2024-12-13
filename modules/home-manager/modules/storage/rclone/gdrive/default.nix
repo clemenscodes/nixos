@@ -42,11 +42,15 @@
     MOUNT="${cfg.rclone.gdrive.storage}"
     # next line sends SIGTERM to any process accessing the mounted filesystem:
     ${pkgs.psmisc}/bin/fuser -Mk -SIGTERM -m "$MOUNT"
+    whoami
+    groups
+    echo "IAM TRYING TO UNMOUNT THAT AND HOPE I HAVE THE PERMISSIONS"
     while true;
     do
       if ${pkgs.psmisc}/bin/fuser -m "$MOUNT";
       then
-        echo "Mount $MOUNT is busy, waiting..."; ${pkgs.coreutils}/bin/sleep 1
+        echo "Mount $MOUNT is busy, waiting..."
+        ${pkgs.coreutils}/bin/sleep 1
       else
         ${pkgs.fuse}/bin/fusermount -u "$MOUNT" && exit 0
       fi
