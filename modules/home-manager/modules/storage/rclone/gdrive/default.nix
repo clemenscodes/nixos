@@ -51,7 +51,7 @@
       then
         echo "Mount $MOUNT is busy, waiting..."; ${pkgs.coreutils}/bin/sleep 1
       else
-        ${pkgs.fuse}/bin/fusermount -u "$MOUNT"; exit 0
+        ${pkgs.fuse}/bin/fusermount -u "$MOUNT" && exit 0
       fi
     done
   '';
