@@ -135,6 +135,7 @@ in {
       zsh = {
         shellAliases = lib.mkIf config.modules.shell.zsh.enable {
           gdrives = "$EXPLORER $GDRIVE_STORAGE";
+          gsync = "$EXPLORER $GDRIVE_SYNC";
         };
       };
     };
