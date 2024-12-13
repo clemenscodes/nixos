@@ -37,8 +37,12 @@
       ${cfg.rclone.gdrive.crypt}: $STORAGE \
       --poll-interval 10m
   '';
-  umountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
+  unmountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
     ${pkgs.fuse}/bin/fusermount -u ${cfg.rclone.gdrive.storage}
+  '';
+  remountGoogleDrive = pkgs.writeShellScriptBin "remount-gdrive" ''
+    ${lib.getExe unmountGoogleDrive}
+    ${lib.getExe mountGoogleDrive}
   '';
   syncGoogleDrive = pkgs.writeShellScriptBin "sync-gdrive" ''
     RCLONE_HOME="$XDG_CONFIG_HOME/rclone"
@@ -122,7 +126,8 @@ in {
     home = {
       packages = [
         mountGoogleDrive
-        umountGoogleDrive
+        unmountGoogleDrive
+        remountGoogleDrive
         syncGoogleDrive
       ];
       sessionVariables = {
@@ -152,8 +157,8 @@ in {
             Service = {
               Type = "simple";
               ExecStart = lib.getExe mountGoogleDrive;
-              ExecStop = lib.getExe umountGoogleDrive;
-              ExecReload = "${lib.getExe umountGoogleDrive} && ${lib.getExe mountGoogleDrive}";
+              ExecStop = lib.getExe unmountGoogleDrive;
+              ExecReload = lib.getExe remountGoogleDrive;
               Restart = "always";
               RestartSec = 10;
             };
