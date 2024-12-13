@@ -38,6 +38,7 @@ in
               lua
               */
               ''
+                --- @sync entry
                 return {
                 	entry = function()
                 		local h = cx.active.current.hovered
@@ -54,7 +55,7 @@ in
               ''
                 [[manager.prepend_keymap]]
                 on   = [ "l" ]
-                run  = "plugin --sync smart-enter"
+                run  = "plugin smart-enter"
                 desc = "Enter the child directory, or open the file"
               '';
           };
@@ -74,7 +75,7 @@ in
             keymap = {
               "[manager.prepend_keymap]" = {
                 on = ["l"];
-                run = "plugin --sync smart-enter";
+                run = "plugin smart-enter";
                 desc = "Enter the child directory, or open the file";
               };
             };
