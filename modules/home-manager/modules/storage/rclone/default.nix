@@ -35,6 +35,7 @@
       --crypt-password $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_password} --style=plain) \
       --crypt-password2 $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_salt} --style=plain) \
       ${cfg.rclone.gdrive.crypt}: $STORAGE \
+      --fast-list \
       --poll-interval 10m
   '';
   umountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
@@ -56,6 +57,10 @@
         --crypt-password $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_password} --style=plain) \
         --crypt-password2 $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_salt} --style=plain) \
         sync ${cfg.rclone.gdrive.crypt}: $SYNC_PATH \
+        -Pv \
+        --check-first \
+        --cutoff-mode soft \
+        --transfers=4 \
         --bwlimit=8.5M \
         --progress
       echo "Sync completed. Waiting for 10 minutes..."
