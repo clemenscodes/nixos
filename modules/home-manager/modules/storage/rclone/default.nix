@@ -22,7 +22,7 @@
     echo "type = crypt" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "remote = ${cfg.rclone.gdrive.mount}:" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
     echo "filename_encryption = standard" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
-    echo "directory_name_encryption = false" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
+    echo "directory_name_encryption = true" >> $RCLONE_HOME/${cfg.rclone.gdrive.config}
 
     ${pkgs.rclone}/bin/rclone \
       --config $RCLONE_HOME/${cfg.rclone.gdrive.config} \
@@ -93,7 +93,7 @@ in {
             };
             sync = lib.mkOption {
               type = lib.types.str;
-              default = "$HOME/.local/share/sync/${cfg.rclone.gdrive.mount}/mount";
+              default = "$HOME/.local/share/sync/${cfg.rclone.gdrive.mount}";
             };
             clientId = lib.mkOption {
               type = lib.types.path;
