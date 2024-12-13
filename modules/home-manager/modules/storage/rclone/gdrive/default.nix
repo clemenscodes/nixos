@@ -35,14 +35,27 @@
       --crypt-password $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_password} --style=plain) \
       --crypt-password2 $(${pkgs.bat}/bin/bat ${cfg.rclone.gdrive.encryption_salt} --style=plain) \
       ${cfg.rclone.gdrive.crypt}: $STORAGE \
+      --cache-dir "$XDG_RUNTIME_DIR" \
+      --vfs-cache-mode full \
+      --vfs-cache-max-size 262144 \
+      --umask 077 \
+      --allow-other \
       --poll-interval 10m
   '';
   unmountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
-    ${pkgs.fuse}/bin/fusermount -u ${cfg.rclone.gdrive.storage}
-  '';
-  remountGoogleDrive = pkgs.writeShellScriptBin "remount-gdrive" ''
-    ${pkgs.systemd}/bin/systemctl --user stop rclone-${cfg.rclone.gdrive.mount}.service
-    ${pkgs.systemd}/bin/systemctl --user start rclone-${cfg.rclone.gdrive.mount}.service
+    MOUNT="${cfg.rclone.gdrive.storage}"
+    exec 1>&2
+    # next line sends SIGTERM to any process accessing the mounted filesystem:
+    ${pkgs.fuse}/bin/fuser -Mk -SIGTERM -m "$MOUNT"
+    while :;
+    do
+      if ${pkgs.fuse}/bin/fuser -m "$MOUNT";
+      then
+        echo "Mount $MOUNT is busy, waiting..."; ${pkgs.coreutils}/bin/sleep 1
+      else
+        ${pkgs.fuse}/bin/fusermount -u "$MOUNT"; exit 0
+      fi
+    done
   '';
   syncGoogleDrive = pkgs.writeShellScriptBin "sync-gdrive" ''
     RCLONE_HOME="$XDG_CONFIG_HOME/rclone"
@@ -127,7 +140,6 @@ in {
       packages = [
         mountGoogleDrive
         unmountGoogleDrive
-        remountGoogleDrive
         syncGoogleDrive
       ];
       sessionVariables = {
@@ -158,7 +170,6 @@ in {
               Type = "simple";
               ExecStart = lib.getExe mountGoogleDrive;
               ExecStop = lib.getExe unmountGoogleDrive;
-              ExecReload = lib.getExe remountGoogleDrive;
               Restart = "always";
               RestartSec = 10;
             };
