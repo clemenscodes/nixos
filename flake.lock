@@ -6019,11 +6019,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1733854086,
-        "narHash": "sha256-7oEXWsmxh6olyoTec+FBYkT+WsgxcAiApM84DAx9CU0=",
+        "lastModified": 1734089202,
+        "narHash": "sha256-9EUtLRP6IQM8S+ZvucTuXfyBwblbDxMU8NWwDcWz/TU=",
         "owner": "cymenix",
         "repo": "nvim",
-        "rev": "e24c96bd91b7ab69cc01dd2e1b49563bae592eee",
+        "rev": "ea17bddc144e8d8fef7cee30ced832364ad6903f",
         "type": "github"
       },
       "original": {
