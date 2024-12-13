@@ -167,7 +167,6 @@ in {
             };
             Service = {
               Type = "simple";
-              User = "%u";
               ExecStart = lib.getExe mountGoogleDrive;
               ExecStop = lib.getExe unmountGoogleDrive;
               KillSignal = "SIGINT";
