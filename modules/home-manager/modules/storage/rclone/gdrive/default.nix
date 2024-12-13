@@ -166,7 +166,7 @@ in {
             };
             Service = {
               Type = "simple";
-              User = "%h";
+              User = "%u";
               Group = "%g";
               Restart = "on-abort";
               RestartSec = "5s";
