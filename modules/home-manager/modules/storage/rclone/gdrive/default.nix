@@ -35,16 +35,12 @@
       --vfs-cache-mode full \
       --vfs-cache-max-size 262144 \
       --poll-interval 10m \
-      --umask 022 \
-      mount ${cfg.rclone.gdrive.crypt}: $STORAGE 
+      mount ${cfg.rclone.gdrive.crypt}: $STORAGE
   '';
   unmountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
     MOUNT="${cfg.rclone.gdrive.storage}"
 
-    # next line sends SIGTERM to any process accessing the mounted filesystem:
     ${pkgs.psmisc}/bin/fuser -Mk -SIGTERM -m "$MOUNT"
-
-    echo "I am $(id -un) with groups $(id -Gn)"
 
     while true;
     do
