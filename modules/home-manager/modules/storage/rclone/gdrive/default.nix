@@ -38,9 +38,8 @@
       --cache-dir "$XDG_RUNTIME_DIR" \
       --vfs-cache-mode full \
       --vfs-cache-max-size 262144 \
-      --umask 077 \
-      --allow-other \
-      --poll-interval 10m
+      --poll-interval 10m \
+      &
   '';
   unmountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
     MOUNT="${cfg.rclone.gdrive.storage}"
@@ -167,12 +166,12 @@ in {
             };
             Service = {
               Type = "simple";
-              ExecStart = lib.getExe mountGoogleDrive;
-              ExecStop = lib.getExe unmountGoogleDrive;
-              KillSignal = "SIGINT";
-              KillMode = "None";
+              User = "%h";
+              Group = "%g";
               Restart = "on-abort";
               RestartSec = "5s";
+              ExecStart = lib.getExe mountGoogleDrive;
+              ExecStop = lib.getExe unmountGoogleDrive;
             };
           };
           "rclone-${cfg.rclone.gdrive.mount}-sync" = {
