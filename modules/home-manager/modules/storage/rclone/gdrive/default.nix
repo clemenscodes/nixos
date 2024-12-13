@@ -44,12 +44,11 @@
   '';
   unmountGoogleDrive = pkgs.writeShellScriptBin "unmount-gdrive" ''
     MOUNT="${cfg.rclone.gdrive.storage}"
-    exec 1>&2
     # next line sends SIGTERM to any process accessing the mounted filesystem:
-    ${pkgs.fuse}/bin/fuser -Mk -SIGTERM -m "$MOUNT"
-    while :;
+    ${pkgs.psmisc}/bin/fuser -Mk -SIGTERM -m "$MOUNT"
+    while true;
     do
-      if ${pkgs.fuse}/bin/fuser -m "$MOUNT";
+      if ${pkgs.psmisc}/bin/fuser -m "$MOUNT";
       then
         echo "Mount $MOUNT is busy, waiting..."; ${pkgs.coreutils}/bin/sleep 1
       else
@@ -168,10 +167,12 @@ in {
             };
             Service = {
               Type = "simple";
+              User = "%u";
               ExecStart = lib.getExe mountGoogleDrive;
               ExecStop = lib.getExe unmountGoogleDrive;
-              Restart = "always";
-              RestartSec = 10;
+              KillSignal = "SIGINT";
+              Restart = "on-abort";
+              RestartSec = "5s";
             };
           };
           "rclone-${cfg.rclone.gdrive.mount}-sync" = {
