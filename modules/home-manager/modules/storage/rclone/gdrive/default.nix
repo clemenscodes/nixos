@@ -54,7 +54,7 @@
         ${pkgs.coreutils}/bin/sleep 1
       else
         echo "Unmounting $MOUNT"
-        if ${pkgs.fuse}/bin/fusermount -u "$MOUNT"; then
+        if fusermount -u "$MOUNT"; then
             echo "Successfully unmounted $MOUNT"
             exit 0
         else
@@ -145,6 +145,7 @@ in {
   config = lib.mkIf (cfg.enable && cfg.rclone.enable && cfg.rclone.gdrive.enable) {
     home = {
       packages = [
+        pkgs.fuse
         mountGoogleDrive
         unmountGoogleDrive
         syncGoogleDrive
