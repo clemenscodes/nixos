@@ -166,8 +166,6 @@ in {
             };
             Service = {
               Type = "simple";
-              User = "%U";
-              Group = "%G";
               Restart = "on-abort";
               RestartSec = "5s";
               ExecStart = lib.getExe mountGoogleDrive;
