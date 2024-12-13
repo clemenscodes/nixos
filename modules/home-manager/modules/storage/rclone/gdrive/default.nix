@@ -177,7 +177,6 @@ in {
               Type = "simple";
               Restart = "on-abort";
               RestartSec = "5s";
-              User = "%U";
               ExecStart = lib.getExe mountGoogleDrive;
               ExecStop = lib.getExe unmountGoogleDrive;
             };
