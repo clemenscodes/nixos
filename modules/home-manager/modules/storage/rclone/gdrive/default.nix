@@ -165,7 +165,7 @@ in {
           "rclone-${cfg.rclone.gdrive.mount}" = {
             Unit = {
               Description = cfg.rclone.gdrive.mount;
-              After = ["network-online.target"];
+              After = ["network-online.target" "sops-nix.service"];
             };
             Install = {
               WantedBy = ["default.target"];
