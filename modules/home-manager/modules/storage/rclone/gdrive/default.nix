@@ -170,6 +170,7 @@ in {
               ExecStart = lib.getExe mountGoogleDrive;
               ExecStop = lib.getExe unmountGoogleDrive;
               KillSignal = "SIGINT";
+              KillMode = "None";
               Restart = "on-abort";
               RestartSec = "5s";
             };
