@@ -33,6 +33,9 @@ in {
       };
       node = {
         inherit (cfg.cardanix) enable;
+        submit-api = {
+          inherit (cfg.cardanix) enable;
+        };
       };
       wallet = {
         inherit (cfg.cardanix) enable;
