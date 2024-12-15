@@ -10,6 +10,7 @@ in
       ./bat
       ./fzf
       ./lpi
+      ./lsusb
       ./nix-prefetch-github
       ./nix-prefetch-git
       ./ripgrep
