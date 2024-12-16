@@ -14,6 +14,7 @@ in
       ./gh
       ./git
       ./node
+      ./pentesting
       ./postman
       ./reversing
     ];
