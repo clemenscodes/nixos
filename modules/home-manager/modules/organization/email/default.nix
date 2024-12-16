@@ -65,7 +65,7 @@ in {
     services = {
       mbsync = {
         enable = cfg.email.enable;
-        configFile = "${config.home.homeDirectory}/.mbsyncrc";
+        configFile = "${config.home.homeDirectory}/.config/isyncrc";
         frequency = "*:*:0/10";
       };
       imapnotify = {
