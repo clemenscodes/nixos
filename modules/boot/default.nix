@@ -6,7 +6,7 @@
 }: let
   cfg = config.modules;
   isDesktop = config.modules.display.gui != "headless";
-  inherit (cfg.boot) efiSupport device enable;
+  inherit (cfg.boot) efiSupport device;
 in
   with lib; {
     imports = [
@@ -18,7 +18,7 @@ in
       modules = {
         boot = {
           enable = mkEnableOption "Enable bootloader" // {default = cfg.enable && isDesktop;};
-          efiSupport = mkEnableOption "Enable UEFI" // {default = cfg.boot.enable;};
+          efiSupport = mkEnableOption "Enable UEFI" // {default = false;};
           device = mkOption {
             type = types.str;
             default = "nodev";
@@ -41,7 +41,8 @@ in
         supportedFilesystems = ["ext4" "ntfs" "exfat"];
         loader = {
           grub = {
-            inherit enable efiSupport device;
+            enable = lib.mkForce true;
+            inherit efiSupport device;
           };
         };
         extraModulePackages = with config.boot.kernelPackages; [
