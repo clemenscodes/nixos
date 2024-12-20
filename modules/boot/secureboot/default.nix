@@ -26,14 +26,6 @@ in {
         enable = true;
         pkiBundle = "/etc/secureboot";
       };
-      loader = {
-        systemd-boot = {
-          enable = lib.mkForce false;
-        };
-        efi = {
-          efiSysMountPoint = "/boot";
-        };
-      };
     };
   };
 }
