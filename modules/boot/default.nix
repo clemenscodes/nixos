@@ -6,7 +6,7 @@
 }: let
   cfg = config.modules;
   isDesktop = config.modules.display.gui != "headless";
-  inherit (cfg.boot) efiSupport device;
+  inherit (cfg.boot) efiSupport device enable;
 in
   with lib; {
     imports = [
@@ -40,18 +40,8 @@ in
         kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
         supportedFilesystems = ["ext4" "ntfs" "exfat"];
         loader = {
-          systemd-boot = {
-            enable = efiSupport;
-          };
           grub = {
-            inherit efiSupport device;
-            enable = lib.mkForce (!efiSupport);
-            copyKernels = efiSupport;
-            useOSProber = efiSupport;
-          };
-          efi = {
-            canTouchEfiVariables = true;
-            efiSysMountPoint = "/boot";
+            inherit enable efiSupport device;
           };
         };
         extraModulePackages = with config.boot.kernelPackages; [
