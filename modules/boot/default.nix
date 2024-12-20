@@ -39,7 +39,7 @@ in
       boot = {
         kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
         supportedFilesystems = ["ext4" "ntfs" "exfat"];
-        loader = {
+        loader = mkIf (!cfg.boot.secureboot.enable) {
           grub = {
             enable = lib.mkForce true;
             inherit efiSupport device;
