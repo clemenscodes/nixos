@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   config,
   lib,
   ...
@@ -7,6 +7,7 @@
 in
   with lib; {
     imports = [
+      (import ./ghostty {inherit inputs;})
       ./kitty
     ];
     options = {
@@ -14,7 +15,7 @@ in
         terminal = {
           enable = mkEnableOption "Enable a great terminal" // {default = cfg.enable;};
           defaultTerminal = mkOption {
-            type = types.str;
+            type = types.enum ["kitty" "ghostty"];
             default = "kitty";
           };
         };

@@ -25,7 +25,7 @@ in
       (import ./security {inherit inputs;})
       ./shell
       ./storage
-      ./terminal
+      (import ./terminal {inherit inputs;})
       ./utils
       ./xdg
     ];

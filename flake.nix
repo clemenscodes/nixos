@@ -28,6 +28,9 @@
         };
       };
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
     nvim = {
       url = "github:cymenix/nvim";
       inputs = {
