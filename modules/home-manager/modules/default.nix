@@ -1,4 +1,8 @@
-{inputs}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   osConfig,
   config,
   lib,
@@ -25,7 +29,7 @@ in
       (import ./security {inherit inputs;})
       ./shell
       ./storage
-      (import ./terminal {inherit inputs;})
+      (import ./terminal {inherit pkgs;})
       ./utils
       ./xdg
     ];

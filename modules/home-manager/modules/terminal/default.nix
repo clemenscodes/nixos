@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{pkgs, ...}: {
   config,
   lib,
   ...
@@ -7,7 +7,7 @@
 in
   with lib; {
     imports = [
-      (import ./ghostty {inherit inputs;})
+      (import ./ghostty {inherit pkgs;})
       ./kitty
     ];
     options = {

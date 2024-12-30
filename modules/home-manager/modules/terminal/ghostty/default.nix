@@ -1,23 +1,18 @@
-{inputs, ...}: {
-  config,
-  lib,
-  system,
-  ...
-}: let
+{pkgs, ...}: {config, ...}: let
   cfg = config.modules.terminal;
 in {
   options = {
     modules = {
       terminal = {
         ghostty = {
-          enable = lib.mkEnableOption "Enable ghostty" // {default = cfg.enable;};
+          enable = pkgs.lib.mkEnableOption "Enable ghostty" // {default = cfg.enable;};
         };
       };
     };
   };
-  config = lib.mkIf (cfg.enable && cfg.ghostty.enable) {
+  config = pkgs.lib.mkIf (cfg.enable && cfg.ghostty.enable) {
     home = {
-      packages = [inputs.ghostty.packages.${system}.default];
+      packages = [pkgs.ghostty];
     };
   };
 }

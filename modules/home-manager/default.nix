@@ -1,4 +1,8 @@
-{inputs}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   config,
   lib,
   nixpkgs,
@@ -20,11 +24,11 @@ in
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit inputs nixpkgs system;};
+        extraSpecialArgs = {inherit inputs nixpkgs system pkgs;};
         backupFileExtension = "home-manager-backup";
         users = {
           ${cfg.users.user} = {
-            imports = [(import ./modules {inherit inputs;})];
+            imports = [(import ./modules {inherit inputs pkgs;})];
           };
         };
       };

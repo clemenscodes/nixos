@@ -1,4 +1,8 @@
-{inputs, pkgs, ...}: {lib, ...}:
+{
+  inputs,
+  pkgs,
+  ...
+}: {lib, ...}:
 with lib; {
   imports = [
     (import ./boot {inherit inputs;})
@@ -12,7 +16,7 @@ with lib; {
     (import ./gaming {inherit inputs;})
     ./gpu
     ./hostname
-    (import ./home-manager {inherit inputs;})
+    (import ./home-manager {inherit inputs pkgs;})
     (import ./io {inherit inputs;})
     ./locale
     ./machine
