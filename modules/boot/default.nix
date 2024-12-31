@@ -12,7 +12,6 @@ in
     imports = [
       ./fuse
       (import ./secureboot {inherit inputs;})
-      ./themes
     ];
     options = {
       modules = {
