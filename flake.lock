@@ -6275,11 +6275,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1735649411,
-        "narHash": "sha256-w2JpoyP2771JPrzxAMSRn71dKRKEp6aAtqJTZPjJmYU=",
+        "lastModified": 1735651078,
+        "narHash": "sha256-Wmgr3G9Y6olDIKqJtiw6o90ik4b07EgYnokpR3FNxjc=",
         "owner": "cymenix",
         "repo": "nvim",
-        "rev": "bf297e378597b335cbbac0c1b0f29455b968c525",
+        "rev": "e78ae3b02b9dbd0aed192cac60303790e467e9f0",
         "type": "github"
       },
       "original": {
