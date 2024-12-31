@@ -1,15 +1,16 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
-}: {lib, ...}:
-with lib; {
+}: {...}: {
   imports = [
     (import ./boot {inherit inputs;})
     ./config
     ./cpu
     (import ./crypto {inherit inputs pkgs;})
     ./databases
+    (import ./disk {inherit inputs pkgs lib;})
     ./display
     ./docs
     ./fonts
@@ -34,7 +35,7 @@ with lib; {
   ];
   options = {
     modules = {
-      enable = mkEnableOption "Enable custom modules" // {default = true;};
+      enable = lib.mkEnableOption "Enable custom modules" // {default = true;};
     };
   };
 }

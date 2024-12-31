@@ -6,6 +6,17 @@
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
     nur = {
       url = "github:nix-community/NUR";
     };
@@ -115,9 +126,10 @@
           inherit system;
           overlays = [inputs.cardanix.overlays.default];
         };
+        inherit (pkgs) lib;
       in {
         nixosModules = {
-          default = import ./modules {inherit inputs pkgs;};
+          default = import ./modules {inherit inputs pkgs lib;};
         };
         overlays = import ./overlays {inherit inputs nixpkgs system;};
         formatter = pkgs.alejandra;
