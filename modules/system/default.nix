@@ -12,7 +12,7 @@ in
           enable = mkEnableOption "Enable system settings" // {default = cfg.enable;};
           defaultVersion = mkOption {
             type = types.str;
-            default = "25.05";
+            default = lib.versions.majorMinor lib.version;
           };
         };
       };

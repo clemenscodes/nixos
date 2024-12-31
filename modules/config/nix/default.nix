@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  self,
   ...
 }: let
   cfg = config.modules.config;
@@ -17,10 +18,23 @@ in
     };
     config = mkIf (cfg.enable && cfg.nix.enable) {
       nix = {
+        nixPath = ["nixpkgs=${pkgs.path}"];
+        registry = {
+          self = {
+            flake = self;
+          };
+          nixpkgs = {
+            from = {
+              id = "nixpkgs";
+              type = "indirect";
+            };
+            flake = inputs.nixpkgs;
+          };
+        };
         gc = {
           automatic = lib.mkDefault false;
           dates = "weekly";
-          options = "--delete-older-than 30d";
+          options = "--delete-older-than 7d";
         };
         optimise = {
           automatic = true;
@@ -37,6 +51,7 @@ in
             "nix-command"
             "flakes"
             "fetch-closure"
+            "accept-flake-config"
           ];
           substituters = [
             "https://cache.nixos.org"
