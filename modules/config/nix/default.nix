@@ -43,6 +43,9 @@ in
         };
         daemonCPUSchedPolicy = "idle";
         daemonIOSchedClass = "idle";
+        extraOptions = ''
+          accept-flake-config = true
+        '';
         settings = {
           auto-optimise-store = true;
           builders-use-substitutes = true;
@@ -53,7 +56,6 @@ in
             "nix-command"
             "flakes"
             "fetch-closure"
-            "accept-flake-config"
           ];
           substituters = [
             "https://cache.nixos.org"
