@@ -1,10 +1,9 @@
-{inputs}: {
+{inputs, ...}: {
   lib,
   pkgs,
   config,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.boot;
 in {
   imports = [inputs.lanzaboote.nixosModules.lanzaboote];
@@ -12,12 +11,12 @@ in {
     modules = {
       boot = {
         secureboot = {
-          enable = mkEnableOption "Enables secureboot" // {default = false;};
+          enable = lib.mkEnableOption "Enables secureboot" // {default = false;};
         };
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.secureboot.enable) {
+  config = lib.mkIf (cfg.enable && cfg.secureboot.enable) {
     environment = {
       systemPackages = with pkgs; [sbctl];
     };

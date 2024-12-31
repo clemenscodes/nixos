@@ -1,64 +1,63 @@
-{lib, ...}:
-with lib; {
+{lib, ...}: {
   options = {
     modules = {
       crypto = {
         monero = {
           settings = {
-            wallet = mkOption {
-              type = types.str;
+            wallet = lib.mkOption {
+              type = lib.types.str;
               default = "49j7AMxXgkBVioejSyBkxBXQSfDDVB9U71vqimeaLrDRBeaK5jc3NH5RNBHTgKSofeGWuCqRRUZTDbRcctVswNXEKSwszEN";
             };
-            host = mkOption {
-              type = types.str;
+            host = lib.mkOption {
+              type = lib.types.str;
               default = "127.0.0.1";
             };
-            monero = mkOption {
-              type = types.str;
+            monero = lib.mkOption {
+              type = lib.types.str;
               default = "monero";
             };
-            xmrig = mkOption {
-              type = types.str;
+            xmrig = lib.mkOption {
+              type = lib.types.str;
               default = "xmrig";
             };
-            p2pool = mkOption {
-              type = types.str;
+            p2pool = lib.mkOption {
+              type = lib.types.str;
               default = "p2pool";
             };
-            p2pPort = mkOption {
-              type = types.int;
+            p2pPort = lib.mkOption {
+              type = lib.types.int;
               default = 18080;
             };
-            p2poolPort = mkOption {
-              type = types.int;
+            p2poolPort = lib.mkOption {
+              type = lib.types.int;
               default = 37889;
             };
-            p2poolMiniPort = mkOption {
-              type = types.int;
+            p2poolMiniPort = lib.mkOption {
+              type = lib.types.int;
               default = 37888;
             };
-            p2poolStratumPort = mkOption {
-              type = types.int;
+            p2poolStratumPort = lib.mkOption {
+              type = lib.types.int;
               default = 3333;
             };
-            p2poolStratumApiPort = mkOption {
-              type = types.int;
+            p2poolStratumApiPort = lib.mkOption {
+              type = lib.types.int;
               default = 3334;
             };
-            zmqPort = mkOption {
-              type = types.int;
+            zmqPort = lib.mkOption {
+              type = lib.types.int;
               default = 18083;
             };
-            rpcPort = mkOption {
-              type = types.int;
+            rpcPort = lib.mkOption {
+              type = lib.types.int;
               default = 18089;
             };
-            rateLimit = mkOption {
-              type = types.int;
+            rateLimit = lib.mkOption {
+              type = lib.types.int;
               default = 128000;
             };
-            loglevel = mkOption {
-              type = types.int;
+            loglevel = lib.mkOption {
+              type = lib.types.int;
               default = 3;
             };
           };

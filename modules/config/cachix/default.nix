@@ -5,24 +5,23 @@
   ...
 }: let
   cfg = config.modules.config;
-in
-  with lib; {
-    options = {
-      modules = {
-        config = {
-          cachix = {
-            enable = mkEnableOption "Enable common cachix options" // {default = cfg.enable;};
-            token = mkOption {
-              type = types.path;
-              default = null;
-            };
+in {
+  options = {
+    modules = {
+      config = {
+        cachix = {
+          enable = lib.mkEnableOption "Enable common cachix options" // {default = cfg.enable;};
+          token = lib.mkOption {
+            type = lib.types.path;
+            default = null;
           };
         };
       };
     };
-    config = mkIf (cfg.enable && cfg.cachix.enable) {
-      environment = {
-        systemPackages = with pkgs; [cachix];
-      };
+  };
+  config = lib.mkIf (cfg.enable && cfg.cachix.enable) {
+    environment = {
+      systemPackages = with pkgs; [cachix];
     };
-  }
+  };
+}

@@ -5,25 +5,24 @@
   ...
 }: let
   cfg = config.modules.crypto;
-in
-  with lib; {
-    options = {
-      modules = {
-        crypto = {
-          ledger-live = {
-            enable = mkEnableOption "Enable ledger-live" // {default = cfg.enable;};
-          };
+in {
+  options = {
+    modules = {
+      crypto = {
+        ledger-live = {
+          enable = lib.mkEnableOption "Enable ledger-live" // {default = cfg.enable;};
         };
       };
     };
-    config = mkIf (cfg.ledger-live.enable) {
-      environment = {
-        systemPackages = with pkgs; [ledger-live-desktop];
-      };
-      hardware = {
-        ledger = {
-          enable = cfg.ledger-live.enable;
-        };
+  };
+  config = lib.mkIf (cfg.ledger-live.enable) {
+    environment = {
+      systemPackages = [pkgs.ledger-live-desktop];
+    };
+    hardware = {
+      ledger = {
+        enable = cfg.ledger-live.enable;
       };
     };
-  }
+  };
+}

@@ -4,15 +4,14 @@
   ...
 }: let
   cfg = config.modules.cpu;
-in
-  with lib; {
-    options = {
-      modules = {
-        cpu = {
-          amd = {
-            enable = mkEnableOption "Enable AMD CPU settings" // {default = cfg.enable;};
-          };
+in {
+  options = {
+    modules = {
+      cpu = {
+        amd = {
+          enable = lib.mkEnableOption "Enable AMD CPU settings" // {default = cfg.enable;};
         };
       };
     };
-  }
+  };
+}

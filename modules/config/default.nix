@@ -4,17 +4,16 @@
   ...
 }: let
   cfg = config.modules;
-in
-  with lib; {
-    imports = [
-      ./cachix
-      ./nix
-    ];
-    options = {
-      modules = {
-        config = {
-          enable = mkEnableOption "Enable common configurations" // {default = cfg.enable;};
-        };
+in {
+  imports = [
+    ./cachix
+    ./nix
+  ];
+  options = {
+    modules = {
+      config = {
+        enable = lib.mkEnableOption "Enable common configurations" // {default = cfg.enable;};
       };
     };
-  }
+  };
+}

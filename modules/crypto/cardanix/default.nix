@@ -1,17 +1,19 @@
-{inputs, ...}: {
-  config,
+{
+  inputs,
   lib,
+  ...
+}: {
+  config,
   system,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.crypto;
 in {
   options = {
     modules = {
       crypto = {
         cardanix = {
-          enable = mkEnableOption "Enable cardanix" // {default = false;};
+          enable = lib.mkEnableOption "Enable cardanix" // {default = false;};
         };
       };
     };
@@ -19,7 +21,7 @@ in {
   imports = [
     inputs.cardanix.nixosModules.${system}
   ];
-  config = mkIf (cfg.enable && cfg.cardanix.enable) {
+  config = lib.mkIf (cfg.enable && cfg.cardanix.enable) {
     cardano = {
       inherit (cfg.cardanix) enable;
       bech32 = {

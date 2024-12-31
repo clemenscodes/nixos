@@ -1,5 +1,9 @@
-{inputs, pkgs, ...}: {lib, ...}:
-with lib; {
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {...}: {
   imports = [
     (import ./cardanix {inherit inputs pkgs;})
     ./ledger-live
@@ -11,7 +15,7 @@ with lib; {
   options = {
     modules = {
       crypto = {
-        enable = mkEnableOption "Enable cryptocurrency modules" // {default = false;};
+        enable = lib.mkEnableOption "Enable cryptocurrency modules" // {default = false;};
       };
     };
   };
