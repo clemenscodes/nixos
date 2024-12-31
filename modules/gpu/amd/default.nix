@@ -38,7 +38,7 @@ in {
         (import ./gpu-usage-waybar {inherit pkgs;})
       ];
       variables = {
-        OCL_ICD_VENDORS = "${rocmPackages.clr.icd}/etc/OpenCL/vendors/";
+        # OCL_ICD_VENDORS = "${rocmPackages.clr.icd}/etc/OpenCL/vendors/";
       };
     };
     boot = {
@@ -54,7 +54,7 @@ in {
       };
     };
     systemd.tmpfiles.rules = [
-      "L+    /opt/rocm/hip   -    -    -     -    ${rocmPackages.clr}"
+      # "L+    /opt/rocm/hip   -    -    -     -    ${rocmPackages.clr}"
     ];
     hardware = {
       graphics = {
@@ -63,9 +63,9 @@ in {
           amdvlk
           mesa
           mesa.drivers
-          rocmPackages.clr
-          rocmPackages.clr.icd
-          rocmPackages.rocm-runtime
+          # rocmPackages.clr
+          # rocmPackages.clr.icd
+          # rocmPackages.rocm-runtime
         ];
         extraPackages32 = [
           driversi686Linux.amdvlk
