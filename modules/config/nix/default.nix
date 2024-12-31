@@ -2,6 +2,7 @@
   lib,
   config,
   self,
+  inputs,
   ...
 }: let
   cfg = config.modules.config;
