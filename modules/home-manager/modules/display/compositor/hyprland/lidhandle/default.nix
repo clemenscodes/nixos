@@ -5,8 +5,6 @@ pkgs.writeShellScriptBin "lidhandle" ''
   if [ "$state" == "on" ]; then
     if [ "$count_monitors" = 1 ]; then
       ${pkgs.hyprlock}/bin/hyprlock
-      sleep 1
-      ${pkgs.systemd}/bin/systemctl suspend
     else
       ${pkgs.hyprland}/bin/hyprctl keyword monitor "eDP-1, disable"
     fi

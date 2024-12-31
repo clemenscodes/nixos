@@ -55,14 +55,14 @@ in {
   };
   config = lib.mkIf (cfg.enable && cfg.hyprland.enable) {
     home = {
-      packages = with pkgs; [
-        xdg-desktop-portal-hyprland
-        brightnessctl
-        swww
-        wl-clipboard
-        cliphist
+      packages = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.brightnessctl
+        pkgs.swww
+        pkgs.wl-clipboard
+        pkgs.cliphist
+        (lib.mkIf isLaptop (import ./lidhandle {inherit pkgs;}))
         (import ./wallpaper {inherit pkgs;})
-        (mkIf isLaptop (import ./lidhandle {inherit pkgs;}))
       ];
     };
     wayland = {
