@@ -44,7 +44,7 @@ in {
         inherit (cfg.cardanix) enable;
       };
       daedalus = {
-        inherit (cfg.cardanix) enable;
+        enable = false;
       };
     };
   };
