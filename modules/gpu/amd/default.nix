@@ -31,7 +31,6 @@ in {
     environment = {
       systemPackages = [
         clinfo
-        rocmPackages.rocminfo
         glxinfo
         glmark2
         libva-utils
