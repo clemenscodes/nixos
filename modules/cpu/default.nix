@@ -1,13 +1,14 @@
 {
-  config,
+  inputs,
+  pkgs,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules;
 in {
   imports = [
-    ./amd
-    ./intel
+    (import ./amd {inherit inputs pkgs lib;})
+    (import ./intel {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

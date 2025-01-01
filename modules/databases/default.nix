@@ -1,6 +1,11 @@
-{lib, ...}: {
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {...}: {
   imports = [
-    ./postgres
+    (import ./postgres {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

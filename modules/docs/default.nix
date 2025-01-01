@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: {config, ...}: let
   cfg = config.modules.docs;
 in {
   options = {

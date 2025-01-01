@@ -1,9 +1,8 @@
 {
-  lib,
-  config,
   pkgs,
+  lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.config;
 in {
   options = {
@@ -21,7 +20,7 @@ in {
   };
   config = lib.mkIf (cfg.enable && cfg.cachix.enable) {
     environment = {
-      systemPackages = with pkgs; [cachix];
+      systemPackages = [pkgs.cachix];
     };
   };
 }

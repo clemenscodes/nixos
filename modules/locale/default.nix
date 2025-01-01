@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: {config, ...}: let
   cfg = config.modules;
   locale = config.modules.locale.defaultLocale;
   utfLocale = "${locale}_${lib.toUpper locale}.UTF-8";

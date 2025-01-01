@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: {config, ...}: let
   cfg = config.modules.databases;
 in {
   options = {
@@ -15,12 +11,14 @@ in {
     };
   };
   config = lib.mkIf (cfg.enable && cfg.postgres.enable) {
-    services.postgresql = {
-      enable = true;
-      authentication = lib.mkOverride 10 ''
-        #type database  DBuser  auth-method
-        local all       all     trust
-      '';
+    services = {
+      postgresql = {
+        enable = true;
+        authentication = lib.mkOverride 10 ''
+          #type database  DBuser  auth-method
+          local all       all     trust
+        '';
+      };
     };
   };
 }

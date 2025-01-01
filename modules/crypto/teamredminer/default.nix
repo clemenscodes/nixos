@@ -1,16 +1,16 @@
 {
+  inputs,
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.crypto;
-  teamredminer = "${import ./bin {inherit pkgs;}}";
+  teamredminer = "${import ./bin {inherit inputs pkgs lib;}}";
   miner = "teamredminer";
   log = "/var/log/${miner}/${miner}.log";
 in {
   imports = [
-    ./settings
+    (import ./settings {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

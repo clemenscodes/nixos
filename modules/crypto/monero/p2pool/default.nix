@@ -1,9 +1,8 @@
 {
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.crypto;
 in {
   config = lib.mkIf (cfg.enable && cfg.monero.enable) {

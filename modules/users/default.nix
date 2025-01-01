@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: {config, ...}: let
   cfg = config.modules;
   inherit (cfg.users) user;
   inherit (lib) mkEnableOption mkIf mkOption types;

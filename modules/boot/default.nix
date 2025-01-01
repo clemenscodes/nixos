@@ -9,8 +9,8 @@
   inherit (cfg.boot) efiSupport device;
 in {
   imports = [
-    ./fuse
-    (import ./secureboot {inherit inputs;})
+    (import ./fuse {inherit inputs pkgs lib;})
+    (import ./secureboot {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

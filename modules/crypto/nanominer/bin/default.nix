@@ -1,4 +1,4 @@
-{pkgs}:
+{pkgs, ...}:
 pkgs.stdenv.mkDerivation rec {
   name = "nanominer";
   version = "3.8.12";

@@ -1,9 +1,9 @@
-{inputs, ...}: {
-  lib,
+{
+  inputs,
   pkgs,
-  config,
+  lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.boot;
 in {
   imports = [inputs.lanzaboote.nixosModules.lanzaboote];

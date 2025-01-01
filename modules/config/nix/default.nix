@@ -1,9 +1,11 @@
 {
-  lib,
-  config,
-  self,
   inputs,
   pkgs,
+  lib,
+  ...
+}: {
+  config,
+  self,
   ...
 }: let
   cfg = config.modules.config;

@@ -1,9 +1,9 @@
-{inputs, ...}: {
-  lib,
-  config,
+{
+  inputs,
   pkgs,
+  lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gaming;
   wine = pkgs.wineWowPackages.unstableFull;
 in {

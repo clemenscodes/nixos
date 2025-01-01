@@ -1,13 +1,14 @@
 {
+  inputs,
+  pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules;
 in {
   imports = [
-    ./cachix
-    ./nix
+    (import ./cachix {inherit inputs pkgs lib;})
+    (import ./nix {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

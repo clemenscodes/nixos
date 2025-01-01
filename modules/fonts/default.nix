@@ -1,9 +1,8 @@
 {
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   size = 8;
   font = "VictorMono";
   monospace = "${font} Nerd Font Mono";

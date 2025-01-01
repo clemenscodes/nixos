@@ -1,9 +1,8 @@
 {
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules;
   waylandPkgs =
     if cfg.display.gui == "wayland"

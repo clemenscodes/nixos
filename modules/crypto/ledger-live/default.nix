@@ -1,9 +1,8 @@
 {
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.crypto;
 in {
   options = {
@@ -21,7 +20,7 @@ in {
     };
     hardware = {
       ledger = {
-        enable = cfg.ledger-live.enable;
+        inherit (cfg.ledger-live) enable;
       };
     };
   };

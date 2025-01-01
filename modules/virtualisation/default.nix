@@ -1,9 +1,8 @@
-{...}: {
+{
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules;
   user = cfg.users.user;
   isDesktop = cfg.display.gui != "headless";

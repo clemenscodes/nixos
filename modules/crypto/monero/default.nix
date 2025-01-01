@@ -1,9 +1,9 @@
 {
+  inputs,
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.crypto;
   mkUser = user: {
     isSystemUser = true;
@@ -14,10 +14,10 @@
   };
 in {
   imports = [
-    ./monerod
-    ./p2pool
-    ./settings
-    ./xmrig
+    (import ./monerod {inherit inputs pkgs lib;})
+    (import ./p2pool {inherit inputs pkgs lib;})
+    (import ./settings {inherit inputs pkgs lib;})
+    (import ./xmrig {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {
@@ -30,7 +30,7 @@ in {
   };
   config = lib.mkIf (cfg.enable && cfg.monero.enable) {
     environment = {
-      systemPackages = with pkgs; [monero-gui];
+      systemPackages = [pkgs.monero-gui];
     };
     users = with cfg.monero.settings; {
       users = {

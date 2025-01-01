@@ -1,9 +1,9 @@
-{inputs, ...}: {
+{
+  inputs,
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules;
   inherit (config.modules.users) name user;
 in {
