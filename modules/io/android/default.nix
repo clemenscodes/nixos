@@ -1,9 +1,8 @@
 {
-  lib,
-  config,
   pkgs,
+  lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.io;
   inherit (config.modules.users) user;
 in {

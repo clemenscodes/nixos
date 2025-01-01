@@ -1,8 +1,8 @@
-{inputs}: {
+{
+  inputs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.io;
 in {
   imports = [inputs.xremap-flake.nixosModules.default];

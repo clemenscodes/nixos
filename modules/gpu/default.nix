@@ -1,7 +1,12 @@
-{lib, ...}: {...}: {
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {...}: {
   imports = [
-    ./amd
-    ./nvidia
+    (import ./amd {inherit inputs pkgs lib;})
+    (import ./nvidia {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

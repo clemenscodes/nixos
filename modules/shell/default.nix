@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
@@ -6,10 +7,10 @@
   cfg = config.modules;
 in {
   imports = [
-    ./console
-    ./environment
-    ./ld
-    ./zsh
+    (import ./console {inherit inputs pkgs lib;})
+    (import ./environment {inherit inputs pkgs lib;})
+    (import ./ld {inherit inputs pkgs lib;})
+    (import ./zsh {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

@@ -1,11 +1,16 @@
-{lib, ...}: {config, ...}: let
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {config, ...}: let
   cfg = config.modules;
 in {
   imports = [
-    ./auto-cpufreq
-    ./power
-    ./thermald
-    ./tlp
+    (import ./auto-cpufreq {inherit inputs pkgs lib;})
+    (import ./power {inherit inputs pkgs lib;})
+    (import ./thermald {inherit inputs pkgs lib;})
+    (import ./tlp {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

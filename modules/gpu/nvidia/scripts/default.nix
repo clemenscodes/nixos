@@ -1,15 +1,15 @@
 {
-  config,
-  lib,
+  inputs,
   pkgs,
+  lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gpu;
 in {
   config = lib.mkIf (cfg.enable && cfg.nvidia.enable) {
     environment = {
       systemPackages = [
-        (import ./nvidiagpuinfo {inherit pkgs;})
+        (import ./nvidiagpuinfo {inherit inputs pkgs lib;})
       ];
     };
   };

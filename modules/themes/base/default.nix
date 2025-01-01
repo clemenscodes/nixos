@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: {config, ...}: let
   inherit (lib) mkEnableOption mkOption types;
   cfg = config.modules.themes;
 in {

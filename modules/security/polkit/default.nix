@@ -1,12 +1,12 @@
 {
+  inputs,
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.security;
   isDesktop = config.modules.display.gui != "headless";
-  polkitagent = import ./polkitagent {inherit pkgs;};
+  polkitagent = import ./polkitagent {inherit inputs pkgs lib;};
 in {
   options = {
     modules = {

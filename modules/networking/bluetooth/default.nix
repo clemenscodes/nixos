@@ -1,11 +1,11 @@
 {
+  inputs,
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.networking;
-  bluez = "${import ./bluez {inherit pkgs lib;}}";
+  bluez = "${import ./bluez {inherit inputs pkgs lib;}}";
 in {
   options = {
     modules = {

@@ -1,15 +1,15 @@
 {
+  inputs,
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gpu;
   driver = "amdgpu";
 in {
   imports = [
-    ./corectrl
-    ./lact
+    (import ./corectrl {inherit inputs pkgs lib;})
+    (import ./lact {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {
@@ -33,7 +33,7 @@ in {
         pkgs.glmark2
         pkgs.libva-utils
         pkgs.vulkan-tools
-        (import ./gpu-usage-waybar {inherit pkgs;})
+        (import ./gpu-usage-waybar {inherit inputs pkgs lib;})
       ];
       variables = {
         # OCL_ICD_VENDORS = "${rocmPackages.clr.icd}/etc/OpenCL/vendors/";

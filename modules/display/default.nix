@@ -1,11 +1,16 @@
-{lib, ...}: {config, ...}: let
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {config, ...}: let
   cfg = config.modules;
 in {
   imports = [
-    ./gtk
-    ./hyprland
-    ./qt
-    ./sddm
+    (import ./gtk {inherit inputs pkgs lib;})
+    (import ./hyprland {inherit inputs pkgs lib;})
+    (import ./qt {inherit inputs pkgs lib;})
+    (import ./sddm {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

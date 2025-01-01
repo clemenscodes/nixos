@@ -1,9 +1,8 @@
 {
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.networking.vpn;
   thmvpn = pkgs.writeShellScriptBin "thmvpn" ''
     PROTOCOL="anyconnect"

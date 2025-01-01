@@ -1,8 +1,8 @@
-{inputs, ...}: {
-  config,
+{
+  inputs,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.themes;
   isDesktop = config.modules.display.gui != "headless";
 in {

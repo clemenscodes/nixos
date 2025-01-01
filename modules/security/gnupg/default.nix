@@ -1,9 +1,9 @@
 {
+  inputs,
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.security;
   inherit (config.modules.users) user;
 in {
@@ -45,7 +45,7 @@ in {
                 pkgs.runCommand "gnupg-socketdir" {
                   nativeBuildInputs = [pkgs.python3];
                 } ''
-                  ${pkgs.python3}/bin/python3 ${import ./gnupgdir.nix {inherit pkgs;}} '/home/${config.modules.users.user}/.local/share/gnupg' > $out
+                  ${pkgs.python3}/bin/python3 ${import ./gnupgdir.nix {inherit inputs pkgs lib;}} '/home/${config.modules.users.user}/.local/share/gnupg' > $out
                 '';
             in [
               "" # unset

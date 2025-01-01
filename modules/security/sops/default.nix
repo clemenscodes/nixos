@@ -1,9 +1,9 @@
-{inputs, ...}: {
+{
+  inputs,
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.security;
   inherit (config.modules.users) user;
 in {
@@ -20,7 +20,7 @@ in {
   config = lib.mkIf (cfg.enable && cfg.sops.enable) {
     environment = {
       systemPackages = [
-        (import ./setupsops.nix {inherit pkgs;})
+        (import ./setupsops.nix {inherit inputs pkgs lib;})
         pkgs.sops
         pkgs.age
         pkgs.ssh-to-age

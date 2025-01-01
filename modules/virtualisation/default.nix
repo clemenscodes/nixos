@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
@@ -8,8 +9,8 @@
   isDesktop = cfg.display.gui != "headless";
 in {
   imports = [
-    ./docker
-    ./virt-manager
+    (import ./docker {inherit inputs pkgs lib;})
+    (import ./virt-manager {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

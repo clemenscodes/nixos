@@ -1,16 +1,17 @@
 {
   inputs,
+  pkgs,
   lib,
   ...
 }: {config, ...}: let
   cfg = config.modules;
 in {
   imports = [
-    ./android
-    ./printing
-    ./sound
-    ./udisks
-    (import ./xremap {inherit inputs;})
+    (import ./android {inherit inputs pkgs lib;})
+    (import ./printing {inherit inputs pkgs lib;})
+    (import ./sound {inherit inputs pkgs lib;})
+    (import ./udisks {inherit inputs pkgs lib;})
+    (import ./xremap {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

@@ -9,11 +9,11 @@
 in {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
-    (import ./emulation {inherit inputs;})
-    ./gamemode
-    ./gamescope
-    ./steam
-    (import ./umu {inherit inputs;})
+    (import ./emulation {inherit inputs pkgs lib;})
+    (import ./gamemode {inherit inputs pkgs lib;})
+    (import ./gamescope {inherit inputs pkgs lib;})
+    (import ./steam {inherit inputs pkgs lib;})
+    (import ./umu {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

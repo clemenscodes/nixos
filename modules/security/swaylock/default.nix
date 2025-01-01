@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: {config, ...}: let
   cfg = config.modules;
   inherit (cfg.users) user;
   useSwaylock = config.home-manager.users.${user}.modules.display.lockscreen.swaylock.enable;

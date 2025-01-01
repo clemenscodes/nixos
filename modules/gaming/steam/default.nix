@@ -1,9 +1,8 @@
 {
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gaming;
 in {
   options = {

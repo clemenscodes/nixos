@@ -10,26 +10,26 @@ in {
   };
   config = lib.mkIf (cfg.enable && cfg.docs.enable) {
     documentation = {
-      enable = true;
+      inherit (cfg.docs) enable;
       nixos = {
-        enable = true;
-        includeAllModules = true;
+        inherit (cfg.docs) enable;
+        includeAllModules = cfg.docs.enable;
         options = {
           warningsAreErrors = false;
         };
       };
       info = {
-        enable = true;
+        inherit (cfg.docs) enable;
       };
       doc = {
-        enable = true;
+        inherit (cfg.docs) enable;
       };
       dev = {
-        enable = true;
+        inherit (cfg.docs) enable;
       };
       man = {
-        enable = true;
-        generateCaches = true;
+        inherit (cfg.docs) enable;
+        generateCaches = cfg.docs.enable;
       };
     };
   };

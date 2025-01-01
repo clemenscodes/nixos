@@ -1,9 +1,9 @@
-{inputs, ...}: {
+{
+  inputs,
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gaming;
   umu = inputs.umu.packages.${pkgs.system}.umu.override {
     version = "${inputs.umu.shortRev}";

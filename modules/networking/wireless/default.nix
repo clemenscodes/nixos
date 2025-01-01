@@ -1,12 +1,13 @@
 {
+  inputs,
+  pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.networking;
 in {
   imports = [
-    ./eduroam
+    (import ./eduroam {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

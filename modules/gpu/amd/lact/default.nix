@@ -1,9 +1,8 @@
 {
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gpu.amd;
   isDesktop = config.modules.display.gui != "headless";
 in {
@@ -23,7 +22,7 @@ in {
       users = {
         ${config.modules.users.user} = {
           home = {
-            packages = with pkgs; [lact];
+            packages = [pkgs.lact];
           };
         };
       };

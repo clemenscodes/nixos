@@ -1,9 +1,8 @@
 {
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.shell;
 in {
   options = {

@@ -1,9 +1,9 @@
 {
+  inputs,
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gpu;
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
@@ -13,7 +13,9 @@
     exec "$@"
   '';
 in {
-  imports = [./scripts];
+  imports = [
+    (import ./scripts {inherit inputs pkgs lib;})
+  ];
   options = {
     modules = {
       gpu = {
@@ -87,8 +89,8 @@ in {
         package = config.boot.kernelPackages.nvidiaPackages.production;
       };
       graphics = {
-        extraPackages = with pkgs; [nvidia-vaapi-driver];
-        extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+        extraPackages = [pkgs.nvidia-vaapi-driver];
+        extraPackages32 = [pkgs.pkgsi686Linuxnvidia-vaapi-driver];
       };
     };
     programs = {

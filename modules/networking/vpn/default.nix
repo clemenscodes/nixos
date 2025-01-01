@@ -1,6 +1,11 @@
-{lib, ...}: {
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {...}: {
   imports = [
-    ./thm
+    (import ./thm {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

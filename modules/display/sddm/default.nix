@@ -1,9 +1,8 @@
 {
   pkgs,
-  config,
   lib,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.display;
 in {
   options = {
@@ -17,11 +16,11 @@ in {
   };
   config = lib.mkIf (cfg.enable && cfg.hyprland.enable && cfg.sddm.enable) {
     environment = {
-      systemPackages = with pkgs; [
-        libsForQt5.qt5.qtquickcontrols2
-        libsForQt5.qt5.qtsvg
-        libsForQt5.qt5.qtgraphicaleffects
-        catppuccin-cursors.macchiatoBlue
+      systemPackages = [
+        pkgs.libsForQt5.qt5.qtquickcontrols2
+        pkgs.libsForQt5.qt5.qtsvg
+        pkgs.libsForQt5.qt5.qtgraphicaleffects
+        pkgs.catppuccin-cursors.macchiatoBlue
       ];
     };
     services = {
@@ -40,12 +39,12 @@ in {
             enable = cfg.gui == "wayland";
           };
           theme = "catppuccin-macchiato";
-          extraPackages = with pkgs.kdePackages; [
-            breeze-icons
-            kirigami
-            plasma5support
-            qtsvg
-            qtvirtualkeyboard
+          extraPackages = [
+            pkgs.kdePackages.breeze-icons
+            pkgs.kdePackages.kirigami
+            pkgs.kdePackages.plasma5support
+            pkgs.kdePackages.qtsvg
+            pkgs.kdePackages.qtvirtualkeyboard
           ];
           settings = {
             Theme = lib.mkForce {

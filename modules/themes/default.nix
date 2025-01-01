@@ -1,13 +1,14 @@
 {
   inputs,
+  pkgs,
   lib,
   ...
 }: {config, ...}: let
   cfg = config.modules;
 in {
   imports = [
-    ./base
-    (import ./catppuccin {inherit inputs;})
+    (import ./base {inherit inputs pkgs lib;})
+    (import ./catppuccin {inherit inputs pkgs lib;})
   ];
   options = {
     modules = {

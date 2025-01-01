@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  ...
 }: let
   pythonPath = with pkgs.python3.pkgs; [
     dbus-python
@@ -25,22 +26,22 @@ in
       })
     ];
 
-    buildInputs = with pkgs; [
-      alsa-lib
-      dbus
-      ell
-      glib
-      json_c
-      libical
-      python3
-      readline
-      udev
+    buildInputs = [
+      pkgs.alsa-lib
+      pkgs.dbus
+      pkgs.ell
+      pkgs.glib
+      pkgs.json_c
+      pkgs.libical
+      pkgs.python3
+      pkgs.readline
+      pkgs.udev
     ];
 
-    nativeBuildInputs = with pkgs; [
-      docutils
-      pkg-config
-      python3.pkgs.wrapPython
+    nativeBuildInputs = [
+      pkgs.docutils
+      pkgs.pkg-config
+      pkgs.python3.pkgs.wrapPython
     ];
 
     outputs = ["out" "dev" "test"];

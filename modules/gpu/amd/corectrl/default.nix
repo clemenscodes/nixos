@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{lib, ...}: {config, ...}: let
   cfg = config.modules.gpu.amd;
   isDesktop = config.modules.display.gui != "headless";
 in {
@@ -20,7 +16,7 @@ in {
   config = lib.mkIf (cfg.enable && cfg.corectrl.enable) {
     programs = {
       corectrl = {
-        enable = cfg.corectrl.enable;
+        inherit (cfg.corectrl) enable;
         gpuOverclock = {
           enable = true;
           ppfeaturemask = "0xfff7ffff";

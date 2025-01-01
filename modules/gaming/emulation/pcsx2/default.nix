@@ -1,9 +1,8 @@
 {
   pkgs,
   lib,
-  config,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.modules.gaming.emulation;
   ps2bios = pkgs.stdenv.mkDerivation {
     name = "ps2bios";
