@@ -12,11 +12,11 @@ in {
     (import ./hyprlock {inherit inputs pkgs lib;})
     (import ./polkit {inherit inputs pkgs lib;})
     (import ./rtkit {inherit inputs pkgs lib;})
+    (import ./sops {inherit inputs pkgs lib;})
     (import ./ssh {inherit inputs pkgs lib;})
     (import ./sudo {inherit inputs pkgs lib;})
     (import ./swaylock {inherit inputs pkgs lib;})
     (import ./tpm {inherit inputs pkgs lib;})
-    (import ./sops {inherit inputs;})
   ];
   options = {
     modules = {
