@@ -7,7 +7,7 @@
   cfg = config.modules.gaming;
 in {
   imports = [
-    (import ./pcsx2_ {inherit inputs pkgs lib;})
+    (import ./pcsx2 {inherit inputs pkgs lib;})
     (import ./rpcs3 {inherit inputs pkgs lib;})
   ];
   options = {
