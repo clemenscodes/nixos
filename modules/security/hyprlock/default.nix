@@ -6,24 +6,23 @@
   cfg = config.modules;
   inherit (cfg.users) user;
   useHyprlock = config.home-manager.users.${user}.modules.display.lockscreen.hyprlock.enable;
-in
-  with lib; {
-    options = {
-      modules = {
-        security = {
-          hyprlock = {
-            enable = mkEnableOption "Enable hyprlock PAM" // {default = useHyprlock;};
-          };
-        };
-      };
-    };
-    config = mkIf cfg.security.hyprlock.enable {
+in {
+  options = {
+    modules = {
       security = {
-        pam = {
-          services = {
-            hyprlock = {};
-          };
+        hyprlock = {
+          enable = lib.mkEnableOption "Enable hyprlock PAM" // {default = useHyprlock;};
         };
       };
     };
-  }
+  };
+  config = lib.mkIf cfg.security.hyprlock.enable {
+    security = {
+      pam = {
+        services = {
+          hyprlock = {};
+        };
+      };
+    };
+  };
+}

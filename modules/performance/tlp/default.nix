@@ -4,22 +4,21 @@
   ...
 }: let
   cfg = config.modules.performance;
-in
-  with lib; {
-    options = {
-      modules = {
-        performance = {
-          tlp = {
-            enable = mkEnableOption "Enable battery life optimizations" // {default = cfg.enable;};
-          };
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.tlp.enable) {
-      services = {
+in {
+  options = {
+    modules = {
+      performance = {
         tlp = {
-          enable = cfg.tlp.enable;
+          enable = lib.mkEnableOption "Enable battery life optimizations" // {default = cfg.enable;};
         };
       };
     };
-  }
+  };
+  config = lib.mkIf (cfg.enable && cfg.tlp.enable) {
+    services = {
+      tlp = {
+        inherit (cfg.tlp) enable;
+      };
+    };
+  };
+}

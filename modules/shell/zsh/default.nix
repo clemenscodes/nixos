@@ -5,25 +5,24 @@
   ...
 }: let
   cfg = config.modules.shell;
-in
-  with lib; {
-    options = {
-      modules = {
-        shell = {
-          zsh = {
-            enable = mkEnableOption "Enable zsh" // {default = cfg.enable;};
-          };
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.zsh.enable) {
-      programs = {
+in {
+  options = {
+    modules = {
+      shell = {
         zsh = {
-          enable = cfg.zsh.enable;
+          enable = lib.mkEnableOption "Enable zsh" // {default = cfg.enable;};
         };
       };
-      environment = {
-        shells = with pkgs; [zsh];
+    };
+  };
+  config = lib.mkIf (cfg.enable && cfg.zsh.enable) {
+    programs = {
+      zsh = {
+        inherit (cfg.zsh) enable;
       };
     };
-  }
+    environment = {
+      shells = [pkgs.zsh];
+    };
+  };
+}

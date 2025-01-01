@@ -1,32 +1,35 @@
-{inputs}: {
+{inputs, ...}: {
   pkgs,
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules;
-  inherit (config.modules.users) name;
+  inherit (config.modules.users) name user;
 in {
   imports = [inputs.wsl.nixosModules.default];
   options = {
     modules = {
       wsl = {
-        enable = mkEnableOption "Enable WSL support" // {default = cfg.machine.kind == "wsl";};
+        enable = lib.mkEnableOption "Enable WSL support" // {default = cfg.machine.kind == "wsl";};
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.wsl.enable) {
-    users.users.${name} = {
-      isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "docker"
-      ];
+  config = lib.mkIf (cfg.enable && cfg.wsl.enable) {
+    users = {
+      users = {
+        ${name} = {
+          isNormalUser = true;
+          extraGroups = [
+            "wheel"
+            "docker"
+          ];
+        };
+      };
     };
     wsl = {
-      enable = true;
-      defaultUser = cfg.users.user;
+      inherit (cfg.wsl) enable;
+      defaultUser = user;
       interop = {
         includePath = true;
         register = true;
@@ -69,7 +72,7 @@ in {
           hostname = config.networking.hostName;
         };
         user = {
-          default = cfg.users.user;
+          default = user;
         };
       };
     };
@@ -88,10 +91,10 @@ in {
       };
     };
     environment = {
-      systemPackages = with pkgs; [
-        wslu
-        wsl-open
-        wsl-vpnkit
+      systemPackages = [
+        pkgs.wslu
+        pkgs.wsl-open
+        pkgs.wsl-vpnkit
       ];
     };
     systemd = {

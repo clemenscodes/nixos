@@ -19,9 +19,19 @@
     };
     nur = {
       url = "github:nix-community/NUR";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     catppuccin = {
       url = "github:catppuccin/nix";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     wsl = {
       url = "github:nix-community/NixOS-WSL";
@@ -113,15 +123,29 @@
     };
     ps3-nix = {
       url = "github:clemenscodes/ps3-nix";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
     cardanix = {
       url = "github:clemenscodes/cardanix";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
     };
   };
-  outputs = inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (
+
+  outputs = {
+    nixpkgs,
+    flake-utils,
+    ...
+  } @ inputs:
+    flake-utils.lib.eachDefaultSystem (
       system: let
-        inherit (inputs) nixpkgs;
         pkgs = import nixpkgs {
           inherit system;
           overlays = [inputs.cardanix.overlays.default];

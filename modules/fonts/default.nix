@@ -10,40 +10,39 @@
   sansSerif = "${font} Nerd Font";
   serif = "${font} Nerd Font";
   cfg = config.modules;
-in
-  with lib; {
-    options = {
-      modules = {
-        fonts = {
-          enable = mkEnableOption "Enable fonts" // {default = cfg.display.gui != "headless";};
-          defaultFont = mkOption {
-            type = types.str;
-            default = sansSerif;
-          };
-          size = mkOption {
-            type = types.int;
-            default = size;
-          };
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.fonts.enable) {
+in {
+  options = {
+    modules = {
       fonts = {
-        packages = with pkgs.nerd-fonts; [
-          iosevka
-          victor-mono
-        ];
-        fontconfig = {
-          enable = cfg.fonts.enable;
-          defaultFonts = {
-            monospace = ["${monospace}"];
-            sansSerif = ["${sansSerif}"];
-            serif = ["${serif}"];
-          };
+        enable = lib.mkEnableOption "Enable fonts" // {default = cfg.display.gui != "headless";};
+        defaultFont = lib.mkOption {
+          type = lib.types.str;
+          default = sansSerif;
         };
-        fontDir = {
-          enable = cfg.fonts.enable;
+        size = lib.mkOption {
+          type = lib.types.int;
+          default = size;
         };
       };
     };
-  }
+  };
+  config = lib.mkIf (cfg.enable && cfg.fonts.enable) {
+    fonts = {
+      packages = with pkgs.nerd-fonts; [
+        iosevka
+        victor-mono
+      ];
+      fontconfig = {
+        enable = cfg.fonts.enable;
+        defaultFonts = {
+          monospace = ["${monospace}"];
+          sansSerif = ["${sansSerif}"];
+          serif = ["${serif}"];
+        };
+      };
+      fontDir = {
+        enable = cfg.fonts.enable;
+      };
+    };
+  };
+}

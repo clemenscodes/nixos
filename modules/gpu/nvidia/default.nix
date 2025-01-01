@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.gpu;
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
@@ -19,30 +18,30 @@ in {
     modules = {
       gpu = {
         nvidia = {
-          enable = mkEnableOption "Enables NVIDIA GPU support" // {default = false;};
+          enable = lib.mkEnableOption "Enables NVIDIA GPU support" // {default = false;};
         };
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.nvidia.enable) {
+  config = lib.mkIf (cfg.enable && cfg.nvidia.enable) {
     modules = {
       gpu = {
         vendor = "nvidia";
       };
     };
     environment = {
-      systemPackages = with pkgs; [
+      systemPackages = [
         nvidia-offload
-        cudaPackages.cudatoolkit
-        cudaPackages.cudnn
-        nvtop-amd
-        mesa
-        vulkan-tools
-        vulkan-loader
-        vulkan-validation-layers
-        vulkan-extension-layer
-        libva
-        libva-utils
+        pkgs.cudaPackages.cudatoolkit
+        pkgs.cudaPackages.cudnn
+        pkgs.nvtop-amd
+        pkgs.mesa
+        pkgs.vulkan-tools
+        pkgs.vulkan-loader
+        pkgs.vulkan-validation-layers
+        pkgs.vulkan-extension-layer
+        pkgs.libva
+        pkgs.libva-utils
       ];
     };
     boot = {

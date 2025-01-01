@@ -4,49 +4,48 @@
   ...
 }: let
   cfg = config.modules;
-  user = cfg.users.user;
-in
-  with lib; {
-    imports = [
-      ./bluetooth
-      ./dbus
-      ./dns
-      ./firewall
-      ./irc
-      ./mtr
-      ./stevenblack
-      ./torrent
-      ./upnp
-      ./vpn
-      ./wireless
-      ./wireshark
-    ];
-    options = {
-      modules = {
-        networking = {
-          enable = mkEnableOption "Enable networking options" // {default = false;};
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.networking.enable) {
+  inherit (cfg.users) user;
+in {
+  imports = [
+    ./bluetooth
+    ./dbus
+    ./dns
+    ./firewall
+    ./irc
+    ./mtr
+    ./stevenblack
+    ./torrent
+    ./upnp
+    ./vpn
+    ./wireless
+    ./wireshark
+  ];
+  options = {
+    modules = {
       networking = {
-        hostName = config.modules.hostname.defaultHostname;
-        networkmanager = {
-          enable = cfg.networking.enable;
-          unmanaged = [
-            "*"
-            "except:type:wwan"
-            "except:type:wifi"
-            "except:type:ethernet"
-          ];
-        };
+        enable = lib.mkEnableOption "Enable networking options" // {default = false;};
       };
+    };
+  };
+  config = lib.mkIf (cfg.enable && cfg.networking.enable) {
+    networking = {
+      hostName = config.modules.hostname.defaultHostname;
+      networkmanager = {
+        inherit (cfg.networking) enable;
+        unmanaged = [
+          "*"
+          "except:type:wwan"
+          "except:type:wifi"
+          "except:type:ethernet"
+        ];
+      };
+    };
+    users = {
       users = {
-        users = {
-          ${user} = {
-            extraGroups = ["networkmanager"];
-          };
+        ${user} = {
+          extraGroups = ["networkmanager"];
         };
       };
     };
-  }
+  };
+}

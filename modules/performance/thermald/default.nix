@@ -4,22 +4,21 @@
   ...
 }: let
   cfg = config.modules.performance;
-in
-  with lib; {
-    options = {
-      modules = {
-        performance = {
-          thermald = {
-            enable = mkEnableOption "Enable an efficient temperature management" // {default = cfg.enable;};
-          };
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.thermald.enable) {
-      services = {
+in {
+  options = {
+    modules = {
+      performance = {
         thermald = {
-          enable = cfg.thermald.enable;
+          enable = lib.mkEnableOption "Enable an efficient temperature management" // {default = cfg.enable;};
         };
       };
     };
-  }
+  };
+  config = lib.mkIf (cfg.enable && cfg.thermald.enable) {
+    services = {
+      thermald = {
+        inherit (cfg.thermald) enable;
+      };
+    };
+  };
+}

@@ -12,7 +12,7 @@
       (
         self: super: {
           weechat = super.weechat.override {
-            configure = {availablePlugins, ...}: {
+            configure = {...}: {
               scripts = with super.weechatScripts; [
                 weechat-notify-send
                 weechat-grep
@@ -29,28 +29,27 @@
       )
     ];
   };
-in
-  with lib; {
-    options = {
-      modules = {
-        networking = {
-          irc = {
-            weechat = {
-              enable = mkEnableOption "Enable WeeChat" // {default = false;};
-            };
+in {
+  options = {
+    modules = {
+      networking = {
+        irc = {
+          weechat = {
+            enable = lib.mkEnableOption "Enable WeeChat" // {default = false;};
           };
         };
       };
     };
-    config = mkIf (cfg.enable && cfg.weechat.enable) {
-      environment = {
-        systemPackages = with pkgs; [weechat];
-      };
-      services = {
-        weechat = {
-          inherit (cfg.weechat) enable;
-          binary = "${pkgs.weechat}/bin/weechat";
-        };
+  };
+  config = lib.mkIf (cfg.enable && cfg.weechat.enable) {
+    environment = {
+      systemPackages = with pkgs; [weechat];
+    };
+    services = {
+      weechat = {
+        inherit (cfg.weechat) enable;
+        binary = "${pkgs.weechat}/bin/weechat";
       };
     };
-  }
+  };
+}

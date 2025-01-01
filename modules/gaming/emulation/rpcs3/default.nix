@@ -1,12 +1,8 @@
-{inputs}: {
-  pkgs,
+{...}: {
   lib,
   config,
-  system,
   ...
-}:
-with lib;
-with pkgs; let
+}: let
   cfg = config.modules.gaming.emulation;
 in {
   options = {
@@ -14,7 +10,7 @@ in {
       gaming = {
         emulation = {
           rpcs3 = {
-            enable = mkEnableOption "Enable rpcs3 emulation (PlayStation 3)" // {default = cfg.enable;};
+            enable = lib.mkEnableOption "Enable rpcs3 emulation (PlayStation 3)" // {default = cfg.enable;};
           };
         };
       };

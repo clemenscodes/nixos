@@ -1,5 +1,4 @@
-{lib, ...}:
-with lib; {
+{lib, ...}: {
   imports = [
     ./thm
   ];
@@ -7,7 +6,7 @@ with lib; {
     modules = {
       networking = {
         vpn = {
-          enable = mkEnableOption "Enable vpn" // {default = false;};
+          enable = lib.mkEnableOption "Enable vpn" // {default = false;};
         };
       };
     };

@@ -3,9 +3,7 @@
   lib,
   config,
   ...
-}:
-with lib;
-with pkgs; let
+}: let
   cfg = config.modules.gpu;
   driver = "amdgpu";
 in {
@@ -17,12 +15,12 @@ in {
     modules = {
       gpu = {
         amd = {
-          enable = mkEnableOption "Enable AMD GPU support" // {default = false;};
+          enable = lib.mkEnableOption "Enable AMD GPU support" // {default = false;};
         };
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.amd.enable) {
+  config = lib.mkIf (cfg.enable && cfg.amd.enable) {
     modules = {
       gpu = {
         vendor = "amd";
@@ -30,11 +28,11 @@ in {
     };
     environment = {
       systemPackages = [
-        clinfo
-        glxinfo
-        glmark2
-        libva-utils
-        vulkan-tools
+        pkgs.clinfo
+        pkgs.glxinfo
+        pkgs.glmark2
+        pkgs.libva-utils
+        pkgs.vulkan-tools
         (import ./gpu-usage-waybar {inherit pkgs;})
       ];
       variables = {
@@ -60,16 +58,16 @@ in {
       graphics = {
         enable = true;
         extraPackages = [
-          amdvlk
-          mesa
-          mesa.drivers
+          pkgs.amdvlk
+          pkgs.mesa
+          pkgs.mesa.drivers
           # rocmPackages.clr
           # rocmPackages.clr.icd
           # rocmPackages.rocm-runtime
         ];
         extraPackages32 = [
-          driversi686Linux.amdvlk
-          driversi686Linux.mesa
+          pkgs.driversi686Linux.amdvlk
+          pkgs.driversi686Linux.mesa
         ];
       };
     };

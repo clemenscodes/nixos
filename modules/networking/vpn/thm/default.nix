@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.networking.vpn;
   thmvpn = pkgs.writeShellScriptBin "thmvpn" ''
     PROTOCOL="anyconnect"
@@ -19,19 +18,19 @@ in {
       networking = {
         vpn = {
           thm = {
-            enable = mkEnableOption "Enable THM VPN using openconnect" // {default = false;};
-            usernameFile = mkOption {
-              type = types.path;
+            enable = lib.mkEnableOption "Enable THM VPN using openconnect" // {default = false;};
+            usernameFile = lib.mkOption {
+              type = lib.types.path;
             };
-            passwordFile = mkOption {
-              type = types.path;
+            passwordFile = lib.mkOption {
+              type = lib.types.path;
             };
           };
         };
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.thm.enable) {
+  config = lib.mkIf (cfg.enable && cfg.thm.enable) {
     environment = {
       systemPackages = [thmvpn];
     };

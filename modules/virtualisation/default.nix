@@ -1,11 +1,9 @@
-{inputs}: {
-  system,
+{...}: {
   pkgs,
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules;
   user = cfg.users.user;
   isDesktop = cfg.display.gui != "headless";
@@ -17,11 +15,11 @@ in {
   options = {
     modules = {
       virtualisation = {
-        enable = mkEnableOption "Enable virtualisation" // {default = false;};
+        enable = lib.mkEnableOption "Enable virtualisation" // {default = false;};
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.virtualisation.enable) {
+  config = lib.mkIf (cfg.enable && cfg.virtualisation.enable) {
     virtualisation = {
       libvirtd = {
         inherit (cfg.virtualisation) enable;
@@ -48,7 +46,7 @@ in {
         inherit (cfg.virtualisation) enable;
       };
     };
-    home-manager = mkIf (cfg.home-manager.enable && isDesktop) {
+    home-manager = lib.mkIf (cfg.home-manager.enable && isDesktop) {
       users = {
         ${user} = {
           dconf = {

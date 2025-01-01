@@ -4,18 +4,17 @@
   ...
 }: let
   cfg = config.modules.networking;
-in
-  with lib; {
-    imports = [
-      ./weechat
-    ];
-    options = {
-      modules = {
-        networking = {
-          irc = {
-            enable = mkEnableOption "Enable irc" // {default = cfg.enable;};
-          };
+in {
+  imports = [
+    ./weechat
+  ];
+  options = {
+    modules = {
+      networking = {
+        irc = {
+          enable = lib.mkEnableOption "Enable irc" // {default = cfg.enable;};
         };
       };
     };
-  }
+  };
+}

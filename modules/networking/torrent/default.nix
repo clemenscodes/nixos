@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.networking;
   nameservers = [
     "194.242.2.2"
@@ -19,22 +18,22 @@ in {
     modules = {
       networking = {
         torrent = {
-          enable = mkEnableOption "Use mullvad DNS" // {default = false;};
-          mullvadAccountSecretPath = mkOption {
-            type = types.path;
+          enable = lib.mkEnableOption "Use mullvad DNS" // {default = false;};
+          mullvadAccountSecretPath = lib.mkOption {
+            type = lib.types.path;
           };
-          mullvadDns = mkEnableOption "Use mullvad DNS" // {default = false;};
+          mullvadDns = lib.mkEnableOption "Use mullvad DNS" // {default = false;};
         };
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.torrent.enable) {
-    networking = mkIf (cfg.torrent.mullvadDns) {
+  config = lib.mkIf (cfg.enable && cfg.torrent.enable) {
+    networking = lib.mkIf (cfg.torrent.mullvadDns) {
       inherit nameservers;
     };
     services = {
       mullvad-vpn = {
-        enable = true;
+        inherit (cfg.torrent) enable;
         package = pkgs.mullvad-vpn;
       };
     };

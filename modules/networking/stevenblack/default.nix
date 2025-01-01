@@ -4,23 +4,22 @@
   ...
 }: let
   cfg = config.modules.networking;
-in
-  with lib; {
-    options = {
-      modules = {
-        networking = {
-          stevenblack = {
-            enable = mkEnableOption "Enable stevenblack" // {default = cfg.enable;};
-          };
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.stevenblack.enable) {
+in {
+  options = {
+    modules = {
       networking = {
         stevenblack = {
-          enable = cfg.stevenblack.enable;
-          block = ["fakenews" "gambling" "porn"];
+          enable = lib.mkEnableOption "Enable stevenblack" // {default = cfg.enable;};
         };
       };
     };
-  }
+  };
+  config = lib.mkIf (cfg.enable && cfg.stevenblack.enable) {
+    networking = {
+      stevenblack = {
+        inherit (cfg.stevenblack) enable;
+        block = ["fakenews" "gambling" "porn"];
+      };
+    };
+  };
+}

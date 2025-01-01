@@ -4,17 +4,16 @@
   ...
 }: let
   cfg = config.modules;
-in
-  with lib; {
-    options = {
-      modules = {
-        hostname = {
-          enable = mkEnableOption "Enable hostname" // {default = cfg.enable;};
-          defaultHostname = mkOption {
-            type = types.str;
-            default = "cymenix";
-          };
+in {
+  options = {
+    modules = {
+      hostname = {
+        enable = lib.mkEnableOption "Enable hostname" // {default = cfg.enable;};
+        defaultHostname = lib.mkOption {
+          type = lib.types.str;
+          default = "cymenix";
         };
       };
     };
-  }
+  };
+}

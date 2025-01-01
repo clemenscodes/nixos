@@ -4,22 +4,21 @@
   ...
 }: let
   cfg = config.modules.networking;
-in
-  with lib; {
-    options = {
-      modules = {
-        networking = {
-          mtr = {
-            enable = mkEnableOption "Enable mtr (mytraceroute)" // {default = cfg.enable;};
-          };
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.mtr.enable) {
-      programs = {
+in {
+  options = {
+    modules = {
+      networking = {
         mtr = {
-          enable = cfg.mtr.enable;
+          enable = lib.mkEnableOption "Enable mtr (mytraceroute)" // {default = cfg.enable;};
         };
       };
     };
-  }
+  };
+  config = lib.mkIf (cfg.enable && cfg.mtr.enable) {
+    programs = {
+      mtr = {
+        inherit (cfg.mtr) enable;
+      };
+    };
+  };
+}

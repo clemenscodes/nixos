@@ -7,25 +7,24 @@
   cfg = config.modules.security;
   isDesktop = config.modules.display.gui != "headless";
   polkitagent = import ./polkitagent {inherit pkgs;};
-in
-  with lib; {
-    options = {
-      modules = {
-        security = {
-          polkit = {
-            enable = mkEnableOption "Enable policy kit" // {default = cfg.enable && isDesktop;};
-          };
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.polkit.enable && isDesktop) {
-      environment = {
-        systemPackages = [polkitagent];
-      };
+in {
+  options = {
+    modules = {
       security = {
         polkit = {
-          inherit (cfg.polkit) enable;
+          enable = lib.mkEnableOption "Enable policy kit" // {default = cfg.enable && isDesktop;};
         };
       };
     };
-  }
+  };
+  config = lib.mkIf (cfg.enable && cfg.polkit.enable && isDesktop) {
+    environment = {
+      systemPackages = [polkitagent];
+    };
+    security = {
+      polkit = {
+        inherit (cfg.polkit) enable;
+      };
+    };
+  };
+}

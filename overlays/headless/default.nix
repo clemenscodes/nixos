@@ -1,7 +1,3 @@
-{
-  inputs,
-  nixpkgs,
-  system,
-}: [
+{inputs, ...}: [
   inputs.android-nixpkgs.overlays.default
 ]

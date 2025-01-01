@@ -8,20 +8,19 @@
   umu = inputs.umu.packages.${pkgs.system}.umu.override {
     version = "${inputs.umu.shortRev}";
   };
-in
-  with lib; {
-    options = {
-      modules = {
-        gaming = {
-          umu = {
-            enable = mkEnableOption "Enable umu" // {default = cfg.enable;};
-          };
+in {
+  options = {
+    modules = {
+      gaming = {
+        umu = {
+          enable = lib.mkEnableOption "Enable umu" // {default = false;};
         };
       };
     };
-    config = mkIf (cfg.enable && cfg.umu.enable) {
-      environment = {
-        systemPackages = [umu];
-      };
+  };
+  config = lib.mkIf (cfg.enable && cfg.umu.enable) {
+    environment = {
+      systemPackages = [umu];
     };
-  }
+  };
+}

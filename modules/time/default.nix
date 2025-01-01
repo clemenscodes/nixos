@@ -4,22 +4,21 @@
   ...
 }: let
   cfg = config.modules;
-in
-  with lib; {
-    options = {
-      modules = {
-        time = {
-          enable = mkEnableOption "Enable time settings" // {default = cfg.enable;};
-          defaultTimeZone = mkOption {
-            type = types.str;
-            default = "Europe/Berlin";
-          };
+in {
+  options = {
+    modules = {
+      time = {
+        enable = lib.mkEnableOption "Enable time settings" // {default = cfg.enable;};
+        defaultTimeZone = lib.mkOption {
+          type = lib.types.str;
+          default = "Europe/Berlin";
         };
       };
     };
-    config = mkIf (cfg.enable && cfg.time.enable) {
-      time = {
-        timeZone = cfg.time.defaultTimeZone;
-      };
+  };
+  config = lib.mkIf (cfg.enable && cfg.time.enable) {
+    time = {
+      timeZone = cfg.time.defaultTimeZone;
     };
-  }
+  };
+}

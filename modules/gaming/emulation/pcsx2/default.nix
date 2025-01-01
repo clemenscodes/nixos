@@ -3,13 +3,11 @@
   lib,
   config,
   ...
-}:
-with lib;
-with pkgs; let
+}: let
   cfg = config.modules.gaming.emulation;
-  ps2bios = stdenv.mkDerivation {
+  ps2bios = pkgs.stdenv.mkDerivation {
     name = "ps2bios";
-    src = fetchzip {
+    src = pkgs.fetchzip {
       url = "https://ps2bios.co/ps2bios.zip";
       sha256 = "sha256-Spv+qCg2SwQBRfKZoLVd3VeiM7muHfke+BDnVwcGm58=";
       stripRoot = false;
@@ -27,18 +25,18 @@ in {
       gaming = {
         emulation = {
           pcsx2 = {
-            enable = mkEnableOption "Enable pcsx2 emulation (PlayStation 2)" // {default = cfg.enable;};
+            enable = lib.mkEnableOption "Enable pcsx2 emulation (PlayStation 2)" // {default = cfg.enable;};
           };
         };
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.pcsx2.enable) {
-    home-manager = mkIf (config.modules.home-manager.enable) {
+  config = lib.mkIf (cfg.enable && cfg.pcsx2.enable) {
+    home-manager = lib.mkIf (config.modules.home-manager.enable) {
       users = {
         ${config.modules.users.user} = {
           home = {
-            packages = [pcsx2];
+            packages = [pkgs.pcsx2];
             file = {
               ".config/PCSX2/bios" = {
                 source = "${ps2bios}/bios";

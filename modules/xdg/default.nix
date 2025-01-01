@@ -3,39 +3,37 @@
   config,
   lib,
   ...
-}:
-with pkgs; let
+}: let
   cfg = config.modules;
   waylandPkgs =
     if cfg.display.gui == "wayland"
-    then [xdg-desktop-portal-wlr]
+    then [pkgs.xdg-desktop-portal-wlr]
     else [];
-in
-  with lib; {
-    options = {
-      modules = {
-        xdg = {
-          enable = mkEnableOption "Enable XDG" // {default = cfg.enable;};
-        };
-      };
-    };
-    config = mkIf (cfg.enable && cfg.xdg.enable) {
+in {
+  options = {
+    modules = {
       xdg = {
-        autostart = {
-          enable = cfg.xdg.enable;
-        };
-        portal = {
-          enable = cfg.display.gui != "headless";
-          extraPortals =
-            waylandPkgs
-            ++ [
-              xdg-desktop-portal-gtk
-              xdg-desktop-portal
-            ];
-          wlr = {
-            enable = mkForce cfg.display.gui == "wayland";
-          };
+        enable = lib.mkEnableOption "Enable XDG" // {default = cfg.enable;};
+      };
+    };
+  };
+  config = lib.mkIf (cfg.enable && cfg.xdg.enable) {
+    xdg = {
+      autostart = {
+        inherit (cfg.xdg) enable;
+      };
+      portal = {
+        enable = cfg.display.gui != "headless";
+        extraPortals =
+          waylandPkgs
+          ++ [
+            pkgs.xdg-desktop-portal-gtk
+            pkgs.xdg-desktop-portal
+          ];
+        wlr = {
+          enable = lib.mkForce cfg.display.gui == "wayland";
         };
       };
     };
-  }
+  };
+}

@@ -1,10 +1,9 @@
-{inputs}: {
+{inputs, ...}: {
   pkgs,
   lib,
   config,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.security;
   inherit (config.modules.users) user;
 in {
@@ -13,18 +12,18 @@ in {
     modules = {
       security = {
         sops = {
-          enable = mkEnableOption "Enable secrets using SOPS" // {default = false;};
+          enable = lib.mkEnableOption "Enable secrets using SOPS" // {default = false;};
         };
       };
     };
   };
-  config = mkIf (cfg.enable && cfg.sops.enable) {
+  config = lib.mkIf (cfg.enable && cfg.sops.enable) {
     environment = {
-      systemPackages = with pkgs; [
+      systemPackages = [
         (import ./setupsops.nix {inherit pkgs;})
-        sops
-        age
-        ssh-to-age
+        pkgs.sops
+        pkgs.age
+        pkgs.ssh-to-age
       ];
     };
     sops = {
