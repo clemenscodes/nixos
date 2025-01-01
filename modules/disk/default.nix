@@ -5,6 +5,7 @@
 }: {config, ...}: let
   cfg = config.modules;
 in {
+  imports = [inputs.disko.nixosModules.default];
   options = {
     modules = {
       disk = {
@@ -18,7 +19,6 @@ in {
     };
   };
   config = lib.mkIf (cfg.enable && cfg.disk.enable) {
-    imports = [inputs.disko.nixosModules.default];
     disko = {
       devices = {
         disk = {
